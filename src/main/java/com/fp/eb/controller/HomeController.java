@@ -16,7 +16,7 @@ public class HomeController {
 	
 	@GetMapping("/sb")
 	public String text() {
-		return "index";
+		return "main/main";
 	}
 
 }
