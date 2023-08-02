@@ -9,6 +9,6 @@
 <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
-	우리 SpringBoot로 어쩌구
+	우리 SpringBoot로 어쩌구저쩌구
 </body>
 </html>
