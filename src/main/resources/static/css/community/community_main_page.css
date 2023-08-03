@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.commu_container {
+	width: 100vw; position : relative;
+	background-image: url(/img/backgroundImg.jpg);
+	position: relative;
+}
+
+@media only screen and (max-width:1000px) {
+	/* commu_header 시작 */
+	.commu_header {
+		width: 100vw;
+		text-align: center;
+		position: relative;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		height: 13em;
+	}
+	.menu_btn {
+		position: absolute;
+		left: 1rem;
+		bottom: 1rem;
+		border: none;
+		background-color: transparent;
+		filter: opacity(0.5) drop-shadow(0 0 0 #85786E);
+	}
+	.menu_btn img {
+		width: 50px;
+		height: 50px;
+	}
+	#community_txt {
+		font-family: 'Diphylleia', serif;
+		font-weight: bolder;
+		color: #C69C78;
+		-webkit-text-stroke: 0.0002em #85786E;
+		font-weight: bolder;
+		font-size: 5rem;
+	}
+	.login_box {
+		height: 10rem;
+		width: 16rem;
+		color: #C69C78;
+		font-family: 'Orbit', sans-serif;
+		font-size: 2rem;
+		position: absolute;
+		right: 1rem;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		border-radius: 5px;
+		background: rgba(255, 255, 255, 0.40);
+	}
+	.login_img {
+		border-radius: 50%;
+		width: 80px;
+		height: 80px;
+	}
+	.padding {
+		padding: 3%;
+	}
+	.login_name {
+		color: #584637;
+		font-family: 'Orbit', sans-serif;
+		font-size: 1.8rem;
+		font-weight: bolder;
+	}
+	.login_grade {
+		color: #779A76;
+		font-family: 'Orbit', sans-serif;
+		font-size: 1.5rem;
+		font-weight: bolder;
+	}
+	.login_btn {
+		display: flex;
+	}
+	.alam_btn {
+	border: none;
+	background-color: transparent;
+	filter: opacity(0.5) drop-shadow(0 0 0 #85786E);
+		
+	}
+	.alam_btn img {
+		max-height: 30px;
+		max-width: 30px;
+	}
+	.logout_btn {
+		margin: 5%;
+		height: 35px;
+		width: 110px;
+		border: none;
+		border-radius: 5px;
+		background: rgba(198, 156, 120, 0.54);
+		font-family: 'Orbit', sans-serif;
+		font-weight: 900;
+		color: #FFFFFF;
+		font-size: 0.5em;
+	}
+
+	/* commu_menu 시작 */
+	.commu_menu {
+		display: flex;
+		width: 100vw;
+		height: 6em;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		position: relative;
+		background: rgba(133, 120, 110, 0.33);
+	}
+	.commu_seach {
+		position: relative;
+		width: 80%;
+		height: 50%;
+		font-size: 2em;
+		font-family: 'Orbit', sans-serif;
+		font-weight: border;
+		border: 0;
+		border-radius: 5px;
+		color: rgba(133, 120, 110, 0.88);
+		background-color: #F4F4F4;
+		text-indent: 30px;
+		outline: none;
+		margin-right: -5px;
+		z-index: 2;
+	}
+	.commu_seach_btn {
+		border-radius: 5px;
+		position: relative;
+		width: 11%;
+		height: 50%;
+		border: none;
+		background-color: #F4F4F4;
+		margin-left: -10px;
+		margin-right: 5px;
+		z-index: 1;
+	}
+	.commu_seach_btn img {
+		height: 50px;
+		width: 50px;
+		filter: opacity(0.5) drop-shadow(0 0 0 #85786E);
+	}
+}

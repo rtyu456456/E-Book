@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class CommunityController {
 
 
 	// 이 폴더는 컨트롤러 넣어놓는 폴더입니다.
@@ -14,9 +14,9 @@ public class HomeController {
 	// 여긴 아무도 못써, 홈컨이라는 이름도 못써
 	// HC도 못써
 	
-	@GetMapping("/sb")
-	public String text() {
-		return "index";
+	@GetMapping("/community_main")
+	public String goCommunityMain() {
+		return "community/community_main_page";
 	}
 
 }
