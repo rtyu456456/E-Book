@@ -1,12 +1,21 @@
 package com.fp.eb.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.fp.eb.model.CommunityDTO;
+import com.fp.eb.service.CommunityDAO;
 
 @Controller
 public class CommunityController {
 
-
+	@Autowired
+	private CommunityDAO cDAO;
+	
 	// 이 폴더는 컨트롤러 넣어놓는 폴더입니다.
 	// 각자가 만드는 기능에 따른 컨트롤러를 넣어주시면 됩니다
 	// 이 컨트롤러 이름은 HomeController로 만든 이유는
@@ -15,8 +24,20 @@ public class CommunityController {
 	// HC도 못써
 	
 	@GetMapping("/community_main")
-	public String goCommunityMain() {
-		return "community/community_main_page";
+	public String goCommunityMain(Model model, CommunityDTO c) {
+		cDAO.getAllCommunity (model);
+		
+		model.addAttribute("community_page", "community_main_page.jsp");
+		return "community/community_header_page";
+	}
+	
+	@GetMapping("/go.board")
+	public String goBoard(Model model, CommunityDTO c) {
+		cDAO.getCommunity(c, model);
+		cDAO.getAllCommunityPost(c, model);
+		
+		model.addAttribute("community_page", "community_board_page.jsp");
+		return "community/community_header_page";
 	}
 
 }

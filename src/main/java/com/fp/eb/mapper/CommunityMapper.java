@@ -1,9 +1,15 @@
 package com.fp.eb.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
+import com.fp.eb.model.Community;
+import com.fp.eb.model.CommunityDTO;
+import com.fp.eb.model.CommunityPostDTO;
+
 @Mapper
-public interface HomeMapper {
+public interface CommunityMapper {
 
 	
 	// 여기는 인터페이스 (Mapper) 넣는 곳입니다.
@@ -17,4 +23,13 @@ public interface HomeMapper {
 	
 	// 홈키퍼도 아니고 홈매퍼인 이유는
 	// 홈 쓰지마 제발 컨트롤러에서
+	
+
+	List<CommunityDTO> getAllCommunity();
+
+	CommunityDTO getCommunity(CommunityDTO c);
+	
+	List<CommunityPostDTO> getAllCommunityPost(CommunityDTO c);
+	
+	
 }
