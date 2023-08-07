@@ -9,7 +9,6 @@
 	background: url("../../img/background_img.jpg");
 }
 
-
 /* header 부분 작업 시작*/
 .head-line {
 	height: 10vh;
@@ -77,30 +76,34 @@
 	background-color: rgba(198, 156, 120, 0.54);
 }
 
-
 /* contentpage  */
 .content-page {
+	position: relative;
 	height: 85vh;
 	width: 100vw;
 	background-color: rgba(255, 255, 255, 0.4);
-	
+	display: flex;
+	justify-content: center;
 }
-
-
-
 
 /* footer 시작 */
 .foot-line {
 	display: flex;
 	justify-content: space-around;
-	align-items: center;
 	background-color: rgba(133, 120, 110, 0.7);
 	width: 100vw;
 	height: 5vh;
-	z-index: 2;
-	font-size: 10px .foot-line a { justify-content : space-around;
-	color: rgba(253, 247, 227, 1);
+	min-height: 30pt;
+	font-size: 10px;
+	position: relative;
 	align-items: center;
-	display: flex;
 }
 
+.foot-line a {
+	color: rgba(253, 247, 227, 1);
+	align-items: center;
+}
+
+.foot-line span {
+	align-items: center;
+}

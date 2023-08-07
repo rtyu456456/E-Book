@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+.detail-container {
+	overflow: auto;
+	height: 100%;
+	width: 80vw;
+	margin-top: 14px;
+	border-radius: 10px;
+	color: rgba(88, 70, 55, 1);
+}
+
+.user-info3 {
+	align-items: center;
+	background-color: rgba(198, 156, 120, 0.54);
+	display: flex;
+	height: 34px;
+	font-weight: 700;
+	background-color: rgba(198, 156, 120, 0.54);
+}
+
+.user-grade {
+	font-size: 10px;
+	color: rgba(119, 154, 118, 1);
+}
+
+/* ------------------- */
+.trade-detail-main {
+	padding: 20px;
+	background: rgba(253, 247, 227, 0.8);
+}
+
+.trade-book {
+	margin: 10pt;
+	font-weight: 700;
+	display: flex;
+}
+
+.trade-book img {
+	width: 86px;
+	height: 120px;
+}
+
+.trade-book-info {
+	padding-left: 10px;
+}
+
+.book-title {
+	font-size: 12px;
+}
+
+.authors {
+	font-size: 10px;
+}
+
+.publisher {
+	font-size: 10px;
+}
+
+.price {
+	color: red;
+	font-size: 11px;
+}
+
+.trade-detail-main p {
+	font-size: 10px;
+}
+
+.trade-map {
+	margin: 10px;
+	border-radius: 10px;
+	max-height: 126px;
+	background-color: rgba(198, 156, 120, 0.54);
+	width: 95%;
+}
+
+.trade-btn {
+	justify-content: space-around;
+	display: flex;
+	border-radius: 10px;
+	font-size: 13px;
+	color: rgba(255, 255, 255, 1);
+	text-align: center;
+}
+
+.trade-btn .complete {
+	align-self: center;
+	background-color: rgba(210, 88, 72, 0.88);
+	width: 30vw;
+	max-width: 126px;
+	height: 26px;
+}
+
+.trade-btn .info-change {
+	background-color: rgba(133, 120, 110, 0.85);
+	width: 25vw;
+	max-width: 100px;
+	align-self: center;
+	height: 26px;
+	align-self: center;
+}
+
+.send-msg {
+	background-color: rgba(133, 120, 110, 0.85);
+	width: 50vw;
+	color: rgba(255, 255, 255, 1);
+	text-align: center;
+}

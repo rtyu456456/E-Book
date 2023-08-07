@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <link rel="stylesheet" href="css/trade/tradeMain.css">
 </head>
+
 <body>
 	<div class="trade-search">
 		<span>제목 <img class="search-under" src="/img/Polygon1.png"></span>

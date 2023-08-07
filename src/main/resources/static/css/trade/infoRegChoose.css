@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.trade-search {
+	background-color: rgba(133, 120, 110, 0.33);
+	height: 35px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	color: white;
+	background-color: rgba(133, 120, 110, 0.33);
+	position: absolute;
+}
+
+.trade-search span {
+	color: rgba(255, 255, 255, 1);
+}
+
+.choose-reg {
+    display: flex;
+    flex-direction: column; /* 요소들을 세로로 배열 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    width: 86vw;
+}
+
+.search-book-reg, .self-book-reg {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 수평 중앙 정렬 */
+    border-radius: 10px;
+    height: 85px;
+    background-color: rgba(253, 247, 227, 0.8);
+    margin-bottom: 20px;
+}

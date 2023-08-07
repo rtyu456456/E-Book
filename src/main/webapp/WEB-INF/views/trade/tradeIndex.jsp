@@ -11,6 +11,7 @@
 
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/trade/tradeIndex.css">
+
 </head>
 <body>
 
@@ -30,16 +31,14 @@
 	</header>
 
 
-	<table class="content-page">
-		<tr>
-			<td><jsp:include page="${contentPage }"></jsp:include></td>
-		</tr>
-	</table>
+	<main class="content-page">
+			<jsp:include page="${contentPage }"></jsp:include>
+	</main>
 
 
 	<footer>
 		<div class="foot-line">
-			<a href=""> <img alt="" src="/img/Rectangle_107.png"> <span> 판매하기 </span></a> 
+			<a href="/trade.choose.go"> <img alt="" src="/img/Rectangle_107.png"> <span> 판매하기 </span></a> 
 			<a href=""> <img alt="" src="/img/Rectangle_108.png">  <span> 판매 내역 </span></a> 
 			<a href=""> <img alt="" src="/img/Rectangle_109.png">  <span> 쪽지함 </span></a>
 		</div>

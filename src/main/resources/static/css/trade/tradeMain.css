@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+.trade-search {
+	justify-content: space-around;
+	background-color: rgba(133, 120, 110, 0.33);
+	height: 35px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	color: white;
+	background-color: rgba(133, 120, 110, 0.33);
+	position: absolute;
+}
+
+.trade-search span {
+	color: rgba(255, 255, 255, 1);
+}
+
+.trade-search input[type="text"] {
+	margin-top: 3px;
+	margin-bottom: 2px;
+	width: 80%;
+	height: 20px;
+	border-radius: 15px;
+	width: 60%;
+	border: none;
+	padding: 5px;
+	justify-content: space-around;
+}
+
+.search-btn {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.search-btn {
+	display: inline-block;
+	vertical-align: middle;
+	display: flex;
+	align-items: center; /* 추가된 스타일 */
+}
+
+.trade-all-list {
+	overflow: auto;
+	margin-top: 30px;
+	width: 80%;
+	text-align: center;
+}
+
+.trade-list {
+	display: flex;
+	background: rgba(198, 156, 120, 0.54);
+	margin-top: 15px;
+	border-radius: 10px;
+	height: 16%;
+	min-height: 80pt;
+	justify-content: space-around;
+}
+
+.book-img {
+	width: 30%;
+}
+
+.book-img img {
+	margin: 5pt;
+	align-items: center;
+	width: 90%;
+	max-width: 80pt;
+	height: 90%
+}
+
+.trade-book-info {
+	margin:10pt;
+	width: 70%;
+	text-align: left;
+	
+}
+
+.title{
+	font-size: 12px;
+	padding: 2px;
+}
+.authors{
+	font-size: 10px;
+	padding: 2px;
+}
+.publisher{
+	font-size: 10px;
+	padding: 2px;
+}
+.price{
+	color: red;
+}
+
