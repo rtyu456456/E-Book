@@ -12,6 +12,9 @@ public interface TradeMapper {
 	List<TradeDTO> getAlltradelist();
 
 	TradeDTO getTradeDetail(TradeDTO tDTO);
+
+	List<TradeDTO> getTradeList(TradeDTO tDTO);
+
 	
 
 }

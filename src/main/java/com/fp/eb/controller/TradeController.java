@@ -37,7 +37,12 @@ public class TradeController {
 		return "trade/tradeIndex";
 	}
 	
-
+	@GetMapping("/trade.search.title")
+	public String searchTitle(TradeDTO tDTO, HttpServletRequest req) {
+		tDAO.getTradeList(tDTO, req);
+		req.setAttribute("contentPage", "tradeMain.jsp");
+		return "trade/tradeIndex";
+	}
 
 	
 	

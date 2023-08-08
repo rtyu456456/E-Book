@@ -18,22 +18,23 @@ public class TradeDAO {
 	@Autowired
 	private TradeMapper tradeMapper;
 
-	
-	public void getAlltradelist(TradeDTO tDTO , HttpServletRequest req) {
-		List<TradeDTO> trades =  tradeMapper.getAlltradelist();
+	public void getAlltradelist(TradeDTO tDTO, HttpServletRequest req) {
+		List<TradeDTO> trades = tradeMapper.getAlltradelist();
 		System.out.println(trades);
 		req.setAttribute("trades", tradeMapper.getAlltradelist());
 		System.out.println("중고거래 메인");
-		
-	}
 
+	}
 
 	public void getTradeDetail(TradeDTO tDTO, HttpServletRequest req) {
 		req.setAttribute("trade", tradeMapper.getTradeDetail(tDTO));
 		System.out.println("거래 상품 상세 정보 조회");
 	}
-	
-	
-	
-	
+
+
+	public void getTradeList(TradeDTO tDTO, HttpServletRequest req) {
+		req.setAttribute("trades", tradeMapper.getTradeList(tDTO));
+		System.out.println("거래 상품 검색 조회");
+	}
+
 }

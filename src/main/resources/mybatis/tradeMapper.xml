@@ -9,7 +9,10 @@
 	<select id="getTradeDetail" resultType="com.fp.eb.model.TradeDTO" >
 	select * from eb_trade where t_no = #{t_no }
 	</select>
-	
-	<select id="getSearchReg" resultType="com.fp.eb.model.TradeDTO"></select>
+
+	<select id="getTradeList" resultType="com.fp.eb.model.TradeDTO">
+	select * from eb_trade where t_book_title like '%'||#{t_book_title }||'%'
+	</select>
+
 
 </mapper>
