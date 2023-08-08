@@ -17,6 +17,8 @@
 		parameterType="com.fp.eb.model.CommunityDTO">
 
 		select * from eb_community_post, eb_community
-		where cp_community = c_no and c_no=#{c_no}
+		where cp_community = c_no and c_no=#{c_no} order by cp_date desc
 	</select>
+	
+	
 </mapper>
