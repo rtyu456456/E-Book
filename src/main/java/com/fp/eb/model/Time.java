@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Time {
-
 	private static class TIME_MAXIMUM {
 		public static final int SEC = 60;
 		public static final int MIN = 60;
@@ -15,6 +14,7 @@ public class Time {
 	public static String calculateTime(Date date) {
 		long curTime = System.currentTimeMillis();
 		long regTime = date.getTime();
+		
 		long diffTime = (curTime - regTime) / 1000;
 		String msg = null;
 		if (diffTime < TIME_MAXIMUM.SEC) {
@@ -38,5 +38,7 @@ public class Time {
 		}
 		return msg;
 	}
+	
+
 	
 }

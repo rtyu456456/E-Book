@@ -11,12 +11,12 @@
 <body>
 
 	<div class="board_menu">
-		<form action="/">
+		<form action="/community_main">
 			<button class="left_arrow">
 				<img src="/img/leftArrow.png">
 			</button>
 		</form>
-		<div class="community_name">${communityName.c_name }</div>
+		<div class="community_name">${community.c_name }</div>
 		<button class="board_seach_btn">
 			<img src="/img/seachBtn.png" maxlength=10>
 		</button>
@@ -24,30 +24,36 @@
 	<div class="commu_contents">
 		<div class="commu_post_background">
 			<div class="commu_post_contents">
-				<c:forEach var="cp" items="${communityPost }">
-					<button>
+				<c:forEach var="cp" items="${communityPosts }">
+				<form action="/go.commu.detail">
+					<input type="hidden" name="c_no" value="${community.c_no }">
+					<button name="cp_no" value="${cp.cp_no }">
 						<div class="post_title">${cp.cp_title }</div>
 						<div class="post_contents">${cp.cp_contents }</div>
 						<div class="post_icons">
 							<div class="post_date">
-							<div>${cp.cp_date }</div>
+							<div>
+							${cp.cp_date2 }
+							
+							</div>
 							</div> &nbsp;&nbsp;&nbsp;
 							<div class="post_owner">${cp.cp_owner }</div>
-							<div class="post_icon">
-								<div class="post_like">
-									<img src="/img/like.png"> ${cp.cp_like }
-								</div>
-								&nbsp;
-								<div class="post_dislike">
-									<img src="/img/dislike.png"> ${cp.cp_dislike }
-								</div>
-								&nbsp;
-								<div class="post_reply">
-									<img src="/img/chat.png"> 0
+								<div class="post_icon">
+									<div class="post_like">
+										<img src="/img/like.png"> ${cp.cp_like }
+									</div>
+									&nbsp;
+									<div class="post_dislike">
+										<img src="/img/dislike.png"> ${cp.cp_dislike }
+									</div>
+									&nbsp;
+									<div class="post_reply">
+										<img src="/img/chat.png"> 0
+									</div>
 								</div>
 							</div>
-						</div>
 					</button>
+					</form>
 					<hr id="line">
 				</c:forEach>
 			</div>

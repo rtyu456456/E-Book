@@ -3,6 +3,8 @@ package com.fp.eb.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class CommunityPostDTO {
 
 	private BigDecimal cp_no;
@@ -12,23 +14,16 @@ public class CommunityPostDTO {
 	private BigDecimal cp_community;
 	private BigDecimal cp_like;
 	private BigDecimal cp_dislike;
-	private String cp_date;
+	private Date cp_date;
+	private String cp_date2;
 	
-	public CommunityPostDTO() {
-		// TODO Auto-generated constructor stub
+	
+	public String getCp_date2() {
+		return cp_date2;
 	}
 
-	public CommunityPostDTO(BigDecimal cp_no, String cp_owner, String cp_title, String cp_contents,
-			BigDecimal cp_community, BigDecimal cp_like, BigDecimal cp_dislike, String cp_date) {
-		super();
-		this.cp_no = cp_no;
-		this.cp_owner = cp_owner;
-		this.cp_title = cp_title;
-		this.cp_contents = cp_contents;
-		this.cp_community = cp_community;
-		this.cp_like = cp_like;
-		this.cp_dislike = cp_dislike;
-		this.cp_date = cp_date;
+	public CommunityPostDTO() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public BigDecimal getCp_no() {
@@ -87,12 +82,26 @@ public class CommunityPostDTO {
 		this.cp_dislike = cp_dislike;
 	}
 
-	public String getCp_date() {
+	public Date getCp_date() {
 		return cp_date;
 	}
 
 	public void setCp_date(Date cp_date) {
-		this.cp_date = Time.calculateTime(cp_date);
+		this.cp_date2 = Time.calculateTime(cp_date);
+		this.cp_date = cp_date;
+	}
+
+	public CommunityPostDTO(BigDecimal cp_no, String cp_owner, String cp_title, String cp_contents,
+			BigDecimal cp_community, BigDecimal cp_like, BigDecimal cp_dislike, Date cp_date) {
+		super();
+		this.cp_no = cp_no;
+		this.cp_owner = cp_owner;
+		this.cp_title = cp_title;
+		this.cp_contents = cp_contents;
+		this.cp_community = cp_community;
+		this.cp_like = cp_like;
+		this.cp_dislike = cp_dislike;
+		this.cp_date = cp_date;
 	}
 
 	@Override
@@ -101,9 +110,5 @@ public class CommunityPostDTO {
 				+ ", cp_contents=" + cp_contents + ", cp_community=" + cp_community + ", cp_like=" + cp_like
 				+ ", cp_dislike=" + cp_dislike + ", cp_date=" + cp_date + "]";
 	}
-	
-	
-	
-	
-	
+
 }

@@ -1,5 +1,7 @@
 package com.fp.eb.controller;
 
+import java.sql.Time;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.fp.eb.model.CommunityDTO;
+import com.fp.eb.model.CommunityPostDTO;
 import com.fp.eb.service.CommunityDAO;
 
 @Controller
@@ -24,19 +27,28 @@ public class CommunityController {
 	// HC도 못써
 	
 	@GetMapping("/community_main")
-	public String goCommunityMain(Model model, CommunityDTO c) {
+	public String goCommunityMain(Model model) {
 		cDAO.getAllCommunity (model);
 		
 		model.addAttribute("community_page", "community_main_page.jsp");
 		return "community/community_header_page";
 	}
 	
-	@GetMapping("/go.board")
+	@GetMapping("/go.commu.post")
 	public String goBoard(Model model, CommunityDTO c) {
 		cDAO.getCommunity(c, model);
 		cDAO.getAllCommunityPost(c, model);
 		
 		model.addAttribute("community_page", "community_board_page.jsp");
+		return "community/community_header_page";
+	}
+	
+	@GetMapping("/go.commu.detail")
+	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp) {
+		 cDAO.getCommunity(c, model); 
+		 cDAO.getCommunityPost(cp, model);
+		
+		model.addAttribute("community_page", "community_detail_page.jsp");
 		return "community/community_header_page";
 	}
 

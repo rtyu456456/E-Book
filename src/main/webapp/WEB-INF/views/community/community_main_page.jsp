@@ -76,8 +76,8 @@
 						<br>
 						<div class="board_box">
 							<br>
-							<c:forEach var="c" items="${community}">
-							<form action="/go.board">
+							<c:forEach var="c" items="${communitys }">
+							<form action="/go.commu.post">
 							<button class="commu_board_btn" name="c_no" value="${c.c_no }">
 								<img  src="/img/emptyPin.png"> &nbsp; ${c.c_name } 
 							</button> 

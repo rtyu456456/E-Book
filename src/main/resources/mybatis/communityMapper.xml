@@ -7,17 +7,22 @@
 		select * from eb_community
 	</select>
 
-	<select id="getCommunity"
-		resultType="com.fp.eb.model.CommunityDTO">
-		select * from eb_community where c_no= #{c_no}
-	</select>
-
 	<select id="getAllCommunityPost"
 		resultType="com.fp.eb.model.CommunityPostDTO"
 		parameterType="com.fp.eb.model.CommunityDTO">
 
 		select * from eb_community_post, eb_community
 		where cp_community = c_no and c_no=#{c_no} order by cp_date desc
+	</select>
+	
+	<select id="getCommunity"
+		resultType="com.fp.eb.model.CommunityDTO">
+		select * from eb_community where c_no= #{c_no}
+	</select>
+
+	<select id="getCommunityPost"
+		resultType="com.fp.eb.model.CommunityPostDTO">
+		select * from eb_community_post where cp_no = #{cp_no}
 	</select>
 	
 	

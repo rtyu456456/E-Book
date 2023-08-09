@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.fp.eb.model.Community;
 import com.fp.eb.model.CommunityDTO;
 import com.fp.eb.model.CommunityPostDTO;
+import com.fp.eb.model.Time;
 
 @Mapper
 public interface CommunityMapper {
@@ -30,6 +31,9 @@ public interface CommunityMapper {
 	CommunityDTO getCommunity(CommunityDTO c);
 	
 	List<CommunityPostDTO> getAllCommunityPost(CommunityDTO c);
+
+	CommunityPostDTO getCommunityPost(CommunityPostDTO cp);
+
 	
 	
 }
