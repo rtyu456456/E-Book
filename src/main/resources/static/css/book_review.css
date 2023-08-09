@@ -4,7 +4,6 @@
 width/height 먼저, 그 다음은 알파벳순
 상하좌우 위치 관련 등 세트가 있는 경우는 같이 씀
  */
-
 * {
 	margin: 0;
 	padding: 0;
@@ -22,7 +21,7 @@ width/height 먼저, 그 다음은 알파벳순
 	/********맨 위********/
 	.top-gh {
 		width: 100vw;
-		height: 170px;
+		height: 7.9vh;
 		display: flex;
 		justify-content: center;
 	}
@@ -31,7 +30,8 @@ width/height 먼저, 그 다음은 알파벳순
 		height: 60px;
 		background-color: transparent;
 		border: none;
-		filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(89deg) brightness(110%) contrast(102%);
+		filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(89deg)
+			brightness(110%) contrast(102%);
 		margin-top: 55px;
 	}
 	.menu-gh img {
@@ -50,8 +50,8 @@ width/height 먼저, 그 다음은 알파벳순
 		-webkit-text-stroke: 0.0002em #85786E;
 	}
 	.account-gh {
-		width: 260px;
-		height: 130px;
+		width: 27vw;
+		height: 6.1vh;
 		background-color: rgb(255, 255, 255, 0.4);
 		border-radius: 15px;
 		display: flex;
@@ -97,9 +97,9 @@ width/height 먼저, 그 다음은 알파벳순
 	}
 
 	/********검색창********/
-	.review-contents-gh{
-		height: 100vh;
-		background-color: rgba(255,255,255,0.4);
+	.review-contents-gh {
+		height: 92.1vh;
+		background-color: rgba(255, 255, 255, 0.4);
 	}
 	.search-gh {
 		width: 100vw;
@@ -122,7 +122,7 @@ width/height 먼저, 그 다음은 알파벳순
 		text-align: center;
 		width: 100px;
 	}
-	.option-gh option{
+	.option-gh option {
 		background-color: #F4F4F4;
 		border: none;
 		color: #85786E;
@@ -143,22 +143,23 @@ width/height 먼저, 그 다음은 알파벳순
 		height: 45px;
 		background-color: transparent;
 		border: none;
-		color: rgba(133,120,110,65);
+		color: rgba(133, 120, 110, 65);
 		font-family: inherit;
 		font-size: 2em;
 		font-weight: bolder;
 		margin-top: 4px;
 		margin-left: 25px;
 	}
-	.input-gh::placeholder{		
-		color: rgba(172,165,157);
+	.input-gh::placeholder {
+		color: rgba(172, 165, 157);
 	}
 	.search-btn-gh {
 		width: 50px;
 		height: 50px;
 		background-color: transparent;
 		border: none;
-		filter: invert(53%) sepia(27%) saturate(143%) hue-rotate(345deg) brightness(96%) contrast(91%);
+		filter: invert(53%) sepia(27%) saturate(143%) hue-rotate(345deg)
+			brightness(96%) contrast(91%);
 		margin-top: 5px;
 		margin-left: 5px;
 	}
@@ -239,8 +240,8 @@ width/height 먼저, 그 다음은 알파벳순
 		margin-top: 3.4vw;
 		margin-left: 0.5vw;
 	}
-	.best-review-gh{
-		width:69vw;
+	.best-review-gh {
+		width: 69vw;
 		height: 115px;
 		color: #584637;
 		font-size: 1.2em;
@@ -248,20 +249,61 @@ width/height 먼저, 그 다음은 알파벳순
 		margin-left: 180px;
 		position: absolute;
 	}
-	.recommend-gh {
+	.reputation-gh {
 		display: flex;
 		bottom: 0vw;
 		margin-bottom: 2.2vw;
 		right: 2.5vw;
 		position: absolute;
 	}
-	.recommend-img-gh {
+	.reputation-img-gh {
 		width: 2.7vw;
 		height: 2.7vw;
 		margin-top: 2px;
+		margin-left: 15px;
 	}
-	.recommend-count-gh {
+	.reputation-count-gh {
 		color: #584637;
 		font-size: 1.2em;
+	}
+
+	/********검색 결과********/
+	.search-result-gh {
+		
+	}
+	.result-box-gh {
+		width: 90vw;
+		height: 12vh;
+		border: 1px solid black;
+		display: flex;
+		position: relative;
+	}
+	.result-info-gh {
+		font-size: 2em;
+	}
+	.result-title-gh {
+		
+	}
+	.result-author-gh {
+		
+	}
+	.result-company-gh {
+		
+	}
+	.result-reputation-gh {
+		width: 15vw;
+		height: 7vh;
+		border: 1px solid black;
+		font-size: 2em;
+		position: absolute;
+		right: 0;
+	}
+	.result-percent-gh {
+		
+	}
+	
+	/* 서평 상세 페이지 */
+	.detail-container-gh h6{
+		font-size: 1.5em;
 	}
 }
