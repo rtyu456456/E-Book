@@ -24,7 +24,7 @@ public class ReviewController {
 		model.addAttribute("contentPage", "../EB_review/review_search.jsp");
 		return "EB_review/review_index";
 	}
-
+ 
 	@GetMapping("/review.write")
 	public String reviewWrite(Model model) {
 		model.addAttribute("contentPage", "../EB_review/review_write.jsp");

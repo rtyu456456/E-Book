@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>서평</title>
 <link rel="stylesheet" href="css/book_review.css">
 <style>
 @import
@@ -17,19 +17,14 @@
 	<!------ 검색창 ------>
 	<div class="review-contents-gh">
 		<div class="search-gh">
-			<!-- select option 값 받아서 검색어랑 보내기 -->
-			<select class="option-gh">
-				<option>제목
-				<option>저자
-			</select>
 			<div class="search-box-gh">
-				<input class="input-gh" placeholder="책을 검색해보세요">
+				<input class="input-gh" placeholder="책 또는 작가명을 검색해보세요">
 				<form action="review.search">
 					<button class="search-btn-gh">
 						<img src="/img/seachBtn.png">
 					</button>
 				</form>
-			<!------------------------------------->
+				<!------------------------------------->
 			</div>
 			<form action="review.write">
 				<button class="write-btn-gh">
@@ -43,28 +38,34 @@
 			<div class="today-best-gh">
 				<h4 class="best-title-gh">오늘의 베스트 서평</h4>
 				<div class="best-box-gh">
-					<a href="review.detail"><img class="small-book-gh"
-						src="/img/book.png"></a>
+					<form action="review.detail">
+						<button class="small-book-gh">
+							<img src="/img/book.png">
+						</button>
+					</form>
 					<div class="small-profile-gh">
 						<img src="/img/daejeon_profile.png">
 					</div>
 					<h5 class="best-name-gh">*대전공주</h5>
 					<h6 class="best-grade-gh">*실버 책벌레</h6>
-					<h6 class="best-review-gh">참 좋은 책이에요</h6>
 					<div class="reputation-gh">
-						<img class="reputation-img-gh" src="/img/like_colored.png">
+						<img class="reputation-img-gh" src="/img/review_like.png">
 						<h6 class="reputation-count-gh">*1375</h6>
-						<img class="reputation-img-gh" src="/img/dislike_colored.png">
+						<img class="reputation-img-gh" src="/img/review_dislike.png">
 						<h6 class="reputation-count-gh">*1375</h6>
 					</div>
+					<h6 class="best-review-gh">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</h6>
 				</div>
 			</div>
 
 			<div class="weekly-best-gh">
 				<h4 class="best-title-gh">이번주 베스트 서평</h4>
 				<div class="best-box-gh">
-					<a href="review.detail"><img class="small-book-gh"
-						src="/img/book.png"></a>
+					<form action="review.detail">
+						<button class="small-book-gh">
+							<img src="/img/book.png">
+						</button>
+					</form>
 					<div class="small-profile-gh">
 						<img src="/img/gimpo_profile.jpg">
 					</div>
@@ -72,9 +73,9 @@
 					<h6 class="best-grade-gh">*골드 책벌레</h6>
 					<h6 class="best-review-gh">참 좋은 책이에요</h6>
 					<div class="reputation-gh">
-						<img class="reputation-img-gh" src="/img/like_colored.png">
+						<img class="reputation-img-gh" src="/img/review_like.png">
 						<h6 class="reputation-count-gh">*1375</h6>
-						<img class="reputation-img-gh" src="/img/dislike_colored.png">
+						<img class="reputation-img-gh" src="/img/review_dislike.png">
 						<h6 class="reputation-count-gh">*1375</h6>
 					</div>
 				</div>
@@ -83,8 +84,11 @@
 			<div class="monthly-best-gh">
 				<h4 class="best-title-gh">이번달 베스트 서평</h4>
 				<div class="best-box-gh">
-					<a href="review.detail"><img class="small-book-gh"
-						src="/img/book.png"></a>
+					<form action="review.detail">
+						<button class="small-book-gh">
+							<img src="/img/book.png">
+						</button>
+					</form>
 					<div class="small-profile-gh">
 						<img src="/img/chicken.png">
 					</div>
@@ -92,9 +96,9 @@
 					<h6 class="best-grade-gh">*실버 책벌레</h6>
 					<h6 class="best-review-gh">참 좋은 책이에요</h6>
 					<div class="reputation-gh">
-						<img class="reputation-img-gh" src="/img/like_colored.png">
+						<img class="reputation-img-gh" src="/img/review_like.png">
 						<h6 class="reputation-count-gh">*1375</h6>
-						<img class="reputation-img-gh" src="/img/dislike_colored.png">
+						<img class="reputation-img-gh" src="/img/review_dislike.png">
 						<h6 class="reputation-count-gh">*1375</h6>
 					</div>
 				</div>

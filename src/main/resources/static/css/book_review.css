@@ -5,65 +5,51 @@ width/height 먼저, 그 다음은 알파벳순
 상하좌우 위치 관련 등 세트가 있는 경우는 같이 씀
  */
 * {
+	font-family: 'IBM Plex Sans KR', sans-serif;
 	margin: 0;
 	padding: 0;
-	word-spacing: -0.2em;
 }
 
 .review-container-gh {
 	width: 100vw;
-	height: 100vh;
-	background: url(/img/backgroundImg.jpg);
+	background-color: #F5F6FA;
 	position: relative;
 }
 
 @media only screen and (max-width:1000px) {
 	/********맨 위********/
-	.top-gh {
-		width: 100vw;
-		height: 7.9vh;
+	.review-top-gh {
+		width: 61.1rem;
 		display: flex;
 		justify-content: center;
 	}
 	.menu-gh {
-		width: 60px;
-		height: 60px;
+		width: 4rem;
+		height: 4rem;
 		background-color: transparent;
-		border: none;
-		filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(89deg)
-			brightness(110%) contrast(102%);
-		margin-top: 55px;
+		margin-top: 6.5rem;
 	}
 	.menu-gh img {
-		width: 60px;
-		height: 60px;
+		width: 3.7rem;
+		height: 3.7rem;
 	}
 	.title-gh {
-		color: #C69C78;
-		font-family: 'Diphylleia', serif;
-		font-family: 'Diphylleia', serif;
-		font-size: 4em;
+		color: #26283D;
+		font-size: 4rem;
 		font-weight: 1000;
-		margin-top: 35px;
-		margin-left: 320px;
-		margin-right: 140px;
-		-webkit-text-stroke: 0.0002em #85786E;
+		margin-top: 5.5rem;
+		margin-left: 19.3rem;
+		margin-right: 20.3rem;
 	}
-	.account-gh {
-		width: 27vw;
-		height: 6.1vh;
-		background-color: rgb(255, 255, 255, 0.4);
-		border-radius: 15px;
-		display: flex;
-		font-family: 'Orbit', sans-serif;
-		justify-content: center;
-		margin-top: 20px;
+	.title-gh a {
+		text-decoration: none;
+		color: #26283D;
 	}
 	.profile-img-gh {
-		width: 80px;
-		height: 80px;
-		border-radius: 70px;
-		margin-top: 22px;
+		width: 4.05rem;
+		height: 4.05rem;
+		border-radius: 1.5rem;
+		margin-top: 6.9rem;
 		overflow: hidden;
 	}
 	.profile-img-gh img {
@@ -71,156 +57,116 @@ width/height 먼저, 그 다음은 알파벳순
 		height: 100%;
 		object-fit: cover;
 	}
-	.user-gh {
-		margin-top: 20px;
-		margin-left: 10px;
-		text-align: center;
-	}
-	.name-gh {
-		font-size: 1.5em;
-	}
-	.grade-gh {
-		color: rgb(119, 154, 118);
-		font-size: 1em;
-	}
-	.logout-gh {
-		width: 90px;
-		height: 30px;
-		background-color: rgba(198, 156, 120, 0.54);
-		border: none;
-		border-radius: 5px;
-		color: white;
-		font-family: inherit;
-		font-size: 1em;
-		margin-top: 13px;
-		margin-left: 60px;
-	}
-
 	/********검색창********/
 	.review-contents-gh {
-		height: 92.1vh;
-		background-color: rgba(255, 255, 255, 0.4);
+		height: 90vh;
 	}
 	.search-gh {
-		width: 100vw;
-		height: 80px;
-		background-color: rgba(133, 120, 110, 0.33);
 		display: flex;
-		font-family: 'Orbit', sans-serif;
 		justify-content: center;
 	}
-	.option-gh {
-		width: 100px;
-		height: 60px;
-		background-color: transparent;
-		border: none;
-		color: white;
-		font-family: inherit;
-		font-size: 2em;
-		font-weight: bold;
-		margin-top: 5px;
-		text-align: center;
-		width: 100px;
-	}
-	.option-gh option {
-		background-color: #F4F4F4;
-		border: none;
-		color: #85786E;
-		font-size: 0.5em;
-	}
 	.search-box-gh {
-		width: 77vw;
-		height: 60px;
-		background-color: #f4f4f4;
-		border-radius: 50px;
+		width: 47rem;
+		height: 3.7rem;
+		background-color: #ffffff;
+		border-radius: 4rem;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
 		display: flex;
-		margin-top: 10px;
-		margin-left: 15px;
-		margin-right: 15px;
+		margin-left: 1rem;
+		margin-right: 1rem;
+		position: relative;
 	}
 	.input-gh {
-		width: 68vw;
-		height: 45px;
+		width: 41.5rem;
+		height: 3rem;
 		background-color: transparent;
 		border: none;
-		color: rgba(133, 120, 110, 65);
-		font-family: inherit;
-		font-size: 2em;
+		color: rgba(38, 40, 61);
+		font-size: 2rem;
 		font-weight: bolder;
-		margin-top: 4px;
-		margin-left: 25px;
+		margin-top: 0.4rem;
+		position: absolute;
+		left: 1.5rem;
 	}
 	.input-gh::placeholder {
-		color: rgba(172, 165, 157);
+		color: rgba(38, 40, 61, 0.3);
 	}
 	.search-btn-gh {
-		width: 50px;
-		height: 50px;
+		width: 4rem;
+		height: 4rem;
 		background-color: transparent;
 		border: none;
-		filter: invert(53%) sepia(27%) saturate(143%) hue-rotate(345deg)
-			brightness(96%) contrast(91%);
-		margin-top: 5px;
-		margin-left: 5px;
+		filter: invert(11%) sepia(31%) saturate(930%) hue-rotate(196deg)
+			brightness(92%) contrast(86%);
+		position: absolute;
+		right: 0;
 	}
 	.search-btn-gh img {
-		width: 45px;
-		height: 45px;
+		width: 3rem;
+		height: 3rem;
 	}
 	.write-btn-gh {
-		width: 55px;
-		height: 55px;
-		background-color: rgba(255, 255, 255, 0.7);
+		width: 3.7rem;
+		height: 3.7rem;
+		background-color: #26283D;
 		border: none;
-		border-radius: 10px;
-		color: #85786E;
-		font-family: inherit;
-		font-size: 1em;
+		border-radius: 1rem;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+		color: #ffffff;
+		font-size: 1rem;
 		font-weight: bolder;
-		margin-top: 10px;
 	}
 
 	/********베스트 서평********/
 	.best-gh {
-		font-family: 'Orbit', sans-serif;
-		margin-left: 5vw;
+		margin-left: 3rem;
 	}
 	.today-best-gh {
-		margin-top: 3.5vw;
+		margin-top: 2.5rem;
 	}
 	.weekly-best-gh {
-		margin-top: 3.5vw;
+		margin-top: 2.5rem;
 	}
 	.monthly-best-gh {
-		margin-top: 3.5vw;
+		margin-top: 2.5rem;
 	}
 	.best-title-gh {
-		color: #584637;
-		font-family: inherit;
-		font-size: 2em;
-		margin-bottom: 5px;
+		color: #26283D;
+		font-size: 2rem;
+		margin-bottom: 0.5rem;
 	}
 	.best-box-gh {
-		width: 90vw;
-		height: 12vh;
-		background-color: rgba(198, 156, 120, 0.54);
-		border-radius: 10px;
+		width: 55rem;
+		height: 15rem;
+		background-color: #ffffff;
+		border-radius: 4rem;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
 		display: flex;
 		position: relative;
 	}
 	.small-book-gh {
-		width: 135px;
-		height: 195px;
+		width: 7.8rem;
+		height: 11.3rem;
+		backround-color: transparent;
+		border-radius: 1rem;
+		box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10) inset;
+		margin-top: 1.8rem;
+		margin-left: 1.8rem;
+		margin-right: 1rem;
+	}
+	.small-book-gh img {
+		width: 7.8rem;
+		height: 11.3rem;
+		border: 0.2px solid rgba(38, 40, 61, 0.50);
 		border-radius: 10px;
-		margin-top: 2.7vw;
-		margin-left: 2.5vw;
-		margin-right: 2vw;
+		box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10) inset;
 	}
 	.small-profile-gh {
-		width: 40px;
-		height: 40px;
-		border-radius: 50px;
-		margin-top: 2.7vw;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 15px;
+		margin-top: 2rem;
+		margin-left: 0.5rem;
 		overflow: hidden;
 	}
 	.small-profile-gh img {
@@ -229,42 +175,50 @@ width/height 먼저, 그 다음은 알파벳순
 		object-fit: cover;
 	}
 	.best-name-gh {
-		color: #584637;
-		font-size: 1.7em;
-		margin-top: 2.1vw;
-		margin-left: 1vw;
+		color: #26283D;
+		font-size: 1.5rem;
+		margin-top: 2.2rem;
+		margin-left: 0.5rem;
 	}
 	.best-grade-gh {
 		color: #779A76;
-		font-size: 1.1em;
-		margin-top: 3.4vw;
-		margin-left: 0.5vw;
-	}
-	.best-review-gh {
-		width: 69vw;
-		height: 115px;
-		color: #584637;
-		font-size: 1.2em;
-		margin-top: 71px;
-		margin-left: 180px;
-		position: absolute;
+		font-size: 1rem;
+		margin-top: 2.8rem;
+		margin-left: 0.5rem;
 	}
 	.reputation-gh {
 		display: flex;
-		bottom: 0vw;
-		margin-bottom: 2.2vw;
-		right: 2.5vw;
+		top: 0;
+		margin-top: 2rem;
+		right: 2.5rem;
 		position: absolute;
 	}
 	.reputation-img-gh {
 		width: 2.7vw;
 		height: 2.7vw;
 		margin-top: 2px;
-		margin-left: 15px;
+		margin-left: 20px;
 	}
 	.reputation-count-gh {
-		color: #584637;
-		font-size: 1.2em;
+		color: #26283D;
+		font-size: 1rem;
+		margin-left: 5px;
+	}
+	.best-review-gh {
+		width: 39rem;
+		height: 6rem;
+		background-color: #F5F6FA;
+		border-radius: 2rem;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25) inset;
+		color: #26283D;
+		font-size: 1.3rem;
+		margin-top: 87px;
+		margin-left: 180px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		padding-left: 25px;
+		padding-right: 20px;
+		position: absolute;
 	}
 
 	/********검색 결과********/
@@ -301,9 +255,9 @@ width/height 먼저, 그 다음은 알파벳순
 	.result-percent-gh {
 		
 	}
-	
+
 	/* 서평 상세 페이지 */
-	.detail-container-gh h6{
+	.detail-container-gh h6 {
 		font-size: 1.5em;
 	}
 }

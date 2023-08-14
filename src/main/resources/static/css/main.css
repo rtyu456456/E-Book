@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+* {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.main-container-gh {
+	width: 100vw;
+	height: 100vh;
+	background-color: #F5F6FA;
+	position: relative;
+}
+
+@media
+only
+screen
+and
+(max-width:1000px)
+{
+/********맨 위********/
+.main-top-gh {
+	width: 100vw;
+	height: 10%;
+	display: flex;
+	justify-content: center;
+}
+
+.menu-gh {
+	width: 60px;
+	height: 60px;
+	background-color: transparent;
+	border: none;
+	margin-top: 105px;
+}
+
+.menu-gh img {
+	width: 60px;
+	height: 60px;
+}
+
+.title-gh {
+	width: 25vw;
+	height: 3.6vh;
+	background-color: transparent;
+	margin-top: 95px;
+	margin-left: 255px;
+	margin-right: 250px;
+}
+
+.title-gh img {
+	width: 25vw;
+	height: 3.6vh;
+}
+
+.profile-img-gh {
+	width: 65px;
+	height: 65px;
+	border-radius: 23px;
+	margin-top: 110px;
+	overflow: hidden;
+}
+
+.profile-img-gh img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+/********검색창********/
+.main-contents-gh {
+	height: 90vh;
+}
+.search-gh {
+	display: flex;
+	justify-content: center;
+}
+
+.search-box-gh {
+	width: 77vw;
+	height: 60px;
+	background-color: #ffffff;
+	border-radius: 50px;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	display: flex;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.input-gh {
+	width: 68vw;
+	height: 45px;
+	background-color: transparent;
+	border: none;
+	color: rgba(38, 40, 61);
+	font-size: 2em;
+	font-weight: bolder;
+	margin-top: 4px;
+	margin-left: 25px;
+}
+
+.input-gh::placeholder {
+	color: rgba(38, 40, 61, 0.3);
+}
+
+.search-btn-gh {
+	width: 50px;
+	height: 50px;
+	background-color: transparent;
+	border: none;
+	filter: invert(11%) sepia(31%) saturate(930%) hue-rotate(196deg)
+		brightness(92%) contrast(86%);
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.search-btn-gh img {
+	width: 50px;
+	height: 50px;
+}
+}

@@ -5,20 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>서평-검색</title>
 </head>
 <body>
 
 	<div class="review-contents-gh">
 		<!------ 검색창 ------>
 		<div class="search-gh">
-		<!-- select option 값 받아서 검색어랑 보내기 -->
-			<select class="option-gh">
-				<option>제목
-				<option>저자
-			</select>
 			<div class="search-box-gh">
-				<input class="input-gh" placeholder="책을 검색해보세요">
+				<input class="input-gh" placeholder="책 또는 작가명을 검색해보세요">
 				<form action="review.search">
 					<button class="search-btn-gh">
 						<img src="/img/seachBtn.png">
