@@ -14,35 +14,70 @@
 
 </head>
 <body>
-
-<div class="container">
-	<header>
-		<div class="head-line">
-			<h1>책방</h1>
-			<div class="user-info">
-				<img src="">
-				<div class="user-info2">
-					<div class="user-info-nickname">닉네임</div>
-					<div class="user-info-grade">등급 :</div>
-					<div class="logout-btn">로그아웃</div>
+	<div class="container">
+		<header>
+			<div class="head-line">
+				<img alt="" src="/img/menutab.png">
+					<h1 onclick="location.href='/trade.go'">책방</h1>
+				<div>
+					<img alt="" src="/img/PageUpLog.png">
+					<table id="loginSuccessTable">
+						<tr>
+							<td style="height: 20px;">${sessionScope.loginMember.u_id }</td>
+						</tr>
+						<tr>
+							<td align="right" valign="top">(${sessionScope.loginMember.u_name })</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
+								<button onclick="logout()">로그아웃</button>
+							</td>
+						<tr>
+					</table>
 				</div>
 			</div>
-		</div>
-	</header>
 
 
-	<main class="content-page">
-			<jsp:include page="${contentPage }"></jsp:include>
-	</main>
+
+		</header>
 
 
-	<footer>
-		<div class="foot-line">
-			<a href="/trade.choose.go"> <img alt="" src="/img/Rectangle_107.png"> <span> 판매하기 </span></a> 
-			<a href=""> <img alt="" src="/img/Rectangle_108.png">  <span> 판매 내역 </span></a> 
-			<a href=""> <img alt="" src="/img/Rectangle_109.png">  <span> 쪽지함 </span></a>
-		</div>
-	</footer>
-</div>	
+		<main class="content-page">
+			<jsp:include page="${contentPage }" />
+		</main>
+
+
+		<footer>
+			<div class="foot-line">
+				<a href="/trade.choose.go"> <img src="/img/Group7.png">
+				</a> <a href="javascript:void(0);" onclick="goToSaleNow()"> <img
+					src="/img/Group6.png">
+				</a> <a href="javascript:void(0);" onclick="goToTradeMsg()"> <img
+					src="/img/Group5.png">
+				</a>
+			</div>
+		</footer>
+
+		<script>
+			function goToSaleNow() {
+				var u_id = '<c:out value="${sessionScope.loginMember.u_id}" />';
+				if (u_id) {
+					window.location.href = '/trade.sale.now?u_id=' + u_id;
+				} else {
+					// 여기에 로그인이 필요한 경고 메시지나 다른 처리를 추가할 수 있습니다.
+					alert('로그인이 필요합니다.');
+				}
+			}
+			function goToTradeMsg() {
+				var u_id = '<c:out value="${sessionScope.loginMember.u_id}" />';
+				if (u_id) {
+					window.location.href = '/trade.Msg.go'; // 로그인이 필요한 페이지로 이동
+				} else {
+					alert('로그인이 필요합니다.');
+				}
+			}
+		</script>
+
+	</div>
 </body>
 </html>

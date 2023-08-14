@@ -3,105 +3,75 @@
 .detail-container {
 	overflow: auto;
 	height: 100%;
-	width: 80vw;
-	margin-top: 14px;
+	width: 98%;
 	border-radius: 10px;
-	color: rgba(88, 70, 55, 1);
+	background-color: #FFFFFF;
 }
 
-.user-info3 {
-	align-items: center;
-	background-color: rgba(198, 156, 120, 0.54);
+.book-info {
 	display: flex;
-	height: 34px;
-	font-weight: 700;
-	background-color: rgba(198, 156, 120, 0.54);
+	margin: 20px;
 }
 
-.user-grade {
-	font-size: 10px;
-	color: rgba(119, 154, 118, 1);
+.book-img {
+	width: 100vw;
+	height: 100%;
+	max-width: 100px;
 }
 
-/* ------------------- */
-.trade-detail-main {
-	padding: 20px;
-	background: rgba(253, 247, 227, 0.8);
+.book-img img {
+	width: 100%;
+	height: 100%;
+	border-radius:10px;
 }
 
-.trade-book {
-	margin: 10pt;
-	font-weight: 700;
-	display: flex;
-}
-
-.trade-book img {
-	width: 86px;
-	height: 120px;
-}
-
-.trade-book-info {
-	padding-left: 10px;
+.book-basic {
+	margin: 20px;
 }
 
 .book-title {
 	font-size: 12px;
+	font-weight: 700;
 }
 
-.authors {
+.book-authors {
 	font-size: 10px;
 }
 
-.publisher {
+.book-publisher {
 	font-size: 10px;
 }
 
-.price {
+.book-price {
+	font-size: 14px;
 	color: red;
-	font-size: 11px;
+}
+.trade-title{
+	font-weight: 800;
 }
 
-.trade-detail-main p {
-	font-size: 10px;
+.book-contents {
+	min-height: 200px;
+	
+	
+}
+.book-contents p{
+	height: 50%;
+	
 }
 
-.trade-map {
+/* 맵기능   */
+.trade-map{
 	margin: 10px;
-	border-radius: 10px;
-	max-height: 126px;
-	background-color: rgba(198, 156, 120, 0.54);
-	width: 95%;
+	align-content: center;
+	border-radius:10px;
+	width: 94vw;
+	height: 20vh;
+}
+#map{
+	width: 100%;
+	height: 100%;
+	
 }
 
-.trade-btn {
-	justify-content: space-around;
-	display: flex;
-	border-radius: 10px;
-	font-size: 13px;
-	color: rgba(255, 255, 255, 1);
-	text-align: center;
-}
 
-.trade-btn .complete {
-	align-self: center;
-	background-color: rgba(210, 88, 72, 0.88);
-	width: 30vw;
-	max-width: 126px;
-	height: 26px;
-}
-
-.trade-btn .info-change {
-	background-color: rgba(133, 120, 110, 0.85);
-	width: 25vw;
-	max-width: 100px;
-	align-self: center;
-	height: 26px;
-	align-self: center;
-}
-
-.send-msg {
-	background-color: rgba(133, 120, 110, 0.85);
-	width: 50vw;
-	color: rgba(255, 255, 255, 1);
-	text-align: center;
-}

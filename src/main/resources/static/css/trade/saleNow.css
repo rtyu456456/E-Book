@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+.trade-all-list {
+	overflow: auto;
+	margin-top: 30px;
+	width: 80%;
+	text-align: center;
+}
+
+.trade-list {
+	display: flex;
+	background: rgba(255, 255, 255, 1);
+	margin-top: 15px;
+	border-radius: 20px;
+	height: 16%;
+	min-height: 80pt;
+	justify-content: space-around;
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
+}
+
+.book-img {
+	width: 30%;
+}
+
+.book-img img {
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
+	margin: 5pt;
+	align-items: center;
+	width: 90%;
+	max-width: 80pt;
+	height: 90%
+}
+
+.trade-book-info {
+	margin: 10pt;
+	width: 70%;
+	text-align: left;
+}
+
+.title {
+	font-size: 12px;
+	font-weight: 500;
+	color: blue;
+}
+
+.booktitle {
+	font-size: 10px;
+	padding: 2px;
+}
+
+.authors {
+	font-size: 10px;
+	padding: 2px;
+}
+
+.publisher {
+	font-size: 10px;
+	padding: 2px;
+}
+
+.price {
+	font-size: 8px;
+	color: red;
+}

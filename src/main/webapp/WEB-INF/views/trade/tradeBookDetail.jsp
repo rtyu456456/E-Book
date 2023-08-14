@@ -1,53 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/trade/tradeBookDetail.css">
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a2ec9e96982d203168b7d94dde7b62fe"></script>
 
 </head>
 
 <body>
 
 	<div class="detail-container">
-		<div class="user-info3">
-			<img alt="" src="">
-			<div>유저이름&nbsp;</div>
-			<div class="user-grade">등급</div>
-		</div>
 
-		<div class="trade-detail-main">
-			<div class="trade-book">
+		<div class="book-info">
+			<div class="book-img">
 				<img alt="" src="/img/bookimgsample.jpg">
-				<!-- 책 이미지 -->
-				<div class="trade-book-info">
-					<div class="book-title">${trade.t_book_title }</div>
-					<div class="authors">${trade.t_authors }</div>
-					<div class="publisher">${trade.t_publisher }</div>
-					<div class="price">${trade.t_price }원</div>
+			</div>
+			<div class="book-basic">
+				<div class="book-title">${trade.t_book_title }</div>
+				<div class="book-authors">${trade.t_authors }</div>
+				<div class="book-publisher">${trade.t_publisher }</div>
+				<div class="book-price">
+					<fmt:formatNumber value="${trade.t_price }" pattern="#,###원" />
 				</div>
-			</div>
-			<hr>
-			<p>${trade.t_contents }</p>
-			<div class="trade-map">
-				<span>&nbsp;거래 희망 장소</span>
-				<!-- 				<div class="map"></div> -->
-			</div>
+				<br>
+				<div class="trade-title">${trade.t_title }</div>
 
-			<!-- 사려는 입장일 경우 쪽지 보내기 기능으로 -->
-
-			<div class="trade-btn">
-				<div class="complete">판매 완료하기</div>
-				<div class="info-change">정보 수정</div>
 			</div>
-			<br>
-			<div class="send-msg">판매자에게 쪽지 보내기</div>
-
 		</div>
+		<hr>
+		<div class="book-contents">
+			<p>${trade.t_contents }</p>
+		</div>
+		<div class="trade-map">
+			<div id="map"></div>
+		</div>
+		
+		<div class="trade-btn">
+				<button></button>
+				<button></button>
+				<button></button>
+		</div>
+		
 	</div>
+
+
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center : new kakao.maps.LatLng(33.452613, 126.570888),
+			level : 1
+		};
+
+		var map = new kakao.maps.Map(container, options);
+		var marker = new kakao.maps.Marker({
+			position : map.getCenter(),
+			map : map
+		});
+	</script>
 
 </body>
 </html>

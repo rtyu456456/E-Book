@@ -6,15 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/trade/tradeMsg.css">
 </head>
 <body>
 
-	<div>
-<%-- 		<c:forEach var="" items=""> --%>
-<!-- 				<img alt="" src=""> 프로필 이미지 -->
+	<div class="container-msg">
+		<%-- 		<c:forEach var="" items=""> --%>
+		<!-- 				<img alt="" src=""> 프로필 이미지 -->
 
-<!-- 				<img alt="" src=""> 책 이미지	 -->
-<%-- 		</c:forEach> --%>
+		<!-- 				<img alt="" src=""> 책 이미지	 -->
+		<%-- 		</c:forEach> --%>
 	</div>
 
 </body>
