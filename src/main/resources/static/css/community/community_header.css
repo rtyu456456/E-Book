@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+@media
+only
+screen
+and
+(max-width:1000px)
+{
+/* commu_header 시작 */
+.commu_header {
+	background-color: #F5F6FA;
+	height: 30rem;
+	width: 100vw;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.logo_icon {
+	position: absolute;
+	right: 4rem;
+	top: 0;
+	width: 3rem;
+	height: 5rem;
+}
+
+.logo_icon img {
+	background-color: transparent;
+	width: 100%;
+	height: 100%;
+}
+
+.header_contents {
+	position: relative;
+	top: 7rem;
+	justify-content: space-between;
+	width: 100vw;
+	display: flex;
+}
+
+.menu_btn {
+	height: 5em;
+	width: 5em;
+	position: relative;
+	top: 1rem;
+	left: 5rem;
+	margin-left: 0;
+	border: none;
+	background-color: transparent;
+}
+
+.menu_btn img {
+	width: 100%;
+	height: 100%;
+}
+
+#community_txt {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-weight: 500;
+	color: #26283D;
+	font-size: 4rem;
+}
+
+.login_box {
+	height: 5rem;
+	width: 5rem;
+	border: none;
+	color: #C69C78;
+	top: 0.5rem;
+	right: 5rem;
+	position: relative;
+	border-radius: 1.5rem;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+	background: rgba(255, 255, 255, 0.40);
+}
+
+.login_img {
+	border-radius: 1.5rem;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.commu_menu {
+	background-color: transparent;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	top: 12rem;
+}
+
+.box_shadow {
+	position: relative;
+	display: flex;
+	border-radius: 1.5rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	width: 80%;
+	height: 60%;
+	background-color: white;
+}
+
+.commu_seach {
+	position: relative;
+	border-radius: 1.5em 0em 0em 1.5em;
+	color: rgba(38, 40, 61, 0.50);
+	font-size: 2.5rem;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-weight: 550;
+	width: 85%;
+	border: none;
+	text-indent: 3rem;
+	outline: none;
+	border-radius: 1.5em 0em 0em 1.5em;
+}
+
+.commu_seach_btn {
+	border-radius: 0em 1.5em 1.5em 0em;
+	background-color: transparent;
+	position: relative;
+	border: none;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	height: 3.5rem;
+	width: 3.5rem;
+	position: relative;
+}
+
+.commu_seach_btn img {
+	height: 100%;
+	width: 100%;
+}
+}

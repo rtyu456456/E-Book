@@ -28,11 +28,29 @@ public class CommunityController {
 	
 	@GetMapping("/community_main")
 	public String goCommunityMain(Model model) {
-		cDAO.getAllCommunity (model);
+		cDAO.getAllCommunity (model); 
 		
-		model.addAttribute("community_page", "community_main_page.jsp");
-		return "community/community_header_page";
+		 model.addAttribute("commu_header_page", "community_header.jsp"); 
+		 model.addAttribute("commu_contents_page", "community_main.jsp"); 
+		 return "community/community_page";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping("/go.commu.post")
 	public String goBoard(Model model, CommunityDTO c) {
