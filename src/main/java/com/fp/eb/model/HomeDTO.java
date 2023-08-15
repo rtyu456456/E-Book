@@ -8,4 +8,6 @@ public class HomeDTO {
 	// 주 사용처는 OOmapper.xml의 resultType 혹은 parameterType이 될거라고 생각합니다.
 	// 홈은 제발 쓰지마세요
 	
+	
+	
 }
