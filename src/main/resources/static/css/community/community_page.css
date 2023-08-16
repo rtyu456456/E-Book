@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.commu_container {
+	position: relative;
+	width: 100vw;
+	background-color: #F5F6FA;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+.commu_header_page {
+	background-color: #F5F6FA;
+	position: sticky;
+	top: 0;
+	z-index: 500;
+}
+
+.commu_contents_page {
+	overflow-y: scroll;
+}

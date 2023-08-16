@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+@media
+only
+screen
+and
+(max-width:1000px)
+{
+	
+.commu_header {
+	background-color: #F5F6FA;
+	height: 20rem;
+	width: 100vw;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	
+}
+	
+	
+.back_btn {
+	height: 5em;
+	width: 5em;
+	position: relative;
+	top: 1rem;
+	left: 5rem;
+	margin-left: 0;
+	border: none;
+	background-color: transparent;
+}
+
+.back_btn img {
+	width: 100%;
+	height: 100%;
+}
+
+#community_name {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-weight: 500;
+	color: #26283D;
+	font-size: 4rem;
+}
+
+.seach {
+	height: 5rem;
+	width: 5rem;
+	border: none;
+	color: #C69C78;
+	top: 0.5rem;
+	right: 5rem;
+	position: relative;
+	background-color: transparent;
+}
+
+.seach img {
+	width: 100%;
+	height: 100%;
+}
+}
+
