@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	background-color: #F5F6FA;
+}
+
+/* header 부분 작업 시작*/
+.head-line {
+	background-color: #F5F6FA;
+	display: flex;
+	min-height: 120px;
+	height: 14vh;
+	width: 100vw;
+	text-align: center;
+	position: relative;
+	justify-content: space-between;
+}
+
+.head-line img {
+	width: 30px;
+	height: 30px;
+	align-self: center;
+}
+
+.head-line h1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 30px;
+	color: rgba(38, 40, 61, 1);
+}
+
+/* contentpage  */
+.content-page {
+	position: relative;
+	height: 80vh;
+	width: 100vw;
+	background-color: rgba(255, 255, 255, 0.4);
+	display: flex;
+	justify-content: center;
+	border-radius: 10px;
+}
+
+/* footer 시작 */
+.foot-line {
+	display: flex;
+	justify-content: space-around;
+	background-color: rgba(38, 40, 61, 1);
+	width: 100vw;
+	height: 5vh;
+	min-height: 30pt;
+	font-size: 10px;
+	position: relative;
+	align-items: center;
+	border-radius: 0px, 0px, 20px, 20px;
+}
+
+.foot-line a {
+	color: rgba(253, 247, 227, 1);
+	align-items: center;
+	font-size: 10px;
+}
+
+.foot-line span {
+	align-items: center;
+}
