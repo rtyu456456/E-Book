@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/main.css">
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap')
+	;
+</style>
 </head>
 <body>
 	<!-- 가데이터는 앞에 *(나중에 EL문 등으로 바꿔야 함) -->
@@ -16,7 +21,6 @@
 			<button class="menu-gh">
 				<img src="/img/menuIcon.png">
 			</button>
-			<!---------------------->
 			<form action="main">
 				<button class="title-gh">
 					<img src="/img/pageup_logo.png">
@@ -28,20 +32,27 @@
 			</div>
 		</div>
 		<!------ 검색창 ------>
-		<div class="main-contents-gh">
+		<form action="main.search">
 			<div class="search-gh">
+			<!--  -->
+			
+				<select class="main-select" name="searchOption">
+					<option value="title">제목</option>
+					<option value="author">작가</option>
+				</select>
 				<div class="search-box-gh">
-					<input class="input-gh" placeholder="책 또는 작가명을 검색해보세요">
-					<form action="review.search">
-						<button class="search-btn-gh">
-							<img src="/img/seachBtn.png">
-						</button>
-					</form>
-				</div>
-				<div class="main-contents-gh">
-					<jsp:include page="${contentPage }"></jsp:include>
+					<input class="input-gh" name="searchText" placeholder="검색어를 입력하세요">
+					<button class="search-btn-gh">
+						<img src="/img/seachBtn.png">
+					</button>
 				</div>
 			</div>
+		</form>
+		<div class="main-contents-gh">
+			<jsp:include page="${contentPage }"></jsp:include>
 		</div>
+	</div>
+
+
 </body>
 </html>

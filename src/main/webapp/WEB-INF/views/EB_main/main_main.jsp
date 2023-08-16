@@ -1,4 +1,5 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,25 +15,6 @@
 </head>
 <body>
 	<!-- 가데이터는 앞에 *(나중에 EL문 등으로 바꿔야 함) -->
-	<!------ 검색창 ------>
-	<div class="review-contents-gh">
-		<div class="search-gh">
-			<div class="search-box-gh">
-				<input class="input-gh" placeholder="책 또는 작가명을 검색해보세요">
-				<form action="review.search">
-					<button class="search-btn-gh">
-						<img src="/img/seachBtn.png">
-					</button>
-				</form>
-				<!------------------------------------->
-			</div>
-			<form action="review.write">
-				<button class="write-btn-gh">
-					서평<br>쓰기
-				</button>
-			</form>
-		</div>
-
 		<!------ 베스트 서평 ------>
 		<div class="best-gh">
 			<div class="today-best-gh">
@@ -104,8 +86,5 @@
 				</div>
 			</div>
 		</div>
-
-	</div>
-	</div>
 </body>
 </html>

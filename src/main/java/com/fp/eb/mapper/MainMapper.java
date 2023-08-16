@@ -1,9 +1,15 @@
 package com.fp.eb.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
+import com.fp.eb.model.BookDTO;
+
 @Mapper
-public interface HomeMapper {
+public interface MainMapper {
+
+	public List<BookDTO> bookSearch(BookDTO bDTO);
 
 	
 	// 여기는 인터페이스 (Mapper) 넣는 곳입니다.
