@@ -35,31 +35,27 @@ public class CommunityController {
 		 return "community/community_page";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@GetMapping("/go.commu.post")
 	public String goBoard(Model model, CommunityDTO c) {
 		cDAO.getCommunity(c, model);
 		cDAO.getAllCommunityPost(c, model);
 		
-		model.addAttribute("community_page", "community_board_page.jsp");
-		return "community/community_header_page";
+		 model.addAttribute("commu_header_page", "community_post_header.jsp"); 
+		 model.addAttribute("commu_contents_page", "community_post_contents.jsp"); 
+		return "community/community_page";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping("/go.commu.detail")
 	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp) {

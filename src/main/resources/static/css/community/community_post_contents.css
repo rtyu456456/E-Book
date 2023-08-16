@@ -1,0 +1,123 @@
+@charset "UTF-8";
+@media
+only
+screen
+and
+(max-width:1000px)
+{
+
+.post_background{
+	width: 100vw;
+	background-color: white;
+	border-radius: 4rem 4rem 0rem 0rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	text-align: center;
+}
+
+.post_contents{
+	padding-top: 2.5rem;
+	border: none;
+	text-align: left;
+	background-color: transparent;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	width: 90%;
+	font-size: 2rem;
+}
+.post_title{
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-size: 2.5rem;
+	font-weight: 900;
+}
+
+.post_flex{
+	display: flex;
+	justify-content: space-between;
+ 	text-align: center;
+	align-items: center;
+	align-content: center;
+}
+
+.post_flex_left{
+	display: flex;
+	color: rgba(38, 40, 61, 0.50);
+	font-weight: 400;
+	
+}
+
+.post_flex_right{
+	display: flex;
+	position: relative;
+}
+
+.post_like{
+	color:  #F66E6E;
+	position: relative;
+	width: 5rem;
+}
+.post_like img{
+	position: absolute;
+	left: -1.5rem;
+	bottom: 0.4rem;
+	height: 3rem;
+	width: 3rem;
+	transform: rotate(180deg);
+}
+.post_dislike{
+	width: 5rem;
+	position: relative;
+	color: #26283D;
+	
+}
+
+.post_dislike img{
+	left: -1.4rem;
+	position: absolute;
+	height: 3rem;
+	width: 3rem;
+	
+}
+
+.post_chat{
+	width: 5rem;
+	position: relative;
+}
+
+.post_chat img{
+	left: -1rem;
+	top: 0.2rem;
+	position: absolute;
+	height: 2.4rem;
+	width: 2.4rem;
+	
+	
+}
+.line{
+	margin: auto;
+	padding: auto;
+	width: 90%;
+	border: 0.1rem solid #26283D;
+}	
+
+.empty_space{
+	height: 10vh;
+	background-color: transparent;
+}
+
+.post_writing button{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	
+	border: none;
+	background-color: #26283D;
+	width: 28rem;
+	border-radius: 3rem 0rem;
+	height:	8rem;
+	
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	color: white;
+	font-size: 4rem;
+	font-weight: 500;
+}	
+
+	}

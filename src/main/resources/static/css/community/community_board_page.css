@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+/* 
 .board_menu {
 	display: flex;
 	width: 100vw;
@@ -47,7 +47,7 @@
 	filter: opacity(0.5) drop-shadow(0 0 0 #FFC19E);
 }
 
-/* commu_contents 시작 */
+commu_contents 시작
 .commu_post_background {
 	text-align: left;
 	width: 90%;
@@ -159,4 +159,4 @@
 	height: 3px;
 	margin: auto;
 	padding: auto;
-}
+} */

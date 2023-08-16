@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="css/community/community_page.css">
 <link rel="stylesheet" href="css/community/community_header.css">
 <link rel="stylesheet" href="css/community/community_main.css">
+<link rel="stylesheet" href="css/community/community_post_header.css">
+<link rel="stylesheet" href="css/community/community_post_contents.css">
 <!-- <link rel="stylesheet" href="css/community/community_board_page.css"> -->
 <style>
 @import
