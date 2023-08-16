@@ -28,7 +28,7 @@
 		insert into eb_trade values
 		(eb_trade_seq.nextval, #{t_owner },#{t_title }, #{t_title_book },#{t_authors },#{t_publisher
 		},#{t_contents },#{t_prcie },#{t_thumbnail },
-		#{t_map_lat),#{t_map_lng },#{t_marker_lat }, #{t_marker_lng },#{t_soldout }, #{t_date })
+		#{t_map_lat},#{t_map_lng },#{t_marker_lat }, #{t_marker_lng },#{t_soldout }, #{t_date })
 	</insert>
 
 
