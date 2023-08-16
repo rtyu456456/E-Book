@@ -80,5 +80,14 @@ public class TradeController {
 		model.addAttribute("contentPage", "tradeMsg.jsp");
 		return "trade/tradeIndex";
 	}
+	
+	
+	@GetMapping("/reg.trade.book")
+	public String regTradeBook() {
+		
+		
+		
+		return "trade/tradeIndex";	
+	}
 
 }

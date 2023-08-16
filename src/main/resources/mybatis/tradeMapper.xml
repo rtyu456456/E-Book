@@ -2,24 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.eb.mapper.TradeMapper">
 
-	<select id="getAlltradelist" resultType="com.fp.eb.model.TradeDTO">
+	<select id="getAlltradelist"
+		resultType="com.fp.eb.model.TradeDTO">
 		select * from eb_trade
 	</select>
-	
-	<select id="getTradelistMe" resultType="com.fp.eb.model.TradeDTO">
+
+	<select id="getTradelistMe"
+		resultType="com.fp.eb.model.TradeDTO">
 		select * from eb_trade where t_owner = #{u_id }
 		<!-- 나중에 유저 닉네임과 연동할 것 -->
 	</select>
-	
 
-	<select id="getTradeDetail" resultType="com.fp.eb.model.TradeDTO">
+
+	<select id="getTradeDetail"
+		resultType="com.fp.eb.model.TradeDTO">
 		select * from eb_trade where t_no = #{t_no }
 	</select>
 
 	<select id="getTradeList" resultType="com.fp.eb.model.TradeDTO">
-		SELECT * FROM eb_trade WHERE t_book_title LIKE '%'||#{t_book_title}||'%'
+		SELECT * FROM eb_trade
+		WHERE t_book_title LIKE '%'||#{t_book_title}||'%'
 	</select>
-	
+
+	<insert id="regTradeBook">
+		insert into eb_trade values
+		(eb_trade_seq.nextval, #{t_owner },#{t_title }, #{t_title_book },#{t_authors },#{t_publisher
+		},#{t_contents },#{t_prcie },#{t_thumbnail },
+		#{t_map_lat),#{t_map_lng },#{t_marker_lat }, #{t_marker_lng },#{t_soldout }, #{t_date })
+	</insert>
+
 
 
 </mapper>

@@ -1,17 +1,19 @@
 package com.fp.eb.service;
 
-import java.math.BigDecimal;
+import java.util.Iterator;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.fp.eb.mapper.TradeMapper;
-import com.fp.eb.mapper.User_tMapper;
 import com.fp.eb.model.TradeDTO;
 import com.fp.eb.model.UserDTO_T;
 
@@ -20,7 +22,9 @@ public class TradeDAO {
 
 	@Autowired
 	private TradeMapper tradeMapper;
-	
+
+//	@Autowired
+//	private ServletContext servletcontext;
 
 	public void getAlltradelist(TradeDTO tDTO, HttpServletRequest req) {
 		List<TradeDTO> trades = tradeMapper.getAlltradelist();
@@ -44,5 +48,10 @@ public class TradeDAO {
 		req.setAttribute("trades", tradeMapper.getTradelistMe(uDTO));
 		System.out.println("내 판매 도서 목록 조회");
 	}
-	
+
+	public void regTradeBook(TradeDAO tDTO, HttpServletRequest req) {
+
+
+	}
+
 }

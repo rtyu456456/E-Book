@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.fp.eb.model.TradeDTO;
 import com.fp.eb.model.UserDTO_T;
+import com.fp.eb.service.TradeDAO;
 
 @Mapper
 public interface TradeMapper {
@@ -19,6 +20,7 @@ public interface TradeMapper {
 	List<TradeDTO> getTradelistMe(UserDTO_T uDTO );
 
 	TradeDTO locationChoose(TradeDTO tDTO);
+
 
 	
 

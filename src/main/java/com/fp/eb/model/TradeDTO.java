@@ -3,6 +3,8 @@ package com.fp.eb.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class TradeDTO {
 	
 	private int t_no;
@@ -20,8 +22,9 @@ public class TradeDTO {
 	private BigDecimal t_marker_lng;
 	private int t_soldout;
 	private Date t_date;
+	private MultipartFile t_file;
 	
-
+	
 	public int getT_no() {
 		return t_no;
 	}
@@ -111,6 +114,12 @@ public class TradeDTO {
 	}
 	public void setT_date(Date t_date) {
 		this.t_date = t_date;
+	}
+	public MultipartFile getT_file() {
+		return t_file;
+	}
+	public void setT_file(MultipartFile t_file) {
+		this.t_file = t_file;
 	}
 	
 	
