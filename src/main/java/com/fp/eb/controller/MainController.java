@@ -14,7 +14,7 @@ public class MainController {
 	@GetMapping("/")
 	public String text(HttpServletRequest req) {
 		req.setAttribute("loginPage", "user/login.jsp");
-		return "index";
+		return "user/index";
 	}
 
 
