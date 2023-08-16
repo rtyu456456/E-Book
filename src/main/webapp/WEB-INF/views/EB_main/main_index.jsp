@@ -34,11 +34,9 @@
 		<!------ 검색창 ------>
 		<form action="main.search">
 			<div class="search-gh">
-			<!--  -->
-			
 				<select class="main-select" name="searchOption">
-					<option value="title">제목</option>
-					<option value="author">작가</option>
+					<option value="b_title">제목</option>
+					<option value="b_author">작가</option>
 				</select>
 				<div class="search-box-gh">
 					<input class="input-gh" name="searchText" placeholder="검색어를 입력하세요">
