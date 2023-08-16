@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+/** 여기는 css 파일을 넣는 곳입니다. 
+ 연결할 jsp에 
+<link rel="stylesheet" href="css/index.css">
+처럼 css/(css 파일명).css 로 연결해주시면됩니다.
+폴더를 만들거면
+css/(만든 폴더)/(css 파일명).css
+로 적어주시면됩니다.
+ */

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+
+.choose-reg {
+    display: flex;
+    flex-direction: column; /* 요소들을 세로로 배열 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    width: 86vw;
+}
+
+.search-book-reg, .self-book-reg {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 수평 중앙 정렬 */
+    border-radius: 10px;
+    height: 85px;
+    background-color: rgba(38, 40, 61, 1);
+    margin-bottom: 20px;
+    color: white;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
+}
