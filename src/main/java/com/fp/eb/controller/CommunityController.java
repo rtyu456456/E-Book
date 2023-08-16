@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.fp.eb.model.CommunityDTO;
 import com.fp.eb.model.CommunityPostDTO;
+import com.fp.eb.model.CommunityReplyDTO;
 import com.fp.eb.service.CommunityDAO;
 
 @Controller
@@ -47,12 +48,23 @@ public class CommunityController {
 	
 	
 	@GetMapping("/go.commu.detail")
-	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp) {
+	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
 		 cDAO.getCommunity(c, model); 
 		 cDAO.getCommunityPost(cp, model);
+		 cDAO.getReplys(cp, model);
 		
 		model.addAttribute("commu_header_page", "community_post_header.jsp"); 
 		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
+		return "community/community_page";
+	}
+	
+	
+	@GetMapping("/go.writing.page")
+	public String goWritingPage(Model model, CommunityDTO c, CommunityPostDTO cp) {
+		cDAO.getCommunity(c, model);
+		
+		 model.addAttribute("commu_header_page", "community_writing_header.jsp"); 
+		 model.addAttribute("commu_contents_page", "community_writing_contents.jsp"); 
 		return "community/community_page";
 	}
 
