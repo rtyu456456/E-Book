@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 <!-- css(위에 있음)// js(아래 있음) -->
 <link rel="stylesheet" href="css/community/community_page.css">
-<link rel="stylesheet" href="css/community/community_header.css">
-<link rel="stylesheet" href="css/community/community_main.css">
+<link rel="stylesheet" href="css/community/community_main_header.css">
+<link rel="stylesheet" href="css/community/community_main_contents.css">
 <link rel="stylesheet" href="css/community/community_post_header.css">
 <link rel="stylesheet" href="css/community/community_post_contents.css">
-<!-- <link rel="stylesheet" href="css/community/community_board_page.css"> -->
+<link rel="stylesheet" href="css/community/community_detail_contents.css">
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap')

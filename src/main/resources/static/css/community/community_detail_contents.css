@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+@media only screen and (max-width:1000px) {
+	.post_detail {
+		display: flex;
+		width: 90%;
+		margin: auto;
+		padding: auto;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.post_user_img {
+		width: 8rem;
+		height: 8rem;
+	}
+	.post_user_img img {
+		width: 100%;
+		height: 100%;
+		border-radius: 2rem;
+	}
+	.post_info {
+		margin-left: -25rem;
+	}
+	.post_user_info {
+		display: flex;
+		align-items: center;
+	}
+	.post_user {
+		font-size: 2.5rem;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	.post_user_grade {
+		color: #F66E6E;
+		margin-left: 1rem;
+		font-size: 2rem;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		margin-left: 1rem;
+	}
+	.post_time {
+		text-align: left;
+		font-size: 2rem;
+	}
+	.post_menu_etc {
+		position: relative;
+		right: 0;
+		width: 4rem;
+		height: 4rem;
+	}
+	.post_menu_etc img {
+		width: 100%;
+		height: 100%;
+	}
+	.post {
+		width: 90%;
+		margin: auto;
+		padding: auto;
+		text-align: left;
+	}
+	.post_cp_title {
+		font-size: 4rem;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	.post_cp_contents {
+		font-size: 2rem;
+		font-weight: 300;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	
+	.post_reply_input{
+	position: fixed;
+	bottom: 0;
+	}
+}

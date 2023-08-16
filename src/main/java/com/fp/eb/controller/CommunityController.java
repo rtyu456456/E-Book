@@ -30,8 +30,8 @@ public class CommunityController {
 	public String goCommunityMain(Model model) {
 		cDAO.getAllCommunity (model); 
 		
-		 model.addAttribute("commu_header_page", "community_header.jsp"); 
-		 model.addAttribute("commu_contents_page", "community_main.jsp"); 
+		 model.addAttribute("commu_header_page", "community_main_header.jsp"); 
+		 model.addAttribute("commu_contents_page", "community_main_contents.jsp"); 
 		 return "community/community_page";
 	}
 	
@@ -46,24 +46,14 @@ public class CommunityController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@GetMapping("/go.commu.detail")
 	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp) {
 		 cDAO.getCommunity(c, model); 
 		 cDAO.getCommunityPost(cp, model);
 		
-		model.addAttribute("community_page", "community_detail_page.jsp");
-		return "community/community_header_page";
+		model.addAttribute("commu_header_page", "community_post_header.jsp"); 
+		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
+		return "community/community_page";
 	}
 
 }

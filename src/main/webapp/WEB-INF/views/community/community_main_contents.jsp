@@ -77,7 +77,7 @@
 					<c:forEach var="c" items="${communitys }">
 						<form action="/go.commu.post">
 							<button class="commu_board_btn" name="c_no" value="${c.c_no }">
-								<img src="/img/emptyPin.png"> &nbsp; ${c.c_name }
+								<img src="/img/커뮤니티_즐겨찾기안함_icon.png"> &nbsp; ${c.c_name }
 							</button>
 						</form>
 					</c:forEach>
