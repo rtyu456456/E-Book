@@ -5,10 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/index.css">
-<script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
+
  <div class="commu_contents">
 		<div class="commu_post_background">
 			<div class="commu_post_contents">
@@ -40,5 +39,6 @@
 		</div>
 		<!-- 	<div>댓글 input</div> -->
 	</div>
+
 </body>
 </html>

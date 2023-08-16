@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fp.eb.mapper.UserMapper">
+
+	<insert id="regUser">
+		INSERT INTO EB_USER VALUES(#{u_id}, #{u_pw}, #{u_name}, 'default.img', #{u_email}, #{u_gender}, #{u_age}, current_date, 0, 0, 0, 0)
+	</insert>
+	
+	<select id="getUserById" resultType="com.fp.eb.model.UserDTO">
+		SELECT * FROM EB_USER WHERE U_ID = #{u_id}
+	</select>
+
+</mapper>

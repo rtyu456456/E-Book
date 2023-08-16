@@ -8,3 +8,12 @@
 css/(만든 폴더)/(css 파일명).css
 로 적어주시면됩니다.
  */
+ 
+body {
+	background-image : url("background_img.jpg");
+}
+
+.main {
+	display : flex;
+}
+
