@@ -8,10 +8,14 @@
 </head>
 <body>
 
-	<div>
-		<div>제목 input</div>
+	<div class="post_background">
+		<div>
+		<textarea rows="" cols="" placeholder="제목"></textarea>
+		</div>
 		<hr>
-		<div>내용 input</div>
+		<div>
+		<textarea rows="" cols="" placeholder="내용을 입력하세요."></textarea>
+		</div>
 		<button>완료</button>
 	</div>
 

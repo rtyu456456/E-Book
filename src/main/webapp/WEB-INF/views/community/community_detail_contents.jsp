@@ -52,8 +52,9 @@
 			</div>
 			<br>
 			<hr class="post_line">
-			<br><br>
-				<c:forEach var="cr" items="${communityReplys }">
+			<br>
+			<br>
+			<c:forEach var="cr" items="${communityReplys }">
 				<div class="post_reply_background">
 					<br>
 					<div class="reply_user">${cr.cr_owner }</div>
@@ -63,23 +64,35 @@
 					</div>
 					<br>
 				</div>
-				<br><br>
+				<br>
+				<br>
 			</c:forEach>
 
 		</div>
 		<div class="post_reply_input">
-		<div class="post_reply_box">
-			<div class="box_shadow_reply">
-				<input class="commu_seach" placeholder="댓글을 입력하세요.">
-				<button class="commu_seach_btn">
-					<img src="/img/전송버튼_icon.png" maxlength=10>
-				</button>
-			</div>
-		</div>
+				<div class="box_shadow_reply">
+					<div class="box-shadow-1">
+						<textarea rows="1" class="post_reply_text" onkeydown="resize(this)"
+							onkeyup="resize(this)"  placeholder="댓글을 입력하세요."></textarea>
+					</div>
+					<div class="box-shadow-2">
+						<button class="commu_seach_btn">
+							<img src="/img/전송버튼_icon.png" maxlength=10>
+						</button>
+					</div>
+				</div>
 		</div>
 	</div>
 
 
 
 </body>
+
+<script>
+	function resize(obj) {
+		 obj.style.height = "1px";
+		obj.style.height = (12 + obj.scrollHeight) + "px";
+	 }
+
+</script>
 </html>

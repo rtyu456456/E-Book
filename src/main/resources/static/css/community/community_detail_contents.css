@@ -157,35 +157,37 @@
 		font-weight: 500;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
-	
+
 	/* 댓글 입력  */
 	.post_reply_input {
 		position: fixed;
 		bottom: 0;
 	}
-	
 	.box_shadow_reply {
-	position: relative;
-	display: flex;
-	box-shadow: 1rem 3rem 5rem 0rem rgba(0, 0, 0, 0.25);
-	width: 100vw;
-	background-color: #F5F6FA;
-	height: 5vh;
-	align-items: center;
-}
-
-.commu_seach {
-	position: relative;
-	background-color: #F5F6FA;
-	color: rgba(38, 40, 61, 0.50);
-	font-size: 2.5rem;
-	font-family: 'IBM Plex Sans KR', sans-serif;
-	font-weight: 550;
-	width: 90%;
-	border: none;
-	text-indent: 3rem;
-	outline: none;
-}
-	
-	
+		position: relative;
+		display: flex;
+		box-shadow: 1rem 3rem 5rem 0rem rgba(0, 0, 0, 0.25);
+		width: 100vw;
+		background-color: #F5F6FA;
+		align-items: center;
+	}
+	.box-shadow-1 {
+		width: 90%;
+	}
+	.post_reply_text {
+		resize: none;
+		position: relative;
+		background-color: #F5F6FA;
+		color: rgba(38, 40, 61, 0.50);
+		font-size: 2.5rem;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-weight: 550;
+		width: 90%;
+		border: none;
+		outline-color: #F5F6FA;
+		caret-color: #F66E6E;
+	}
+	.post_reply_text:focus::placeholder {
+		color: #F5F6FA;
+	}
 }
