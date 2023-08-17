@@ -52,15 +52,47 @@
 		text-align: left;
 		font-size: 2rem;
 	}
-	.post_menu_etc {
-		position: relative;
-		right: 0;
-		width: 4rem;
+	
+	#post_menu_etc {
+		position: absolute;
+		right: 4rem; 
 		height: 4rem;
+		width: 4rem;
+		visibility: visible;
 	}
-	.post_menu_etc img {
+	#post_menu_etc img {
 		width: 100%;
 		height: 100%;
+	}
+	.menu-etc-btn {
+		border: none;
+		background-color: transparent;
+	}
+	#menu-etc {
+		position: relative;
+		top: -7rem;
+		right: 6rem;
+		visibility: hidden;
+	}
+	#menu-etc img {
+		position: absolute;
+		width: 7rem;
+		height: 20rem;
+	}
+	.etc-btn {
+		position: relative;
+		left: 3.5rem;
+		top: 6.5rem;
+		z-index: 400;
+	}
+	.etc-btn button {
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: 2rem;
+		width: 100%;
+		color: white;
+		border: none;
+		background-color: transparent;
 	}
 	.post {
 		width: 90%;

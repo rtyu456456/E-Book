@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="post_detail_background">
-		<br> <br>
+	<br><br>
 		<div>
 			<div class="post_detail">
 				<div class="post_user_img">
@@ -26,8 +26,16 @@
 							pattern="MM/dd hh:mm" />
 					</div>
 				</div>
-				<div class="post_menu_etc">
-					<img alt="" src="/img/menu_etc.png">
+				<div id="post_menu_etc">
+					<button name="cp_no" value="${communityPost.cp_no }" class="menu-etc-btn" onclick="showMenu(this)"><img alt="" src="/img/menu_etc.png"></button>
+				</div>
+				<div id="menu-etc">
+				<img alt="" src="/img/etc-btn2.png">
+				<div class="etc-btn">
+				<button class="etc-btn-1">수정</button>
+				<br><br>
+				<button class="etc-btn-2">삭제</button>
+				</div>
 				</div>
 			</div>
 			<br>
@@ -87,12 +95,4 @@
 
 
 </body>
-
-<script>
-	function resize(obj) {
-		obj.style.height = "1px";
-		obj.style.height = (12 + obj.scrollHeight) + "px";
-	 }
-
-</script>
 </html>
