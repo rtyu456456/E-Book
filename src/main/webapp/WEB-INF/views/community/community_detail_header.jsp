@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="header_contents">
-			<form action="/community_main">
+			<form action="go.commu.post">
 				<button class="back_btn" name="c_no" value="${community.c_no }">
 					<img src="/img/left-arrow.png">
 				</button>

@@ -53,7 +53,7 @@ public class CommunityController {
 		 cDAO.getCommunityPost(cp, model);
 		 cDAO.getReplys(cp, model);
 		
-		model.addAttribute("commu_header_page", "community_post_header.jsp"); 
+		model.addAttribute("commu_header_page", "community_detail_header.jsp"); 
 		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
 		return "community/community_page";
 	}

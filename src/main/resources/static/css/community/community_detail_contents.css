@@ -28,7 +28,8 @@
 		border-radius: 2rem;
 	}
 	.post_info {
-		margin-left: -25rem;
+		position: absolute;
+		left: 13rem;
 	}
 	.post_user_info {
 		display: flex;
@@ -178,8 +179,7 @@
 		resize: none;
 		position: relative;
 		background-color: #F5F6FA;
-		color: rgba(38, 40, 61, 0.50);
-		font-size: 2.5rem;
+		font-size: 3rem;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 		font-weight: 550;
 		width: 90%;
@@ -189,5 +189,8 @@
 	}
 	.post_reply_text:focus::placeholder {
 		color: #F5F6FA;
+	}
+	.post_reply_text::placeholder {
+		color: rgba(38, 40, 61, 0.50);
 	}
 }
