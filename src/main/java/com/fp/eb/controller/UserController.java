@@ -18,8 +18,8 @@ public class UserController {
 	private UserDAO uDAO;
 
 	@GetMapping("/usermain")
-	public String userMain() {
-		
+	public String userMain(HttpServletRequest req) {
+		req.setAttribute("contentPage", "detail_user.jsp");
 		return "user/user_main";
 	}
 	
@@ -46,10 +46,30 @@ public class UserController {
 		return "user/detail_user";
 	}
 	
-	@PostMapping("/userUpdate.go")
+	@GetMapping("/userUpdate.go")
 	public String userUpdateGo(HttpServletRequest req, UserDTO uDTO) {
-		return "user/update_user";
+		req.setAttribute("contentPage", "update_user.jsp");
+		return "user/user_main";
 	}
 	
+	// --------- 여기까지 user CRUD --------------------
+	
+	@GetMapping("/bookRecord.fin")
+	public String bookRecordFin(HttpServletRequest req, UserDTO uDTO) {
+		req.setAttribute("contentPage", "bookrecord_fin.jsp");
+		return "user/user_main";
+	}
+
+	@GetMapping("/bookRecord.ing")
+	public String bookRecordIng(HttpServletRequest req, UserDTO uDTO) {
+		req.setAttribute("contentPage", "bookrecord_ing.jsp");
+		return "user/user_main";
+	}
+	
+	@GetMapping("/bookRecord.wish")
+	public String bookRecordWish(HttpServletRequest req, UserDTO uDTO) {
+		req.setAttribute("contentPage", "bookrecord_wish.jsp");
+		return "user/user_main";
+	}
 
 }
