@@ -38,5 +38,15 @@ public class CommunityDAO {
 		model.addAttribute("communityReplys", ss.getMapper(CommunityMapper.class).getAllReplys(cp));
 	}
 
+	public void deleteCommunityPost(CommunityPostDTO cp, Model model) {
+		
+		if (ss.getMapper(CommunityMapper.class).deleteCommunityPost(cp) == 1) {
+		System.out.println("커뮤니티 삭제 성공");	
+		}else {
+			System.out.println("커뮤니티 삭제 실패");
+		}
+	
+	}
+
 
 }

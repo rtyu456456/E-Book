@@ -37,6 +37,8 @@ public interface CommunityMapper {
 
 	List<CommunityReplyDTO> getAllReplys(CommunityPostDTO cp);
 
+	int deleteCommunityPost(CommunityPostDTO cp);
+
 	
 	
 }

@@ -21,9 +21,7 @@
 				</button>
 			</form>
 			<div id="community_name">${community.c_name }</div>
-			<button class="seach">
-				<img alt="" src="/img/돋보기_icon.png">
-			</button>
+			<div id="empty"></div>
 		</div>
 
 	</div>

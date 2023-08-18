@@ -58,6 +58,19 @@ public class CommunityController {
 		return "community/community_page";
 	}
 	
+	@GetMapping("/do.delete.post")
+	public String doDeletePost(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr, HttpServletRequest request) {
+		
+		cDAO.deleteCommunityPost(cp, model);
+		cDAO.getCommunity(c, model);
+		cDAO.getAllCommunityPost(c, model);
+		
+		
+		 model.addAttribute("commu_header_page", "community_post_header.jsp"); 
+		 model.addAttribute("commu_contents_page", "community_post_contents.jsp"); 
+		return "community/community_page";
+	}
+	
 	
 	@GetMapping("/go.writing.page")
 	public String goWritingPage(Model model, CommunityDTO c, CommunityPostDTO cp) {
@@ -67,5 +80,7 @@ public class CommunityController {
 		 model.addAttribute("commu_contents_page", "community_writing_contents.jsp"); 
 		return "community/community_page";
 	}
+	
+	
 
 }

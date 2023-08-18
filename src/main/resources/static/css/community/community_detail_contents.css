@@ -52,10 +52,9 @@
 		text-align: left;
 		font-size: 2rem;
 	}
-	
 	#post_menu_etc {
 		position: absolute;
-		right: 4rem; 
+		right: 4rem;
 		height: 4rem;
 		width: 4rem;
 		visibility: visible;
@@ -225,4 +224,53 @@
 	.post_reply_text::placeholder {
 		color: rgba(38, 40, 61, 0.50);
 	}
+
+	/* delete 모달창  css*/
+	#deleteModal {
+		border-radius: 2rem;
+		background-color: white;
+		box-shadow: 1rem 3rem 5rem 0rem rgba(0, 0, 0, 0.25);
+		margin: auto;
+		padding: auto;
+		width: 100vw;
+		height: 40vw;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: 4rem;
+		text-align: left;
+		border: none;
+	}
+	.delete-background {
+		margin-top: 4rem;
+		margin-left: 4rem;
+	}
+	.delete-flex {
+		background-color: #26283D;
+		box-shadow: 0rem 4rem 4rem 0rem rgba(0, 0, 0, 0.25) inset;
+		border-radius: 3rem 0rem 2rem 0rem;
+		width: 40%;
+		height: 30%;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+	#back-btn {
+		margin-left: 1.5rem;
+		width: 50%;
+		font-size: 2.5rem;
+		color: white;
+		background-color: transparent;
+		border: none;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	#delete-ok {
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: 2.5rem;
+		color: white;
+		background-color: transparent;
+		border: none;
+	}
+}
 }

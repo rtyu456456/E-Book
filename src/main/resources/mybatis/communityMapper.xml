@@ -30,6 +30,10 @@
 		select * from eb_community_reply, eb_community_post
 		where cr_cp_no = cp_no and cp_no=#{cp_no}
 	</select>
+	
+	<delete id="deleteCommunityPost">
+		delete eb_community_post where cp_no = #{cp_no}
+	</delete>
 
 
 </mapper>

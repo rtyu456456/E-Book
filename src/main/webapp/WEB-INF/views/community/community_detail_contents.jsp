@@ -9,8 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<input hidden="hidden" id="c-no" value="${community.c_no }">
 	<div class="post_detail_background">
-	<br><br>
+		<br>
+		<br>
 		<div>
 			<div class="post_detail">
 				<div class="post_user_img">
@@ -27,17 +29,24 @@
 					</div>
 				</div>
 				<div class="menu-etc-onoff">
-				<div id="post_menu_etc">
-					<button name="cp_no" value="${communityPost.cp_no }" class="menu-etc-btn" onclick="showMenu(this)"><img alt="" src="/img/menu_etc.png"></button>
-				</div>
-				<div id="menu-etc">
-				<img alt="" src="/img/etc-btn2.png">
-				<div class="etc-btn">
-				<button class="etc-btn-1">수정</button>
-				<br><br>
-				<button class="etc-btn-2">삭제</button>
-				</div>
-				</div>
+					<div id="post_menu_etc">
+						<button name="cp_no" value="${communityPost.cp_no }"
+							class="menu-etc-btn" onclick="showMenu(this)">
+							<img alt="" src="/img/menu_etc.png">
+						</button>
+					</div>
+					<div id="menu-etc">
+						<img alt="" src="/img/etc-btn2.png">
+						<div class="etc-btn">
+							<form action="/go.update.post">
+								<button name="cp_no" value="${communityPost.cp_no }"
+									class="etc-btn-1">수정</button>
+							</form>
+							<br>
+							<br>
+							<button id="delete-post-btn" value="${communityPost.cp_no }" class="etc-btn-2">삭제</button>
+						</div>
+					</div>
 				</div>
 			</div>
 			<br>
@@ -62,8 +71,7 @@
 			</div>
 			<br>
 			<hr class="post_line">
-			<br>
-			<br>
+			<br> <br>
 			<c:forEach var="cr" items="${communityReplys }">
 				<div class="post_reply_background">
 					<br>
@@ -80,19 +88,31 @@
 
 		</div>
 		<div class="post_reply_input">
-				<div class="box_shadow_reply">
-					<div class="box-shadow-1">
-						<textarea rows="1" class="post_reply_text" onkeydown="resize(this)"
-							onkeyup="resize(this)"  placeholder="댓글을 입력하세요."></textarea>
-					</div>
-					<div class="box-shadow-2">
-						<button class="commu_seach_btn">
-							<img src="/img/전송버튼_icon.png" maxlength=10>
-						</button>
-					</div>
+			<div class="box_shadow_reply">
+				<div class="box-shadow-1">
+					<textarea rows="1" class="post_reply_text" onkeydown="resize(this)"
+						onkeyup="resize(this)" placeholder="댓글을 입력하세요."></textarea>
 				</div>
+				<div class="box-shadow-2">
+					<button class="commu_seach_btn">
+						<img src="/img/전송버튼_icon.png" maxlength=10>
+					</button>
+				</div>
+			</div>
 		</div>
 	</div>
+
+	<dialog id="deleteModal">
+	<div class="delete-background">
+		<div class="delete-text">삭제하시겠습니까?</div>
+		<div class="delete-flex">
+			<button id="back-btn">취소</button>
+			<button id="delete-ok">확인</button>
+		</div>
+	</div>
+	</dialog>
+
+
 
 
 
