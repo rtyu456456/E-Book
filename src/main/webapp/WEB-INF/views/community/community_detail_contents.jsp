@@ -26,6 +26,7 @@
 							pattern="MM/dd hh:mm" />
 					</div>
 				</div>
+				<div class="menu-etc-onoff">
 				<div id="post_menu_etc">
 					<button name="cp_no" value="${communityPost.cp_no }" class="menu-etc-btn" onclick="showMenu(this)"><img alt="" src="/img/menu_etc.png"></button>
 				</div>
@@ -35,6 +36,7 @@
 				<button class="etc-btn-1">수정</button>
 				<br><br>
 				<button class="etc-btn-2">삭제</button>
+				</div>
 				</div>
 				</div>
 			</div>
