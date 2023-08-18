@@ -41,6 +41,8 @@ public interface CommunityMapper {
 
 	int updateCommunityPost(CommunityPostDTO cp);
 
+	List<CommunityDTO>  seachAllCommunity(CommunityDTO c);
+
 	
 	
 }

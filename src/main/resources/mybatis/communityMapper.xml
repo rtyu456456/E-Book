@@ -7,6 +7,11 @@
 		select * from eb_community
 	</select>
 
+	<select id="seachAllCommunity"
+		resultType="com.fp.eb.model.CommunityDTO">
+		select * from eb_community where c_name like '%'||#{c_name}||'%'
+	</select>
+
 	<select id="getAllCommunityPost"
 		resultType="com.fp.eb.model.CommunityPostDTO"
 		parameterType="com.fp.eb.model.CommunityDTO">

@@ -57,7 +57,7 @@
 			</div>
 			<br>
 			<div class="post_icon">
-				<button class="post_like_icon">
+				<button class="post_like_icon" onclick="" value="${communityPost.cp_like }">
 					<img alt="" src="/img/like_icon.png"> &nbsp;
 					<div>${communityPost.cp_like }</div>
 				</button>

@@ -25,14 +25,16 @@
 		</div>
 
 
+		<form action="/seach.community">
 		<div class="commu_menu">
 			<div class="box_shadow">
-				<input class="commu_seach" placeholder="게시판 이름을 검색해보세요.">
+				<input name="c_name" class="commu_seach" placeholder="게시판 이름을 검색해보세요.">
 				<button class="commu_seach_btn">
 					<img src="/img/돋보기_icon.png" maxlength=10>
 				</button>
 			</div>
 		</div>
+		</form>
 
 	</div>
 

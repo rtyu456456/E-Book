@@ -36,6 +36,16 @@ public class CommunityController {
 		 return "community/community_page";
 	}
 	
+	@GetMapping("/seach.community")
+	public String seachCommunity(Model model, CommunityDTO c) {
+		cDAO.seachCommunity(c, model);
+		
+		
+		model.addAttribute("commu_header_page", "community_main_header.jsp"); 
+		model.addAttribute("commu_contents_page", "community_seach_contents.jsp"); 
+		return "community/community_page";
+	}
+	
 	@GetMapping("/go.commu.post")
 	public String goBoard(Model model, CommunityDTO c) {
 		cDAO.getCommunity(c, model);
