@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.fp.eb.mapper.TradeMapper;
 import com.fp.eb.model.MsgDTO;
 import com.fp.eb.model.TradeDTO;
+import com.fp.eb.model.TradeTotalDTO;
 import com.fp.eb.model.UserDTO;
 
 @Service
@@ -48,15 +50,24 @@ public class TradeDAO {
 
 // ---------------------------------- 쪽지 기능
 
-	public void getMsg(HttpServletRequest req) {
+	public void getToMsg(UserDTO uDTO ,HttpServletRequest req) {
 		try {
-			UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
-			req.setAttribute("msgs", ss.getMapper(TradeMapper.class).getMsg(uDTO));
+			req.setAttribute("msgsTo", ss.getMapper(TradeMapper.class).getToMsg(uDTO));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void getFromMsg(UserDTO uDTO ,HttpServletRequest req) {
+		try {
+			req.setAttribute("msgsFrom", ss.getMapper(TradeMapper.class).getFromMsg(uDTO));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	
+	
+	
 	public void sendMsg(MsgDTO mDTO, HttpServletRequest req, Date sysdate) {
 		try {
 			UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
@@ -85,4 +96,6 @@ public class TradeDAO {
 		}
 	}
 
+
+	
 }

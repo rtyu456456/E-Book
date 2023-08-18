@@ -5,9 +5,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.fp.eb.model.MsgDTO;
 import com.fp.eb.model.TradeDTO;
+import com.fp.eb.model.TradeTotalDTO;
 import com.fp.eb.model.UserDTO;
 
 @Mapper
@@ -23,9 +25,10 @@ public interface TradeMapper {
 
 	TradeDTO locationChoose(TradeDTO tDTO);
 
-	List<MsgDTO> getMsg(UserDTO uDTO);
-
+	List<TradeTotalDTO> getToMsg(UserDTO uDTO);
+	List<TradeTotalDTO> getFromMsg(UserDTO uDTO);
 	public int sendMsg(MsgDTO mDTO);
+
 
 
 }

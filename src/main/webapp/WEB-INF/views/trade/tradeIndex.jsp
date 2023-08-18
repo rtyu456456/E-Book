@@ -51,7 +51,7 @@
 			<div class="foot-line">
 				<a href="/trade.choose.go"> <img src="/img/Group7.png"></a>
 				<a href="/trade.sale.now?u_id=${sessionScope.loginMember.u_id}"> <img src="/img/Group6.png"></a>
-				<a href="/trade.Msg.go?u_id=${sessionScope.loginMember.u_id}"> <img src="/img/Group5.png"></a>
+				<a href="/trade.Msg.get.to?u_id=${sessionScope.loginMember.u_id}"> <img src="/img/Group5.png"></a>
 				
 				
 				

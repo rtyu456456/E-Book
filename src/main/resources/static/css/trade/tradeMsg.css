@@ -8,3 +8,33 @@
 	overflow: auto;
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
 }
+
+.msg-nav {
+	display: flex;
+	justify-content: space-around;
+	width: 98%;
+	height: 3rem;
+	align-items: center;
+	font-size: 16px;
+	background-color: skyblue;
+}
+
+.msg-nav span {
+	text-decoration: none;
+	color: white;
+}
+
+.msg-page {
+	margin-top: 10px;
+	height: 100%;
+}
+
+.msg-list {
+	box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+	width: 86%;
+}
+
+
+
+
+
