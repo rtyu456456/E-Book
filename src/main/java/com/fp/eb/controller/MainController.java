@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.fp.eb.model.BookDTO;
+import com.fp.eb.model.ReviewDTO;
 import com.fp.eb.service.MainDAO;
 
 @Controller
@@ -23,22 +24,18 @@ public class MainController {
 	}
 
 	@GetMapping("/main.search")
-	public String bookSearchByName(BookDTO bDTO, Model model, HttpServletRequest req) {
-		mDAO.bookSearchByName(bDTO, model, req);
-		model.addAttribute("contentPage", "../EB_main/main_search.jsp");
-		return "EB_main/main_index";
-	}
-	
-	@GetMapping("/main.search")
-	public String bookSearchByAuthor(BookDTO bDTO, Model model, HttpServletRequest req) {
-		mDAO.bookSearchByAuthor(bDTO, model, req);
+	public String bookSearch(BookDTO bDTO, Model model, HttpServletRequest req) {
+		mDAO.bookSearch(bDTO, model, req);
 		model.addAttribute("contentPage", "../EB_main/main_search.jsp");
 		return "EB_main/main_index";
 	}
 
-	@GetMapping("/review.detail")
-	public String reviewDetail(Model model) {
-		model.addAttribute("contentPage", "../EB_main/review_detail.jsp");
+	@GetMapping("/book.detail")
+	public String bookDetail(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+		System.out.println(bDTO.getB_no());
+		mDAO.bookDetail(bDTO, rDTO, model);
+		mDAO.reviews(bDTO, rDTO, model);
+		model.addAttribute("contentPage", "../EB_main/book_detail.jsp");
 		return "EB_main/main_index";
 	}
 

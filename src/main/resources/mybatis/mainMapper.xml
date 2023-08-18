@@ -2,13 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.eb.mapper.MainMapper">
 
-<select id="bookSearchByName" resultType="BookDTO">
-	select * from eb_book where b_title like '%'|| #{searchText} ||'%'
-</select>
+	<select id="bookSearch" resultType="com.fp.eb.model.BookDTO">
+		<if test="searchOption == 'b_title'">
+			select * from eb_book where b_title like '%'|| #{searchText} ||'%'
+		</if>
+		<if test="searchOption == 'b_authors'">
+			select * from eb_book where b_authors like '%'|| #{searchText} ||'%'
+		</if>
+	</select>
 
-<select id="bookSearchByAuthor" resultType="BookDTO">
-	select * from eb_book where b_authors like '%'|| #{searchText} ||'%'
-</select>
+	<select id="bookDetail" resultType="com.fp.eb.model.BookDTO">
+		select * from eb_book where b_no = #{b_no}
+	</select>
 
+	<select id="reviews" resultType="com.fp.eb.model.ReviewDTO">
+		select * from eb_review, eb_book where r_b_no = b_no and b_no=#{b_no}
+	</select>
 
 </mapper>

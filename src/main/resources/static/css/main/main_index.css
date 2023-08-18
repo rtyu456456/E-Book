@@ -5,6 +5,7 @@ width/height 먼저, 그 다음은 알파벳순
 상하좌우 위치 관련 등 세트가 있는 경우는 같이 씀
  */
 * {
+	color: #26283D;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	margin: 0;
 	padding: 0;
@@ -12,7 +13,7 @@ width/height 먼저, 그 다음은 알파벳순
 
 .main-container-gh {
 	width: 61.1rem;
-	height: 132.8rem;
+	/* height: 132.8rem; */
 	background-color: #F5F6FA;
 	position: relative;
 	background-color: #F5F6FA;
@@ -39,8 +40,8 @@ width/height 먼저, 그 다음은 알파벳순
 		border: none;
 	}
 	.title-gh {
-		width: 25vw;
-		height: 3.6vh;
+		width: 15rem;
+		height: 4.5rem;
 		background-color: transparent;
 		border: none;
 		margin-top: 95px;
@@ -48,14 +49,21 @@ width/height 먼저, 그 다음은 알파벳순
 		margin-right: 250px;
 	}
 	.title-gh img {
-		width: 25vw;
-		height: 3.6vh;
+		width: 15rem;
+		height: 4.5rem;
+	}
+	.logo-gh {
+		width: 3rem;
+		height: 5.5rem;
+		position: absolute;
+		right: 0;
+		margin-right: 3.5rem;
 	}
 	.profile-img-gh {
 		width: 4.05rem;
 		height: 4.05rem;
 		border-radius: 1.5rem;
-		margin-top: 6.9rem;
+		margin-top: 6.5rem;
 		overflow: hidden;
 	}
 	.profile-img-gh img {
@@ -64,23 +72,24 @@ width/height 먼저, 그 다음은 알파벳순
 		object-fit: cover;
 	}
 	/********검색창********/
-	.main-select{
+	.main-select {
 		background-color: transparent;
 		border: none;
 		color: rgb(38, 40, 61);
 		font-size: 2rem;
 		font-weight: bolder;
 	}
-	.main-select option{
+	.main-select option {
 		background: transparent;
 		font-size: 2rem;
 	}
 	.search-gh {
 		display: flex;
 		justify-content: center;
+		margin-bottom: 3.5rem;
 	}
 	.search-box-gh {
-		width: 47rem;
+		width: 44rem;
 		height: 3.7rem;
 		background-color: #ffffff;
 		border-radius: 4rem;
@@ -113,14 +122,13 @@ width/height 먼저, 그 다음은 알파벳순
 		filter: invert(11%) sepia(31%) saturate(930%) hue-rotate(196deg)
 			brightness(92%) contrast(86%);
 		position: absolute;
-		right: 0;
+		right: 0.7rem;
 	}
 	.search-btn-gh img {
 		width: 3rem;
 		height: 3rem;
 	}
 	.main-contents-gh {
-		height: 90vh;
 	}
 	/********베스트 서평********/
 	.best-gh {
@@ -136,17 +144,18 @@ width/height 먼저, 그 다음은 알파벳순
 		margin-top: 2.5rem;
 	}
 	.best-title-gh {
-		color: #26283D;
 		font-size: 2rem;
 		margin-bottom: 0.5rem;
+		margin-left: 2.5rem;
 	}
 	.best-box-gh {
-		width: 55rem;
-		height: 15rem;
+		width: 53rem;
+		height: 16rem;
 		background-color: #ffffff;
-		border-radius: 4rem;
+		border-radius: 3rem;
 		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
 		display: flex;
+		margin-left: 1.2rem;
 		position: relative;
 	}
 	.small-book-gh {
@@ -156,8 +165,8 @@ width/height 먼저, 그 다음은 알파벳순
 		border: none;
 		border-radius: 1rem;
 		box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10) inset;
-		margin-top: 1.8rem;
-		margin-left: 1.8rem;
+		margin-top: 2.3rem;
+		margin-left: 2.3rem;
 		margin-right: 1rem;
 		border-radius: 1rem;
 	}
@@ -172,7 +181,7 @@ width/height 먼저, 그 다음은 알파벳순
 		width: 3rem;
 		height: 3rem;
 		border-radius: 15px;
-		margin-top: 2rem;
+		margin-top: 2.5rem;
 		margin-left: 0.5rem;
 		overflow: hidden;
 	}
@@ -184,42 +193,41 @@ width/height 먼저, 그 다음은 알파벳순
 	.best-name-gh {
 		color: #26283D;
 		font-size: 1.5rem;
-		margin-top: 2.2rem;
+		margin-top: 2.7rem;
 		margin-left: 0.5rem;
 	}
 	.best-grade-gh {
 		color: #779A76;
 		font-size: 1rem;
-		margin-top: 2.8rem;
+		margin-top: 3.3rem;
 		margin-left: 0.5rem;
 	}
 	.reputation-gh {
 		display: flex;
 		top: 0;
-		margin-top: 2rem;
+		margin-top: 2.5rem;
+		margin-right: 1rem;
 		right: 2.5rem;
 		position: absolute;
 	}
 	.reputation-img-gh {
 		width: 2.7vw;
 		height: 2.7vw;
-		margin-top: 2px;
 		margin-left: 20px;
 	}
 	.reputation-count-gh {
-		color: #26283D;
 		font-size: 1rem;
-		margin-left: 5px;
+		margin-top: 0.2rem;
+		margin-left: 0.5rem;
 	}
 	.best-review-gh {
-		width: 39rem;
+		width: 36.5rem;
 		height: 6rem;
 		background-color: #F5F6FA;
 		border-radius: 2rem;
 		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25) inset;
-		color: #26283D;
 		font-size: 1.3rem;
-		margin-top: 87px;
+		margin-top: 6rem;
 		margin-left: 180px;
 		padding-top: 15px;
 		padding-bottom: 15px;
@@ -228,43 +236,5 @@ width/height 먼저, 그 다음은 알파벳순
 		position: absolute;
 	}
 
-	/********검색 결과********/
-	.search-result-gh {
-		
-	}
-	.result-box-gh {
-		width: 90vw;
-		height: 12vh;
-		border: 1px solid black;
-		display: flex;
-		position: relative;
-	}
-	.result-info-gh {
-		font-size: 2em;
-	}
-	.result-title-gh {
-		
-	}
-	.result-author-gh {
-		
-	}
-	.result-company-gh {
-		
-	}
-	.result-reputation-gh {
-		width: 15vw;
-		height: 7vh;
-		border: 1px solid black;
-		font-size: 2em;
-		position: absolute;
-		right: 0;
-	}
-	.result-percent-gh {
-		
-	}
 
-	/* 서평 상세 페이지 */
-	.detail-container-gh h6 {
-		font-size: 1.5em;
-	}
 }

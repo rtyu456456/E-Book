@@ -2,31 +2,37 @@ package com.fp.eb.service;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.fp.eb.mapper.MainMapper;
 import com.fp.eb.model.BookDTO;
+import com.fp.eb.model.ReviewDTO;
 
 @Service
 public class MainDAO {
 
 	@Autowired
-	private SqlSession ss;
+	private MainMapper mainMapper;
 	
-	public void bookSearchByName(BookDTO bDTO, Model model, HttpServletRequest req) {
-		String searchColumn;
+	public void bookSearch(BookDTO bDTO, Model model, HttpServletRequest req) {
 		String searchOption = req.getParameter("searchOption");
 		String searchText = req.getParameter("searchText");
-		
-		model.addAttribute("bookSearch", ss.getMapper(MainMapper.class).bookSearch(bDTO));
+		System.out.println(searchOption);
+		System.out.println(searchText);
+		// 1. bean
+		// 2. map
+		model.addAttribute("bookSearch", mainMapper.bookSearch(searchOption, searchText));
 	}
 
-	public void bookSearchByAuthor(BookDTO bDTO, Model model, HttpServletRequest req) {
-		// TODO Auto-generated method stub
+	public void bookDetail(BookDTO bDTO, ReviewDTO rDTO, Model model) {
+		model.addAttribute("bookSearch", mainMapper.bookDetail(bDTO));
+	}
+
+	public void reviews(BookDTO bDTO, ReviewDTO rDTO, Model model) {
+		model.addAttribute("reviews", mainMapper.reviews(bDTO));
 		
 	}
-	
+
 }

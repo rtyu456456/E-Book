@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/main/main_index.css">
+<link rel="stylesheet" href="css/main/main_search.css">
+<link rel="stylesheet" href="css/main/main_detail.css">
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap')
@@ -26,6 +28,7 @@
 					<img src="/img/pageup_logo.png">
 				</button>
 			</form>
+			<img class="logo-gh" src="/img/logo_icon.png">
 			<div class="profile-img-gh">
 				<!-- a 태그 달아서 마이페이지 가게 하기 -->
 				<img src="/img/daejeon_profile.png">
@@ -36,7 +39,7 @@
 			<div class="search-gh">
 				<select class="main-select" name="searchOption">
 					<option value="b_title">제목</option>
-					<option value="b_author">작가</option>
+					<option value="b_authors">작가</option>
 				</select>
 				<div class="search-box-gh">
 					<input class="input-gh" name="searchText" placeholder="검색어를 입력하세요">

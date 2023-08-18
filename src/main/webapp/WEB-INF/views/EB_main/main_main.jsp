@@ -20,7 +20,7 @@
 			<div class="today-best-gh">
 				<h4 class="best-title-gh">오늘의 베스트 서평</h4>
 				<div class="best-box-gh">
-					<form action="review.detail">
+					<form action="book.detail">
 						<button class="small-book-gh">
 							<img src="/img/book.png">
 						</button>
@@ -43,7 +43,7 @@
 			<div class="weekly-best-gh">
 				<h4 class="best-title-gh">이번주 베스트 서평</h4>
 				<div class="best-box-gh">
-					<form action="review.detail">
+					<form action="book.detail">
 						<button class="small-book-gh">
 							<img src="/img/book.png">
 						</button>
@@ -66,7 +66,7 @@
 			<div class="monthly-best-gh">
 				<h4 class="best-title-gh">이번달 베스트 서평</h4>
 				<div class="best-box-gh">
-					<form action="review.detail">
+					<form action="book.detail">
 						<button class="small-book-gh">
 							<img src="/img/book.png">
 						</button>
