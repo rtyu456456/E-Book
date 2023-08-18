@@ -60,7 +60,6 @@ public class CommunityController {
 	
 	@GetMapping("/do.delete.post")
 	public String doDeletePost(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr, HttpServletRequest request) {
-		
 		cDAO.deleteCommunityPost(cp, model);
 		cDAO.getCommunity(c, model);
 		cDAO.getAllCommunityPost(c, model);
@@ -78,6 +77,29 @@ public class CommunityController {
 		
 		 model.addAttribute("commu_header_page", "community_writing_header.jsp"); 
 		 model.addAttribute("commu_contents_page", "community_writing_contents.jsp"); 
+		return "community/community_page";
+	}
+	
+	
+	@GetMapping("/go.update.post")
+	public String goUpdatePost(Model model, CommunityDTO c, CommunityPostDTO cp) {
+		cDAO.getCommunity(c, model);
+		cDAO.getCommunityPost(cp, model);
+		
+		model.addAttribute("commu_header_page", "community_updateWriting_header.jsp"); 
+		model.addAttribute("commu_contents_page", "community_updateWriting_contents.jsp"); 
+		return "community/community_page";
+	}
+	
+	
+	@GetMapping("/do.update.post")
+	public String doUpdatePost(Model model, CommunityDTO c, CommunityPostDTO cp) {
+		cDAO.updateCommunityPost(cp, model);
+		cDAO.getCommunity(c, model);
+		cDAO.getCommunityPost(cp, model);
+		
+		model.addAttribute("commu_header_page", "community_detail_header.jsp"); 
+		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
 		return "community/community_page";
 	}
 	

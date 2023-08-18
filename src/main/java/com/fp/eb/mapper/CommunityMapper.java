@@ -39,6 +39,8 @@ public interface CommunityMapper {
 
 	int deleteCommunityPost(CommunityPostDTO cp);
 
+	int updateCommunityPost(CommunityPostDTO cp);
+
 	
 	
 }

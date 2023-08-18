@@ -39,6 +39,7 @@
 						<img alt="" src="/img/etc-btn2.png">
 						<div class="etc-btn">
 							<form action="/go.update.post">
+							<input type="hidden" name="c_no" value="${community.c_no }">
 								<button name="cp_no" value="${communityPost.cp_no }"
 									class="etc-btn-1">수정</button>
 							</form>

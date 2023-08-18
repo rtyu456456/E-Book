@@ -48,5 +48,14 @@ public class CommunityDAO {
 	
 	}
 
+	public void updateCommunityPost(CommunityPostDTO cp, Model model) {
+		if (ss.getMapper(CommunityMapper.class).updateCommunityPost(cp) == 1) {
+			System.out.println("커뮤니티 업뎃 성공");	
+		}else {
+			System.out.println("커뮤니티 업뎃 실패");
+		}
+		
+	}
+
 
 }

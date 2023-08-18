@@ -35,5 +35,8 @@
 		delete eb_community_post where cp_no = #{cp_no}
 	</delete>
 
-
+	<update id="updateCommunityPost">
+		update eb_community_post set cp_title = #{cp_title} , cp_contents = #{cp_contents} where cp_no = #{cp_no}
+	</update>
+	
 </mapper>
