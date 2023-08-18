@@ -1,7 +1,9 @@
 package com.fp.eb.model;
 
 import java.math.BigDecimal;
+
 import java.util.Date;
+
 
 public class UserDTO {
 	private String u_id;
@@ -10,10 +12,13 @@ public class UserDTO {
 	private String u_profile;
 	private String u_email;
 	private String u_gender;
-	private BigDecimal u_age;
-	private Date u_login;
-	private BigDecimal u_login_streak;
-	private BigDecimal u_login_total;
+	private int u_age;
+	private int u_login;
+	private int u_login_streak;
+	private int u_login_total;
+//	private BigDecimal u_login; 
+//	private BigDecimal u_login_streak;
+//	private BigDecimal u_login_total;
 	private String u_achievement;
 	private String u_achievement_show;
 
@@ -22,7 +27,7 @@ public class UserDTO {
 	}
 
 	public UserDTO(String u_id, String u_pw, String u_name, String u_profile, String u_email, String u_gender,
-			BigDecimal u_age, Date u_login, BigDecimal u_login_streak, BigDecimal u_login_total, String u_achievement,
+			int u_age, int u_login, int u_login_streak, int u_login_total, String u_achievement,
 			String u_achievement_show) {
 		super();
 		this.u_id = u_id;
@@ -87,35 +92,35 @@ public class UserDTO {
 		this.u_gender = u_gender;
 	}
 
-	public BigDecimal getU_age() {
+	public int getU_age() {
 		return u_age;
 	}
 
-	public void setU_age(BigDecimal u_age) {
+	public void setU_age(int u_age) {
 		this.u_age = u_age;
 	}
 
-	public Date getU_login() {
+	public int getU_login() {
 		return u_login;
 	}
 
-	public void setU_login(Date u_login) {
+	public void setU_login(int u_login) {
 		this.u_login = u_login;
 	}
 
-	public BigDecimal getU_login_streak() {
+	public int getU_login_streak() {
 		return u_login_streak;
 	}
 
-	public void setU_login_streak(BigDecimal u_login_streak) {
+	public void setU_login_streak(int u_login_streak) {
 		this.u_login_streak = u_login_streak;
 	}
 
-	public BigDecimal getU_login_total() {
+	public int getU_login_total() {
 		return u_login_total;
 	}
 
-	public void setU_login_total(BigDecimal u_login_total) {
+	public void setU_login_total(int u_login_total) {
 		this.u_login_total = u_login_total;
 	}
 
@@ -135,4 +140,5 @@ public class UserDTO {
 		this.u_achievement_show = u_achievement_show;
 	}
 
+	
 }

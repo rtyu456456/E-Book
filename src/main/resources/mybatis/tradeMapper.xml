@@ -26,9 +26,18 @@
 
 	<insert id="regTradeBook">
 		insert into eb_trade values
-		(eb_trade_seq.nextval, #{t_owner },#{t_title }, #{t_title_book },#{t_authors },#{t_publisher
-		},#{t_contents },#{t_prcie },#{t_thumbnail },
+		(eb_trade_seq.nextval,
+		#{t_owner },#{t_title }, #{t_title_book },#{t_authors },#{t_publisher },
+		#{t_contents },#{t_prcie },#{t_thumbnail },
 		#{t_map_lat},#{t_map_lng },#{t_marker_lat }, #{t_marker_lng },#{t_soldout }, #{t_date })
+	</insert>
+
+	<select id="getMsg" resultType="com.fp.eb.model.MsgDTO">
+		select * from eb_trade_msg where m_to = #{u_id }
+	</select>
+	
+	<insert id="sendMsg" parameterType="com.fp.eb.model.MsgDTO">
+		insert into eb_trade_msg values(eb_trade_msg_seq.nextval,#{m_trade },#{m_to },#{m_from },#{m_txt },sysdate,#{m_check })
 	</insert>
 
 

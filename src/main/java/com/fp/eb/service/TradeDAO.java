@@ -1,57 +1,88 @@
 package com.fp.eb.service;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
 
 import com.fp.eb.mapper.TradeMapper;
+import com.fp.eb.model.MsgDTO;
 import com.fp.eb.model.TradeDTO;
-import com.fp.eb.model.UserDTO_T;
+import com.fp.eb.model.UserDTO;
 
 @Service
 public class TradeDAO {
 
 	@Autowired
-	private TradeMapper tradeMapper;
+	private SqlSession ss;
+	@Autowired
+	private ServletContext sc;
 
-//	@Autowired
-//	private ServletContext servletcontext;
-
+// -------------------------------------------기본 조회 기능
 	public void getAlltradelist(TradeDTO tDTO, HttpServletRequest req) {
-		List<TradeDTO> trades = tradeMapper.getAlltradelist();
-		System.out.println(trades);
-		req.setAttribute("trades", tradeMapper.getAlltradelist());
+		req.setAttribute("trades", ss.getMapper(TradeMapper.class).getAlltradelist(tDTO, req));
 		System.out.println("중고거래 메인");
-
 	}
 
 	public void getTradeDetail(TradeDTO tDTO, HttpServletRequest req) {
-		req.setAttribute("trade", tradeMapper.getTradeDetail(tDTO));
+		req.setAttribute("trade", ss.getMapper(TradeMapper.class).getTradeDetail(tDTO));
 		System.out.println("거래 상품 상세 정보 조회");
 	}
 
 	public void getTradeList(TradeDTO tDTO, HttpServletRequest req) {
-		req.setAttribute("trades", tradeMapper.getTradeList(tDTO));
+		req.setAttribute("trades", ss.getMapper(TradeMapper.class).getTradeList(tDTO));
 		System.out.println("거래 상품 검색 조회");
 	}
 
-	public void getTradeListMe(UserDTO_T uDTO, HttpServletRequest req) {
-		req.setAttribute("trades", tradeMapper.getTradelistMe(uDTO));
+	public void getTradeListMe(UserDTO uDTO, HttpServletRequest req) {
+		req.setAttribute("trades", ss.getMapper(TradeMapper.class).getTradelistMe(uDTO));
 		System.out.println("내 판매 도서 목록 조회");
 	}
 
-	public void regTradeBook(TradeDAO tDTO, HttpServletRequest req) {
+// ---------------------------------- 쪽지 기능
 
+	public void getMsg(HttpServletRequest req) {
+		try {
+			UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
+			req.setAttribute("msgs", ss.getMapper(TradeMapper.class).getMsg(uDTO));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	public void sendMsg(MsgDTO mDTO, HttpServletRequest req, Date sysdate) {
+		try {
+			UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
+
+			int trade = Integer.parseInt(req.getParameter("m_trade"));
+			mDTO.setM_trade(trade);
+			String to = req.getParameter("m_to");
+			mDTO.setM_to(to);
+			String from = req.getParameter("m_from");
+			mDTO.setM_from(from);
+			String txt = req.getParameter("m_txt");
+			mDTO.setM_txt(txt);
+			mDTO.setM_when(sysdate);
+			mDTO.setM_check(0);
+
+			if (ss.getMapper(TradeMapper.class).sendMsg(mDTO) == 1) {
+				req.setAttribute("result", "쪽지보내기성공");
+
+			} else {
+				req.setAttribute("result", "쪽지보내기실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "쪽지보내기실패");
+		}
 	}
 
 }

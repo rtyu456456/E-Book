@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
 	<div class="trade-search">
 		<span>제목 <img class="search-under" src="/img/Polygon1.png"></span>
 		

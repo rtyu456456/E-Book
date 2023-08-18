@@ -13,35 +13,36 @@
 	<div class="container-reg">
 		<div class="reginfo">
 			<br>
-			<form action="" method="post" enctype="multipart-form/data">
+			<form action="reg.trade.book" method="post"
+				enctype="multipart/form-data">
 				<br>
 				<div class="book-info-reg">책 정보를 입력해 주세요</div>
 				<br>
 				<div class="input-group">
-					<input placeholder="책 이름">
+					<input placeholder="책 이름" name="t_title_book">
 				</div>
 				<div class="input-group">
-					<input placeholder="저자">
+					<input placeholder="저자" name="t_authors">
 				</div>
 				<div class="input-group">
-					<input placeholder="출판사">
+					<input placeholder="출판사" name="t_publisher">
 				</div>
 				<div class="input-group">
 					<input placeholder="정가">
 				</div>
 				<div class="input-group">
-					<input placeholder="판매가">
+					<input placeholder="판매가" name="t_price">
 				</div>
 				<div class="input-group">
-					<input type="file">
+					<input type="file" name="t_thumbnail">
 				</div>
 				<div class="input-group">
 					<textarea rows="8" cols="2" placeholder="도서 상태 정보"></textarea>
 				</div>
 
 				<div class="input-group">
-					<a href="trade.map.go">희망 장소 선택하기</a> <span>${param.inputContent }
-					</span>
+					<a href="trade.map.go">희망 장소 선택하기</a>
+					<span>${param.inputContent }</span>
 				</div>
 				<div class="reg-btn">
 					<button>등록하기</button>
