@@ -52,24 +52,5 @@ public class UserController {
 		return "user/user_main";
 	}
 	
-	// --------- 여기까지 user CRUD --------------------
-	
-	@GetMapping("/bookRecord.fin")
-	public String bookRecordFin(HttpServletRequest req, UserDTO uDTO) {
-		req.setAttribute("contentPage", "bookrecord_fin.jsp");
-		return "user/user_main";
-	}
-
-	@GetMapping("/bookRecord.ing")
-	public String bookRecordIng(HttpServletRequest req, UserDTO uDTO) {
-		req.setAttribute("contentPage", "bookrecord_ing.jsp");
-		return "user/user_main";
-	}
-	
-	@GetMapping("/bookRecord.wish")
-	public String bookRecordWish(HttpServletRequest req, UserDTO uDTO) {
-		req.setAttribute("contentPage", "bookrecord_wish.jsp");
-		return "user/user_main";
-	}
 
 }
