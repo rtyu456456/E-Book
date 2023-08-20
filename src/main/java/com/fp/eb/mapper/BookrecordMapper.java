@@ -13,4 +13,8 @@ public interface BookrecordMapper {
 
 	List<BookrecordDTO> getBookFin();
 
+	int updateCurPage(BookrecordDTO brDTO);
+
+	int getCurPage(BookrecordDTO brDTO);
+
 }

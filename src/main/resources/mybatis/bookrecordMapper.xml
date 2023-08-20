@@ -3,11 +3,20 @@
 <mapper namespace="com.fp.eb.mapper.BookrecordMapper">
 
 <select id="getBookIng" resultType="com.fp.eb.model.BookrecordDTO">
-	SELECT B_TITLE, B_THUMBNAIL, B_PAGE, B_AUTHORS, BR_NO, BR_PAGE, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE != BR_PAGE 
+	SELECT B_TITLE, B_THUMBNAIL, B_PAGE, B_AUTHORS, BR_NO, BR_PAGE, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE != BR_PAGE ORDER BY BR_NO DESC
 </select>
 
 <select id="getBookFin" resultType="com.fp.eb.model.BookrecordDTO">
 	SELECT B_TITLE, B_THUMBNAIL, B_PAGE, B_AUTHORS, BR_NO, BR_PAGE, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE = BR_PAGE ORDER BY BR_DATE 
 </select>
+
+<select id="getCurPage" resultType="integer">
+	SELECT BR_PAGE FROM EB_BOOK_RECORD WHERE BR_NO = #{br_no} 
+</select>
+
+<update id="updateCurPage" parameterType="com.fp.eb.model.BookrecordDTO">
+	UPDATE EB_BOOK_RECORD SET BR_PAGE = #{br_page} WHERE BR_NO = #{br_no}
+</update>
+
 
 </mapper>
