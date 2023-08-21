@@ -17,7 +17,8 @@
 		</button>
 		</form>
 		<br>
-		
+
+		<br>
 		<c:forEach var="c" items="${communitys }">
 			<form id="communitys-name" action="/go.commu.post">
 				<button class="commu_board_btn" name="c_no" value="${c.c_no }">

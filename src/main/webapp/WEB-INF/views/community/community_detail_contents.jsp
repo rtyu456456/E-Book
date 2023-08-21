@@ -57,7 +57,7 @@
 			</div>
 			<br>
 			<div class="post_icon">
-				<button class="post_like_icon" onclick="" value="${communityPost.cp_like }">
+				<button class="post_like_icon" value="${communityPost.cp_no }">
 					<img alt="" src="/img/like_icon.png"> &nbsp;
 					<div>${communityPost.cp_like }</div>
 				</button>
@@ -88,19 +88,23 @@
 			</c:forEach>
 
 		</div>
+		<form action="/reg.reply">
+		<input hidden="hidden" name="cp_no" value="${communityPost.cp_no }">
+		<input hidden="hidden" name="c_no" value="${community.c_no }">
 		<div class="post_reply_input">
 			<div class="box_shadow_reply">
 				<div class="box-shadow-1">
-					<textarea rows="1" class="post_reply_text" onkeydown="resize(this)"
+					<textarea name="cr_contents" rows="1" class="post_reply_text" onkeydown="resize(this)"
 						onkeyup="resize(this)" placeholder="댓글을 입력하세요."></textarea>
 				</div>
 				<div class="box-shadow-2">
-					<button class="commu_seach_btn">
+					<button name="cr_cp_no" value="${communityPost.cp_no }" class="commu_seach_btn">
 						<img src="/img/전송버튼_icon.png" maxlength=10>
 					</button>
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
 
 	<dialog id="deleteModal">

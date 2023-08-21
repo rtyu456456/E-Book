@@ -44,4 +44,16 @@
 		update eb_community_post set cp_title = #{cp_title} , cp_contents = #{cp_contents} where cp_no = #{cp_no}
 	</update>
 	
+	<insert id="insertCommunity">
+		insert into eb_community values(eb_community_seq.nextval, #{c_name})
+	</insert>
+	
+	<insert id="insertWritingPost">
+		insert into eb_community_post values(eb_cp_seq.nextval, 'jsa', #{cp_title}, #{cp_contents}, #{cp_community}, 0, 0, current_date)
+	</insert>
+	
+	<insert id="regReply">
+		insert into eb_community_reply values(eb_cr_seq.nextval, 'jsa22', #{cr_cp_no}, #{cr_contents} ,0,0, current_date)
+	</insert>
+	
 </mapper>

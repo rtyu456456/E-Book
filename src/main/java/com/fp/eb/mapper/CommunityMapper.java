@@ -43,6 +43,12 @@ public interface CommunityMapper {
 
 	List<CommunityDTO>  seachAllCommunity(CommunityDTO c);
 
+	int insertCommunity(CommunityDTO c);
+
+	int insertWritingPost(CommunityPostDTO cp);
+	
+	int regReply(CommunityReplyDTO cr);
+
 	
 	
 }

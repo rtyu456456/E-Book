@@ -46,6 +46,24 @@ public class CommunityController {
 		return "community/community_page";
 	}
 	
+	@GetMapping("/seach.all.community")
+	public String seachAllCommunity(Model model, CommunityDTO c) {
+		cDAO.getAllCommunity (model); 
+		
+		
+		model.addAttribute("commu_header_page", "community_main_header.jsp"); 
+		model.addAttribute("commu_contents_page", "community_seach_main_contents.jsp"); 
+		return "community/community_page";
+	}
+	
+	@GetMapping("/go.made.post")
+	public String goMadePost(Model model, CommunityDTO c, CommunityPostDTO cp) {
+		
+		model.addAttribute("commu_header_page", "community_main_header.jsp"); 
+		model.addAttribute("commu_contents_page", "community_madePost_contents.jsp"); 
+		return "community/community_page";
+	}
+	
 	@GetMapping("/go.commu.post")
 	public String goBoard(Model model, CommunityDTO c) {
 		cDAO.getCommunity(c, model);
@@ -62,6 +80,19 @@ public class CommunityController {
 		 cDAO.getCommunity(c, model); 
 		 cDAO.getCommunityPost(cp, model);
 		 cDAO.getReplys(cp, model);
+		
+		model.addAttribute("commu_header_page", "community_detail_header.jsp"); 
+		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
+		return "community/community_page";
+	}
+	
+	@GetMapping("/reg.reply")
+	public String regReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
+		cDAO.regReply(cr);
+		
+		cDAO.getCommunity(c, model); 
+		cDAO.getCommunityPost(cp, model);
+		cDAO.getReplys(cp, model);
 		
 		model.addAttribute("commu_header_page", "community_detail_header.jsp"); 
 		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
@@ -90,6 +121,17 @@ public class CommunityController {
 		return "community/community_page";
 	}
 	
+	@GetMapping("/do.writing.page")
+	public String doWritingPage(Model model, CommunityDTO c, CommunityPostDTO cp) {
+		cDAO.insertWritingPost(cp);
+		
+		cDAO.getCommunity(c, model);
+		cDAO.getAllCommunityPost(c, model);
+		 model.addAttribute("commu_header_page", "community_post_header.jsp"); 
+		 model.addAttribute("commu_contents_page", "community_post_contents.jsp"); 
+		return "community/community_page";
+	}
+	
 	
 	@GetMapping("/go.update.post")
 	public String goUpdatePost(Model model, CommunityDTO c, CommunityPostDTO cp) {
@@ -112,6 +154,17 @@ public class CommunityController {
 		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
 		return "community/community_page";
 	}
+	
+	@GetMapping("/do.made.post")
+	public String doMadePost(Model model, CommunityDTO c, CommunityPostDTO cp) {
+		cDAO.insertCommunityPost(c, model);
+		cDAO.getAllCommunity (model); 
+		
+		model.addAttribute("commu_header_page", "community_main_header.jsp"); 
+		model.addAttribute("commu_contents_page", "community_seach_main_contents.jsp"); 
+		return "community/community_page";
+	}
+	
 	
 	
 

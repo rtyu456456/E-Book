@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import com.fp.eb.mapper.CommunityMapper;
 import com.fp.eb.model.CommunityDTO;
 import com.fp.eb.model.CommunityPostDTO;
+import com.fp.eb.model.CommunityReplyDTO;
 
 @Service
 public class CommunityDAO {
@@ -59,6 +60,33 @@ public class CommunityDAO {
 
 	public void seachCommunity(CommunityDTO c, Model model) {
 		model.addAttribute("communitys", ss.getMapper(CommunityMapper.class).seachAllCommunity(c));
+	}
+
+	
+	public void insertCommunityPost(CommunityDTO c, Model model) {
+		if (ss.getMapper(CommunityMapper.class).insertCommunity(c) == 1) {
+			System.out.println("커뮤니티 등록 성공");	
+		}else {
+			System.out.println("커뮤니티 등록 실패");
+		}
+	}
+
+	public void insertWritingPost(CommunityPostDTO cp) {
+		if (ss.getMapper(CommunityMapper.class).insertWritingPost(cp) == 1) {
+			System.out.println("글쓰기 등록 성공");	
+		}else {
+			System.out.println("글쓰기 등록 실패");
+		}
+		
+	}
+
+	public void regReply(CommunityReplyDTO cr) {
+		if (ss.getMapper(CommunityMapper.class).regReply(cr) == 1) {
+			System.out.println("댓글 등록 성공");	
+		}else {
+			System.out.println("댓글 등록 실패");
+		}
+		
 	}
 
 

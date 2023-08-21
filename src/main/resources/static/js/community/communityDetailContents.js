@@ -26,6 +26,13 @@ document.addEventListener('mouseup', function(e) {
 
 
 
+
+
+
+
+
+
+
 /*모달 코드*/
 let deleteModal = document.getElementById("deleteModal");
 let deletePostBtn = document.getElementById("delete-post-btn");
