@@ -31,7 +31,7 @@
 						</div>
 						&nbsp;&nbsp;
 						<div class="post_chat">
-							<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png">0
+							<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png">${cp.cp_reviewCnt }
 						</div>
 					</div>
 				</div>

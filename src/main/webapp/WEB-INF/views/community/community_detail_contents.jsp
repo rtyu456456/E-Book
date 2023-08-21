@@ -67,7 +67,7 @@
 				</button>
 				<div class="post_chat_icon">
 					<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png"> &nbsp;
-					<div>0</div>
+					<div>${countReplys }</div>
 				</div>
 			</div>
 			<br>

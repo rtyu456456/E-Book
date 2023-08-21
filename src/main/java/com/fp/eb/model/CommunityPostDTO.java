@@ -16,8 +16,21 @@ public class CommunityPostDTO {
 	private BigDecimal cp_dislike;
 	private Date cp_date;
 	private String cp_date2;
+	private int cp_reviewCnt;
 	
-	
+
+	public int getCp_reviewCnt() {
+		return cp_reviewCnt;
+	}
+
+	public void setCp_reviewCnt(int cp_reviewCnt) {
+		this.cp_reviewCnt = cp_reviewCnt;
+	}
+
+	public void setCp_date2(String cp_date2) {
+		this.cp_date2 = cp_date2;
+	}
+
 	public String getCp_date2() {
 		return cp_date2;
 	}

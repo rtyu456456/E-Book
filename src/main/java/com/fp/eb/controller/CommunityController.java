@@ -65,7 +65,7 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/go.commu.post")
-	public String goBoard(Model model, CommunityDTO c) {
+	public String goBoard(Model model, CommunityDTO c, CommunityPostDTO cp) {
 		cDAO.getCommunity(c, model);
 		cDAO.getAllCommunityPost(c, model);
 		
@@ -78,8 +78,12 @@ public class CommunityController {
 	@GetMapping("/go.commu.detail")
 	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
 		 cDAO.getCommunity(c, model); 
+		 System.out.println(11);
 		 cDAO.getCommunityPost(cp, model);
+		 System.out.println(22);
 		 cDAO.getReplys(cp, model);
+		 System.out.println(33);
+		 cDAO.getCountReplys(cp.getCp_no(), model); 
 		
 		model.addAttribute("commu_header_page", "community_detail_header.jsp"); 
 		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
@@ -89,6 +93,7 @@ public class CommunityController {
 	@GetMapping("/reg.reply")
 	public String regReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
 		cDAO.regReply(cr);
+//		cDAO.getCountReplys(cr, model);
 		
 		cDAO.getCommunity(c, model); 
 		cDAO.getCommunityPost(cp, model);

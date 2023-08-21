@@ -1,7 +1,9 @@
 package com.fp.eb.service;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +30,14 @@ public class CommunityDAO {
 	}
 
 	public void getAllCommunityPost(CommunityDTO c, Model model) {
-		model.addAttribute("communityPosts", ss.getMapper(CommunityMapper.class).getAllCommunityPost(c));
+		List<CommunityPostDTO> posts = ss.getMapper(CommunityMapper.class).getAllCommunityPost(c);
+		for (CommunityPostDTO cp : posts) {
+			cp.setCp_reviewCnt(getCountReplys(cp.getCp_no()));
+		}
+		
+		model.addAttribute("communityPosts", posts);
 	}
+
 
 	public void getCommunityPost(CommunityPostDTO cp, Model model) {
 		model.addAttribute("communityPost", ss.getMapper(CommunityMapper.class).getCommunityPost(cp));
@@ -37,6 +45,14 @@ public class CommunityDAO {
 
 	public void getReplys(CommunityPostDTO cp, Model model) {
 		model.addAttribute("communityReplys", ss.getMapper(CommunityMapper.class).getAllReplys(cp));
+	}
+	
+	public void getCountReplys(BigDecimal bigDecimal, Model model) {
+		model.addAttribute("countReplys", ss.getMapper(CommunityMapper.class).getCountReplys(bigDecimal));
+	}
+	
+	private int getCountReplys(BigDecimal cp_no) {
+		return ss.getMapper(CommunityMapper.class).getCountReplys(cp_no);
 	}
 
 	public void deleteCommunityPost(CommunityPostDTO cp, Model model) {
@@ -88,6 +104,7 @@ public class CommunityDAO {
 		}
 		
 	}
+
 
 
 }

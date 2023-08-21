@@ -1,5 +1,6 @@
 package com.fp.eb.mapper;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -36,6 +37,8 @@ public interface CommunityMapper {
 	CommunityPostDTO getCommunityPost(CommunityPostDTO cp);
 
 	List<CommunityReplyDTO> getAllReplys(CommunityPostDTO cp);
+	
+	int getCountReplys(BigDecimal bigDecimal);
 
 	int deleteCommunityPost(CommunityPostDTO cp);
 
