@@ -17,7 +17,17 @@ public class CommunityPostDTO {
 	private Date cp_date;
 	private String cp_date2;
 	private int cp_reviewCnt;
+	private String cp_seach;
 	
+	
+
+	public String getCp_seach() {
+		return cp_seach;
+	}
+
+	public void setCp_seach(String cp_seach) {
+		this.cp_seach = cp_seach;
+	}
 
 	public int getCp_reviewCnt() {
 		return cp_reviewCnt;

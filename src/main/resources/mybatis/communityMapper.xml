@@ -9,17 +9,25 @@
 
 	<select id="seachAllCommunity"
 		resultType="com.fp.eb.model.CommunityDTO">
-		select * from eb_community where c_name like '%'||#{c_name}||'%'
+		select * from eb_community where c_name like
+		'%'||#{c_name}||'%'
 	</select>
 
 	<select id="getAllCommunityPost"
 		resultType="com.fp.eb.model.CommunityPostDTO"
 		parameterType="com.fp.eb.model.CommunityDTO">
-
 		select * from eb_community_post, eb_community
 		where
 		cp_community = c_no and c_no=#{c_no} order by cp_date desc
 	</select>
+
+	<select id="seachAllCommunityPost"
+		resultType="com.fp.eb.model.CommunityPostDTO">
+		select * from eb_community_post where cp_title like '%'||#{cp_seach}||'%' or
+		cp_contents like '%'||#{cp_seach}||'%' order by cp_date desc
+	</select>
+
+
 
 	<select id="getCommunity"
 		resultType="com.fp.eb.model.CommunityDTO">
@@ -31,36 +39,45 @@
 		select * from eb_community_post where cp_no = #{cp_no}
 	</select>
 
-	<select id="getAllReplys" resultType="com.fp.eb.model.CommunityReplyDTO">
+	<select id="getAllReplys"
+		resultType="com.fp.eb.model.CommunityReplyDTO">
 		select * from eb_community_reply, eb_community_post
-		where cr_cp_no = cp_no and cp_no=#{cp_no}
+		where
+		cr_cp_no = cp_no and cp_no=#{cp_no}
 	</select>
-	
-	
+
+
 	<select id="getCountReplys" resultType="int">
-		select count(*) from eb_community_reply where cr_cp_no = #{no}
+		select count(*) from
+		eb_community_reply where cr_cp_no = #{no}
 	</select>
-	
-	
-	
+
+
+
 	<delete id="deleteCommunityPost">
 		delete eb_community_post where cp_no = #{cp_no}
 	</delete>
 
 	<update id="updateCommunityPost">
-		update eb_community_post set cp_title = #{cp_title} , cp_contents = #{cp_contents} where cp_no = #{cp_no}
+		update eb_community_post set cp_title = #{cp_title} ,
+		cp_contents = #{cp_contents} where cp_no = #{cp_no}
 	</update>
-	
+
 	<insert id="insertCommunity">
-		insert into eb_community values(eb_community_seq.nextval, #{c_name})
+		insert into eb_community
+		values(eb_community_seq.nextval, #{c_name})
 	</insert>
-	
+
 	<insert id="insertWritingPost">
-		insert into eb_community_post values(eb_cp_seq.nextval, 'jsa', #{cp_title}, #{cp_contents}, #{cp_community}, 0, 0, current_date)
+		insert into eb_community_post
+		values(eb_cp_seq.nextval, 'jsa', #{cp_title}, #{cp_contents},
+		#{cp_community}, 0, 0, current_date)
 	</insert>
-	
+
 	<insert id="regReply">
-		insert into eb_community_reply values(eb_cr_seq.nextval, 'jsa22', #{cr_cp_no}, #{cr_contents} ,0,0, current_date)
+		insert into eb_community_reply
+		values(eb_cr_seq.nextval, 'jsa22', #{cr_cp_no}, #{cr_contents} ,0,0,
+		current_date)
 	</insert>
-	
+
 </mapper>

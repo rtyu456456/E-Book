@@ -105,6 +105,16 @@ public class CommunityDAO {
 		
 	}
 
+	
+	public void seachCommunityPost(CommunityPostDTO cp, Model model) {
+		List<CommunityPostDTO> posts = ss.getMapper(CommunityMapper.class).seachAllCommunityPost(cp);
+		for (CommunityPostDTO scp : posts) {
+			cp.setCp_reviewCnt(getCountReplys(scp.getCp_no()));
+		}
+		
+		model.addAttribute("communityPosts", posts);
+	}
+
 
 
 }

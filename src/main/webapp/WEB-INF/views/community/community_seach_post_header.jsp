@@ -21,13 +21,20 @@
 				</button>
 			</form>
 			<div id="community_name">${community.c_name }</div>
-			<form action="/go.seach.post">
-			<button name="c_no" value="${community.c_no }" class="seach">
-				<img alt="" src="/img/돋보기_icon.png">
-			</button>
-			</form>
+			<div id="empty"></div>
 		</div>
 
+		<form action="/do.seach.post">
+		<div class="commu_menu top" style="margin-top: -3rem;">
+			<div class="box_shadow">
+				<input name="cp_seach" class="commu_seach" placeholder="글 제목, 내용">
+				<button name="c_no" value="${community.c_no }" class="commu_seach_btn">
+					<img src="/img/돋보기_icon.png" maxlength=10>
+				</button>
+			</div>
+		</div>
+		</form>
+		
 	</div>
 
 

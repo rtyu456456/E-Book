@@ -52,6 +52,8 @@ public interface CommunityMapper {
 	
 	int regReply(CommunityReplyDTO cr);
 
+	List<CommunityPostDTO> seachAllCommunityPost(CommunityPostDTO cp);
+
 	
 	
 }
