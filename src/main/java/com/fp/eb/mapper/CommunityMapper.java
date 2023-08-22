@@ -54,6 +54,10 @@ public interface CommunityMapper {
 
 	List<CommunityPostDTO> seachAllCommunityPost(CommunityPostDTO cp);
 
+	List<CommunityPostDTO> getAllMyPost(CommunityPostDTO cp);
+
+	List<CommunityPostDTO> getAllMyReply(CommunityReplyDTO cr);
+
 	
 	
 }

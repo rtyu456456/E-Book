@@ -28,7 +28,7 @@ public class CommunityController {
 	// HC도 못써
 
 	@GetMapping("/community_main")
-	public String goCommunityMain(Model model) {
+	public String goCommunityMain(Model model, CommunityPostDTO cp) {
 		cDAO.getAllCommunity(model);
 
 		model.addAttribute("commu_header_page", "community_main_header.jsp");
@@ -71,6 +71,38 @@ public class CommunityController {
 		model.addAttribute("commu_contents_page", "community_post_contents.jsp");
 		return "community/community_page";
 	}
+	
+	@GetMapping("/go.my.post")
+	public String goMyPost(Model model, CommunityDTO c, CommunityPostDTO cp) {
+		cDAO.getAllMyPost(cp, model);
+		
+		
+		model.addAttribute("commu_header_page", "community_mypost_header.jsp");
+		model.addAttribute("commu_contents_page", "community_mypost_contents.jsp");
+		return "community/community_page";
+	}
+	
+	@GetMapping("/delete.my.post")
+	public String deleteMyPost(Model model, CommunityDTO c, CommunityPostDTO cp) {
+		cDAO.deleteCommunityPost(cp, model);
+		cDAO.getAllMyPost(cp, model);
+		
+		
+		model.addAttribute("commu_header_page", "community_mypost_header.jsp");
+		model.addAttribute("commu_contents_page", "community_mypost_contents.jsp");
+		return "community/community_page";
+	}
+	
+	@GetMapping("/go.my.reply")
+	public String goMyReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
+		cDAO.getAllMyReply(cr, model);
+		
+		
+		model.addAttribute("commu_header_page", "community_myreply_header.jsp");
+		model.addAttribute("commu_contents_page", "community_myreply_contents.jsp");
+		return "community/community_page";
+	}
+	
 
 	@GetMapping("/go.seach.post")
 	public String goSeachPost(Model model, CommunityDTO c, CommunityPostDTO cp) {

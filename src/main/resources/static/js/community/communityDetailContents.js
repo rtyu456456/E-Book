@@ -16,7 +16,7 @@ function showMenu(etcM){
 	
 }
 
-/*button-etc 영역 외에 다른 것을 눌렀을 때 코드*/
+//button-etc 영역 외에 다른 것을 눌렀을 때 코드
 document.addEventListener('mouseup', function(e) {
     if (!btnOnOff.contains(e.target)) {
 	defaultBtn.style.visibility ='visible';

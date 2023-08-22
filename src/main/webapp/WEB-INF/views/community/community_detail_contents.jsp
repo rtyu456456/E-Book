@@ -122,4 +122,5 @@
 
 
 </body>
+<script type="text/javascript" src="js/community/communityDetailContents.js"></script>
 </html>

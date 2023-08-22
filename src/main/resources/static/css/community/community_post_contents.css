@@ -99,8 +99,10 @@ and
 }	
 
 .empty_space{
+	border: 1rem solid white;
 	height: 10vh;
 	background-color: transparent;
+	border-radius: 4rem;
 }
 
 .post_writing button{

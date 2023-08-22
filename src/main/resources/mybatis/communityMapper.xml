@@ -20,6 +20,17 @@
 		where
 		cp_community = c_no and c_no=#{c_no} order by cp_date desc
 	</select>
+	
+	<select id="getAllMyPost"
+		resultType="com.fp.eb.model.CommunityPostDTO">
+		select * from eb_community_post where cp_owner = #{cp_owner} order by cp_date desc
+	</select>
+	
+	<select id="getAllMyReply"
+		resultType="com.fp.eb.model.CommunityPostDTO"
+		parameterType="com.fp.eb.model.CommunityReplyDTO">
+		select * from eb_community_post, eb_community_reply where cp_no = cr_cp_no and cr_owner= #{cr_owner} order by cp_date desc
+	</select>
 
 	<select id="seachAllCommunityPost"
 		resultType="com.fp.eb.model.CommunityPostDTO">
@@ -76,7 +87,7 @@
 
 	<insert id="regReply">
 		insert into eb_community_reply
-		values(eb_cr_seq.nextval, 'jsa22', #{cr_cp_no}, #{cr_contents} ,0,0,
+		values(eb_cr_seq.nextval, '김포공주', #{cr_cp_no}, #{cr_contents} ,0,0,
 		current_date)
 	</insert>
 

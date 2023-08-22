@@ -33,6 +33,4 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="js/community/communityMainPage.js"></script>
-<script type="text/javascript" src="js/community/communityDetailContents.js"></script>
 </html>

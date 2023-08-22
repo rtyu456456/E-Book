@@ -109,12 +109,33 @@ public class CommunityDAO {
 	public void seachCommunityPost(CommunityPostDTO cp, Model model) {
 		List<CommunityPostDTO> posts = ss.getMapper(CommunityMapper.class).seachAllCommunityPost(cp);
 		for (CommunityPostDTO scp : posts) {
-			cp.setCp_reviewCnt(getCountReplys(scp.getCp_no()));
+			scp.setCp_reviewCnt(getCountReplys(scp.getCp_no()));
 		}
 		
 		model.addAttribute("communityPosts", posts);
 	}
 
+	
+	public void getAllMyPost(CommunityPostDTO cp, Model model) {
+		List<CommunityPostDTO> posts = ss.getMapper(CommunityMapper.class).getAllMyPost(cp);
+		for (CommunityPostDTO scp : posts) {
+			scp.setCp_reviewCnt(getCountReplys(scp.getCp_no()));
+		}
+		
+		model.addAttribute("communityPosts", posts);
+	}
+
+	public void getAllMyReply(CommunityReplyDTO cr, Model model) {
+		List<CommunityPostDTO> posts = ss.getMapper(CommunityMapper.class).getAllMyReply(cr);
+		for (CommunityPostDTO scp : posts) {
+			scp.setCp_reviewCnt(getCountReplys(scp.getCp_no()));
+		}
+		
+		model.addAttribute("communityPosts", posts);
+		
+	}
+
+	
 
 
 }
