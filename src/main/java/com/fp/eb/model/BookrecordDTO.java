@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class BookrecordDTO {
+	private BigDecimal b_no;
 	private String b_thumbnail;
 	private String b_title;
 	private BigDecimal b_page;
@@ -11,6 +12,8 @@ public class BookrecordDTO {
 	private BigDecimal br_no;
 	private BigDecimal br_page;
 	private Date br_date;
+	private BigDecimal lr_no;
+	
 	
 	
 	public BookrecordDTO() {
@@ -18,6 +21,30 @@ public class BookrecordDTO {
 	}
 	
 	
+
+	public BigDecimal getB_no() {
+		return b_no;
+	}
+
+
+
+	public void setB_no(BigDecimal b_no) {
+		this.b_no = b_no;
+	}
+
+
+
+	public BigDecimal getLr_no() {
+		return lr_no;
+	}
+
+
+
+	public void setLr_no(BigDecimal lr_no) {
+		this.lr_no = lr_no;
+	}
+
+
 
 	public String getB_title() {
 		return b_title;

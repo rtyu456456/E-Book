@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.fp.eb.model.BookrecordDTO;
+import com.fp.eb.model.UserDTO;
 
 @Mapper
 public interface BookrecordMapper {
@@ -16,5 +17,15 @@ public interface BookrecordMapper {
 	int updateCurPage(BookrecordDTO brDTO);
 
 	int getCurPage(BookrecordDTO brDTO);
+
+	List<BookrecordDTO> getBookWish();
+
+	int delWish(BookrecordDTO brDTO);
+
+	int regIng(BookrecordDTO brDTO, UserDTO uDTO);
+
+	int getIngByNo(BookrecordDTO brDTO, UserDTO uDTO);
+
+	int delBr(BookrecordDTO brDTO);
 
 }

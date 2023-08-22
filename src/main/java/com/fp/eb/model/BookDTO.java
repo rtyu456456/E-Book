@@ -11,6 +11,7 @@ public class BookDTO {
 	private int b_page;
 	private int b_price;
 	private String b_thumbnail;
+	private String type; // 읽고싶은책 검색 시 등록용
 
 	public BookDTO() {
 		// TODO Auto-generated constructor stub
@@ -29,6 +30,16 @@ public class BookDTO {
 		this.b_page = b_page;
 		this.b_price = b_price;
 		this.b_thumbnail = b_thumbnail;
+	}
+
+	
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getB_no() {

@@ -8,6 +8,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -230,9 +231,18 @@ public class BookDAO {
 		}
 	}
 
-	public void getBookTest() {
+	public List<BookDTO> getDBBookData(BookDTO bDTO, HttpServletRequest req) {
+		System.out.println(bDTO.getB_title());
+		System.out.println(bDTO.getB_authors());
 		
+		if(bDTO.getB_title() != null) {
+			return bMapper.getDBBookByTitle(bDTO);
+		} else {
+			return bMapper.getDBBookByAuthors(bDTO);
+		}
 		
 	}
+
+
 
 }

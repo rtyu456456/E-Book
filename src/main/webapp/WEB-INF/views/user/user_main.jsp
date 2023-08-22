@@ -58,4 +58,5 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="js/user/bookrecord.js"></script>
 </html>

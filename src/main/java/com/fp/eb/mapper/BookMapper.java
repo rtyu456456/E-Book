@@ -14,4 +14,8 @@ public interface BookMapper {
 	BookDTO getBookByISBN(BookDTO bDTO);
 	
 	int regBook(BookDTO bDTO);
+
+	List<BookDTO> getDBBookByTitle(BookDTO bDTO);
+
+	List<BookDTO> getDBBookByAuthors(BookDTO bDTO);
 }

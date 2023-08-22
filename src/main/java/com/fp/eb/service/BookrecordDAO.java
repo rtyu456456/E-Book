@@ -28,13 +28,37 @@ public class BookrecordDAO {
 	}
 
 	public int getPage(BookrecordDTO brDTO) {
-		
+
 		brMapper.updateCurPage(brDTO);
 		// br_page update
-		System.out.println(brDTO.getBr_no());
-		System.out.println(brDTO.getBr_page());
 		return brMapper.getCurPage(brDTO);
 		// get br_page
 	}
+
+	public void getBookWish(HttpServletRequest req) {
+
+		req.setAttribute("bookrecords", brMapper.getBookWish());
+
+	}
+
+	public void delWish(BookrecordDTO brDTO) {
+
+		brMapper.delWish(brDTO);
+	}
+
+	public void delBr(BookrecordDTO brDTO) {
+		brMapper.delBr(brDTO);
+	}
+
+	public void regIng(BookrecordDTO brDTO, UserDTO uDTO) {
+		System.out.println(brDTO.getB_no());
+		System.out.println(brDTO.getLr_no());
+		if (brMapper.getIngByNo(brDTO, uDTO) == 0) {
+			brMapper.regIng(brDTO, uDTO);
+		}
+		
+		brMapper.delWish(brDTO);
+	}
+
 
 }

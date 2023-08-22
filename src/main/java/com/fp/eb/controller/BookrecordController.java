@@ -31,8 +31,41 @@ public class BookrecordController {
 		return "user/user_main";
 	}
 
+	@GetMapping("/reg.ing")
+	public String regIng(HttpServletRequest req, UserDTO uDTO, BookrecordDTO brDTO) {
+		brDAO.regIng(brDTO, uDTO);
+		brDAO.getBookIng(req);
+		req.setAttribute("contentPage", "bookrecord_ing.jsp");
+		return "user/user_main";
+	}
+
 	@GetMapping("/bookRecord.wish")
 	public String bookRecordWish(HttpServletRequest req, UserDTO uDTO) {
+		brDAO.getBookWish(req);
+		req.setAttribute("contentPage", "bookrecord_wish.jsp");
+		return "user/user_main";
+	}
+
+	@GetMapping("/del.fin")
+	public String delFin(HttpServletRequest req, BookrecordDTO brDTO) {
+		brDAO.delBr(brDTO);
+		brDAO.getBookFin(req);
+		req.setAttribute("contentPage", "bookrecord_fin.jsp");
+		return "user/user_main";
+	}
+
+	@GetMapping("/del.ing")
+	public String delIng(HttpServletRequest req, BookrecordDTO brDTO) {
+		brDAO.delBr(brDTO);
+		brDAO.getBookIng(req);
+		req.setAttribute("contentPage", "bookrecord_ing.jsp");
+		return "user/user_main";
+	}
+	
+	@GetMapping("/del.wish")
+	public String delWish(HttpServletRequest req, BookrecordDTO brDTO) {
+		brDAO.delWish(brDTO);
+		brDAO.getBookWish(req);
 		req.setAttribute("contentPage", "bookrecord_wish.jsp");
 		return "user/user_main";
 	}

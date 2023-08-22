@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 .progress-bar {
-	width: 10%;
+	width: 0;
 	height: 100%;
 	border-radius: 60px;
 	background-color: rgba(246, 110, 110, 0.8);
@@ -42,14 +42,14 @@
 						<img class="object-fit w-40 h-60" alt="" src="${br.b_thumbnail }">
 					</div>
 					<div
-						class="flex flex-col justify-center items-start pl-5 w-3/4 h-full text-[rgba(38,40,61,1)]">
-						<div class="w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3">
+						class="relative flex flex-col justify-center items-start pl-5 w-3/4 h-full text-[rgba(38,40,61,1)]">
+						<a onclick="delIng(${br.br_no})"> <img
+							class="absolute object-fit w-8 h-8 top-4 right-10" alt=""
+							src="imgs/x_icon.png">
+						</a>
+						<div
+							class="w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3">
 							<span>${br.b_title }</span>
-							<div class="w-1/4 h-full flex justify-center">
-								<a> <img class="object-fit w-8 h-8" alt=""
-									src="imgs/x_icon.png">
-								</a>
-							</div>
 						</div>
 						<div
 							class="text-[1.7rem] text-[rgba(38,40,61,0.5)] font-bold h-1/4">
@@ -61,13 +61,13 @@
 									value="${br.br_no }"> <input disabled
 									class="total-page text-center w-1/6" value="${br.b_page }">
 								<span>쪽</span> <br> <span>읽은 페이지</span> <input
+									type="number" min="0" max="${br.b_page }"
 									class="cur-page text-center w-1/6" value="${br.br_page }">
 								<span>쪽</span>
 							</div>
 							<div class="whatshow1 w-full h-full">
 								<div class="flex w-full justify-between">
-									<span>현재 진행률</span> <span class="progress-num pr-5">현재
-										진행률</span>
+									<span>현재 진행률</span> <span class="progress-num pr-5"></span>
 								</div>
 								<div class="flex w-full h-1/2 items-center">
 									<div
@@ -75,7 +75,7 @@
 										<div class="progress-bar"></div>
 									</div>
 									<div class="flex justify-center w-1/4">
-										<span class="progress-per">%</span>
+										<span class="progress-per"></span>
 									</div>
 								</div>
 							</div>
@@ -98,7 +98,41 @@
 				</div>
 			</div>
 		</c:forEach>
+		<div
+			class="br-box block rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/6 bg-white ml-10 mb-10">
+			<div class="w-full h-full">
+				<a
+					class="search-book w-full h-full flex flex-col justify-center items-center">
+					<img class="w-20 h-20" alt="" src="imgs/plus_icon.jpg"> <span
+					class="text-[2rem] font-bold">읽고 있는 책 등록하기</span>
+				</a>
+				<!-- 책 검색 모달 실행 이동  -->
+			</div>
+		</div>
 	</div>
+	<!-- 책 검색 모달  -->
+	<dialog
+		class="search-modal block rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-4/6 bg-blue-300">
+	<div class="flex w-full h-1/6 justify-center items-center">
+		<div
+			class="search-box flex sticky justify-between items-center w-full h-full text-[2.0rem] px-10">
+			<select class="type w-1/6 h-20 rounded-[60px] text-center">
+				<option value="b_title">제목</option>
+				<option value="b_authors">작가</option>
+			</select> <input class="search-text w-3/5 h-20 rounded-[60px] text-center"
+				placeholder="책 제목 혹은 작가를 입력해주세요">
+			<div class="flex w-1/6 h-20 justify-center items-center">
+				<button class="db-search-btn w-full h-full bg-white rounded-[60px]">검색</button>
+			</div>
+		</div>
+	</div>
+	<div class="flex justify-center items-center w-full h-5/6">
+		<div class="flex flex-col w-11/12 h-full bg-white"></div>
+	</div>
+
+
+
+	</dialog>
 	<script type="text/javascript">
 		$(function() {
 
@@ -168,6 +202,9 @@
 							success : function(data) {
 								console.log(data);
 								console.log(b_page);
+								if(data >= b_page){
+									location.href="bookRecord.fin";
+								}
 								let progress_width = Math.ceil(data / b_page
 										* 100)
 										+ '%';
@@ -177,9 +214,41 @@
 								progress_per.text(progress_width);
 							}
 
-						});
-					});
+						}); // ajax end
+					}); // confirm-btn click event end
+			
+			$(".db-search-btn").click(
+					function() { // 완료 누를 시 click 시 function 실행
+					
+						let modal = $(this).closest('.search-box');
+						let type = modal.find('.type').val();	
+						let search_text = modal.find('.search-text').val();
+						
+						let search_data = {};
+						search_data[type] = search_text;
+						
+						 $.ajax({
+							url : "getDBbook.do",
+							data : search_data 
+							,
+							success : function(data) {
+								for(let i = 0; i < data.length; i++){
+									console.log(data[i].b_title);
+								}
+							}
+
+						}); // ajax end
+ 					}); // click event end
+			
 		}); // ready
-	</script>
+		
+		let search_a = document.querySelector('.search-book');
+		let search_modal = document.querySelector('.search-modal');
+
+		search_a.addEventListener("click", () => {
+			search_modal.showModal();
+		});
+		
+		</script>
 </body>
 </html>
