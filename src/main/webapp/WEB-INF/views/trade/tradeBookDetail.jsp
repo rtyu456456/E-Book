@@ -14,9 +14,6 @@
 </head>
 
 <body>
-
-
-
 	<div class="detail-container">
 
 		<div class="book-info">
@@ -33,6 +30,11 @@
 				<br>
 				<div class="trade-title">${trade.t_title }</div>
 
+			</div>
+			<div class="trader_From">	
+				<div>${userinfo.u_name }</div>
+				<div>${userinfo.u_id }</div>
+				<div>${userinfo.u_achievement }</div>
 			</div>
 		</div>
 		<hr>
@@ -107,7 +109,6 @@
                 map.setZoomable(true);
             }
         });
-		
 	</script>
 
 </body>

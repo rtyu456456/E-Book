@@ -7,25 +7,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/trade/tradeMsg.css">
 </head>
 <body>
 
-	<div class="container-msg">
-		<c:forEach var="m" items="${msgsFrom }">
-			<div class="msg-list">
-				<div>
-
-					<div>${m.m_to }</div>
-
-					<div>${m.m_txt }</div>
-				</div>
-				<div>
+	<c:forEach var="m" items="${msgsFrom }">
+		<div class="msg-list">
+			<div class="trade-book-img">
+				<img alt="" src="/img/bookimgsample.jpg">
+				<div>${m.t_book_title }</div>
+			</div>
+			<div class="msg-info">
+				<div class="msg-trader">${m.m_from }</div>
+				<div class="msg-txt">${m.m_txt }</div>
+				<div class="msg-time">
 					<fmt:formatDate value="${m.m_when }" pattern="yyyy.MM.dd HH:mm" />
 				</div>
 			</div>
-		</c:forEach>
-	</div>
+			<div class="cancle">
+				<img alt="" src="img/cancleXbutton.png"
+					onclick="location.href='/delete.msg.from?m_no=${m.m_no }&u_id=${sessionScope.loginMember.u_id}'">
+			</div>
+		</div>
+	</c:forEach>
 
 </body>
 </html>

@@ -140,5 +140,13 @@ public class UserDTO {
 		this.u_achievement_show = u_achievement_show;
 	}
 
+	@Override
+	public String toString() {
+		return "UserDTO [u_id=" + u_id + ", u_pw=" + u_pw + ", u_name=" + u_name + ", u_profile=" + u_profile
+				+ ", u_email=" + u_email + ", u_gender=" + u_gender + ", u_age=" + u_age + ", u_login=" + u_login
+				+ ", u_login_streak=" + u_login_streak + ", u_login_total=" + u_login_total + ", u_achievement="
+				+ u_achievement + ", u_achievement_show=" + u_achievement_show + "]";
+	}
+
 	
 }

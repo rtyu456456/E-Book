@@ -24,10 +24,14 @@ public interface TradeMapper {
 	List<TradeDTO> getTradelistMe(UserDTO uDTO);
 
 	TradeDTO locationChoose(TradeDTO tDTO);
+	
+	//쪽지기능
+	List<TradeTotalDTO> getToMsg(TradeTotalDTO ttDTO);
+	List<TradeTotalDTO> getFromMsg(TradeTotalDTO ttDTO);
+	public int sendMsg(TradeTotalDTO ttDTO);
+	public int deleteMsg(TradeTotalDTO ttDTO);
 
-	List<TradeTotalDTO> getToMsg(UserDTO uDTO);
-	List<TradeTotalDTO> getFromMsg(UserDTO uDTO);
-	public int sendMsg(MsgDTO mDTO);
+
 
 
 

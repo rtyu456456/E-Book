@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fp.eb.model.MsgDTO;
 import com.fp.eb.model.TradeDTO;
 import com.fp.eb.model.TradeTotalDTO;
 import com.fp.eb.model.UserDTO;
@@ -29,6 +28,8 @@ public class TradeController {
 
 	@GetMapping("/trade.go")
 	public String goTrade(TradeDTO tDTO, HttpServletRequest req) {
+		
+		// 로그인 가 데이터
 		UserDTO uDTO = new UserDTO("hm", "hm", "하민", "img_test", "hmin0701@naver.com", "male", 27, 230203, 10, 30,
 				"초심자", "0");
 		req.getSession().setAttribute("loginMember", uDTO);
@@ -78,30 +79,56 @@ public class TradeController {
 	}
 
 // 쪽지 기능 컨트롤
-	//받은거 조회
-	@GetMapping("/trade.Msg.get.to") 
-	public String getToMsg(UserDTO uDTO, HttpServletRequest req) {
-		tDAO.getToMsg(uDTO, req);
+	// 받은거 조회
+	@GetMapping("/trade.Msg.get.to")
+	public String getToMsg(TradeTotalDTO ttDTO, HttpServletRequest req) {
+		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
+		ttDTO.setU_id(u.getU_id());
+		tDAO.getToMsg(ttDTO, req);
 		req.setAttribute("contentPage", "tradeMsg.jsp");
 		req.setAttribute("msgpage", "tradeMsgTo.jsp");
 		return "trade/tradeIndex";
 	}
-	
-	//보낸거 조회
+
+	// 보낸거 조회
 	@GetMapping("/trade.Msg.get.from")
-	public String getFromMsg(UserDTO uDTO, HttpServletRequest req) {
-		tDAO.getFromMsg(uDTO, req); 
+	public String getFromMsg(TradeTotalDTO ttDTO, HttpServletRequest req) {
+		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
+		ttDTO.setU_id(u.getU_id());
+		tDAO.getFromMsg(ttDTO, req);
 		req.setAttribute("contentPage", "tradeMsg.jsp");
 		req.setAttribute("msgpage", "tradeMsgFrom.jsp");
 		return "trade/tradeIndex";
 	}
 
 	@GetMapping("/trade.Send.Msg")
-	public String sendMsg(MsgDTO mDTO, HttpServletRequest req, Date d) {
-		tDAO.sendMsg(mDTO, req, d);
-		req.setAttribute("contentPage", "tradeMsg.jsp");
-		return "trade/tradeIndex";
+	public String sendMsg(TradeTotalDTO ttDTO, HttpServletRequest req, Date d) {
+		UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
+		ttDTO.setU_id(uDTO.getU_id());
+		System.out.println(ttDTO.getM_to());
+		tDAO.sendMsg(ttDTO, req, d);
+		return "redirect:/trade.Msg.get.from";
 	}
+
+	// 내 쪽지 삭제
+	@GetMapping("/delete.msg.to")
+	public String deleteMsgTo(TradeTotalDTO ttDTO, HttpServletRequest req) {
+		UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
+		System.out.println(uDTO);
+		tDAO.deleteMsg(ttDTO, req);
+		// 받은 쪽지 조회 페이지로 리디렉션
+		return "redirect:/trade.Msg.get.to";
+	}
+
+	@GetMapping("/delete.msg.from")
+	public String deleteMsgFrom(TradeTotalDTO ttDTO, HttpServletRequest req) {
+		UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
+		System.out.println(uDTO);
+		tDAO.deleteMsg(ttDTO, req);
+		// 받은 쪽지 조회 페이지로 리디렉션
+		return "redirect:/trade.Msg.get.from";
+	}
+
 //
 //	@GetMapping("/trade.Msg.choose")
 //	public String getMsg(UserDTO uDTO, HttpServletRequest req) {
@@ -110,18 +137,14 @@ public class TradeController {
 //		return "trade/tradeIndex";
 //	}
 //	
-	
-	
-	
-	
-	
-	
+
 // 거래 등록 기능
 	@PostMapping("/reg.trade.book")
-	public String regTradeBook(@RequestParam("t_thumbnail") MultipartFile file, Model model) {
-
-		return "/trade.sale.now";
-
+	public String regTradeBook(@RequestParam("uploadfile") MultipartFile file, TradeDTO tDTO,  HttpServletRequest req) {
+		System.out.println(file.getOriginalFilename());
+		tDAO.regTrade(file,tDTO, req);
+		
+		return "/trade.tradeIndex";
 	}
 
 }

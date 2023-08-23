@@ -7,22 +7,31 @@
 		select * from eb_trade
 	</select>
 
+
+
+
 	<select id="getTradelistMe"
 		resultType="com.fp.eb.model.TradeDTO">
 		select * from eb_trade where t_owner = #{u_id }
 		<!-- 나중에 유저 닉네임과 연동할 것 -->
 	</select>
 
-
 	<select id="getTradeDetail"
 		resultType="com.fp.eb.model.TradeDTO">
 		select * from eb_trade where t_no = #{t_no }
 	</select>
+	
+	<select id="getUserInfo" resultType="com.fp.eb.model.TradeTotalDTO">
+		select * from eb_user where t_onwer = #{u_id } and t_no = #{t_no }
+	</select>
+	
+	
 
 	<select id="getTradeList" resultType="com.fp.eb.model.TradeDTO">
 		SELECT * FROM eb_trade
 		WHERE t_book_title LIKE '%'||#{t_book_title}||'%'
 	</select>
+
 
 	<insert id="regTradeBook">
 		insert into eb_trade values(
@@ -33,32 +42,40 @@
 		#{t_authors },
 		#{t_publisher },
 		#{t_contents },
-		#{t_prcie },
+		#{t_price },
 		#{t_thumbnail },
 		#{t_map_lat},
-		#{t_map_lng },
+		#{t_map_lng	},
 		#{t_marker_lat },
 		#{t_marker_lng },
-		#{t_soldout },
+		0,
 		#{t_date })
 	</insert>
+	
+	
+	
+	
+	
 
 
 	<select id="getToMsg" resultType="com.fp.eb.model.TradeTotalDTO">
-	select * from eb_trade_msg emsg, eb_user eu
-	where emsg.m_to = eu.u_id and
-	emsg.m_to = #{u_id}
+		select * from eb_trade_msg emsg, eb_user eu
+		where emsg.m_to = eu.u_id and
+		emsg.m_to = #{u_id}
 	</select>
 
-	<select id="getFromMsg" resultType="com.fp.eb.model.TradeTotalDTO">
-	select * from eb_trade_msg emsg, eb_user eu
-	where emsg.m_from = eu.u_id and
-	emsg.m_from = #{u_id}
+	<select id="getFromMsg"
+		resultType="com.fp.eb.model.TradeTotalDTO">
+		select * from eb_trade_msg emsg, eb_user eu
+		where emsg.m_from = eu.u_id and
+		emsg.m_from = #{u_id}
 	</select>
 
 
-	<select id="chooseTradeMsg" resultType="com.fp.eb.model.TradeTotalDTO">
-		select * from eb_trade, eb_trade_msg where t_no =m_trade and (m_to = #{u_id } or m_from = #{u_id })
+	<select id="chooseTradeMsg"
+		resultType="com.fp.eb.model.TradeTotalDTO">
+		select * from eb_trade, eb_trade_msg where t_no =m_trade
+		and (m_to = #{u_id } or m_from = #{u_id })
 	</select>
 
 	<insert id="sendMsg" parameterType="com.fp.eb.model.MsgDTO">
@@ -66,6 +83,11 @@
 		values(eb_trade_msg_seq.nextval,#{m_trade },#{m_to },#{m_from
 		},#{m_txt },sysdate,#{m_check })
 	</insert>
+
+	<delete id="deleteMsg" parameterType="com.fp.eb.model.TradeTotalDTO">
+	delete from eb_trade_msg where m_no = #{m_no }
+	</delete>
+
 
 
 
