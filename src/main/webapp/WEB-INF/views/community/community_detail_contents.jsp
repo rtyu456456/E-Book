@@ -9,11 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input hidden="hidden" id="c-no" value="${community.c_no }">
+	<input hidden="hidden" id="c-no" value="${community.c_no }">
 	<div class="post_detail_background">
 		<br>
-		<br>
-		<div>
+		<div class="white-line">
 			<div class="post_detail">
 				<div class="post_user_img">
 					<img alt="" src="/img/유저 img.jpg">
@@ -39,13 +38,13 @@
 						<img alt="" src="/img/etc-btn2.png">
 						<div class="etc-btn">
 							<form action="/go.update.post">
-							<input type="hidden" name="c_no" value="${community.c_no }">
+								<input type="hidden" name="c_no" value="${community.c_no }">
 								<button name="cp_no" value="${communityPost.cp_no }"
 									class="etc-btn-1">수정</button>
 							</form>
-							<br>
-							<br>
-							<button id="delete-post-btn" value="${communityPost.cp_no }" class="etc-btn-2">삭제</button>
+							<br> <br>
+							<button id="delete-post-btn" value="${communityPost.cp_no }"
+								class="etc-btn-2">삭제</button>
 						</div>
 					</div>
 				</div>
@@ -80,6 +79,14 @@
 					<div class="reply_txt">${cr.cr_contents }</div>
 					<div class="reply_date">
 						<fmt:formatDate value="${cr.cr_date }" pattern="MM/dd HH:mm" />
+
+						<c:if test="${cr.cr_owner == '김포공주'}">
+							<div class="empty-width"></div>
+							<button
+								onclick="deleteReply('${cr.cr_no}', '${communityPost.cp_no }', '${community.c_no }')"
+								class="delete-reply-btn">삭제</button>
+						</c:if>
+
 					</div>
 					<br>
 				</div>
@@ -89,21 +96,23 @@
 
 		</div>
 		<form action="/reg.reply">
-		<input hidden="hidden" name="cp_no" value="${communityPost.cp_no }">
-		<input hidden="hidden" name="c_no" value="${community.c_no }">
-		<div class="post_reply_input">
-			<div class="box_shadow_reply">
-				<div class="box-shadow-1">
-					<textarea name="cr_contents" rows="1" class="post_reply_text" onkeydown="resize(this)"
-						onkeyup="resize(this)" placeholder="댓글을 입력하세요."></textarea>
-				</div>
-				<div class="box-shadow-2">
-					<button name="cr_cp_no" value="${communityPost.cp_no }" class="commu_seach_btn">
-						<img src="/img/전송버튼_icon.png" maxlength=10>
-					</button>
+			<input hidden="hidden" name="cp_no" value="${communityPost.cp_no }">
+			<input hidden="hidden" name="c_no" value="${community.c_no }">
+			<div class="post_reply_input">
+				<div class="box_shadow_reply">
+					<div class="box-shadow-1">
+						<textarea name="cr_contents" rows="1" class="post_reply_text"
+							onkeydown="resize(this)" onkeyup="resize(this)"
+							placeholder="댓글을 입력하세요."></textarea>
+					</div>
+					<div class="box-shadow-2">
+						<button name="cr_cp_no" value="${communityPost.cp_no }"
+							class="commu_seach_btn">
+							<img src="/img/전송버튼_icon.png" maxlength=10>
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
 		</form>
 	</div>
 
@@ -122,5 +131,6 @@
 
 
 </body>
-<script type="text/javascript" src="js/community/communityDetailContents.js"></script>
+<script type="text/javascript"
+	src="js/community/communityDetailContents.js"></script>
 </html>

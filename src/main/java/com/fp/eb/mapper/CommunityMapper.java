@@ -58,6 +58,8 @@ public interface CommunityMapper {
 
 	List<CommunityPostDTO> getAllMyReply(CommunityReplyDTO cr);
 
+	int deleteMyReply(CommunityReplyDTO cr);
+
 	
 	
 }

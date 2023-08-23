@@ -41,6 +41,8 @@ let c_no = cNo.value;
 let cp_no = deletePostBtn.value;
 let modalBackBtn = document.getElementById("back-btn");
 let deleteOkBtn = document.getElementById("delete-ok");
+let deleteText = document.querySelector(".delete-text");
+
 
 function close(){
 	deleteModal.close();
@@ -60,5 +62,19 @@ deleteOkBtn.addEventListener('click', function(){
 })
 
 modalBackBtn.addEventListener('click', function(){
+	deleteText.textContent = "삭제하시겠습니까?";
 	close();
 })
+
+
+
+
+/*댓글 삭제 기능*/
+function deleteReply(cr_no, cp_no, c_no){
+		show();
+		deleteText.textContent = "댓글을 삭제하겠습니까?";
+		deleteOkBtn.addEventListener('click', function() {
+			location.href = "/delete.my.reply?cr_no=" + cr_no + "&&cp_no="+ cp_no + "&&c_no="+ c_no;
+		})
+	
+}

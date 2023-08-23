@@ -135,6 +135,14 @@ public class CommunityDAO {
 		
 	}
 
+	public void deleteMyReply(CommunityReplyDTO cr, Model model) {
+		if (ss.getMapper(CommunityMapper.class).deleteMyReply(cr) == 1) {
+			System.out.println("내 댓글 삭제 성공");	
+			}else {
+				System.out.println("내 댓글ㄴ 삭제 실패");
+			}
+	}
+
 	
 
 

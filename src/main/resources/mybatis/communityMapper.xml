@@ -20,22 +20,32 @@
 		where
 		cp_community = c_no and c_no=#{c_no} order by cp_date desc
 	</select>
-	
+
 	<select id="getAllMyPost"
 		resultType="com.fp.eb.model.CommunityPostDTO">
-		select * from eb_community_post where cp_owner = #{cp_owner} order by cp_date desc
+		select * from eb_community_post where cp_owner =
+		#{cp_owner} order by cp_date desc
 	</select>
-	
+
 	<select id="getAllMyReply"
 		resultType="com.fp.eb.model.CommunityPostDTO"
 		parameterType="com.fp.eb.model.CommunityReplyDTO">
-		select * from eb_community_post, eb_community_reply where cp_no = cr_cp_no and cr_owner= #{cr_owner} order by cp_date desc
+		select * from eb_community_post, eb_community_reply
+		where cp_no = cr_cp_no
+		and cr_owner = #{cr_owner} and cr_date = (
+		select max(cr_date) from eb_community_reply where cr_owner =
+		#{cr_owner}
+		and cp_no = cr_cp_no
+		) order by cp_date desc
+
 	</select>
 
 	<select id="seachAllCommunityPost"
 		resultType="com.fp.eb.model.CommunityPostDTO">
-		select * from eb_community_post where cp_title like '%'||#{cp_seach}||'%' or
-		cp_contents like '%'||#{cp_seach}||'%' order by cp_date desc
+		select * from eb_community_post where cp_title like
+		'%'||#{cp_seach}||'%' or
+		cp_contents like '%'||#{cp_seach}||'%' order
+		by cp_date desc
 	</select>
 
 
@@ -54,7 +64,7 @@
 		resultType="com.fp.eb.model.CommunityReplyDTO">
 		select * from eb_community_reply, eb_community_post
 		where
-		cr_cp_no = cp_no and cp_no=#{cp_no}
+		cr_cp_no = cp_no and cp_no=#{cp_no} order by cr_date asc
 	</select>
 
 
@@ -81,7 +91,7 @@
 
 	<insert id="insertWritingPost">
 		insert into eb_community_post
-		values(eb_cp_seq.nextval, 'jsa', #{cp_title}, #{cp_contents},
+		values(eb_cp_seq.nextval, '김포공주', #{cp_title}, #{cp_contents},
 		#{cp_community}, 0, 0, current_date)
 	</insert>
 
@@ -90,5 +100,10 @@
 		values(eb_cr_seq.nextval, '김포공주', #{cr_cp_no}, #{cr_contents} ,0,0,
 		current_date)
 	</insert>
+
+	<delete id="deleteMyReply">
+		delete eb_community_reply where cr_no = #{cr_no}
+	</delete>
+
 
 </mapper>

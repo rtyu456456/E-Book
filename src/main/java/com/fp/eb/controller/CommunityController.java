@@ -93,6 +93,21 @@ public class CommunityController {
 		return "community/community_page";
 	}
 	
+	@GetMapping("/delete.my.reply")
+	public String deleteMyReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
+		cDAO.deleteMyReply(cr, model);
+		
+		
+		cDAO.getCommunity(c, model);
+		cDAO.getCommunityPost(cp, model);
+		cDAO.getReplys(cp, model);
+		cDAO.getCountReplys(cp.getCp_no(), model);
+
+		model.addAttribute("commu_header_page", "community_detail_header.jsp");
+		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
+		return "community/community_page";
+	}
+	
 	@GetMapping("/go.my.reply")
 	public String goMyReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
 		cDAO.getAllMyReply(cr, model);

@@ -15,8 +15,8 @@
 				<button type="button" class="post_contents" name="cp_no"
 					value="${cp.cp_no }">
 					<div class="post_title">${cp.cp_title }</div>
-					<div style="position: absolute; margin-left: 48rem; margin-top: -3rem;"
-						onclick="deleteMyPost('${cp.cp_no}', '${cp.cp_owner }', '${cp.cp_title }')">삭제하기</div>
+					<div style="position: absolute; margin-left: 50rem; margin-top: -4rem;"
+						onclick="deleteMyPost('${cp.cp_no}', '${cp.cp_owner }', '${cp.cp_title }')">삭제</div>
 					<div class="post_txt">${cp.cp_contents }</div>
 					<div class="post_flex">
 						<div class="post_flex_left">
@@ -26,7 +26,7 @@
 						</div>
 						<div class="post_flex_right">
 							<div class="post_like">
-								<img src="/img/like_icon.png"> ${cp.cp_like }
+								<img src="/img/like_icon.png">${cp.cp_like }
 							</div>
 							&nbsp;&nbsp;
 							<div class="post_dislike">
