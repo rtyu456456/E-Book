@@ -4,7 +4,7 @@
 
 	<select id="getAlltradelist"
 		resultType="com.fp.eb.model.TradeDTO">
-		select * from eb_trade
+		select * from eb_trade where t_soldout = 0
 	</select>
 
 	<select id="getTradelistMe"
