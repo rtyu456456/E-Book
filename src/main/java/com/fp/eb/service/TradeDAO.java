@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +26,9 @@ public class TradeDAO {
 	private SqlSession ss;
 	@Autowired
 	private ServletContext sc;
+	
+	@Value("${upload.path}")
+	private String uploadPath;
 
 // -------------------------------------------기본 조회 기능
 	public void getAlltradelist(TradeDTO tDTO, HttpServletRequest req) {
@@ -121,17 +125,12 @@ public class TradeDAO {
 		tDTO.setT_map_lng(Double.parseDouble(req.getParameter("t_map_lng")));
 		tDTO.setT_marker_lat(Double.parseDouble(req.getParameter("t_marker_lat")));
 		tDTO.setT_marker_lng(Double.parseDouble(req.getParameter("t_marker_lng")));
+		System.out.println(tDTO);
+		System.out.println(uploadPath);
 		
-		System.out.println("t_price: " + req.getParameter("t_price"));
-		System.out.println("t_map_lat: " + req.getParameter("t_map_lat"));
-		System.out.println("t_map_lng: " + req.getParameter("t_map_lng"));
-		System.out.println("t_marker_lat: " + req.getParameter("t_marker_lat"));
-		System.out.println("t_marker_lng: " + req.getParameter("t_marker_lng"));
-
 		try {
-			// asd.jpg
 			String orgFileName = file.getOriginalFilename();
-			String savePath = sc.getRealPath("../resources/static/img");
+			String savePath = sc.getRealPath("./imgs");
 			System.out.println(savePath);
 			String saveFileName = UUID.randomUUID().toString().split("-")[0]
 					+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
@@ -141,15 +140,28 @@ public class TradeDAO {
 
 			if (!file.getOriginalFilename().isEmpty()) {
 				// 실제 업로드 코드
-				file.transferTo(new File(savePath, saveFileName));
+				file.transferTo(new File(uploadPath, saveFileName));
 				req.setAttribute("r", "file uploaded successfully!");
 				req.setAttribute("fileName", saveFileName);
+				tDTO.setT_thumbnail(saveFileName);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+		try {
+			if (ss.getMapper(TradeMapper.class).regTradeBook(tDTO) == 1) {
+					req.setAttribute("result", "등록 성공");
+				} else {
+					req.setAttribute("result", "등록 실패");
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
 
+		
+		
 	}
-
 }

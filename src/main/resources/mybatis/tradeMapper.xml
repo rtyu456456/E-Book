@@ -7,9 +7,6 @@
 		select * from eb_trade
 	</select>
 
-
-
-
 	<select id="getTradelistMe"
 		resultType="com.fp.eb.model.TradeDTO">
 		select * from eb_trade where t_owner = #{u_id }
@@ -38,7 +35,7 @@
 		eb_trade_seq.nextval,
 		#{t_owner },
 		#{t_title },
-		#{t_title_book },
+		#{t_book_title },
 		#{t_authors },
 		#{t_publisher },
 		#{t_contents },
@@ -49,7 +46,7 @@
 		#{t_marker_lat },
 		#{t_marker_lng },
 		0,
-		#{t_date })
+		sysdate)
 	</insert>
 	
 	

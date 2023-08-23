@@ -140,11 +140,11 @@ public class TradeController {
 
 // 거래 등록 기능
 	@PostMapping("/reg.trade.book")
-	public String regTradeBook(@RequestParam("uploadfile") MultipartFile file, TradeDTO tDTO,  HttpServletRequest req) {
+	public String regTradeBook(@RequestParam("t_file") MultipartFile file, TradeDTO tDTO,  HttpServletRequest req) {
 		System.out.println(file.getOriginalFilename());
 		tDAO.regTrade(file,tDTO, req);
-		
-		return "/trade.tradeIndex";
+		req.setAttribute("contentPage", "saleNow.jsp");
+		return "trade/tradeIndex";
 	}
 
 }

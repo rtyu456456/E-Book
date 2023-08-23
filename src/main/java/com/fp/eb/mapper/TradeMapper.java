@@ -31,6 +31,8 @@ public interface TradeMapper {
 	public int sendMsg(TradeTotalDTO ttDTO);
 	public int deleteMsg(TradeTotalDTO ttDTO);
 
+	public int regTradeBook(TradeDTO tDTO);
+
 
 
 

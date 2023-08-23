@@ -22,7 +22,7 @@
 					<input placeholder="글 제목" name="t_title">
 				</div>
 				<div class="input-group">
-					<input placeholder="책 이름" name="t_title_book">
+					<input placeholder="책 이름" name="t_book_title">
 				</div>
 				<div class="input-group">
 					<input placeholder="저자" name="t_authors">
@@ -34,10 +34,10 @@
 <!-- 					<input placeholder="정가"> -->
 <!-- 				</div> -->
 				<div class="input-group">
-					<input placeholder="판매가" name="price">
+					<input placeholder="판매가" name="t_price">
 				</div> 
 				<div class="input-group">
-					<input type="file" name="uploadfile">
+					<input type="file" name="t_file">
 				</div>
 				<div class="input-group">
 					<textarea rows="8" cols="2" placeholder="도서 상태 정보" name="t_content"></textarea>
@@ -45,10 +45,10 @@
 				<div class="input-group">
 					<a href="trade.map.go">희망 장소 선택하기</a>
 					<span>${param.inputContent }</span>
-					<input type="hidden" id="latitudeInput" name="t_map_lat">
-					<input type="hidden" id="latitudeInput" name="t_map_lng">
-					<input type="hidden" id="latitudeInput" name="t_marker_lat">
-					<input type="hidden" id="latitudeInput" name="t_marker_lng">
+					<input type="hidden" value="${param.maplatitude }" name="t_map_lat">
+					<input type="hidden" value="${param.maplongitude }"  name="t_map_lng">
+					<input type="hidden" value="${param.maplatitude }" name="t_marker_lat">
+					<input type="hidden" value="${param.maplongitude }"  name="t_marker_lng">
 				</div>
 				<div class="reg-btn">
 					<button>등록하기</button>
