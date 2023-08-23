@@ -38,7 +38,10 @@
 				</div>
 			</div>
 
-			<div class="commu_board">
+
+
+
+			<!-- <div class="commu_board">
 				<br>
 				<div class="commu_board_title">실시간 HOT 게시판</div>
 				<br>
@@ -70,7 +73,7 @@
 					<br> <br>
 				</div>
 				<br>
-			</div>
+			</div> -->
 
 			<div class="commu_board">
 				<br>
@@ -81,7 +84,8 @@
 					<c:forEach var="c" items="${communitys }">
 						<form action="/go.commu.post">
 							<button class="commu_board_btn" name="c_no" value="${c.c_no }">
-								<img src="/img/커뮤니티_즐겨찾기안함_icon.png"> &nbsp; ${c.c_name }
+								<img id="not-pinned" onclick="pinnedMyCommunity('${c.c_no }')"
+									src="/img/커뮤니티_즐겨찾기안함_icon.png"> &nbsp; ${c.c_name }
 							</button>
 						</form>
 					</c:forEach>
@@ -91,4 +95,15 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	let notPinned = document.getElementById("not-pinned");	
+	
+	function pinnedMyCommunity(c_no) {
+		event.preventDefault(); 
+		console.log(c_no);
+		
+		location.href="/do.delete.post?c_no=" + c_no;
+
+	}
+</script>
 </html>
