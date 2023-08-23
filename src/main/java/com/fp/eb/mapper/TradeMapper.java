@@ -31,7 +31,12 @@ public interface TradeMapper {
 	public int sendMsg(TradeTotalDTO ttDTO);
 	public int deleteMsg(TradeTotalDTO ttDTO);
 
+	//등록기능
 	public int regTradeBook(TradeDTO tDTO);
+
+	public int tradeComplete(TradeDTO tDTO);
+
+
 
 
 

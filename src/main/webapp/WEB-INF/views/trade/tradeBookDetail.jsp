@@ -50,7 +50,7 @@
 			<c:choose>
 				<c:when test="${trade.t_owner == loginMember.u_id }">
 					<div class="trade-sell-me">
-						<button>판매 완료하기</button>
+						<button onclick="location.href='trade.complete?t_no=${trade.t_no }'">판매 완료하기</button>
 						<button>수정하기</button>
 					</div>
 				</c:when>

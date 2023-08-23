@@ -1,7 +1,5 @@
 package com.fp.eb.controller;
 
-import java.net.MalformedURLException;
-
 import java.util.Date;
 
 import javax.servlet.ServletContext;
@@ -138,9 +136,15 @@ public class TradeController {
 	@PostMapping("/reg.trade.book")
 	public String regTradeBook(@RequestParam("t_file") MultipartFile file, TradeDTO tDTO, HttpServletRequest req) {
 		tDAO.regTrade(file, tDTO, req);
-
 		return "redirect:/trade.sale.now";
 	}
 
-
+// 거래 완료 기능
+	@GetMapping("/trade.complete")
+	public String tradeComplete(TradeDTO tDTO, HttpServletRequest req) {
+		tDAO.tradeComplete(tDTO, req);
+		req.setAttribute("contentPage", "saleNow.jsp");
+		return "redirect:/trade.sale.now";
+	}
+	
 }

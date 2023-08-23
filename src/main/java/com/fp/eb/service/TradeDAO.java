@@ -160,8 +160,15 @@ public class TradeDAO {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
-
-		
-		
+	}
+	
+	
+	//------------------------ 내용 수정---------------
+	public void tradeComplete(TradeDTO tDTO, HttpServletRequest req) {
+		if (ss.getMapper(TradeMapper.class).tradeComplete(tDTO) == 1) {
+			req.setAttribute("result", "삭제 성공");
+		}else {
+			req.setAttribute("result", "삭제 실패");
+		}
 	}
 }

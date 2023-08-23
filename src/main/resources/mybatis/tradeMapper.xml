@@ -51,6 +51,11 @@
 	
 	
 	
+	<update id="tradeComplete">
+	update eb_trade set t_soldout = 1 where t_no = #{t_no }
+	</update>
+	
+	
 	
 	
 
