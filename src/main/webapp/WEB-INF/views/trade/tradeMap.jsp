@@ -70,12 +70,6 @@
 			var longitude = markerPosition.getLng();
 			var inputContent = document.getElementById('inputContent').value;
 
-// 			  // 각 숨겨진 필드에 값을 설정
-// 		    document.getElementsByName('t_map_lat')[0].value = latitude;
-// 		    document.getElementsByName('t_map_lng')[0].value = longitude;
-// 		    document.getElementsByName('t_marker_lat')[0].value = latitude;
-// 		    document.getElementsByName('t_marker_lng')[0].value = longitude;
-
 			// URL 생성 및 쿼리 파라미터 추가
 			var nextPageUrl = '/trade.reg.go' 
 			+ '?maplatitude=' + latitude

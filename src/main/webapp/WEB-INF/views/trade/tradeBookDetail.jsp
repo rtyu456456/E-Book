@@ -8,9 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/trade/tradeBookDetail.css">
+
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a2ec9e96982d203168b7d94dde7b62fe"></script>
-
+<script type="text/javascript"
+	src="main/resources/static/js/trade/site_qurey.js"></script>
 </head>
 
 <body>
@@ -31,7 +33,7 @@
 				<div class="trade-title">${trade.t_title }</div>
 
 			</div>
-			<div class="trader_From">	
+			<div class="trader_From">
 				<div>${userinfo.u_name }</div>
 				<div>${userinfo.u_id }</div>
 				<div>${userinfo.u_achievement }</div>
@@ -50,7 +52,8 @@
 			<c:choose>
 				<c:when test="${trade.t_owner == loginMember.u_id }">
 					<div class="trade-sell-me">
-						<button onclick="location.href='trade.complete?t_no=${trade.t_no }'">판매 완료하기</button>
+						<button onclick="confirmAndComplete(${trade.t_no})">판매
+							완료하기</button>
 						<button>수정하기</button>
 					</div>
 				</c:when>
@@ -76,14 +79,14 @@
 			</c:choose>
 		</div>
 	</div>
-
-
 	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center : new kakao.maps.LatLng(33.452613, 126.570888),
-			level : 1
-		};
+	 var container = document.getElementById('map');
+	    var latitude = ${trade.t_map_lat }; // JSP에서 받아온 경도 값
+	    var longitude = ${trade.t_map_lng}; // JSP에서 받아온 위도 값
+	    var options = {
+	        center : new kakao.maps.LatLng(latitude, longitude),
+	        level : 1
+	    };
 
 		var map = new kakao.maps.Map(container, options);
 		var marker = new kakao.maps.Marker({
@@ -109,6 +112,19 @@
                 map.setZoomable(true);
             }
         });
+        
+       // 판매 완료 확인 
+    function confirmAndComplete(t_no) {
+    var confirmation = confirm("정말로 판매를 완료하시겠습니까?");
+    if (confirmation) {
+        // 확인 버튼을 클릭한 경우
+        location.href = 'trade.complete?t_no=' + t_no;
+    } else {
+        // 취소 버튼을 클릭한 경우
+        // 아무 작업도 수행하지 않음
+    }
+}
+        
 	</script>
 
 </body>

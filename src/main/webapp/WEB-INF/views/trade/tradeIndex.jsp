@@ -10,6 +10,7 @@
 <meta name="format-detection" content="telephone=no">
 
 <title>Insert title here</title>
+
 <link rel="stylesheet" href="css/trade/tradeIndex.css">
 
 </head>
