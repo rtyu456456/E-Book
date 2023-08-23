@@ -19,17 +19,17 @@
 				<div class="board_box">
 					<br>
 					<form action="/go.my.post">
-					<button name="cp_owner" value="김포공주" class="commu_board_btn">
-						<img alt="" src="/img/커뮤니티_내가 쓴 글_icon.png"> &nbsp;내가 쓴 글
-					</button>
+						<button name="cp_owner" value="김포공주" class="commu_board_btn">
+							<img alt="" src="/img/커뮤니티_내가 쓴 글_icon.png"> &nbsp;내가 쓴 글
+						</button>
 					</form>
 
 					<form action="/go.my.reply">
-					<button name="cr_owner" value="김포공주"  class="commu_board_btn">
-						<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png"> &nbsp;댓글 단 글
-					</button>
+						<button name="cr_owner" value="김포공주" class="commu_board_btn">
+							<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png"> &nbsp;댓글 단 글
+						</button>
 					</form>
-				
+
 					<button class="commu_board_btn">
 						<img alt="" src="/img/커뮤니티_즐겨찾기함_icon.png"> &nbsp;내가 고정한 게시판
 						(변수)
