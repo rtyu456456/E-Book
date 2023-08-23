@@ -54,10 +54,6 @@
 					<button>등록하기</button>
 				</div>
 			</form>
-			
-			<img alt="" src="">
-			
-			
 		</div>
 	</div>
 </body>

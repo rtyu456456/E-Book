@@ -130,8 +130,8 @@ public class TradeDAO {
 		
 		try {
 			String orgFileName = file.getOriginalFilename();
-			String savePath = sc.getRealPath("./imgs");
-			System.out.println(savePath);
+//			String savePath = sc.getRealPath("./imgs");
+//			System.out.println(savePath);
 			String saveFileName = UUID.randomUUID().toString().split("-")[0]
 					+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
 			System.out.println(orgFileName);

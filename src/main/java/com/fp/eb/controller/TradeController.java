@@ -1,5 +1,7 @@
 package com.fp.eb.controller;
 
+import java.net.MalformedURLException;
+
 import java.util.Date;
 
 import javax.servlet.ServletContext;
@@ -28,7 +30,7 @@ public class TradeController {
 
 	@GetMapping("/trade.go")
 	public String goTrade(TradeDTO tDTO, HttpServletRequest req) {
-		
+
 		// 로그인 가 데이터
 		UserDTO uDTO = new UserDTO("hm", "hm", "하민", "img_test", "hmin0701@naver.com", "male", 27, 230203, 10, 30,
 				"초심자", "0");
@@ -73,6 +75,9 @@ public class TradeController {
 
 	@GetMapping("/trade.sale.now")
 	public String goTradeMyBook(UserDTO uDTO, HttpServletRequest req) {
+
+		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
+		uDTO.setU_id(u.getU_id());
 		tDAO.getTradeListMe(uDTO, req);
 		req.setAttribute("contentPage", "saleNow.jsp");
 		return "trade/tradeIndex";
@@ -129,22 +134,13 @@ public class TradeController {
 		return "redirect:/trade.Msg.get.from";
 	}
 
-//
-//	@GetMapping("/trade.Msg.choose")
-//	public String getMsg(UserDTO uDTO, HttpServletRequest req) {
-//		tDAO.chooseTradeMsg(uDTO, req);
-//		req.setAttribute("contentPage", "tradeMsg.jsp");
-//		return "trade/tradeIndex";
-//	}
-//	
-
 // 거래 등록 기능
 	@PostMapping("/reg.trade.book")
-	public String regTradeBook(@RequestParam("t_file") MultipartFile file, TradeDTO tDTO,  HttpServletRequest req) {
-		System.out.println(file.getOriginalFilename());
-		tDAO.regTrade(file,tDTO, req);
-		req.setAttribute("contentPage", "saleNow.jsp");
-		return "trade/tradeIndex";
+	public String regTradeBook(@RequestParam("t_file") MultipartFile file, TradeDTO tDTO, HttpServletRequest req) {
+		tDAO.regTrade(file, tDTO, req);
+
+		return "redirect:/trade.sale.now";
 	}
+
 
 }

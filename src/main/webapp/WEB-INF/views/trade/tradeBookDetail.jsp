@@ -18,7 +18,7 @@
 
 		<div class="book-info">
 			<div class="book-img">
-				<img alt="" src="/img/bookimgsample.jpg">
+				<img alt="" src="">
 			</div>
 			<div class="book-basic">
 				<div class="book-title">${trade.t_book_title }</div>
