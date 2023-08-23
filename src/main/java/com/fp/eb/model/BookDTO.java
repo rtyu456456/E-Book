@@ -11,6 +11,7 @@ public class BookDTO {
 	private int b_page;
 	private int b_price;
 	private String b_thumbnail;
+	private int positive_percentage;
 
 	public BookDTO() {
 		// TODO Auto-generated constructor stub
@@ -29,6 +30,16 @@ public class BookDTO {
 		this.b_page = b_page;
 		this.b_price = b_price;
 		this.b_thumbnail = b_thumbnail;
+	}
+	
+	
+
+	public int getPositive_percentage() {
+		return positive_percentage;
+	}
+
+	public void setPositive_percentage(int positive_percentage) {
+		this.positive_percentage = positive_percentage;
 	}
 
 	public String getB_no() {
@@ -109,6 +120,14 @@ public class BookDTO {
 
 	public void setB_thumbnail(String b_thumbnail) {
 		this.b_thumbnail = b_thumbnail;
+	}
+
+	@Override
+	public String toString() {
+		return "BookDTO [b_no=" + b_no + ", b_title=" + b_title + ", b_contents=" + b_contents + ", b_url=" + b_url
+				+ ", b_isbn=" + b_isbn + ", b_authors=" + b_authors + ", b_publisher=" + b_publisher + ", b_page="
+				+ b_page + ", b_price=" + b_price + ", b_thumbnail=" + b_thumbnail + ", positive_percentage="
+				+ positive_percentage + "]";
 	}
 
 

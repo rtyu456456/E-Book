@@ -23,7 +23,7 @@
 		background-color: transparent;
 		border: none;
 		margin-right: 3.5rem;
-		opacity: 0.5;
+		opacity: 1;
 		position: absolute;
 		right: 0;
 	}
@@ -113,6 +113,7 @@
 	}
 	.review-header {
 		display: flex;
+		position: relative;
 	}
 	.review-header select {
 		height: 2.3rem;
@@ -120,9 +121,11 @@
 		border: none;
 		font-size: 1.3rem;
 		font-weight: bolder;
-		margin-top: 1.8rem;
-		margin-left: 42rem;
+		/* margin-top: 1.8rem;
+		margin-left: 42rem; */
 		opacity: 0.5;
+		position: absolute;
+		right: 0;
 	}
 	.detail-review-box {
 		background: #F5F6FA;
@@ -178,7 +181,6 @@
 		padding-top: 1.2rem;
 	}
 	.detail-review-reputation {
-		width: 49.9rem;
 		border-bottom: 1.5px solid rgba(38, 40, 61, 0.5);
 		display: flex;
 		padding-top: 0.6rem;
@@ -187,20 +189,34 @@
 		display: flex;
 	}
 	.detail-review-reputation button {
-		width: 8.5rem;
-		height: 3rem;
+		width: 7.5rem;
+		height: 2.5rem;
 		background: #FFF;
 		border: none;
 		border-radius: 30px;
 		box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1) inset;
 		margin-left: 1rem;
+		position: relative;
 	}
 	.detail-review-reputation img {
-		width: 1.8rem;
-		height: 1.8rem;
-		margin-top: 0.7rem;
+		width: 1.5rem;
+		height: 1.5rem;
+		position: absolute;
+		bottom: 0.4rem;
+		left: 1rem;
 	}
 	.detail-review-reputation span {
-		font-size: 1.3rem;
+		font-size: 1.1rem;
+		text-align: right;
+		position: absolute;
+		bottom: 0.4rem;
+		right: 1rem;
+	}
+	.reviewLikeImg.on {
+		filter: invert(73%) sepia(22%) saturate(3202%) hue-rotate(311deg)
+			brightness(94%) contrast(105%);
+	}
+	.reviewDislikeImg.on{
+	filter: invert(74%) sepia(46%) saturate(4423%) hue-rotate(186deg) brightness(107%) contrast(93%);
 	}
 }

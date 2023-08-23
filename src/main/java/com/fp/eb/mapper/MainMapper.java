@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.ui.Model;
 
 import com.fp.eb.model.BookDTO;
+import com.fp.eb.model.LikeDTO;
 import com.fp.eb.model.ReviewDTO;
 
 @Mapper
@@ -16,6 +18,15 @@ public interface MainMapper {
 	public BookDTO bookDetail(BookDTO bDTO);
 
 	public List<ReviewDTO> reviews(BookDTO bDTO);
+
+	public BookDTO getPercent(BookDTO bDTO);
+
+	public LikeDTO getLikeInfo(LikeDTO likeDTO);
+
+	public int insertLike(LikeDTO likeDTO);
+
+	public int updateLike(LikeDTO likeDTO);
+
 
 	
 }

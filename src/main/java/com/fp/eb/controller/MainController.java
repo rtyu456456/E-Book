@@ -24,19 +24,23 @@ public class MainController {
 	}
 
 	@GetMapping("/main.search")
-	public String bookSearch(BookDTO bDTO, Model model, HttpServletRequest req) {
+	public String bookSearch(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		mDAO.bookSearch(bDTO, model, req);
+//		mDAO.getPercent1(bDTO, rDTO, model);
 		model.addAttribute("contentPage", "../EB_main/main_search.jsp");
 		return "EB_main/main_index";
 	}
 
 	@GetMapping("/book.detail")
 	public String bookDetail(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
-		System.out.println(bDTO.getB_no());
 		mDAO.bookDetail(bDTO, rDTO, model);
 		mDAO.reviews(bDTO, rDTO, model);
+		mDAO.getPercent1(bDTO, rDTO, model);
 		model.addAttribute("contentPage", "../EB_main/book_detail.jsp");
 		return "EB_main/main_index";
 	}
+
+
+
 
 }

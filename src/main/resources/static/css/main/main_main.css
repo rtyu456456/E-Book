@@ -1,0 +1,174 @@
+@charset "UTF-8";
+/********베스트 서평********/
+.best-gh {
+	height: 100vh;
+	margin-left: 3rem;
+	position: relative;
+}
+
+.today-best-gh {
+	margin-top: 2.5rem;
+}
+
+.weekly-best-gh {
+	margin-top: 2.5rem;
+}
+
+.monthly-best-gh {
+	margin-top: 2.5rem;
+}
+
+.best-title-gh {
+	font-size: 2rem;
+	margin-bottom: 0.5rem;
+	margin-left: 2.5rem;
+}
+
+.best-box-gh {
+	width: 85vw;
+	height: 27rem;
+	background-color: #ffffff;
+	border-radius: 3rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	margin-left: 1.2rem;
+	position: relative;
+}
+
+.best-review-info{
+	width: 30rem;
+	display: flex;
+}
+
+.small-book-gh {
+	width: 7.8rem;
+	height: 11.3rem;
+	backround-color: transparent;
+	border: none;
+	border-radius: 1rem;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10) inset;
+	margin-top: 1.5rem;
+	margin-left: 5.9vw;
+	margin-right: 1rem;
+	border-radius: 1rem;
+}
+
+.small-book-gh img {
+	width: 7.8rem;
+	height: 11.3rem;
+	border: 0.2px solid rgba(38, 40, 61, 0.50);
+	border-radius: 10px;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+
+.best-review-info2{
+}
+
+.best-review-profile {
+	display: flex;
+	margin-top: 0.5rem;
+}
+
+.small-profile-gh {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 15px;
+	margin-top: 1.5rem;
+	margin-left: 0.5rem;
+	overflow: hidden;
+}
+
+.small-profile-gh img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.best-review-user h5 {
+	font-size: 1.5rem;
+	margin-top: 1.7rem;
+	margin-left: 0.5rem;
+}
+
+.best-review-user span {
+	color: #779A76;
+	font-size: 1rem;
+	margin-left: 0.5rem;
+}
+
+.best-book-title {
+	font-size: 1.5rem;
+	margin-top: 1rem;
+	margin-left: 0.5rem;
+}
+
+.best-book-author {
+	color: rgba(38,40,61,0.5);
+	font-size: 1rem;
+	margin-left: 0.5rem;
+}
+
+.recommend-radio-gh{
+	font-family:inherit;
+	font-size: 1.2rem;
+	font-weight: 800;
+	margin-top: 1rem;
+	margin-left: 0.7rem;
+}
+
+.recommend-radio-gh input{
+	margin-left: 0.7rem;
+	margin-right: 1.5rem;
+}
+
+.reputation-gh {
+	display: flex;
+	position: absolute;
+	left: 53vw;
+	top: 10.8rem;
+}
+
+.reputation-gh button {
+		width: 6.5rem;
+		height: 2rem;
+		background: #F5F6FA;
+		border: none;
+		border-radius: 30px;
+		box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1) inset;
+		margin-left: 1rem;
+		position: relative;
+	}
+.reputation-gh img {
+		width: 1.2rem;
+		height: 1.2rem;
+		position: absolute;
+		bottom: 0.4rem;
+		left: 1rem;
+	}
+	
+.reputation-gh span {
+		font-size: 1rem;
+		text-align: right;
+		position: absolute;
+		bottom: 0.4rem;
+		right: 1rem;
+	}
+
+.best-review-gh {
+	width: 70vw;
+	height: 8.5rem;
+	background-color: #F5F6FA;
+	border-radius: 2rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25) inset;
+	font-size: 1.3rem;
+	padding-top: 1.5rem;
+	padding-bottom: 1.3rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	position: absolute;
+	top: 14rem;
+	left: 5.9vw;
+	display : -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}

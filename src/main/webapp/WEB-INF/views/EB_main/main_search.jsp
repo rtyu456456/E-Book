@@ -19,10 +19,9 @@
 				<h5 class="result-company-gh">${bs.b_publisher }</h5>
 			</div>
 			<div class="result-reputation-gh">
-				<!-- 전체 독자(서평 남긴 사람?)와 좋아요 독자 비율 계산 후 반영 -->
 				<h6 class="text-gh">전체 독자의</h6>
 				<h6>
-					<span class="percent-gh">60%</span> <span class="text-gh"
+					<span class="percent-gh">${bs.positive_percentage }%</span> <span class="text-gh"
 						style="line-height: -0.5rem;">가 좋아합니다</span>
 				</h6>
 			</div>

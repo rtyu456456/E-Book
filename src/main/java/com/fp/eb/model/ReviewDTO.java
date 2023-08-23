@@ -11,6 +11,7 @@ public class ReviewDTO {
 	private int r_like;
 	private int r_dislike;
 	private Date r_date;
+	private int positive_percentage;
 	
 	public ReviewDTO() {
 		// TODO Auto-generated constructor stub
@@ -27,6 +28,16 @@ public class ReviewDTO {
 		this.r_like = r_like;
 		this.r_dislike = r_dislike;
 		this.r_date = r_date;
+	}
+	
+	
+
+	public int getPositive_percentage() {
+		return positive_percentage;
+	}
+
+	public void setPositive_percentage(int positive_percentage) {
+		this.positive_percentage = positive_percentage;
 	}
 
 	public int getR_no() {
