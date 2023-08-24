@@ -42,8 +42,10 @@
 		</c:forEach>
 	 <div class="empty_space"></div> 
 	</div>
-	<div class="post_writing">
-		<button>+ 글쓰기</button>
-	</div>
+		<form action="/go.writing.page">
+		<div class="post_writing">
+			<button name="c_no" value="${community.c_no }">+ 글쓰기</button>
+		</div>
+	</form>
 </body>
 </html>

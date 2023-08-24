@@ -14,7 +14,7 @@
 		<div id="form"
 			class="block rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner
  shadow-slate-500 w-11/12 h-4/6 bg-white">
-			<form action="reguser.do">
+			<form action="reguser.do" method="post">
 				<div class="flex w-full justify-center items-center mt-32 mb-20">
 					<img class="object-cover w-1/2 h-auto" alt="" src="imgs/logo.png">
 				</div>
