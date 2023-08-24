@@ -13,24 +13,16 @@ public class ReviewDTO {
 	private Date r_date;
 	private int positive_percentage;
 	
-	public ReviewDTO() {
-		// TODO Auto-generated constructor stub
+	private int likeCheck;
+	
+	
+	public int getLikeCheck() {
+		return likeCheck;
 	}
 
-	public ReviewDTO(int r_no, String r_owner, int r_b_no, String r_contents, int r_type, int r_like, int r_dislike,
-			Date r_date) {
-		super();
-		this.r_no = r_no;
-		this.r_owner = r_owner;
-		this.r_b_no = r_b_no;
-		this.r_contents = r_contents;
-		this.r_type = r_type;
-		this.r_like = r_like;
-		this.r_dislike = r_dislike;
-		this.r_date = r_date;
+	public void setLikeCheck(int likeCheck) {
+		this.likeCheck = likeCheck;
 	}
-	
-	
 
 	public int getPositive_percentage() {
 		return positive_percentage;

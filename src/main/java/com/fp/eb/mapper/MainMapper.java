@@ -2,6 +2,8 @@ package com.fp.eb.mapper;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.ui.Model;
@@ -26,6 +28,18 @@ public interface MainMapper {
 	public int insertLike(LikeDTO likeDTO);
 
 	public int updateLike(LikeDTO likeDTO);
+
+	public ReviewDTO dailyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
+	public BookDTO dailyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
+
+	public ReviewDTO weeklyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
+	public BookDTO weeklyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
+
+	public ReviewDTO monthlyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
+	public BookDTO monthlyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
+
+
+
 
 
 	

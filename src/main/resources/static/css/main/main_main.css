@@ -1,7 +1,47 @@
 @charset "UTF-8";
+
+/********추천 도서********/
+.age-recommend-book h4{
+	margin-left: 16.5vw;
+}
+
+.age-box {
+	width: 65vw;
+	height: 15rem;
+	background-color: #ffffff;
+	border-radius: 3rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	display: flex;
+	margin-top: 1.5rem;
+	margin-bottom: 4rem;
+	margin-left: 16.5vw;
+	padding: 0.7rem;
+	position: relative;
+}
+
+/********화제의 도서********/
+.hot-book h4{
+	margin-left: 16.5vw;
+}
+
+.hot-book-box {
+	width: 65vw;
+	height: 15rem;
+	background-color: #ffffff;
+	border-radius: 3rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	display: flex;
+	margin-top: 1.5rem;
+	margin-bottom: 4rem;
+	margin-left: 16.5vw;
+	padding: 0.7rem;
+	position: relative;
+}
+
 /********베스트 서평********/
 .best-gh {
 	height: 100vh;
+	margin-top: 5rem;
 	margin-left: 3rem;
 	position: relative;
 }
@@ -30,11 +70,11 @@
 	background-color: #ffffff;
 	border-radius: 3rem;
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
-	margin-left: 1.2rem;
+	margin-left: 3vw;
 	position: relative;
 }
 
-.best-review-info{
+.best-review-info {
 	width: 30rem;
 	display: flex;
 }
@@ -48,7 +88,7 @@
 	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10) inset;
 	margin-top: 1.5rem;
 	margin-left: 5.9vw;
-	margin-right: 1rem;
+	margin-right: 2vw;
 	border-radius: 1rem;
 }
 
@@ -60,7 +100,8 @@
 	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10) inset;
 }
 
-.best-review-info2{
+.best-review-info2 {
+	
 }
 
 .best-review-profile {
@@ -102,23 +143,50 @@
 }
 
 .best-book-author {
-	color: rgba(38,40,61,0.5);
+	color: rgba(38, 40, 61, 0.5);
 	font-size: 1rem;
 	margin-left: 0.5rem;
 }
 
-.recommend-radio-gh{
-	font-family:inherit;
+.best-date-gh {
+		font-size: 1.2rem;
+		opacity: 0.5;
+		position: absolute;
+		top: 3rem;
+		right: 4rem;
+		opacity: 0.5;
+	}
+
+.recommend-radio-gh {
+	font-family: inherit;
 	font-size: 1.2rem;
 	font-weight: 800;
 	margin-top: 1rem;
 	margin-left: 0.7rem;
 }
 
-.recommend-radio-gh input{
+/* .recommend-radio-gh input {
+	display: none;
+}
+
+.recommend-radio-gh label {
+	width: 1.2rem;
+	height: 1.2rem;
+	border: 2.5px solid #26283d;
+	border-radius: 4px;
+	cursor: pointer;
+	display: inline-block;
 	margin-left: 0.7rem;
 	margin-right: 1.5rem;
 }
+
+.recommend-radio-gh input:checked+.recommend-radio-gh label::after {
+	content: "";
+	display: block;
+	width: 0.6rem;
+	height: 0.6rem;
+	background-color: rgba(246, 110, 110, 0.8);
+} */
 
 .reputation-gh {
 	display: flex;
@@ -128,30 +196,31 @@
 }
 
 .reputation-gh button {
-		width: 6.5rem;
-		height: 2rem;
-		background: #F5F6FA;
-		border: none;
-		border-radius: 30px;
-		box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1) inset;
-		margin-left: 1rem;
-		position: relative;
-	}
+	width: 6.5rem;
+	height: 2rem;
+	background: #F5F6FA;
+	border: none;
+	border-radius: 30px;
+	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1) inset;
+	margin-left: 1rem;
+	position: relative;
+}
+
 .reputation-gh img {
-		width: 1.2rem;
-		height: 1.2rem;
-		position: absolute;
-		bottom: 0.4rem;
-		left: 1rem;
-	}
-	
+	width: 1.2rem;
+	height: 1.2rem;
+	position: absolute;
+	bottom: 0.4rem;
+	left: 1rem;
+}
+
 .reputation-gh span {
-		font-size: 1rem;
-		text-align: right;
-		position: absolute;
-		bottom: 0.4rem;
-		right: 1rem;
-	}
+	font-size: 1rem;
+	text-align: right;
+	position: absolute;
+	bottom: 0.2rem;
+	right: 1rem;
+}
 
 .best-review-gh {
 	width: 70vw;
@@ -167,7 +236,7 @@
 	position: absolute;
 	top: 14rem;
 	left: 5.9vw;
-	display : -webkit-box;
+	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 	overflow: hidden;

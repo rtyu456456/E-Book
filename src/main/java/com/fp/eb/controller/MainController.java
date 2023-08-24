@@ -18,7 +18,14 @@ public class MainController {
 	private MainDAO mDAO;
 
 	@GetMapping("/main")
-	public String mainMain(Model model) {
+	public String mainMain(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+		//mDAO.hotBook(bDTO, rDTO, model, req);
+		mDAO.dailyBest(bDTO, rDTO, model, req);
+		mDAO.dailyBook(bDTO, rDTO, model, req);
+		mDAO.weeklyBest(bDTO, rDTO, model, req);
+		mDAO.weeklyBook(bDTO, rDTO, model, req);
+		mDAO.monthlyBest(bDTO, rDTO, model, req);
+		mDAO.monthlyBook(bDTO, rDTO, model, req);
 		model.addAttribute("contentPage", "../EB_main/main_main.jsp");
 		return "EB_main/main_index";
 	}
@@ -34,7 +41,7 @@ public class MainController {
 	@GetMapping("/book.detail")
 	public String bookDetail(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		mDAO.bookDetail(bDTO, rDTO, model);
-		mDAO.reviews(bDTO, rDTO, model);
+		mDAO.reviews(bDTO, rDTO, model, req);
 		mDAO.getPercent1(bDTO, rDTO, model);
 		model.addAttribute("contentPage", "../EB_main/book_detail.jsp");
 		return "EB_main/main_index";

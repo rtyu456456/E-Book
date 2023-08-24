@@ -25,6 +25,7 @@ $(function() {
 		});
 		
 sortItems();
+setLike();
 likeFunc();
 });
 
@@ -76,7 +77,19 @@ function sortItems() {
 
 
 
-
+function setLike(){
+	let likeCheck = $(".like-check");
+	console.log(likeCheck);
+	$(likeCheck).each(function(i, e){
+		if(e.value == 1){
+			console.log($(e).parent().find('.reviewLikeImg').addClass( 'on' ));
+		}else if(e.value == 2){
+			console.log($(e).parent().find('.reviewDislikeImg').addClass( 'on' ));
+		}
+	});
+	
+	
+}
 
 
 
@@ -94,7 +107,7 @@ function likeFunc(){
 	$(".like-dislike").click(function(){
 	let lr_type =	$(this).val();		// 1이면 좋아요 누른거  2이면 싫어요 누른거.
 											// 눌렀던걸 또 누르면 0 으로
-											
+	let likeDisLikes = $(this).parent().find('.like-dislike-img');									
 	lr_where_type = $(this).parent().find('.like-type').val();
 	console.log(lr_where_type);
 	let lr_where_no = $(this).parent().find('.like-no').val();
@@ -104,18 +117,19 @@ function likeFunc(){
 	// id, 댓글의 pk
 	console.log(lr_type)
 	console.log(active);
+	if(active){
+		lr_type = 0;
+	}
 	$.ajax({
 		url : "like.do",
 		data : {lr_where_no,lr_owner,lr_where_type,lr_type}
 	}).done(function(data) {
 		console.log(data);
-		if(data == 1){
-			
-		}else if(data == 2){
-
-		}else{
-		}
-			  $(imgBtn).toggleClass('on');
+		$(likeDisLikes).removeClass('on');
+		if(data == 0){
+			return;
+		}		
+		$(imgBtn).toggleClass('on');
 		
 		
 		});

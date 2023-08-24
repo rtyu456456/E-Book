@@ -61,7 +61,7 @@
 							<div class="detail-review-profile">
 								<img src="/img/daejeon_profile.png">
 							</div>
-							<h6 class="detail-name-gh">${r.r_owner } / ${r.r_no }</h6>
+							<h6 class="detail-name-gh">${r.r_owner } / ${r.r_no } / ${r.likeCheck}</h6>
 							<h6 class="detail-grade-gh">현자</h6>
 							<h6 class="detail-date-gh">
 								<fmt:formatDate value="${r.r_date }"
@@ -73,6 +73,7 @@
 						</div>
 						<div class="detail-review-reputation">
 								<input class="like-no" hidden value="${r.r_no }">
+								<input class="like-check"  value="${r.likeCheck}">
 								<input hidden class="like-type" value="REVIEW">
 							<button class="reviewLikeBtn like-dislike" value="1">
 								<img class="reviewLikeImg like-dislike-img" src="/img/review_like.png"> <span

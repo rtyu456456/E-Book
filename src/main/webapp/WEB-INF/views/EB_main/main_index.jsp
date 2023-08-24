@@ -62,18 +62,16 @@
 	<dialog id="menu-dialog"> <!-- <div class="menu-screen"></div> -->
 	<form method="dialog">
 		<div class="side-menu-gh">
-			<form action="main">
-				<button class="menu-title-gh">
-					<img src="/img/pageup_logo.png">
-				</button>
-			</form>
+			<button class="menu-title-gh" onclick="location.href='main'">
+				<img src="/img/pageup_logo.png">
+			</button>
 			<button class="menu-close-gh">
 				<img src="/img/x_icon.png">
 			</button>
 			<div class="menu-list-box">
 				<div class="menu-list-gh">
 					<img src="/imgs/my_page_txt.png">
-					<h4>내 정보</h4>
+					<h4 onclick="location.href='user_main'">내 정보</h4>
 					<h4>읽은 책</h4>
 					<h4>읽고 있는 책</h4>
 					<h4>읽고 싶은 책</h4>
