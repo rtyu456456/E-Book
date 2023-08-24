@@ -127,16 +127,50 @@
 		</div>
 	</div>
 	<div class="flex justify-center items-center w-full h-5/6">
-		<div class="flex flex-col w-11/12 h-full bg-white"></div>
+		<div class="result-box flex flex-col w-11/12 h-full bg-white">
+			<div
+				class="br-box block rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/4 bg-white ml-10 mb-10">
+				<div class="w-full h-full flex">
+					<div class="flex justify-center items-center ml-10 w-1/4 h-full">
+						<img class="object-fit w-40 h-60" alt="" src="${br.b_thumbnail }">
+					</div>
+					<div
+						class="flex flex-col justify-center items-start pl-5 w-3/4 h-full text-[rgba(38,40,61,1)]">
+						<div
+							class="w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3">
+							<span>책 제목 넣기</span>
+						</div>
+						<div
+							class="text-[1.7rem] text-[rgba(38,40,61,0.5)] font-bold h-1/4">
+							<span>작가이름 넣기</span>
+						</div>
+						<div class="w-11/12 h-1/3 text-[1.7rem] font-bold whatshowwrapper">
+							<div class="whatshow1 w-full h-full">
+								<div class="flex w-full justify-between">
+									<span>출판사 이름 채워넣기</span>
+								</div>
+							</div>
+						</div>
+						<div
+							class="flex justify-end items-end w-full h-1/6 text-[2rem] font-bold ">
+							<div
+								class="flex justify-end items-end w-full h-1/6 text-[1.5rem] text-white font-bold">
+								<button
+									class="update w-1/4 bg-[rgba(38,40,61,1)] mr-5 mb-3 rounded-3xl">읽기
+									시작</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-
-
 
 	</dialog>
 	<script type="text/javascript">
 		$(function() {
 
-			$('.br-box').each(function() {
+			$('.br-box').each(function() { //br
 				let br_page = parseInt($(this).find('.cur-page').val());
 				let b_page = parseInt($(this).find('.total-page').val());
 				let progress_bar = $(this).find('.progress-bar');
@@ -177,7 +211,7 @@
 				$(this).hide();
 			});
 
-			$(".confirm-btn").click(
+			$(".confirm-btn").click( // 읽은 페이지 갱신시 실행되는 이벤트
 					function() { // 완료 누를 시 click 시 function 실행
 						let brBox = $(this).closest('.br-box'); // 가장 가까운 br-box라는 div 탐색
 						let br_no = brBox.find('.br-no').val(); // br-box에 있는 br-no라는 input을 찾아 value 가져오기
@@ -219,7 +253,7 @@
 			
 			$(".db-search-btn").click(
 					function() { // 완료 누를 시 click 시 function 실행
-					
+						
 						let modal = $(this).closest('.search-box');
 						let type = modal.find('.type').val();	
 						let search_text = modal.find('.search-text').val();
@@ -232,15 +266,40 @@
 							data : search_data 
 							,
 							success : function(data) {
-								for(let i = 0; i < data.length; i++){
-									console.log(data[i].b_title);
-								}
+								makeDom(data);
+								
 							}
-
+		
 						}); // ajax end
  					}); // click event end
 			
-		}); // ready
+		
+		$(".reg-ing-btn").click(
+				function() { // 완료 누를 시 click 시 function 실행
+					
+					let modal = $(this).closest('.reg-ing-box');
+					
+					let b_thumbnail = modal.find('.type').val();	
+					let search_text = modal.find('.search-text').val();
+					
+					let search_data = {};
+					search_data[type] = search_text;
+					
+					 $.ajax({
+						url : "getDBbook.do",
+						data : search_data 
+						,
+						success : function(data) {
+							for(let i = 0; i < data.length; i++){
+								console.log(data[i].b_title);
+								
+							}
+						}
+
+					}); // ajax end
+					}); // click event end
+		
+	}); // ready
 		
 		let search_a = document.querySelector('.search-book');
 		let search_modal = document.querySelector('.search-modal');
@@ -249,6 +308,9 @@
 			search_modal.showModal();
 		});
 		
+		
+		
+
 		</script>
 </body>
 </html>

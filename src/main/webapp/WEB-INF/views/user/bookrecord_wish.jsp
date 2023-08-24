@@ -38,7 +38,7 @@
 							class="flex justify-end items-end w-full h-1/6 text-[2rem] font-bold ">
 							<div
 								class="flex justify-end items-end w-full h-1/6 text-[1.5rem] text-white font-bold">
-								<button onclick="regIng(${br.b_no }, ${br.lr_no })"
+								<button onclick="regIngWish(${br.b_no }, ${br.lr_no })"
 									class="reg-ing w-1/6 bg-[rgba(38,40,61,1)] mr-5 mb-3 rounded-3xl">책
 									읽기</button>
 							</div>
