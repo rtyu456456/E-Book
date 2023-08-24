@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import com.fp.eb.mapper.CommunityMapper;
 import com.fp.eb.model.CommunityDTO;
 import com.fp.eb.model.CommunityLikeDTO;
+import com.fp.eb.model.CommunityPinned;
 import com.fp.eb.model.CommunityPostDTO;
 import com.fp.eb.model.CommunityReplyDTO;
 
@@ -151,8 +152,8 @@ public class CommunityDAO {
 
 	}
 
-	public void getAllPinnedCommu(Model model) {
-		model.addAttribute("pinnedCommu", ss.getMapper(CommunityMapper.class).getAllPinnedCommu());
+	public CommunityPinned getAllPinnedCommu() {
+	 return new CommunityPinned((ss.getMapper(CommunityMapper.class).getAllPinnedCommu()));
 	}
 
 	public void updatePinnedCommuZero(CommunityLikeDTO cl) {

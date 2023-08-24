@@ -8,9 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fp.eb.model.CommunityDTO;
 import com.fp.eb.model.CommunityLikeDTO;
+import com.fp.eb.model.CommunityPinned;
 import com.fp.eb.model.CommunityPostDTO;
 import com.fp.eb.model.CommunityReplyDTO;
 import com.fp.eb.service.CommunityDAO;
@@ -30,7 +34,7 @@ public class CommunityController {
 
 	@GetMapping("/community_main")
 	public String goCommunityMain(Model model, CommunityPostDTO cp) {
-		cDAO.getAllPinnedCommu(model);
+		cDAO.getAllPinnedCommu();
 		cDAO.getAllCommunity(model);
 
 		model.addAttribute("commu_header_page", "community_main_header.jsp");
@@ -74,23 +78,19 @@ public class CommunityController {
 		return "community/community_page";
 	}
 	
-	@GetMapping("/do.pinned.commu")
-	public String doPinndedCommu(Model model, HttpServletRequest request, CommunityLikeDTO cl) {
+	
+	@RequestMapping(value = "/do.pinned.commu", method = RequestMethod.GET,
+				produces="application/json; charset=utf-8")
+	public @ResponseBody CommunityPinned doPinndedCommu(Model model, HttpServletRequest request, CommunityLikeDTO cl) {
 		cDAO.checkPinnedCommu(cl);
-		/* cDAO.insertPinnedCommu(cl); */
-		cDAO.getAllPinnedCommu(model);
-		cDAO.getAllCommunity(model);
-
-		model.addAttribute("commu_header_page", "community_main_header.jsp");
-		model.addAttribute("commu_contents_page", "community_main_contents.jsp");
-		return "community/community_page";
+		return cDAO.getAllPinnedCommu();
 	}
 	
 	@GetMapping("/update.pinned.commu")
 	public String updatePinndedCommu(Model model, HttpServletRequest request, CommunityLikeDTO cl) {
 		cDAO.updatePinnedCommuZero(cl);
 		
-		cDAO.getAllPinnedCommu(model);
+		cDAO.getAllPinnedCommu();
 		cDAO.getAllCommunity(model);
 		
 		model.addAttribute("commu_header_page", "community_main_header.jsp");

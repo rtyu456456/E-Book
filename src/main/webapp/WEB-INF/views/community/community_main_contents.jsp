@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.0.js"
+	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/community/community_main.css">
 </head>
 <body>
@@ -30,9 +33,12 @@
 						</button>
 					</form>
 					<c:forEach var="pin" items="${pinnedCommu  }">
-					<button class="commu_board_btn">
-						<img onclick="notPinnedCommunity('${pin.c_no}')"  alt="" src="/img/커뮤니티_즐겨찾기함_icon.png"> &nbsp; ${pin.c_name }
-					</button>
+						<form action="/go.commu.post">
+							<button class="commu_board_btn">
+								<img onclick="notPinnedCommunity('${pin.c_no}')" alt=""
+									src="/img/커뮤니티_즐겨찾기함_icon.png"> &nbsp; <div id="pin">${pin.c_name }</div> 
+							</button>
+						</form>
 					</c:forEach>
 					<br>
 				</div>
@@ -96,16 +102,39 @@
 	</div>
 </body>
 <script type="text/javascript">
-	let notPinned = document.getElementById("not-pinned");	
-	
+
+
 	function pinnedMyCommunity(c_no) {
-		event.preventDefault(); 
+		event.preventDefault();
 		console.log(c_no);
-		location.href="/do.pinned.commu?lr_where_no=" + c_no;
+		$.ajax({
+			url : "do.pinned.commu",
+			data : {
+				"lr_where_no" : c_no
+			},
+			datatype: "JSON",
+			success : function(pinnedCommu) {
+				console.log(pinnedCommu);
+				
+			/* 	var data = JSON.parse(pinnedCommu);
+				
+				  $.each(data, function (k, v) {
+                      $('<div></div>').val(k).text(v).appendTo($('#pin'));
+                  });
+				 */
+			},
+			error : function(request, status, error) {
+                console.log("code:" + request.status + "\n"
+                        + "message:" + request.responseText + "\n"
+                        + "error:" + error);
+            }
+		})
 	}
-	
-	function notPinnedCommunity(c_no){
-		location.href="/update.pinned.commu?lr_where_no=" + c_no;
+
+
+	function notPinnedCommunity(c_no) {
+		event.preventDefault();
+		location.href = "/update.pinned.commu?lr_where_no=" + c_no;
 	}
 </script>
 </html>
