@@ -9,7 +9,7 @@ public interface UserMapper {
 
 	int regUser(UserDTO uDTO);
 
-	UserDTO getUserById(UserDTO uDTO);
+	UserDTO getUserById(String id);
 
 
 }

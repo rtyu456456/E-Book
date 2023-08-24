@@ -3,7 +3,7 @@
 <mapper namespace="com.fp.eb.mapper.UserMapper">
 
 	<insert id="regUser">
-		INSERT INTO EB_USER VALUES(#{u_id}, #{u_pw}, #{u_name}, 'default.img', #{u_email}, #{u_gender}, #{u_age}, current_date, 0, 0, 0, 0)
+		INSERT INTO EB_USER VALUES(#{u_id}, #{u_pw}, #{u_name}, 'default.img', 'default.email', #{u_gender}, #{u_age}, current_date, 0, 0, 0, 0, 'ROLE_USER')
 	</insert>
 	
 	<select id="getUserById" resultType="com.fp.eb.model.UserDTO">
