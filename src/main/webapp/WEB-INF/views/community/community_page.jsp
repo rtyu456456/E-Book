@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="css/community/community_post_header.css">
 <link rel="stylesheet" href="css/community/community_post_contents.css">
 <link rel="stylesheet" href="css/community/community_detail_contents.css">
+<link rel="stylesheet" href="css/community/community_writing_header.css">
+<link rel="stylesheet" href="css/community/community_writing_contents.css">
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap')

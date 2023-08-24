@@ -12,9 +12,10 @@
 		parameterType="com.fp.eb.model.CommunityDTO">
 
 		select * from eb_community_post, eb_community
-		where cp_community = c_no and c_no=#{c_no} order by cp_date desc
+		where
+		cp_community = c_no and c_no=#{c_no} order by cp_date desc
 	</select>
-	
+
 	<select id="getCommunity"
 		resultType="com.fp.eb.model.CommunityDTO">
 		select * from eb_community where c_no= #{c_no}
@@ -24,6 +25,11 @@
 		resultType="com.fp.eb.model.CommunityPostDTO">
 		select * from eb_community_post where cp_no = #{cp_no}
 	</select>
-	
-	
+
+	<select id="getAllReplys" resultType="com.fp.eb.model.CommunityReplyDTO">
+		select * from eb_community_reply, eb_community_post
+		where cr_cp_no = cp_no and cp_no=#{cp_no}
+	</select>
+
+
 </mapper>

@@ -1,6 +1,15 @@
 @charset "UTF-8";
 
 @media only screen and (max-width:1000px) {
+	.post_detail_background {
+		width: 100vw;
+		height: 100vh;
+		background-color: white;
+		border-radius: 4rem 4rem 0rem 0rem;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+		text-align: center;
+		background-color: white;
+	}
 	.post_detail {
 		display: flex;
 		width: 90%;
@@ -64,13 +73,119 @@
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	.post_cp_contents {
-		font-size: 2rem;
+		font-size: 3rem;
 		font-weight: 300;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
-	
-	.post_reply_input{
-	position: fixed;
-	bottom: 0;
+	.post_icon {
+		justify-content: flex-end;
+		margin-right: 4rem;
+		display: flex;
 	}
+	.post_icon img {
+		max-height: 2rem;
+		max-width: 2rem;
+	}
+	.post_like_icon {
+		border: none;
+		background-color: transparent;
+		align-items: center;
+		display: flex;
+		margin-left: 2rem;
+		font-size: 2rem;
+		color: #F66E6E;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	.post_like_icon img {
+		transform: rotate(180deg);
+	}
+	.post_dislike_icon {
+		border: none;
+		background-color: transparent;
+		align-items: center;
+		display: flex;
+		margin-left: 2rem;
+		font-size: 2rem;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	.post_chat_icon {
+		border: none;
+		background-color: transparent;
+		align-items: center;
+		display: flex;
+		margin-left: 2rem;
+		font-size: 2rem;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	.post_line {
+		margin: auto;
+		padding: auto;
+		width: 95%;
+		background-color: rgba(38, 40, 61, 0.30);
+	}
+
+	/* reply */
+	.post_reply_background {
+		text-align: left;
+		margin: auto;
+		padding: auto;
+		position: relative;
+		background-color: #F5F6FA;
+		border-radius: 2rem;
+		width: 90vw;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+		margin: auto;
+	}
+	.reply_user {
+		margin-left: 2rem;
+		font-size: 3rem;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	.reply_txt {
+		margin-left: 2rem;
+		font-size: 2.5rem;
+		font-weight: 300;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	.reply_date {
+		margin-left: 2rem;
+		font-size: 2rem;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	
+	/* 댓글 입력  */
+	.post_reply_input {
+		position: fixed;
+		bottom: 0;
+	}
+	
+	.box_shadow_reply {
+	position: relative;
+	display: flex;
+	box-shadow: 1rem 3rem 5rem 0rem rgba(0, 0, 0, 0.25);
+	width: 100vw;
+	background-color: #F5F6FA;
+	height: 5vh;
+	align-items: center;
+}
+
+.commu_seach {
+	position: relative;
+	background-color: #F5F6FA;
+	color: rgba(38, 40, 61, 0.50);
+	font-size: 2.5rem;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-weight: 550;
+	width: 90%;
+	border: none;
+	text-indent: 3rem;
+	outline: none;
+}
+	
+	
 }

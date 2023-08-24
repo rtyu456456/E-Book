@@ -31,16 +31,11 @@ public class CommunityDAO {
 	}
 
 	public void getCommunityPost(CommunityPostDTO cp, Model model) {
-		Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-
-		// Timestamp to String
-		String currentTimestampToString = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(currentTimestamp);
-		
-		
-		model.addAttribute("realTime",currentTimestampToString);
-		System.out.println(currentTimestampToString);
 		model.addAttribute("communityPost", ss.getMapper(CommunityMapper.class).getCommunityPost(cp));
-		
+	}
+
+	public void getReplys(CommunityPostDTO cp, Model model) {
+		model.addAttribute("communityReplys", ss.getMapper(CommunityMapper.class).getAllReplys(cp));
 	}
 
 

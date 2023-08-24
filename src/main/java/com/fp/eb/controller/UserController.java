@@ -3,6 +3,7 @@ package com.fp.eb.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,9 @@ public class UserController {
 
 	@Autowired
 	private UserDAO uDAO;
+	
+	@Autowired
+	private BCryptPasswordEncoder bEncoder;
 
 	@GetMapping("/usermain")
 	public String userMain(HttpServletRequest req) {
@@ -41,8 +45,7 @@ public class UserController {
 	}
 
 	@GetMapping("/login.do")
-	public String loginDo(HttpServletRequest req, UserDTO uDTO) {
-		uDAO.login(req, uDTO);
+	public String loginDo(HttpServletRequest req, UserDTO uDTO, String id) {
 		return "user/detail_user";
 	}
 	
