@@ -21,6 +21,7 @@ public class UserDTO {
 //	private BigDecimal u_login_total;
 	private String u_achievement;
 	private String u_achievement_show;
+	private String u_auth;
 
 	public UserDTO() {
 		// TODO Auto-generated constructor stub
@@ -28,7 +29,7 @@ public class UserDTO {
 
 	public UserDTO(String u_id, String u_pw, String u_name, String u_profile, String u_email, String u_gender,
 			int u_age, int u_login, int u_login_streak, int u_login_total, String u_achievement,
-			String u_achievement_show) {
+			String u_achievement_show, String u_auth) {
 		super();
 		this.u_id = u_id;
 		this.u_pw = u_pw;
@@ -42,7 +43,11 @@ public class UserDTO {
 		this.u_login_total = u_login_total;
 		this.u_achievement = u_achievement;
 		this.u_achievement_show = u_achievement_show;
+		this.u_auth = u_auth;
 	}
+
+
+
 
 	public String getU_id() {
 		return u_id;
@@ -139,14 +144,24 @@ public class UserDTO {
 	public void setU_achievement_show(String u_achievement_show) {
 		this.u_achievement_show = u_achievement_show;
 	}
+	
+
+	public String getU_auth() {
+		return u_auth;
+	}
+
+	public void setU_auth(String u_auth) {
+		this.u_auth = u_auth;
+	}
 
 	@Override
 	public String toString() {
 		return "UserDTO [u_id=" + u_id + ", u_pw=" + u_pw + ", u_name=" + u_name + ", u_profile=" + u_profile
 				+ ", u_email=" + u_email + ", u_gender=" + u_gender + ", u_age=" + u_age + ", u_login=" + u_login
 				+ ", u_login_streak=" + u_login_streak + ", u_login_total=" + u_login_total + ", u_achievement="
-				+ u_achievement + ", u_achievement_show=" + u_achievement_show + "]";
+				+ u_achievement + ", u_achievement_show=" + u_achievement_show + ", u_auth=" + u_auth + "]";
 	}
 
+	
 	
 }

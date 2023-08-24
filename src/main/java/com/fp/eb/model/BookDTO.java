@@ -1,7 +1,7 @@
 package com.fp.eb.model;
 
 public class BookDTO {
-	private String b_no;
+	private int b_no;
 	private String b_title;
 	private String b_contents;
 	private String b_url;
@@ -17,7 +17,7 @@ public class BookDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BookDTO(String b_no, String b_title, String b_contents, String b_url, String b_isbn, String b_authors,
+	public BookDTO(int b_no, String b_title, String b_contents, String b_url, String b_isbn, String b_authors,
 			String b_publisher, int b_page, int b_price, String b_thumbnail) {
 		super();
 		this.b_no = b_no;
@@ -42,11 +42,11 @@ public class BookDTO {
 		this.positive_percentage = positive_percentage;
 	}
 
-	public String getB_no() {
+	public int getB_no() {
 		return b_no;
 	}
 
-	public void setB_no(String b_no) {
+	public void setB_no(int b_no) {
 		this.b_no = b_no;
 	}
 
