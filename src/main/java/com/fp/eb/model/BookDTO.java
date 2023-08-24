@@ -1,9 +1,7 @@
 package com.fp.eb.model;
 
-import java.math.BigDecimal;
-
 public class BookDTO {
-	private BigDecimal b_no;
+	private String b_no;
 	private String b_title;
 	private String b_contents;
 	private String b_url;
@@ -13,14 +11,14 @@ public class BookDTO {
 	private int b_page;
 	private int b_price;
 	private String b_thumbnail;
-	private String type; // 읽고싶은책 검색 시 등록용
+	private int positive_percentage;
 
 	public BookDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BookDTO(BigDecimal b_no, String b_title, String b_contents, String b_url, String b_isbn, String b_authors,
-			String b_publisher, int b_page, int b_price, String b_thumbnail, String type) {
+	public BookDTO(String b_no, String b_title, String b_contents, String b_url, String b_isbn, String b_authors,
+			String b_publisher, int b_page, int b_price, String b_thumbnail) {
 		super();
 		this.b_no = b_no;
 		this.b_title = b_title;
@@ -32,14 +30,23 @@ public class BookDTO {
 		this.b_page = b_page;
 		this.b_price = b_price;
 		this.b_thumbnail = b_thumbnail;
-		this.type = type;
+	}
+	
+	
+
+	public int getPositive_percentage() {
+		return positive_percentage;
 	}
 
-	public BigDecimal getB_no() {
+	public void setPositive_percentage(int positive_percentage) {
+		this.positive_percentage = positive_percentage;
+	}
+
+	public String getB_no() {
 		return b_no;
 	}
 
-	public void setB_no(BigDecimal b_no) {
+	public void setB_no(String b_no) {
 		this.b_no = b_no;
 	}
 
@@ -87,14 +94,6 @@ public class BookDTO {
 		return b_publisher;
 	}
 
-	public int getB_price() {
-		return b_price;
-	}
-
-	public void setB_price(int b_price) {
-		this.b_price = b_price;
-	}
-
 	public void setB_publisher(String b_publisher) {
 		this.b_publisher = b_publisher;
 	}
@@ -107,6 +106,14 @@ public class BookDTO {
 		this.b_page = b_page;
 	}
 
+	public int getB_price() {
+		return b_price;
+	}
+
+	public void setB_price(int b_price) {
+		this.b_price = b_price;
+	}
+
 	public String getB_thumbnail() {
 		return b_thumbnail;
 	}
@@ -115,14 +122,13 @@ public class BookDTO {
 		this.b_thumbnail = b_thumbnail;
 	}
 
-	public String getType() {
-		return type;
+	@Override
+	public String toString() {
+		return "BookDTO [b_no=" + b_no + ", b_title=" + b_title + ", b_contents=" + b_contents + ", b_url=" + b_url
+				+ ", b_isbn=" + b_isbn + ", b_authors=" + b_authors + ", b_publisher=" + b_publisher + ", b_page="
+				+ b_page + ", b_price=" + b_price + ", b_thumbnail=" + b_thumbnail + ", positive_percentage="
+				+ positive_percentage + "]";
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	
 
 }

@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+@media only screen and (max-width:1000px) {
+	/********검색 결과********/
+	.search-result-gh {
+		
+	}
+	.result-box-gh {
+		width: 53rem;
+		height: 16rem;
+		background-color: #ffffff;
+		border-radius: 3rem;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+		display: flex;
+		margin-bottom: 1.5rem;
+		margin-left: 4rem;
+		position: relative;
+		height: 16rem;
+	}
+	.result-info-gh {
+		font-size: 2rem;
+		margin-left: 1rem;
+	}
+	.result-title-gh {
+		width: 38rem;
+		font-size: 1.9rem;
+		margin-top: 1.8rem;
+	}
+	.result-author-gh {
+		font-size: 1.3rem;
+		margin-top: 0.5rem;
+		opacity: 0.7;
+	}
+	.result-company-gh {
+		font-size: 1.3rem;
+		opacity: 0.7;
+	}
+	.result-reputation-gh {
+		width: 13rem;
+		height: 3.5rem;
+		background-color: #26283D;
+		border: 1px solid black;
+		border-radius: 3rem 0rem;
+		color: white;
+		font-size: 2em;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		text-align: center;
+	}
+	.text-gh {
+		color: white;
+		font-size: 1rem;
+		margn-left: 2rem;
+	}
+	.percent-gh {
+		color: #F66E6E;
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+	}
+	.result-percent-gh {
+		
+	}
+}

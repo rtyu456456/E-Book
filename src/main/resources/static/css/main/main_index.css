@@ -1,0 +1,218 @@
+@charset "UTF-8";
+
+/*
+width/height 먼저, 그 다음은 알파벳순
+상하좌우 위치 관련 등 세트가 있는 경우는 같이 씀
+ */
+* {
+	color: #26283D;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.main-container-gh {
+	width: 100vw;
+	background-color: #F5F6FA;
+	position: absolute;
+	z-index: 1;
+}
+
+@media only screen and (max-width:1000px) {
+	/********맨 위********/
+	.main-top-gh {
+		width: 61.1rem;
+		height: 11rem;
+		display: flex;
+		margin-bottom: 2rem;
+		position: relative;
+	}
+	.menu-gh {
+		width: 4rem;
+		height: 4rem;
+		background-color: transparent;
+		border: none;
+		margin-top: 6.5rem;
+		position: absolute;
+		left: 8vw;
+	}
+	.menu-gh img {
+		width: 3.7rem;
+		height: 3.7rem;
+		border: none;
+	}
+	.title-gh {
+		width: 15rem;
+		height: 4.5rem;
+		background-color: transparent;
+		border: none;
+		margin-top: 95px;
+		position: absolute;
+		left: 37.5vw;
+	}
+	.title-gh img {
+		width: 15rem;
+		height: 4.5rem;
+	}
+	.logo-gh {
+		width: 3rem;
+		height: 5.5rem;
+		position: absolute;
+		left: 88vw;
+	}
+	.profile-img-gh {
+		width: 4.05rem;
+		height: 4.05rem;
+		border-radius: 1.5rem;
+		margin-top: 6.5rem;
+		overflow: hidden;
+		position: absolute;
+		left: 86vw;
+	}
+	.profile-img-gh img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	/********검색창********/
+	.main-search-gh {
+		height: 4rem;
+		position: relative;
+		display: flex;
+		margin-bottom: 3.5rem;
+	}
+	.main-select {
+		background-color: transparent;
+		border: none;
+		color: rgb(38, 40, 61);
+		font-size: 2rem;
+		font-weight: bolder;
+		position: absolute;
+		left: 8vw;
+	}
+	.main-select option {
+		background: transparent;
+		font-size: 2rem;
+	}
+	.search-box-gh {
+		width: 74vw;
+		height: 3.7rem;
+		background-color: #ffffff;
+		border-radius: 4rem;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+		display: flex;
+		margin-left: 1rem;
+		margin-right: 1rem;
+		position: relative;
+		position: absolute;
+		left: 17vw;
+	}
+	.input-gh {
+		width: 41.5rem;
+		height: 3rem;
+		background-color: transparent;
+		border: none;
+		color: rgba(38, 40, 61);
+		font-size: 2rem;
+		font-weight: bolder;
+		margin-top: 0.4rem;
+		position: absolute;
+		left: 1.5rem;
+	}
+	.input-gh::placeholder {
+		color: rgba(38, 40, 61, 0.3);
+	}
+	.search-btn-gh {
+		width: 4rem;
+		height: 4rem;
+		background-color: transparent;
+		border: none;
+		filter: invert(11%) sepia(31%) saturate(930%) hue-rotate(196deg)
+			brightness(92%) contrast(86%);
+		position: absolute;
+		right: 0.7rem;
+	}
+	.search-btn-gh img {
+		width: 3rem;
+		height: 3rem;
+	}
+	.main-contents-gh {
+		background-color: #F5F6FA;
+	}
+
+	/********메뉴********/
+	/* .menu-screen {
+		width: 100vw;
+		height:100%;
+		backdrop-filter: blur(5px);
+		background: rgba(38, 40, 61, 0.15);
+		display: none;
+		position: fixed;
+		z-index: 100;
+	} */
+	.side-menu-gh {
+		
+		/* margin-left: -100vw; */
+	}
+	.menu-title-gh {
+		width: 12rem;
+		height: 3.5rem;
+		background-color: transparent;
+		border: none;
+		margin-top: 3rem;
+		margin-bottom: 5rem;
+		margin-left: 2rem;
+	}
+	.menu-title-gh img {
+		width: 12rem;
+		height: 3.5rem;
+	}
+	.menu-close-gh {
+		width: 4.5rem;
+		heigt: 4.5rem;
+		background-color: transparent;
+		border: none;
+	}
+	.menu-close-gh img {
+		width: 2.5rem;
+		heigt: 2.5rem;
+		position: absolute;
+		top: 3.5rem;
+		right: 3.5rem;
+	}
+	.menu-list-box {
+		margin-left: 2rem;
+	}
+	.menu-list-gh {
+		margin-top: 6rem;
+	}
+	.menu-list-gh img {
+		height: 4rem;
+		margin-bottom: 1rem;
+	}
+	.menu-list-gh h2 {
+		font-size: 4rem;
+		font-weight: 500;
+		margin-bottom: 1rem;
+	}
+	.menu-list-gh h4 {
+		color: rgba(38, 40, 61, 0.6);
+		font-size: 2rem;
+		margin-bottom: 1rem;
+		margin-left: 0.5rem;
+	}
+	.menu-list-gh span {
+		font-size: 1.5rem;
+		font-weight: 800;
+		margin-left: 0.5rem;
+	}
+	#menu-dialog {
+		width: 75vw;
+		height: 100vh;
+		background-color: white;
+		border-radius: 0px 50px 0px 0px;
+		box-shadow: 15px 5px 20px 0px rgba(0, 0, 0, 0.10);
+		position: relative;
+		border: none;
+	}
+}

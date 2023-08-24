@@ -1,0 +1,222 @@
+@charset "UTF-8";
+
+@media only screen and (max-width:1000px) {
+	/****** 상세 페이지 ******/
+	.detail-container-gh {
+		width: 100vw;
+		height: 100%;
+		background-color: white;
+		border-radius: 70px 70px 0px 0px;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+		font-size: 1.5em;
+	}
+
+	/****** 책 정보 ******/
+	.detail-top-gh {
+		width: 61.1rem;
+		height: 26.3rem;
+		position: relative;
+	}
+	.bookmark-gh {
+		width: 3.5rem;
+		height: 6rem;
+		background-color: transparent;
+		border: none;
+		margin-right: 3.5rem;
+		opacity: 1;
+		position: absolute;
+		right: 0;
+	}
+	.bookmark-gh img {
+		width: 3.5rem;
+		height: 6rem;
+	}
+	.detail-box-gh {
+		width: 54rem;
+		height: 19.3rem;
+		display: flex;
+		margin: 3.5rem;
+		position: absolute;
+		/* padding: 3.5rem; */
+	}
+	.book-gh {
+		width: 13rem;
+		height: 19rem;
+		border: 0.2px solid rgba(38, 40, 61, 0.50);
+		border-radius: 10px;
+		box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10) inset;
+	}
+	.detail-info-gh {
+		width: 40rem;
+		margin-left: 2rem;
+	}
+	.detail-title-gh {
+		width: 35rem;
+		font-size: 2.5rem;
+	}
+	.detail-etc-gh {
+		color: rgba(38, 40, 61, 0.5);
+		font-size: 1.3rem;
+		margin-top: 0.5rem;
+	}
+	.detail-reputation-gh {
+		width: 13rem;
+		height: 2.7rem;
+		background-color: #26283D;
+		border-radius: 30px 0px;
+		margin-top: 10rem;
+		padding-top: 0.3rem;
+		padding-bottom: 0.5rem;
+		position: absolute;
+		bottom: 0;
+		right: 3.5rem;
+		text-align: center;
+		right: 3.5rem;
+		bottom: 0;
+		padding-bottom: 0.5rem;
+		position: absolute;
+	}
+	.text-gh {
+		color: white;
+		font-size: 1rem;
+	}
+	.percent-gh {
+		color: #F66E6E;
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+	}
+
+	/****** 책 소개 ******/
+	.detail-introduce-gh {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5em;
+		padding-left: 3.5rem;
+		padding-right: 3.5rem;
+	}
+	.detail-category-gh {
+		font-size: 2.5rem;
+		margin-left: 1rem;
+	}
+	.introduce-box-gh {
+		background: #F5F6FA;
+		border-radius: 15px;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+		font-size: 2.3rem;
+		line-height: 2.5rem;
+		padding: 2rem;
+	}
+	/****** 서평 ******/
+	.detail-review-gh {
+		padding-bottom: 3.5rem;
+		padding-left: 3.5rem;
+		padding-right: 3.5rem;
+	}
+	.review-header {
+		display: flex;
+		position: relative;
+	}
+	.review-header select {
+		height: 2.3rem;
+		background-color: transparent;
+		border: none;
+		font-size: 1.3rem;
+		font-weight: bolder;
+		/* margin-top: 1.8rem;
+		margin-left: 42rem; */
+		opacity: 0.5;
+		position: absolute;
+		right: 0;
+	}
+	.detail-review-box {
+		background: #F5F6FA;
+		border-radius: 15px;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+		line-height: 2.5rem;
+		padding-top: 2rem;
+		padding-bottom: 0.5rem;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		position: relative;
+	}
+	.review-list-gh {
+		margin-bottom: 2rem;
+	}
+	.detail-profile-gh {
+		display: flex;
+	}
+	.detail-review-profile {
+		width: 3rem;
+		height: 3rem;
+		border-radius: 15px;
+		overflow: hidden;
+	}
+	.detail-review-profile img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.detail-name-gh {
+		font-size: 2.3rem;
+		margin-top: 0.3rem;
+		margin-left: 1rem;
+	}
+	.detail-grade-gh {
+		color: #779A76;
+		font-size: 1.3rem;
+		margin-top: 0.3rem;
+		margin-left: 0.5rem;
+	}
+	.detail-date-gh {
+		font-size: 1.3rem;
+		margin-top: 0.8rem;
+		opacity: 0.5;
+		position: absolute;
+		right: 2rem;
+		opacity: 0.5;
+	}
+	.detail-review-contents {
+		font-size: 2.3rem;
+		padding-top: 1.2rem;
+		padding-bottom: 0.6rem;
+		padding-top: 1.2rem;
+	}
+	.detail-review-reputation {
+		border-bottom: 1.5px solid rgba(38, 40, 61, 0.5);
+		display: flex;
+		padding-top: 0.6rem;
+		padding-bottom: 1.2rem;
+		justify-content: flex-end;
+		display: flex;
+	}
+	.detail-review-reputation button {
+		width: 7.5rem;
+		height: 2.5rem;
+		background: #FFF;
+		border: none;
+		border-radius: 30px;
+		box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1) inset;
+		margin-left: 1rem;
+		position: relative;
+	}
+	.detail-review-reputation img {
+		width: 1.5rem;
+		height: 1.5rem;
+		position: absolute;
+		bottom: 0.4rem;
+		left: 1rem;
+	}
+	.detail-review-reputation span {
+		font-size: 1.1rem;
+		text-align: right;
+		position: absolute;
+		bottom: 0.4rem;
+		right: 1rem;
+	}
+	.reviewLikeImg.on {
+		filter: invert(73%) sepia(22%) saturate(3202%) hue-rotate(311deg)
+			brightness(94%) contrast(105%);
+	}
+	.reviewDislikeImg.on{
+	filter: invert(74%) sepia(46%) saturate(4423%) hue-rotate(186deg) brightness(107%) contrast(93%);
+	}
+}

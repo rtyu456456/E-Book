@@ -2,7 +2,107 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.eb.mapper.MainMapper">
 
-<select id="bookSearch" resultType="BookDTO">
+	<select id="getLikeInfo" resultType="com.fp.eb.model.LikeDTO">
+		select * from EB_LIKE_RECORD
+		where LR_OWNER = #{lr_owner} and LR_WHERE_TYPE = #{lr_where_type} and
+		LR_WHERE_NO = #{lr_where_no}
+	</select>
+
+	<insert id="insertLike">
+		insert into eb_like_record
+		values(eb_like_record_seq.nextval,
+		#{lr_owner},#{lr_where_type},#{lr_where_no}, #{lr_type})
+	</insert>
+
+	<update id="updateLike">
+		update eb_like_record
+		set lr_type = #{lr_type}
+		where
+		LR_OWNER = #{lr_owner} and LR_WHERE_TYPE = #{lr_where_type} and
+		LR_WHERE_NO = #{lr_where_no}
+	</update>
+
+
+	<select id="bookSearch" resultType="com.fp.eb.model.BookDTO">
+		<if test="searchOption == 'b_title'">
+			select * from eb_book where b_title like '%'||
+			#{searchText}||'%'
+		</if>
+		<if test="searchOption == 'b_authors'">
+			select * from eb_book where b_authors like '%'||
+			#{searchText}||'%'
+		</if>
+	</select>
+
+	<select id="bookDetail" resultType="com.fp.eb.model.BookDTO">
+		select * from eb_book where
+		b_no = #{b_no}
+	</select>
+
+	<select id="reviews" resultType="com.fp.eb.model.ReviewDTO">
+		select * from eb_review, eb_book
+		where r_b_no = b_no and b_no=#{b_no}
+		order by r_date desc
+	</select>
+
+	<select id="getPercent" resultType="com.fp.eb.model.BookDTO">
+		SELECT
+		r_b_no,
+		COUNT(*) AS
+		total_reviews,
+		SUM(CASE WHEN r_type = 1 THEN 1 ELSE 0 END) AS
+		positive_reviews,
+		(CASE WHEN COUNT(*) = 0 THEN 0 ELSE (SUM(CASE WHEN
+		r_type = 1 THEN 1 ELSE 0
+		END) / COUNT(*)) * 100 END) AS
+		positive_percentage
+		FROM
+		eb_review
+		WHERE
+		r_b_no = #{b_no}
+		GROUP BY
+		r_b_no
+	</select>
+
+	<select id="dailyBest" resultType="com.fp.eb.model.ReviewDTO">
+		select * from eb_review
+		where r_date >= to_char(current_date, 'YYMMDD')
+		order by r_like DESC
+		fetch first 1 rows only
+	</select>
+	<select id="dailyBook" resultType="com.fp.eb.model.BookDTO">
+		select * from eb_book, eb_review
+		where b_no = r_b_no
+		and r_date >= to_char(current_date, 'YYMMDD')
+		order by r_like DESC
+		fetch first 1 rows only
+	</select>
 	
-</select>
+	<select id="weeklyBest" resultType="com.fp.eb.model.ReviewDTO">
+		select * from eb_review
+		where r_date >= to_char(current_date-7, 'YYMMDD')
+		order by r_like DESC
+		fetch first 1 rows only
+	</select>
+	<select id="weeklyBook" resultType="com.fp.eb.model.BookDTO">
+		select * from eb_book, eb_review
+		where b_no = r_b_no
+		and r_date >= to_char(current_date-7, 'YYMMDD')
+		order by r_like DESC
+		fetch first 1 rows only
+	</select>
+
+	<select id="monthlyBest" resultType="com.fp.eb.model.ReviewDTO">
+		select * from eb_review
+		where r_date >= to_char(current_date-30, 'YYMMDD')
+		order by r_like DESC
+		fetch first 1 rows only
+	</select>
+	<select id="monthlyBook" resultType="com.fp.eb.model.BookDTO">
+		select * from eb_book, eb_review
+		where b_no = r_b_no
+		and r_date >= to_char(current_date-30, 'YYMMDD')
+		order by r_like DESC
+		fetch first 1 rows only
+	</select>
 </mapper>
