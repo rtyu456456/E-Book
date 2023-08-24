@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -36,7 +37,6 @@ public class SecurityConfig {
             web.ignoring()
                 .antMatchers(
                     "/login.go", 
-                    "/login.do", 
                     "/reguser.go", 
                     "/reguser.do"
                     );
@@ -61,14 +61,15 @@ public class SecurityConfig {
 	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     	http
+    	
     		.cors().configurationSource(corsConfigurationSource()).and()
     		.csrf().disable()
     		.httpBasic().disable()
     		.formLogin().disable()
-    		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-    		.addFilterBefore(new ExceptionHandletFilter(), JwtAuthenticationFilter.class);
+    		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    		
     	
-    	
+    
     	return http
     		.addFilter(new JwtAuthenticationFilter(authConfiguration.getAuthenticationManager(), jwtProvider))
     		.addFilter(new JwtAuthorizationFilter(authConfiguration.getAuthenticationManager(), jwtProvider))
@@ -80,6 +81,8 @@ public class SecurityConfig {
     			.build();
     	
     }
+    
+
 
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {

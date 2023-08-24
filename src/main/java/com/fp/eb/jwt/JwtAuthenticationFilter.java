@@ -54,7 +54,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			// PrincipalDetailsService의 loadUserByUsername(); 함수가 실행됨
 			// loadUserByUsername() 이 정상적으로 실행되면 Authentication 리턴됨 (DB에 있는 id 와 pw가 일치 할 시)
 			Authentication authentication = authenticationManager.authenticate(authenticationToken);
-			
 			// authentication 객체를 session 영역에 저장
 			return authentication;
 			
@@ -73,10 +72,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		System.out.println("★☆★☆★☆★☆★☆★☆★☆★☆★☆successfulAuthentication★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
 		PrincipalDetails userDetails = (PrincipalDetails) authResult.getPrincipal();
 		
-		setResponse(userDetails, response);
+		setResponse(userDetails,request, response);
 	}	
 	
-	private void setResponse(PrincipalDetails userDetails, HttpServletResponse response) throws JsonProcessingException, IOException {
+	private void setResponse(PrincipalDetails userDetails,HttpServletRequest req,  HttpServletResponse response) throws JsonProcessingException, IOException {
 		System.out.println("setResponse 시작");
 		String accessToken = jwt.generateAccessToken(userDetails);
 		
@@ -96,7 +95,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		response.addCookie(cookie);
 		System.out.println("쿠키심기" + cookie);
 //		response.getWriter().write(om.writeValueAsString(map));
-			
+		   // HttpSession에 userDetails 저장
+	    req.getSession().setAttribute("userDetails", userDetails);
 		 try {
 		        response.sendRedirect("/login.do");
 		    } catch (IOException e) {

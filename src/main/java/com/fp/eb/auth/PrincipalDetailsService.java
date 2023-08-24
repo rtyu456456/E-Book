@@ -29,8 +29,14 @@ public class PrincipalDetailsService implements UserDetailsService{
 		System.out.println("★★★★★★★★★★★UserDetailsService★★★★★★★★★★");
 		UserDTO dto = userService.getUserByID(username);
 		
-		System.out.println(dto);
-		return new PrincipalDetails(dto);
+		System.out.println(">>>>>>>>" + dto);
+		PrincipalDetails pd = new PrincipalDetails(dto);
+		
+		// 현재 사용자의 SecurityContext 가져오기
+	
+		System.out.println(pd.getUserEmail());
+		
+		return pd;
 	}
 	
 }
