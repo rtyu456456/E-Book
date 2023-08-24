@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fp.eb.model.BookDTO;
 import com.fp.eb.model.BookrecordDTO;
 import com.fp.eb.model.UserDTO;
+import com.fp.eb.service.BookDAO;
 import com.fp.eb.service.BookrecordDAO;
 
 @Controller
@@ -74,6 +76,13 @@ public class BookrecordController {
 	@GetMapping("/bookRecord.page")
 	public int getcurPage(HttpServletRequest req, BookrecordDTO brDTO) {
 		return brDAO.getPage(brDTO);
+	}
+	
+	@GetMapping("/regbooking.modalapi")
+	public String regBookModalAPI(HttpServletRequest req, BookDTO bDTO, UserDTO uDTO) {
+		brDAO.regBookModalAPI(bDTO, req, uDTO);
+		
+		return "redirect:/bookRecord.ing";
 	}
 
 }

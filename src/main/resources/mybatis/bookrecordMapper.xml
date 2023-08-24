@@ -6,6 +6,10 @@
 	INSERT INTO EB_BOOK_RECORD VALUES (EB_BR_SEQ.NEXTVAL, #{brDTO.b_no}, 'kkh', 0, SYSDATE)
 </insert>
 
+<insert id="regIngModal">
+	INSERT INTO EB_BOOK_RECORD VALUES (EB_BR_SEQ.NEXTVAL, #{bDTO.b_no}, 'kkh', 0, SYSDATE)
+</insert>
+
 <select id="getBookIng" resultType="com.fp.eb.model.BookrecordDTO">
 	SELECT B_TITLE, B_THUMBNAIL, B_PAGE, B_AUTHORS, BR_NO, BR_PAGE, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE != BR_PAGE ORDER BY BR_NO DESC
 </select>

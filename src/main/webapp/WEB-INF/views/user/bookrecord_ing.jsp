@@ -112,7 +112,7 @@
 	</div>
 	<!-- 책 검색 모달  -->
 	<dialog
-		class="search-modal block rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-4/6 bg-blue-300">
+		class="search-modal rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-4/6 bg-white">
 	<div class="flex w-full h-1/6 justify-center items-center">
 		<div
 			class="search-box flex sticky justify-between items-center w-full h-full text-[2.0rem] px-10">
@@ -266,6 +266,29 @@
 							data : search_data 
 							,
 							success : function(data) {
+								makeDomDB(data);
+								
+							}
+		
+						}); // ajax end
+ 					}); // click event end
+
+ 					
+			$(".api-search-btn").click(
+					function() { // 자세히 검색하기 누를 시 click 시 function 실행
+						console.log(111);
+						let modal = $(this).closest('.search-box');
+						let type = modal.find('.type').val();	
+						let search_text = modal.find('.search-text').val();
+						
+						let search_data = {};
+						search_data[type] = search_text;
+						
+						 $.ajax({
+							url : "getbookJson.do",
+							data : search_data 
+							,
+							success : function(data) {
 								makeDom(data);
 								
 							}
@@ -274,30 +297,7 @@
  					}); // click event end
 			
 		
-		$(".reg-ing-btn").click(
-				function() { // 완료 누를 시 click 시 function 실행
-					
-					let modal = $(this).closest('.reg-ing-box');
-					
-					let b_thumbnail = modal.find('.type').val();	
-					let search_text = modal.find('.search-text').val();
-					
-					let search_data = {};
-					search_data[type] = search_text;
-					
-					 $.ajax({
-						url : "getDBbook.do",
-						data : search_data 
-						,
-						success : function(data) {
-							for(let i = 0; i < data.length; i++){
-								console.log(data[i].b_title);
-								
-							}
-						}
-
-					}); // ajax end
-					}); // click event end
+		
 		
 	}); // ready
 		

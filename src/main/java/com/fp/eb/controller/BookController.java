@@ -1,5 +1,6 @@
 package com.fp.eb.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,6 +49,12 @@ public class BookController {
 		return "user/calendar_test";
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping(value="/getbookJson.do", method = RequestMethod.GET,
+			produces = "application/json; charset=utf-8")
+	public ArrayList<BookDTO> getBookJson(BookDTO bDTO, HttpServletRequest req) {
+		System.out.println("getbookjson은 실행된듯");
+		return bDAO.getBookDataJson(bDTO, req);
+	}
 	
 }
