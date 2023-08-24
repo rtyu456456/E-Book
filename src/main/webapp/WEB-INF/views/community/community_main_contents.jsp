@@ -29,11 +29,11 @@
 							<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png"> &nbsp;댓글 단 글
 						</button>
 					</form>
-
+					<c:forEach var="pin" items="${pinnedCommu  }">
 					<button class="commu_board_btn">
-						<img alt="" src="/img/커뮤니티_즐겨찾기함_icon.png"> &nbsp;내가 고정한 게시판
-						(변수)
+						<img onclick="notPinnedCommunity('${pin.c_no}')"  alt="" src="/img/커뮤니티_즐겨찾기함_icon.png"> &nbsp; ${pin.c_name }
 					</button>
+					</c:forEach>
 					<br>
 				</div>
 			</div>
@@ -101,9 +101,11 @@
 	function pinnedMyCommunity(c_no) {
 		event.preventDefault(); 
 		console.log(c_no);
-		
-		location.href="/do.delete.post?c_no=" + c_no;
-
+		location.href="/do.pinned.commu?lr_where_no=" + c_no;
+	}
+	
+	function notPinnedCommunity(c_no){
+		location.href="/update.pinned.commu?lr_where_no=" + c_no;
 	}
 </script>
 </html>

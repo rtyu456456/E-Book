@@ -73,11 +73,39 @@
 		eb_community_reply where cr_cp_no = #{no}
 	</select>
 
+	<select id="getAllPinnedCommu"
+		resultType="com.fp.eb.model.CommunityDTO">
+		select c_name, c_no, lr_type from eb_community,
+		eb_like_record
+		where lr_where_no = c_no and
+		lr_type = 1 and
+		lr_owner =
+		'김포공주'
+	</select>
+
+	<select id="checkPinnedCommu" resultType="int">
+		select count(*) from
+		eb_like_record where lr_where_type = 'COMMUNITY' and
+		lr_owner = '김포공주'
+		and lr_where_no = #{lr_where_no}
+	</select>
+
+	<select id="cheakPinnedTypeCommu" resultType="int">
+		select lr_type from eb_like_record where
+		lr_where_type = 'COMMUNITY' and lr_owner = '김포공주' and lr_where_no = #{lr_where_no}
+	</select>
+
+	<update id="updatePinnedCommuZero">
+		update eb_like_record set lr_type = 0 where
+		lr_where_no = #{lr_where_no}
+	</update>
+	
+	<update id="updatePinnedCommuOne">
+		update eb_like_record set lr_type = 1 where
+		lr_where_no = #{lr_where_no}
+	</update>
 
 
-	<delete id="deleteCommunityPost">
-		delete eb_community_post where cp_no = #{cp_no}
-	</delete>
 
 	<update id="updateCommunityPost">
 		update eb_community_post set cp_title = #{cp_title} ,
@@ -95,6 +123,11 @@
 		#{cp_community}, 0, 0, current_date)
 	</insert>
 
+	<insert id="insertPinnedCommu">
+		insert into eb_like_record values(eb_lr_seq.nextval,
+		'김포공주', 'COMMUNITY', #{lr_where_no}, 1, current_date)
+	</insert>
+
 	<insert id="regReply">
 		insert into eb_community_reply
 		values(eb_cr_seq.nextval, '김포공주', #{cr_cp_no}, #{cr_contents} ,0,0,
@@ -105,5 +138,8 @@
 		delete eb_community_reply where cr_no = #{cr_no}
 	</delete>
 
+	<delete id="deleteCommunityPost">
+		delete eb_community_post where cp_no = #{cp_no}
+	</delete>
 
 </mapper>

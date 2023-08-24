@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.fp.eb.model.Community;
 import com.fp.eb.model.CommunityDTO;
+import com.fp.eb.model.CommunityLikeDTO;
 import com.fp.eb.model.CommunityPostDTO;
 import com.fp.eb.model.CommunityReplyDTO;
 import com.fp.eb.model.Time;
@@ -59,6 +60,18 @@ public interface CommunityMapper {
 	List<CommunityPostDTO> getAllMyReply(CommunityReplyDTO cr);
 
 	int deleteMyReply(CommunityReplyDTO cr);
+
+	int insertPinnedCommu(CommunityLikeDTO cl);
+
+	List<CommunityLikeDTO> getAllPinnedCommu();
+
+	int updatePinnedCommuZero(CommunityLikeDTO cl);
+
+	int updatePinnedCommuOne(CommunityLikeDTO cl);
+	
+	int checkPinnedCommu(CommunityLikeDTO cl);
+	
+	int cheakPinnedTypeCommu(CommunityLikeDTO cl);
 
 	
 	
