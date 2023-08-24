@@ -35,6 +35,21 @@
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
 }
 
+.input-group2 {
+	margin-bottom: 15px;
+}
+
+.input-group2 input, .input-group2 textarea {
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	box-sizing: border-box;
+	background-color: rgba(0, 0, 0, 0.25);
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25) inset;
+	color: rgba(38, 40, 61, 0.5);
+}
+
 .input-group a {
 	display: inline-block;
 	text-align: center;

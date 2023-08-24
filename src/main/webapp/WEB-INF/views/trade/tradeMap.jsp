@@ -85,5 +85,5 @@
 	</script>
 </body>
 
-<!-- <script type="text/javascript" src="js/map.jsp"></script> -->
+<script type="text/javascript" src="js/map.jsp"></script>
 </html>

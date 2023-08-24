@@ -22,7 +22,7 @@
 .book-img img {
 	width: 100%;
 	height: 100%;
-	border-radius:10px;
+	border-radius: 10px;
 }
 
 .book-basic {
@@ -46,32 +46,115 @@
 	font-size: 14px;
 	color: red;
 }
-.trade-title{
+
+.trade-title {
 	font-weight: 800;
 }
 
 .book-contents {
-	min-height: 200px;
-	
-	
+	height: 40vh;
+	max-height: 400px;
 }
-.book-contents p{
+
+.book-contents p {
 	height: 50%;
-	
 }
 
 /* 맵기능   */
-.trade-map{
-	margin: 10px;
-	align-content: center;
-	border-radius:10px;
-	width: 94vw;
-	height: 20vh;
+.trade-map {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	width: 100vw;
+	height: 30vh;
+	max-height: 160px;
 }
-#map{
+
+#map {
+	width: 80%;
+	height: 90%;
+	justify-content: center;
+	display: flex; 
+	align-items: center;
+}
+
+.trade-btn {
+	height: 18%;
+	max-height: 70px;
+}
+
+.trade-sell-me {
+	justify-content: space-around;
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.trade-sell-me button {
+	width: 30%;
+	height: 3rem;
+	border-radius: 10px;
+}
+
+/* 쪽지 모달 */
+.modal {
+	position: absolute;
+	display: none;
+	justify-content: center;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
-	
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
+.modal_body {
+	overflow: auto;
+	position: absolute;
+	top: 50%;
+	width: 70%;
+	height: 70%;
+	max-width: 400px;
+	max-height: 440px;
+	padding: 40px;
+	text-align: center;
+	background-color: rgb(255, 255, 255);
+	border-radius: 10px;
+	box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+	transform: translateY(-50%);
+	z-index: 99;
+	padding: 20px;
+}
+.modal_body h1{
+	font-size: 18px; 
+}
 
+.modal_body textarea {
+	font-size: 20px;
+	width: 94%;
+	height: 70%;
+	border-radius: 5px;
+	resize: none;
+}
+
+.sendMsg {
+	margin-top: 30px;
+	width: 60%;
+	height: 2rem;
+	border-radius: 5px;
+}
+
+.open-modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn-open-modal {
+	width: 40%;
+	height: 3rem;
+	justify-content: center;
+	display: flex; /* 버튼을 가로 정렬하기 위해 flex 속성 추가 */
+	align-items: center; /* 버튼 세로 중앙 정렬 */
+	border-radius: 5px;
+}

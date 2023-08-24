@@ -10,6 +10,7 @@
 <meta name="format-detection" content="telephone=no">
 
 <title>Insert title here</title>
+
 <link rel="stylesheet" href="css/trade/tradeIndex.css">
 
 </head>
@@ -49,35 +50,21 @@
 
 		<footer>
 			<div class="foot-line">
-				<a href="/trade.choose.go"> <img src="/img/Group7.png">
-				</a> <a href="javascript:void(0);" onclick="goToSaleNow()"> <img
-					src="/img/Group6.png">
-				</a> <a href="javascript:void(0);" onclick="goToTradeMsg()"> <img
-					src="/img/Group5.png">
-				</a>
+				<a href="/trade.choose.go"> <img src="/img/Group7.png"></a>
+				<a href="/trade.sale.now?u_id=${sessionScope.loginMember.u_id}"> <img src="/img/Group6.png"></a>
+				<a href="/trade.Msg.get.to?u_id=${sessionScope.loginMember.u_id}"> <img src="/img/Group5.png"></a>
+				
+				
+				
+<!-- 				</a> <a href="javascript:void(0);" onclick="goToTradeReg()"> <img -->
+<!-- 					src="/img/Group6.png"> -->
+<!-- 				</a> <a href="javascript:void(0);" onclick="goToSaleNow()"> <img -->
+<!-- 					src="/img/Group6.png"> -->
+<!-- 				</a> <a href="javascript:void(0);" onclick="goToTradeMsg()"> <img -->
+<!-- 					src="/img/Group5.png"> -->
+<!-- 				</a> -->
 			</div>
 		</footer>
-
-		<script>
-			function goToSaleNow() {
-				var u_id = '<c:out value="${sessionScope.loginMember.u_id}" />';
-				if (u_id) {
-					window.location.href = '/trade.sale.now?u_id=' + u_id;
-				} else {
-					// 여기에 로그인이 필요한 경고 메시지나 다른 처리를 추가할 수 있습니다.
-					alert('로그인이 필요합니다.');
-				}
-			}
-			function goToTradeMsg() {
-				var u_id = '<c:out value="${sessionScope.loginMember.u_id}" />';
-				if (u_id) {
-					window.location.href = '/trade.Msg.go'; // 로그인이 필요한 페이지로 이동
-				} else {
-					alert('로그인이 필요합니다.');
-				}
-			}
-		</script>
-
 	</div>
 </body>
 </html>

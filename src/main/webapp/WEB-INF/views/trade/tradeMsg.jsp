@@ -11,11 +11,23 @@
 <body>
 
 	<div class="container-msg">
-		<%-- 		<c:forEach var="" items=""> --%>
-		<!-- 				<img alt="" src=""> 프로필 이미지 -->
+		<div class="msg-nav">
+			<div class="msg-to">
+				<a href="/trade.Msg.get.to?u_id=${sessionScope.loginMember.u_id}">
+					<span> 받은 쪽지 </span>
+				</a>
+			</div>
 
-		<!-- 				<img alt="" src=""> 책 이미지	 -->
-		<%-- 		</c:forEach> --%>
+			<div class="msg-from">
+				<a href="/trade.Msg.get.from?u_id=${sessionScope.loginMember.u_id}">
+					<span> 보낸 쪽지 </span>
+				</a>
+			</div>
+		</div>
+
+		<div class="msg-page">
+			<jsp:include page="${msgpage }" />
+		</div>
 	</div>
 
 </body>
