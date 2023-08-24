@@ -14,6 +14,7 @@ public class CommunityDTO {
 	private BigDecimal c_no;
 	private String c_name;
 	
+	
 	public CommunityDTO() {
 		// TODO Auto-generated constructor stub
 	}

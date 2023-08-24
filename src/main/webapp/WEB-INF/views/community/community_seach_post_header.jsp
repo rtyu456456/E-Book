@@ -13,30 +13,30 @@
 				<img src="/img/logo_icon.png">
 			</div>
 		</div>
-		
+
 		<div class="header_contents">
-			<button class="menu_btn">
-				<img src="/img/menu_icon.png">
-			</button>
-			<div id="community_txt">커뮤니티</div>
-			<button class="login_box">
-				<img class="login_img" alt="" src="/img/유저 img.jpg">
-			</button>
+			<form action="/community_main">
+				<button class="back_btn" name="c_no" value="${community.c_no }">
+					<img src="/img/left-arrow.png">
+				</button>
+			</form>
+			<div id="community_name">${community.c_name }</div>
+			<div id="empty"></div>
 		</div>
 
-
-		<form action="/seach.community">
-		<div class="commu_menu">
+		<form action="/do.seach.post">
+		<div class="commu_menu top" style="margin-top: -3rem;">
 			<div class="box_shadow">
-				<input name="c_name" class="commu_seach" placeholder="게시판 이름을 검색해보세요.">
-				<button class="commu_seach_btn">
+				<input name="cp_seach" class="commu_seach" placeholder="글 제목, 내용">
+				<button name="c_no" value="${community.c_no }" class="commu_seach_btn">
 					<img src="/img/돋보기_icon.png" maxlength=10>
 				</button>
 			</div>
 		</div>
 		</form>
-
+		
 	</div>
+
 
 </body>
 </html>

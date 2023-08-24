@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+@media only screen and (max-width:1000px) {
+	#x-btn {
+		position: absolute;
+		right: 2rem;
+		margin-top: 1rem;
+		border: none;
+		background-color: transparent;
+	}
+	#x-btn img {
+		height: 3rem;
+		width: 3rem;
+	}
+	.made-post-contents {
+		position: relative;
+		text-align: center;
+	}
+	.made-post-title {
+		margin-top: 30rem;
+		font-size: 4rem;
+		font-weight: 700;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		color: #26283D;
+		font-size: 4.5rem;
+	}
+	.made-post-input {
+		text-indent: 2rem;
+		outline: none;
+		margin-top: 5rem;
+		border: none;
+		width: 35rem;
+		height: 5rem;
+		border-radius: 1rem;
+		background-color: #F5F6FA;
+		font-weight: 500;
+		font-size: 3rem;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		box-shadow: 0.5rem 0.8rem 2rem 0rem rgba(0, 0, 0, 0.25);
+		color: #26283D;
+		border: none;
+	}
+	
+	.made-post-input::placeholder{
+		color: rgba(38, 40, 61, 0.50);
+
+	}
+	
+	
+	.made-post-contents button {
+		margin-top: 5rem;
+		width: 50vw;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		background-color: #26283D;
+		color: white;
+		font-size: 3.5rem;
+		border: none;
+		border-radius: 1rem;
+		width: 40rem;
+	}
+}

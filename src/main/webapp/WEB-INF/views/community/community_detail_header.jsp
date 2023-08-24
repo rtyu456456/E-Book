@@ -15,17 +15,13 @@
 		</div>
 
 		<div class="header_contents">
-			<form action="/community_main">
+			<form action="go.commu.post">
 				<button class="back_btn" name="c_no" value="${community.c_no }">
 					<img src="/img/left-arrow.png">
 				</button>
 			</form>
 			<div id="community_name">${community.c_name }</div>
-			<form action="/go.seach.post">
-			<button name="c_no" value="${community.c_no }" class="seach">
-				<img alt="" src="/img/돋보기_icon.png">
-			</button>
-			</form>
+			<div id="empty"></div>
 		</div>
 
 	</div>

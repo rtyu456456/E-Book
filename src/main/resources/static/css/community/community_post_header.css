@@ -52,6 +52,13 @@ and
 	background-color: transparent;
 }
 
+#empty{
+	height: 5rem;
+	width: 4rem;
+	position: relative;
+	background-color: transparent;
+}
+
 .seach img {
 	width: 100%;
 	height: 100%;

@@ -1,13 +1,71 @@
 @charset "UTF-8";
 
-@media
-only
-screen
-and
-(max-width:1000px)
-{
-	
-	
-	
-	
+@media only screen and (max-width:1000px) {
+	.commu-writing textarea {
+		width: 90%;
+		resize: none;
+		position: relative;
+		background-color: transparent;
+		font-size: 2.5rem;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-weight: 550;
+		outline-color: #F5F6FA;
+		caret-color: #F66E6E;
+		border: none;
+	}
+	.writing-title {
+		padding-top: 5rem;
+		padding-bottom: 2rem;
+	}
+	.writing-title-text {
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-weight: 550;
+		width: 90%;
+		height: 5rem;
+		outline: none;
+		font-size: 3rem;
+		border: none;
+	}
+	.writing-contents {
+		padding-top: 3rem;
+		padding-bottom: 5rem;
+		height: 60vh;
+		border: 5px solid white;
+	}
+	.writing-contents-text {
+		height: 100%;
+		outline: none;
+	}
+	.writing-title-text::placeholder {
+		color: rgba(38, 40, 61, 0.50);
+	}
+	.writing-contents-text::placeholder {
+		color: rgba(38, 40, 61, 0.50);
+	}
+	.writing-title-text:focus::placeholder {
+		color: white;
+	}
+	.writing-contents-text:focus::placeholder {
+		color: white;
+	}
+	.commu-writing-btn {
+		position: fixed;
+		bottom: 4rem;
+		width: 100%;
+		text-align: center;
+		background-color: transparent;
+		align-items: center;
+		width: 100%;
+	}
+	.writing-btn {
+		color: white;
+		width: 60vw;
+		height: 6rem;
+		font-size: 3rem;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-weight: 550;
+		border-radius: 2rem;
+		background-color: #26283D;
+		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	}
 }

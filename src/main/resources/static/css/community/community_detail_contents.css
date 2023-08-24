@@ -3,12 +3,14 @@
 @media only screen and (max-width:1000px) {
 	.post_detail_background {
 		width: 100vw;
-		height: 100vh;
 		background-color: white;
 		border-radius: 4rem 4rem 0rem 0rem;
 		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
 		text-align: center;
 		background-color: white;
+	}
+	.white-line {
+		border: 5px solid white;
 	}
 	.post_detail {
 		display: flex;
@@ -17,6 +19,7 @@
 		padding: auto;
 		align-items: center;
 		justify-content: space-between;
+		padding: auto;
 	}
 	.post_user_img {
 		width: 8rem;
@@ -28,7 +31,8 @@
 		border-radius: 2rem;
 	}
 	.post_info {
-		margin-left: -25rem;
+		position: relative;
+		left: -11rem;
 	}
 	.post_user_info {
 		display: flex;
@@ -51,15 +55,46 @@
 		text-align: left;
 		font-size: 2rem;
 	}
-	.post_menu_etc {
-		position: relative;
-		right: 0;
-		width: 4rem;
+	#post_menu_etc {
+		position: absolute;
+		right: 4rem;
 		height: 4rem;
+		width: 4rem;
+		visibility: visible;
 	}
-	.post_menu_etc img {
+	#post_menu_etc img {
 		width: 100%;
 		height: 100%;
+	}
+	.menu-etc-btn {
+		border: none;
+		background-color: transparent;
+	}
+	#menu-etc {
+		position: relative;
+		top: -7rem;
+		right: 6rem;
+		visibility: hidden;
+	}
+	#menu-etc img {
+		position: absolute;
+		width: 7rem;
+		height: 20rem;
+	}
+	.etc-btn {
+		position: relative;
+		left: 3.5rem;
+		top: 6.5rem;
+		z-index: 400;
+	}
+	.etc-btn button {
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: 2rem;
+		width: 100%;
+		color: white;
+		border: none;
+		background-color: transparent;
 	}
 	.post {
 		width: 90%;
@@ -131,61 +166,130 @@
 	.post_reply_background {
 		text-align: left;
 		margin: auto;
-		padding: auto;
 		position: relative;
 		background-color: #F5F6FA;
 		border-radius: 2rem;
 		width: 90vw;
 		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
-		margin: auto;
 	}
 	.reply_user {
-		margin-left: 2rem;
+		position: relative;
+		left: 2rem;
 		font-size: 3rem;
 		font-weight: 500;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	.reply_txt {
-		margin-left: 2rem;
+		position: relative;
+		padding: 1em;
 		font-size: 2.5rem;
 		font-weight: 300;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	.reply_date {
-		margin-left: 2rem;
+		align-items: center; 
+		display : flex;
+		position: relative;
+		left: 2rem;
 		font-size: 2rem;
 		font-weight: 500;
 		font-family: 'IBM Plex Sans KR', sans-serif;
+		display: flex;
 	}
-	
+	.empty-width {
+		width: 66%;
+	}
+	.delete-reply-btn {
+		position: relative;
+		right: 0;
+		background-color: transparent;
+		border: none;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: 2rem;
+	}
+
 	/* 댓글 입력  */
 	.post_reply_input {
 		position: fixed;
 		bottom: 0;
 	}
-	
 	.box_shadow_reply {
-	position: relative;
-	display: flex;
-	box-shadow: 1rem 3rem 5rem 0rem rgba(0, 0, 0, 0.25);
-	width: 100vw;
-	background-color: #F5F6FA;
-	height: 5vh;
-	align-items: center;
-}
+		padding: 1em;
+		position: relative;
+		display: flex;
+		box-shadow: 1rem 3rem 5rem 0rem rgba(0, 0, 0, 0.25);
+		width: 100vw;
+		background-color: white;
+		align-items: center;
+	}
+	.box-shadow-1 {
+		width: 90%;
+	}
+	.post_reply_text {
+		resize: none;
+		position: relative;
+		background-color: transparent;
+		font-size: 3rem;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-weight: 550;
+		width: 90%;
+		border: none;
+		outline-color: #F5F6FA;
+		caret-color: #F66E6E;
+	}
+	.post_reply_text:focus::placeholder {
+		color: #F5F6FA;
+	}
+	.post_reply_text::placeholder {
+		color: rgba(38, 40, 61, 0.50);
+	}
 
-.commu_seach {
-	position: relative;
-	background-color: #F5F6FA;
-	color: rgba(38, 40, 61, 0.50);
-	font-size: 2.5rem;
-	font-family: 'IBM Plex Sans KR', sans-serif;
-	font-weight: 550;
-	width: 90%;
-	border: none;
-	text-indent: 3rem;
-	outline: none;
+	/* delete 모달창  css*/
+	#deleteModal {
+		border-radius: 2rem;
+		background-color: white;
+		box-shadow: 1rem 3rem 5rem 0rem rgba(0, 0, 0, 0.25);
+		margin: auto;
+		padding: auto;
+		width: 100vw;
+		height: 40vw;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: 4rem;
+		text-align: left;
+		border: none;
+	}
+	.delete-background {
+		margin-top: 4rem;
+		margin-left: 4rem;
+	}
+	.delete-flex {
+		background-color: #26283D;
+		box-shadow: 0rem 4rem 4rem 0rem rgba(0, 0, 0, 0.25) inset;
+		border-radius: 3rem 0rem 2rem 0rem;
+		width: 40%;
+		height: 30%;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+	#back-btn {
+		margin-left: 1.5rem;
+		width: 50%;
+		font-size: 2.5rem;
+		color: white;
+		background-color: transparent;
+		border: none;
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	#delete-ok {
+		font-weight: 500;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: 2.5rem;
+		color: white;
+		background-color: transparent;
+		border: none;
+	}
 }
-	
-	
 }

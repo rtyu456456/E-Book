@@ -1,11 +1,13 @@
 package com.fp.eb.mapper;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import com.fp.eb.model.Community;
 import com.fp.eb.model.CommunityDTO;
+import com.fp.eb.model.CommunityLikeDTO;
 import com.fp.eb.model.CommunityPostDTO;
 import com.fp.eb.model.CommunityReplyDTO;
 import com.fp.eb.model.Time;
@@ -36,6 +38,40 @@ public interface CommunityMapper {
 	CommunityPostDTO getCommunityPost(CommunityPostDTO cp);
 
 	List<CommunityReplyDTO> getAllReplys(CommunityPostDTO cp);
+	
+	int getCountReplys(BigDecimal bigDecimal);
+
+	int deleteCommunityPost(CommunityPostDTO cp);
+
+	int updateCommunityPost(CommunityPostDTO cp);
+
+	List<CommunityDTO>  seachAllCommunity(CommunityDTO c);
+
+	int insertCommunity(CommunityDTO c);
+
+	int insertWritingPost(CommunityPostDTO cp);
+	
+	int regReply(CommunityReplyDTO cr);
+
+	List<CommunityPostDTO> seachAllCommunityPost(CommunityPostDTO cp);
+
+	List<CommunityPostDTO> getAllMyPost(CommunityPostDTO cp);
+
+	List<CommunityPostDTO> getAllMyReply(CommunityReplyDTO cr);
+
+	int deleteMyReply(CommunityReplyDTO cr);
+
+	int insertPinnedCommu(CommunityLikeDTO cl);
+
+	List<CommunityLikeDTO> getAllPinnedCommu();
+
+	int updatePinnedCommuZero(CommunityLikeDTO cl);
+
+	int updatePinnedCommuOne(CommunityLikeDTO cl);
+	
+	int checkPinnedCommu(CommunityLikeDTO cl);
+	
+	int cheakPinnedTypeCommu(CommunityLikeDTO cl);
 
 	
 	

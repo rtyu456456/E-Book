@@ -7,14 +7,48 @@
 		select * from eb_community
 	</select>
 
+	<select id="seachAllCommunity"
+		resultType="com.fp.eb.model.CommunityDTO">
+		select * from eb_community where c_name like
+		'%'||#{c_name}||'%'
+	</select>
+
 	<select id="getAllCommunityPost"
 		resultType="com.fp.eb.model.CommunityPostDTO"
 		parameterType="com.fp.eb.model.CommunityDTO">
-
 		select * from eb_community_post, eb_community
 		where
 		cp_community = c_no and c_no=#{c_no} order by cp_date desc
 	</select>
+
+	<select id="getAllMyPost"
+		resultType="com.fp.eb.model.CommunityPostDTO">
+		select * from eb_community_post where cp_owner =
+		#{cp_owner} order by cp_date desc
+	</select>
+
+	<select id="getAllMyReply"
+		resultType="com.fp.eb.model.CommunityPostDTO"
+		parameterType="com.fp.eb.model.CommunityReplyDTO">
+		select * from eb_community_post, eb_community_reply
+		where cp_no = cr_cp_no
+		and cr_owner = #{cr_owner} and cr_date = (
+		select max(cr_date) from eb_community_reply where cr_owner =
+		#{cr_owner}
+		and cp_no = cr_cp_no
+		) order by cp_date desc
+
+	</select>
+
+	<select id="seachAllCommunityPost"
+		resultType="com.fp.eb.model.CommunityPostDTO">
+		select * from eb_community_post where cp_title like
+		'%'||#{cp_seach}||'%' or
+		cp_contents like '%'||#{cp_seach}||'%' order
+		by cp_date desc
+	</select>
+
+
 
 	<select id="getCommunity"
 		resultType="com.fp.eb.model.CommunityDTO">
@@ -26,10 +60,86 @@
 		select * from eb_community_post where cp_no = #{cp_no}
 	</select>
 
-	<select id="getAllReplys" resultType="com.fp.eb.model.CommunityReplyDTO">
+	<select id="getAllReplys"
+		resultType="com.fp.eb.model.CommunityReplyDTO">
 		select * from eb_community_reply, eb_community_post
-		where cr_cp_no = cp_no and cp_no=#{cp_no}
+		where
+		cr_cp_no = cp_no and cp_no=#{cp_no} order by cr_date asc
 	</select>
 
+
+	<select id="getCountReplys" resultType="int">
+		select count(*) from
+		eb_community_reply where cr_cp_no = #{no}
+	</select>
+
+	<select id="getAllPinnedCommu"
+		resultType="com.fp.eb.model.CommunityDTO">
+		select c_name, c_no, lr_type from eb_community,
+		eb_like_record
+		where lr_where_no = c_no and
+		lr_type = 1 and
+		lr_owner =
+		'김포공주'
+	</select>
+
+	<select id="checkPinnedCommu" resultType="int">
+		select count(*) from
+		eb_like_record where lr_where_type = 'COMMUNITY' and
+		lr_owner = '김포공주'
+		and lr_where_no = #{lr_where_no}
+	</select>
+
+	<select id="cheakPinnedTypeCommu" resultType="int">
+		select lr_type from eb_like_record where
+		lr_where_type = 'COMMUNITY' and lr_owner = '김포공주' and lr_where_no = #{lr_where_no}
+	</select>
+
+	<update id="updatePinnedCommuZero">
+		update eb_like_record set lr_type = 0 where
+		lr_where_no = #{lr_where_no}
+	</update>
+	
+	<update id="updatePinnedCommuOne">
+		update eb_like_record set lr_type = 1 where
+		lr_where_no = #{lr_where_no}
+	</update>
+
+
+
+	<update id="updateCommunityPost">
+		update eb_community_post set cp_title = #{cp_title} ,
+		cp_contents = #{cp_contents} where cp_no = #{cp_no}
+	</update>
+
+	<insert id="insertCommunity">
+		insert into eb_community
+		values(eb_community_seq.nextval, #{c_name})
+	</insert>
+
+	<insert id="insertWritingPost">
+		insert into eb_community_post
+		values(eb_cp_seq.nextval, '김포공주', #{cp_title}, #{cp_contents},
+		#{cp_community}, 0, 0, current_date)
+	</insert>
+
+	<insert id="insertPinnedCommu">
+		insert into eb_like_record values(eb_lr_seq.nextval,
+		'김포공주', 'COMMUNITY', #{lr_where_no}, 1, current_date)
+	</insert>
+
+	<insert id="regReply">
+		insert into eb_community_reply
+		values(eb_cr_seq.nextval, '김포공주', #{cr_cp_no}, #{cr_contents} ,0,0,
+		current_date)
+	</insert>
+
+	<delete id="deleteMyReply">
+		delete eb_community_reply where cr_no = #{cr_no}
+	</delete>
+
+	<delete id="deleteCommunityPost">
+		delete eb_community_post where cp_no = #{cp_no}
+	</delete>
 
 </mapper>

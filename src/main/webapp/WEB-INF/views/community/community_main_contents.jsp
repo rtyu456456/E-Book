@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.0.js"
+	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/community/community_main.css">
 </head>
 <body>
@@ -18,23 +21,33 @@
 				<br>
 				<div class="board_box">
 					<br>
-					<button class="commu_board_btn">
-						<img alt="" src="/img/커뮤니티_내가 쓴 글_icon.png"> &nbsp;내가 쓴 글
-					</button>
+					<form action="/go.my.post">
+						<button name="cp_owner" value="김포공주" class="commu_board_btn">
+							<img alt="" src="/img/커뮤니티_내가 쓴 글_icon.png"> &nbsp;내가 쓴 글
+						</button>
+					</form>
 
-					<button class="commu_board_btn">
-						<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png"> &nbsp;댓글 단 글
-					</button>
-
-					<button class="commu_board_btn">
-						<img alt="" src="/img/커뮤니티_즐겨찾기함_icon.png"> &nbsp;내가 고정한 게시판
-						(변수)
-					</button>
+					<form action="/go.my.reply">
+						<button name="cr_owner" value="김포공주" class="commu_board_btn">
+							<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png"> &nbsp;댓글 단 글
+						</button>
+					</form>
+					<c:forEach var="pin" items="${pinnedCommu  }">
+						<form action="/go.commu.post">
+							<button class="commu_board_btn">
+								<img onclick="notPinnedCommunity('${pin.c_no}')" alt=""
+									src="/img/커뮤니티_즐겨찾기함_icon.png"> &nbsp; <div id="pin">${pin.c_name }</div> 
+							</button>
+						</form>
+					</c:forEach>
 					<br>
 				</div>
 			</div>
 
-			<div class="commu_board">
+
+
+
+			<!-- <div class="commu_board">
 				<br>
 				<div class="commu_board_title">실시간 HOT 게시판</div>
 				<br>
@@ -66,7 +79,7 @@
 					<br> <br>
 				</div>
 				<br>
-			</div>
+			</div> -->
 
 			<div class="commu_board">
 				<br>
@@ -77,7 +90,8 @@
 					<c:forEach var="c" items="${communitys }">
 						<form action="/go.commu.post">
 							<button class="commu_board_btn" name="c_no" value="${c.c_no }">
-								<img src="/img/커뮤니티_즐겨찾기안함_icon.png"> &nbsp; ${c.c_name }
+								<img id="not-pinned" onclick="pinnedMyCommunity('${c.c_no }')"
+									src="/img/커뮤니티_즐겨찾기안함_icon.png"> &nbsp; ${c.c_name }
 							</button>
 						</form>
 					</c:forEach>
@@ -87,4 +101,40 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+
+
+	function pinnedMyCommunity(c_no) {
+		event.preventDefault();
+		console.log(c_no);
+		$.ajax({
+			url : "do.pinned.commu",
+			data : {
+				"lr_where_no" : c_no
+			},
+			datatype: "JSON",
+			success : function(pinnedCommu) {
+				console.log(pinnedCommu);
+				
+			/* 	var data = JSON.parse(pinnedCommu);
+				
+				  $.each(data, function (k, v) {
+                      $('<div></div>').val(k).text(v).appendTo($('#pin'));
+                  });
+				 */
+			},
+			error : function(request, status, error) {
+                console.log("code:" + request.status + "\n"
+                        + "message:" + request.responseText + "\n"
+                        + "error:" + error);
+            }
+		})
+	}
+
+
+	function notPinnedCommunity(c_no) {
+		event.preventDefault();
+		location.href = "/update.pinned.commu?lr_where_no=" + c_no;
+	}
+</script>
 </html>
