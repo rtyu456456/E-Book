@@ -1,10 +1,15 @@
 @charset "UTF-8";
 
+.trade-list-form {
+	height: 25%;
+}
+
 .trade-search {
-	margin-top:10px;
+	margin-top: 10px;
 	justify-content: space-around;
 	height: 35px;
 	width: 100%;
+	max-width: 600px;
 	display: flex;
 	align-items: center;
 	color: white;
@@ -52,16 +57,17 @@
 	margin-top: 60px;
 	height: 80%;
 	width: 80%;
+	max-width: 600px;
 	text-align: center;
-
 }
+
 .trade-list {
 	display: flex;
 	background: rgba(255, 255, 255, 1);
 	margin-top: 15px;
 	border-radius: 20px;
-	height: 16%;
-	min-height: 80pt;
+	height: 20%;
+	min-height: 100pt;
 	justify-content: space-around;
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
 }
@@ -74,21 +80,23 @@
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
 	margin: 5pt;
 	align-items: center;
-	width: 84%;
 	max-width: 80pt;
-	height: 86%
+	height: 80%;
+	width: 80%;
+	border-radius:5px; 
 }
 
 .trade-book-info {
-	margin: 10pt;
+	margin: 8pt;
 	width: 70%;
 	text-align: left;
 }
 
-.title {
+.book-title {
 	font-size: 12px;
 	font-weight: 500;
 	color: blue;
+	padding: 2px;
 }
 
 .booktitle {

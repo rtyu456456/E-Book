@@ -10,7 +10,7 @@
 <body>
 
 	<div class="choose-reg">
-		<div class="search-book-reg" onclick="location.href='trade.reg.go'">
+		<div class="search-book-reg" onclick="location.href='trade.reg.search'">
 			<span>책 이름으로 검색 후 자동 정보 입력</span>
 		</div>
 		<br> <br>

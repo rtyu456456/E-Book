@@ -71,11 +71,9 @@
 			var inputContent = document.getElementById('inputContent').value;
 
 			// URL 생성 및 쿼리 파라미터 추가
-			var nextPageUrl = '/trade.reg.go' 
-			+ '?maplatitude=' + latitude
-			+ '&maplongitude=' + longitude 
-			+ '&markerlatitude=' + latitude 
-			+ '&markerlongitude=' + longitude;
+			var nextPageUrl = '/trade.reg.go' + '?latitude=' + latitude
+					+ '&longitude=' + longitude + '&inputContent='
+					+ encodeURIComponent(inputContent);
 
 			// 다음 페이지로 이동
 			window.location.href = nextPageUrl;

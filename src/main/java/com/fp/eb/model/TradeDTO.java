@@ -17,10 +17,9 @@ public class TradeDTO {
 	private String t_thumbnail;
 	private double t_map_lat;
 	private double t_map_lng;
-	private double t_marker_lat;
-	private double t_marker_lng;
 	private int t_soldout;
 	private Date t_date;
+	private String t_marker_name;
 	private MultipartFile t_file;
 
 	public TradeDTO() {
@@ -28,8 +27,8 @@ public class TradeDTO {
 	}
 
 	public TradeDTO(int t_no, String t_owner, String t_title, String t_book_title, String t_authors, String t_publisher,
-			String t_contents, int t_price, String t_thumbnail, double t_map_lat, double t_map_lng, double t_marker_lat,
-			double t_marker_lng, int t_soldout, Date t_date, MultipartFile t_file) {
+			String t_contents, int t_price, String t_thumbnail, double t_map_lat, double t_map_lng, int t_soldout,
+			Date t_date, String t_marker_name, MultipartFile t_file) {
 		super();
 		this.t_no = t_no;
 		this.t_owner = t_owner;
@@ -42,10 +41,9 @@ public class TradeDTO {
 		this.t_thumbnail = t_thumbnail;
 		this.t_map_lat = t_map_lat;
 		this.t_map_lng = t_map_lng;
-		this.t_marker_lat = t_marker_lat;
-		this.t_marker_lng = t_marker_lng;
 		this.t_soldout = t_soldout;
 		this.t_date = t_date;
+		this.t_marker_name = t_marker_name;
 		this.t_file = t_file;
 	}
 
@@ -137,22 +135,6 @@ public class TradeDTO {
 		this.t_map_lng = t_map_lng;
 	}
 
-	public double getT_marker_lat() {
-		return t_marker_lat;
-	}
-
-	public void setT_marker_lat(double t_marker_lat) {
-		this.t_marker_lat = t_marker_lat;
-	}
-
-	public double getT_marker_lng() {
-		return t_marker_lng;
-	}
-
-	public void setT_marker_lng(double t_marker_lng) {
-		this.t_marker_lng = t_marker_lng;
-	}
-
 	public int getT_soldout() {
 		return t_soldout;
 	}
@@ -169,6 +151,14 @@ public class TradeDTO {
 		this.t_date = t_date;
 	}
 
+	public String getT_marker_name() {
+		return t_marker_name;
+	}
+
+	public void setT_marker_name(String t_marker_name) {
+		this.t_marker_name = t_marker_name;
+	}
+
 	public MultipartFile getT_file() {
 		return t_file;
 	}
@@ -177,14 +167,5 @@ public class TradeDTO {
 		this.t_file = t_file;
 	}
 
-	@Override
-	public String toString() {
-		return "TradeDTO [t_no=" + t_no + ", t_owner=" + t_owner + ", t_title=" + t_title + ", t_book_title="
-				+ t_book_title + ", t_authors=" + t_authors + ", t_publisher=" + t_publisher + ", t_contents="
-				+ t_contents + ", t_price=" + t_price + ", t_thumbnail=" + t_thumbnail + ", t_map_lat=" + t_map_lat
-				+ ", t_map_lng=" + t_map_lng + ", t_marker_lat=" + t_marker_lat + ", t_marker_lng=" + t_marker_lng
-				+ ", t_soldout=" + t_soldout + ", t_date=" + t_date + ", t_file=" + t_file + "]";
-	}
 
-	
 }

@@ -17,15 +17,18 @@
 				<div>${m.t_book_title }</div>
 			</div>
 			<div class="msg-info">
-				<div class="msg-trader">${m.m_from }</div>
+				<div class="msg-trader">${m.m_to }
+					님께
+					<div class="cancle">
+						<img alt="" src="img/cancleXbutton.png"
+							onclick="location.href='/delete.msg.from?m_no=${m.m_no }&u_id=${sessionScope.loginMember.u_id}'">
+					</div>
+				</div>
 				<div class="msg-txt">${m.m_txt }</div>
 				<div class="msg-time">
 					<fmt:formatDate value="${m.m_when }" pattern="yyyy.MM.dd HH:mm" />
+
 				</div>
-			</div>
-			<div class="cancle">
-				<img alt="" src="img/cancleXbutton.png"
-					onclick="location.href='/delete.msg.from?m_no=${m.m_no }&u_id=${sessionScope.loginMember.u_id}'">
 			</div>
 		</div>
 	</c:forEach>

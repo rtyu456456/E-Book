@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.fp.eb.model.BookDTO;
 import com.fp.eb.model.MsgDTO;
 import com.fp.eb.model.TradeDTO;
 import com.fp.eb.model.TradeTotalDTO;
@@ -33,12 +34,10 @@ public interface TradeMapper {
 
 	//등록기능
 	public int regTradeBook(TradeDTO tDTO);
-
 	public int tradeComplete(TradeDTO tDTO);
 
-
-
-
+	List<BookDTO> tradeRegSearch(BookDTO bDTO);
+	List<BookDTO> tradeRegSearchName(BookDTO bDTO);
 
 
 

@@ -17,16 +17,29 @@
 		resultType="com.fp.eb.model.TradeDTO">
 		select * from eb_trade where t_no = #{t_no }
 	</select>
-	
-	<select id="getUserInfo" resultType="com.fp.eb.model.TradeTotalDTO">
-		select * from eb_user where t_onwer = #{u_id } and t_no = #{t_no }
+
+	<select id="getUserInfo"
+		resultType="com.fp.eb.model.TradeTotalDTO">
+		select * from eb_user where t_onwer = #{u_id } and t_no =
+		#{t_no }
 	</select>
-	
-	
+
+
 
 	<select id="getTradeList" resultType="com.fp.eb.model.TradeDTO">
 		SELECT * FROM eb_trade
 		WHERE t_book_title LIKE '%'||#{t_book_title}||'%'
+	</select>
+
+
+	<select id="tradeRegSearch"
+		resultType="com.fp.eb.model.BookDTO">
+		select * from eb_book
+	</select>
+
+	<select id="tradeRegSearchName" resultType="com.fp.eb.model.BookDTO">
+		select * from eb_book
+		where b_title Like '%'||#{b_title}||'%'
 	</select>
 
 
@@ -43,34 +56,31 @@
 		#{t_thumbnail },
 		#{t_map_lat},
 		#{t_map_lng	},
-		#{t_marker_lat },
-		#{t_marker_lng },
 		0,
-		sysdate)
+		sysdate,
+		#{t_marker_name })
 	</insert>
-	
-	
-	
+
 	<update id="tradeComplete">
-	update eb_trade set t_soldout = 1 where t_no = #{t_no }
+		update eb_trade set t_soldout = 1 where t_no = #{t_no }
 	</update>
-	
-	
-	
-	
+
+
+
+
 
 
 	<select id="getToMsg" resultType="com.fp.eb.model.TradeTotalDTO">
-		select * from eb_trade_msg emsg, eb_user eu
-		where emsg.m_to = eu.u_id and
-		emsg.m_to = #{u_id}
+		Select * From Eb_Trade_Msg
+		Emsg, Eb_User Eu
+		Where Emsg.M_To = Eu.U_Id And Emsg.M_To = #{u_id}
 	</select>
 
 	<select id="getFromMsg"
 		resultType="com.fp.eb.model.TradeTotalDTO">
-		select * from eb_trade_msg emsg, eb_user eu
-		where emsg.m_from = eu.u_id and
-		emsg.m_from = #{u_id}
+		Select * From Eb_Trade_Msg Emsg, Eb_User Eu
+		Where
+		Emsg.M_From = Eu.U_Id And Emsg.M_From = #{u_id}
 	</select>
 
 
@@ -86,8 +96,9 @@
 		},#{m_txt },sysdate,#{m_check })
 	</insert>
 
-	<delete id="deleteMsg" parameterType="com.fp.eb.model.TradeTotalDTO">
-	delete from eb_trade_msg where m_no = #{m_no }
+	<delete id="deleteMsg"
+		parameterType="com.fp.eb.model.TradeTotalDTO">
+		delete from eb_trade_msg where m_no = #{m_no }
 	</delete>
 
 

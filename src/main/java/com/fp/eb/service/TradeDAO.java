@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fp.eb.mapper.TradeMapper;
+import com.fp.eb.model.BookDTO;
 import com.fp.eb.model.TradeDTO;
 import com.fp.eb.model.TradeTotalDTO;
 import com.fp.eb.model.UserDTO;
@@ -26,7 +27,7 @@ public class TradeDAO {
 	private SqlSession ss;
 	@Autowired
 	private ServletContext sc;
-	
+
 	@Value("${upload.path}")
 	private String uploadPath;
 
@@ -123,11 +124,11 @@ public class TradeDAO {
 		tDTO.setT_thumbnail(req.getParameter("t_thumbnail"));
 		tDTO.setT_map_lat(Double.parseDouble(req.getParameter("t_map_lat")));
 		tDTO.setT_map_lng(Double.parseDouble(req.getParameter("t_map_lng")));
-		tDTO.setT_marker_lat(Double.parseDouble(req.getParameter("t_marker_lat")));
-		tDTO.setT_marker_lng(Double.parseDouble(req.getParameter("t_marker_lng")));
+		tDTO.setT_marker_name(req.getParameter("t_marker_name"));
+		
 		System.out.println(tDTO);
 		System.out.println(uploadPath);
-		
+
 		try {
 			String orgFileName = file.getOriginalFilename();
 //			String savePath = sc.getRealPath("./imgs");
@@ -148,27 +149,42 @@ public class TradeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		try {
 			if (ss.getMapper(TradeMapper.class).regTradeBook(tDTO) == 1) {
-					req.setAttribute("result", "등록 성공");
-				} else {
-					req.setAttribute("result", "등록 실패");
-				}
+				req.setAttribute("result", "등록 성공");
+			} else {
+				req.setAttribute("result", "등록 실패");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			// TODO: handle exception
 		}
+	}
+
+//	등록전에 책 검색
+	public void tradeRegSearch(BookDTO bDTO, HttpServletRequest req) {
+		req.setAttribute("book", ss.getMapper(TradeMapper.class).tradeRegSearch(bDTO));
+		System.out.println("책 정보 검색 페이지");
+	}
+
+	public void tradeRegSearchName(BookDTO bDTO, HttpServletRequest req) {
+		req.setAttribute("book",ss.getMapper(TradeMapper.class).tradeRegSearchName(bDTO));
+		System.out.println("책 정보 검색 입력");
 	}
 	
 	
-	//------------------------ 내용 수정---------------
+	
+	// ------------------------ 내용 수정---------------
 	public void tradeComplete(TradeDTO tDTO, HttpServletRequest req) {
 		if (ss.getMapper(TradeMapper.class).tradeComplete(tDTO) == 1) {
 			req.setAttribute("result", "삭제 성공");
-		}else {
+		} else {
 			req.setAttribute("result", "삭제 실패");
 		}
 	}
+
+
+
+
+
 }

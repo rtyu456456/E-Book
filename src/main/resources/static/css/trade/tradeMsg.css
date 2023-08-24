@@ -7,6 +7,7 @@
 	background-color: rgba(255, 255, 255, 0.7);
 	overflow: auto;
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
+	max-width: 600px;
 }
 
 .msg-nav {
@@ -16,17 +17,42 @@
 	height: 3rem;
 	align-items: center;
 	font-size: 16px;
-	background-color: skyblue;
+	color: white;
 }
 
-.msg-nav span {
+.msg-nav a {
 	text-decoration: none;
 	color: white;
 }
 
-.msg-page {
-	margin-top: 10px;
+.msg-nav span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	height: 100%;
+}
+
+.msg-from {
+	text-align: center;
+	width: 50%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.25);
+}
+
+.msg-to {
+	align-items: center;
+	text-align: center;
+	width: 50%;
+	height: 100%;
+	width: 50%;
+	background-color: rgba(246, 110, 110, 1);
+}
+
+.msg-page {
+	overflow: auto;
+	height: 80%;
+	width: 100%;
+	text-align: center;
 }
 
 .msg-list {
@@ -34,45 +60,66 @@
 	background: rgba(245, 246, 250, 1);
 	margin-top: 15px;
 	border-radius: 20px;
-	height: 18%;
+	width:100%;
+	height: 20%;
 	min-height: 80pt;
-/* 	justify-content: space-between; */
+	justify-content: space-around;
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
 }
 
 .trade-book-img {
-	width: 22%;
-	max-width: 140px;
-	padding: 10px;
+	width: 30%;
 }
 
 .trade-book-img img {
-	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
-	align-items: center;
-	width: 98%;
-	height: 94%;
+	/* 		display: flex; */
+	/* 	text-align: center; */
+	/* 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625); */
+	/* 	align-items: center; */
+	/* 	width: 98%; */
+	/* 	max-width: 100px; */
+	/* 	height: 94%; */
 	border-radius: 10px;
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
+	margin: 5pt;
+	align-items: center;
+	max-width: 80pt;
+	height: 86%
 }
 
 .msg-info {
 	width: 90%;
+	margin: 10px;
 }
 
-.msg-trader{
-	display:flex;
+.msg-trader {
+	display: flex;
 	justify-content: space-between;
+	font-size: 12px;
+	color: blue;
 }
 
 .msg-txt {
+	font-size:10px;
 	width: 100%;
 	height: 60%;
 }
 
 .msg-time {
-	justify-content:space-between;
+	justify-content: space-between;
 	display: flex;
+	align-self: center;
 	font-size: 10px;
 }
+
+/* 삭제 버튼 */
+.cancle img{
+	width: 12px;
+	height: 12px;
+	
+}
+
+
 
 
 /* 쪽지 모달 */
@@ -104,8 +151,9 @@
 	z-index: 99;
 	padding: 20px;
 }
-.modal_body h1{
-	font-size: 18px; 
+
+.modal_body h1 {
+	font-size: 18px;
 }
 
 .modal_body textarea {
@@ -132,9 +180,9 @@
 .btn-open-modal {
 	justify-content: center;
 	width: 50px;
-	height:25px;
 	display: flex; /* 버튼을 가로 정렬하기 위해 flex 속성 추가 */
 	align-items: center; /* 버튼 세로 중앙 정렬 */
 	border-radius: 5px;
+	border: none;
+	box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
 }
-
