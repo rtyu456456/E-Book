@@ -46,7 +46,7 @@ public class UserController {
 
 	@GetMapping("/login.do")
 	public String loginDo(HttpServletRequest req, UserDTO uDTO, String id) {
-		return "user/detail_user";
+		return "user/detail_user1";
 	}
 	
 	@PostMapping("/userUpdate.go")

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.util.WebUtils;
@@ -53,8 +55,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
 		
 		
 		// jwt 토큰 서명을 통해 서명이 정상이면 Authentication 객체를 강제로 시큐리티 저장소에 접근하여 Authentication 객체를 저장
+		System.out.println(" ????????????" + jwt.getAuthentication(jwtCookie));
 		SecurityContextHolder.getContext().setAuthentication(jwt.getAuthentication(jwtCookie));
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		System.out.println(auth);
+		System.out.println(auth.getName());
 		System.out.println("★☆★☆★☆★☆★☆★☆★☆★☆★☆ JwtAuthorizationFilter 완료 ★☆★☆★☆★☆★☆★☆★☆★☆★☆");
+		// 현재 사용자의 Authentication 객체 가져오기
 		chain.doFilter(request, response);
 		
 	}

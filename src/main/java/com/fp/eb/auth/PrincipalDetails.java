@@ -3,8 +3,11 @@ package com.fp.eb.auth;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fp.eb.model.UserDTO;
@@ -20,8 +23,10 @@ public class PrincipalDetails implements UserDetails{
 	
 	public PrincipalDetails(UserDTO user) {
 		System.out.println("PrincipalDetails : " + user);
+		
 		this.user = user;
 	}
+	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
