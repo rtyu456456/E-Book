@@ -59,7 +59,7 @@
 					<div class="review-list-gh">
 						<div class="detail-profile-gh">
 							<div class="detail-review-profile">
-								<img src="/img/daejeon_profile.png">
+								<img src="/img/${rUsers.u_profile }">
 							</div>
 							<h6 class="detail-name-gh">${r.r_owner } / ${r.r_no } / ${r.likeCheck}</h6>
 							<h6 class="detail-grade-gh">현자</h6>

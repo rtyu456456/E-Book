@@ -72,10 +72,15 @@ public class MainDAO {
 		model.addAttribute("reviews", reviews);
 	}
 
+//	public void reviewUser(UserDTO uDTO, ReviewDTO rDTO, Model model) {
+//		List<UserDTO> rUsers = mainMapper.rUsers(rDTO);
+//		System.out.println(rUsers);
+//		model.addAttribute("rUsers", rUsers);
+//	}
+
 	public void getPercent1(BookDTO bDTO, ReviewDTO rDTO, Model model) {
 		model.addAttribute("getPercent1", mainMapper.getPercent(bDTO));
 	}
-	
 
 	public int likeFunc(HttpServletRequest req, LikeDTO likeDTO) {
 		System.out.println(likeDTO.getLr_where_no());
@@ -95,32 +100,43 @@ public class MainDAO {
 		}
 	}
 
+	// 오늘의 베스트 서평
 	public void dailyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("dailyBest", mainMapper.dailyBest(bDTO, rDTO, model, req));
 	}
+
 	public void dailyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("dailyBook", mainMapper.dailyBook(bDTO, rDTO, model, req));
 	}
 
+	public void dailyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+		model.addAttribute("dailyUser", mainMapper.dailyUser(uDTO, rDTO, model, req));
+	}
+
+	// 이번주 베스트 서평
 	public void weeklyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("weeklyBest", mainMapper.weeklyBest(bDTO, rDTO, model, req));
 	}
+
 	public void weeklyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("weeklyBook", mainMapper.weeklyBook(bDTO, rDTO, model, req));
 	}
 
+	public void weeklyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+		model.addAttribute("weeklyUser", mainMapper.weeklyUser(uDTO, rDTO, model, req));
+	}
+
+	// 이번달 베스트 서평
 	public void monthlyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("monthlyBest", mainMapper.monthlyBest(bDTO, rDTO, model, req));
-		
 	}
+
 	public void monthlyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("monthlyBook", mainMapper.monthlyBook(bDTO, rDTO, model, req));
-		
 	}
 
-
-		
+	public void monthlyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+		model.addAttribute("monthlyUser", mainMapper.monthlyUser(uDTO, rDTO, model, req));
 	}
 
-
-
+}
