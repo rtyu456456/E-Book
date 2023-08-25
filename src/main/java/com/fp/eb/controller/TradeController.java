@@ -29,9 +29,9 @@ public class TradeController {
 	public String goTrade(TradeDTO tDTO, HttpServletRequest req) {
 
 		// 로그인 가 데이터
-		UserDTO uDTO = new UserDTO("hm", "hm", "하민", "img_test", "hmin0701@naver.com", "male", 27, 230203, 10, 30,
-				"초심자", "0");
-		req.getSession().setAttribute("loginMember", uDTO);
+//		UserDTO uDTO = new UserDTO("hm", "hm", "하민", "img_test", "hmin0701@naver.com", "male", 27, 230203, 10, 30,
+//				"초심자", "0");
+//		req.getSession().setAttribute("loginMember", uDTO);
 
 		tDAO.getAlltradelist(tDTO, req);
 		req.setAttribute("contentPage", "tradeMain.jsp");
@@ -63,8 +63,7 @@ public class TradeController {
 		req.setAttribute("contentPage", "tradeMain.jsp");
 		return "trade/tradeIndex";
 	}
-	
-	
+
 //판매중 도서
 	@GetMapping("/trade.sale.now")
 	public String goTradeMyBook(UserDTO uDTO, HttpServletRequest req) {
@@ -75,7 +74,7 @@ public class TradeController {
 		req.setAttribute("contentPage", "saleNow.jsp");
 		return "trade/tradeIndex";
 	}
-	
+
 // 쪽지 기능 컨트롤
 	// 받은거 조회
 	@GetMapping("/trade.Msg.get.to")
@@ -149,18 +148,19 @@ public class TradeController {
 		req.setAttribute("contentPage", "tradeSerachBook.jsp");
 		return "trade/tradeIndex";
 	}
+
 	@GetMapping("/trade.reg.search.name")
 	public String tradeRegSearchName(BookDTO bDTO, HttpServletRequest req) {
 		tDAO.tradeRegSearchName(bDTO, req);
 		req.setAttribute("contentPage", "tradeSerachBook.jsp");
 		return "trade/tradeIndex";
 	}
+
 	@GetMapping("/reg.Search.Book.Info")
 	public String regSearchBookInfo(BookDTO bDTO, HttpServletRequest req) {
 		req.setAttribute("contentPage", "infoReg.jsp");
 		return "trade/tradeIndex";
 	}
-
 
 // 거래 완료 기능
 	@GetMapping("/trade.complete")

@@ -1,5 +1,6 @@
 package com.fp.eb.model;
 
+
 public class BookDTO {
 	private int b_no;
 	private String b_title;
@@ -18,7 +19,7 @@ public class BookDTO {
 	}
 
 	public BookDTO(int b_no, String b_title, String b_contents, String b_url, String b_isbn, String b_authors,
-			String b_publisher, int b_page, int b_price, String b_thumbnail) {
+			String b_publisher, int b_page, int b_price, String b_thumbnail, int positive_percentage) {
 		super();
 		this.b_no = b_no;
 		this.b_title = b_title;
@@ -30,15 +31,6 @@ public class BookDTO {
 		this.b_page = b_page;
 		this.b_price = b_price;
 		this.b_thumbnail = b_thumbnail;
-	}
-	
-	
-
-	public int getPositive_percentage() {
-		return positive_percentage;
-	}
-
-	public void setPositive_percentage(int positive_percentage) {
 		this.positive_percentage = positive_percentage;
 	}
 
@@ -122,6 +114,14 @@ public class BookDTO {
 		this.b_thumbnail = b_thumbnail;
 	}
 
+	public int getPositive_percentage() {
+		return positive_percentage;
+	}
+
+	public void setPositive_percentage(int positive_percentage) {
+		this.positive_percentage = positive_percentage;
+	}
+
 	@Override
 	public String toString() {
 		return "BookDTO [b_no=" + b_no + ", b_title=" + b_title + ", b_contents=" + b_contents + ", b_url=" + b_url
@@ -129,6 +129,8 @@ public class BookDTO {
 				+ b_page + ", b_price=" + b_price + ", b_thumbnail=" + b_thumbnail + ", positive_percentage="
 				+ positive_percentage + "]";
 	}
-
-
+	
+	
+	
+	
 }
