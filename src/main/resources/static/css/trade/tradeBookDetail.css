@@ -1,18 +1,20 @@
 @charset "UTF-8";
 
 .detail-container {
-	position: relative; 
-	overflow : auto;
+	position: relative;
+	overflow: auto;
 	height: 100%;
 	width: 98%;
 	border-radius: 10px;
 	background-color: #FFFFFF;
-	overflow: auto;
 }
 
 .book-info {
 	display: flex;
 	margin: 20px;
+	border-radius: 5px;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25) inset;
+	background: rgba(245, 246, 250, 1);
 }
 
 .book-img {
@@ -66,16 +68,28 @@
 
 /* 맵기능   */
 .trade-map {
-	justify-content: center; 
-	border-radius : 10px;
-	width: 80vw;
-	height: 60vh;
-	max-height: 200px;
+	justify-content: center;
+	height: 30vh;
+	max-height: 300px;
 	padding: 10px;
 	background-color: rgba(245, 246, 250, 1);
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
+	margin: 30px;
 }
+.map-location-info{
+	display: flex;
+	justify-content: space-between;
+}
+
+.trade-map h1{
+	font-size: 20px;
+	font-weight: 700;
+}
+.trade-map span{
+	font-size: 8px;
+}
+
 
 #map {
 	margin-top: 10px;
@@ -98,9 +112,24 @@
 }
 
 .trade-sell-me button {
-	width: 30%;
-	height: 3rem;
+	width: 40%;
+	height: 2.5rem;
 	border-radius: 10px;
+	font-size: 20px;
+	color: white;
+	border: none;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	color: white;
+	max-width: 150pt;
+}
+
+.selled {
+	background: rgba(246, 110, 110, 1);
+}
+
+.update {
+	background: rgba(38, 40, 61, 1);
+	max-width: 100pt;
 }
 
 /* 쪽지 모달 */
@@ -159,10 +188,15 @@
 }
 
 .btn-open-modal {
+	font-size: 20px;
+	color: white;
+	background: rgba(38, 40, 61, 1);
 	width: 40%;
-	height: 3rem;
+	max-width: 300pt;
+	height: 2.5rem;
 	justify-content: center;
 	display: flex; /* 버튼을 가로 정렬하기 위해 flex 속성 추가 */
 	align-items: center; /* 버튼 세로 중앙 정렬 */
 	border-radius: 5px;
+	border: none;
 }
