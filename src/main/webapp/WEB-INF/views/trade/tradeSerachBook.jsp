@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 
 
-<link rel="stylesheet" href="css/trade/tradeMain.css">
+<link rel="stylesheet" href="css/trade/tradeSearch.css">
 </head>
 <body>
 

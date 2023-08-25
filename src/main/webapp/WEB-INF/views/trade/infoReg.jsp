@@ -68,8 +68,7 @@
 					<a href="trade.map.go">희망 장소 선택하기</a> <span>${param.inputContent }</span>
 					<input type="hidden" value="${param.latitude }" name="t_map_lat">
 					<input type="hidden" value="${param.longitude }" name="t_map_lng">
-					<input type="hidden" value="${param.inputContent }"
-						name="t_marker_name">
+					<input type="hidden" value="${param.inputContent }" name="t_marker_name">
 				</div>
 				<div class="reg-btn">
 					<button>등록하기</button>
