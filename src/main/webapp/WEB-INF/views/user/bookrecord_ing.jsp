@@ -128,41 +128,6 @@
 	</div>
 	<div class="flex justify-center items-center w-full h-5/6">
 		<div class="result-box flex flex-col w-11/12 h-full bg-white">
-			<div
-				class="br-box block rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/4 bg-white ml-10 mb-10">
-				<div class="w-full h-full flex">
-					<div class="flex justify-center items-center ml-10 w-1/4 h-full">
-						<img class="object-fit w-40 h-60" alt="" src="${br.b_thumbnail }">
-					</div>
-					<div
-						class="flex flex-col justify-center items-start pl-5 w-3/4 h-full text-[rgba(38,40,61,1)]">
-						<div
-							class="w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3">
-							<span>책 제목 넣기</span>
-						</div>
-						<div
-							class="text-[1.7rem] text-[rgba(38,40,61,0.5)] font-bold h-1/4">
-							<span>작가이름 넣기</span>
-						</div>
-						<div class="w-11/12 h-1/3 text-[1.7rem] font-bold whatshowwrapper">
-							<div class="whatshow1 w-full h-full">
-								<div class="flex w-full justify-between">
-									<span>출판사 이름 채워넣기</span>
-								</div>
-							</div>
-						</div>
-						<div
-							class="flex justify-end items-end w-full h-1/6 text-[2rem] font-bold ">
-							<div
-								class="flex justify-end items-end w-full h-1/6 text-[1.5rem] text-white font-bold">
-								<button
-									class="update w-1/4 bg-[rgba(38,40,61,1)] mr-5 mb-3 rounded-3xl">읽기
-									시작</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 

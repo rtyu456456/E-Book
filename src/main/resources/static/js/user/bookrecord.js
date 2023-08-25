@@ -103,18 +103,22 @@ function makeDomDB(data){
 function makeDomAPI(data){
 	let dom = "";
 	for(let i = 0; i < data.length; i++){
-		let b_title= data[i].b_title;
+		let b_title_origin = data[i].b_title;
+		let b_title = data[i].b_title;
+		if(data[i].b_title.length > 12){
+			b_title = data[i].b_title.substr(0, 11) + '...';			
+		}
 		let b_thumbnail = data[i].b_thumbnail;
 		let b_authors = data[i].b_authors;
 		let b_publisher = data[i].b_publisher;
-		let b_contents = data[i].b_contents;
+		let b_contents = data[i].b_contents.replaceAll('"', "'");
 		let b_url = data[i].b_url;
 		let b_isbn = data[i].b_isbn;
 		let b_price = data[i].b_price;
 		
 		
  		dom += `<div class='br-box block rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/4 bg-white ml-10 mb-10'>
-				<input hidden class="b-title" value="${b_title }"> 
+				<input hidden class="b-title" value="${b_title_origin }"> 
 				<input hidden class="b-authors" value="${b_authors }"> 
 				<input hidden class="b-publisher" value="${b_publisher }"> 
 				<input hidden class="b-price" value="${b_price }"> 
@@ -124,7 +128,7 @@ function makeDomAPI(data){
 				<input hidden class="b-contents" value="${b_contents }">
              <div class='w-full h-full flex'>
                  <div class='flex justify-center items-center ml-10 w-1/4 h-full'>
-                     <img class='object-fit w-40 h-60' alt='${b_title}' src="${b_thumbnail}">
+                     <img class='object-fit w-40 h-60' alt='' src="${b_thumbnail}">
                  </div>
                  <div class='flex flex-col justify-center items-start pl-5 w-3/4 h-full text-[rgba(38,40,61,1)]'>
                      <div class='w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3'>
@@ -152,21 +156,6 @@ function makeDomAPI(data){
          </div>
 		`;
 	}
-	
-	
-	
-	
-	/** api 콜 보내기 용 */
-	dom += `<div
-			class="br-box block rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/6 bg-white ml-10 mb-10">
-			<div class="w-full h-full">
-				<a
-					class="api-search-btn w-full h-full flex flex-col justify-center items-center">
-					<img class="w-20 h-20" alt="" src="imgs/plus_icon.jpg"> <span
-					class="text-[2rem] font-bold">자세히 검색하기</span>
-				</a>
-			</div>
-		</div>`
 	
 	$('.result-box').html(dom);
 }		

@@ -36,9 +36,7 @@ public class SecurityConfig {
         return web -> {
             web.ignoring()
                 .antMatchers(
-                    "/login.go", 
-                    "/reguser.go", 
-                    "/reguser.do"
+                   "/*"
                     );
         };
     }

@@ -96,7 +96,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		System.out.println("쿠키심기" + cookie);
 //		response.getWriter().write(om.writeValueAsString(map));
 		   // HttpSession에 userDetails 저장
-	    req.getSession().setAttribute("userDetails", userDetails);
+		System.out.println(userDetails.getUser());
+		
+		
+	    req.getSession().setAttribute("userDetail", userDetails.getUser());
 		 try {
 		        response.sendRedirect("/login.do");
 		    } catch (IOException e) {

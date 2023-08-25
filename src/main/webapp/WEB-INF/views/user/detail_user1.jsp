@@ -9,6 +9,14 @@
     <title>User Information</title>
 </head>
 <body>
+asd:
+${userDetail } <br>
+id : ${userDetail.u_id }<br>
+name : ${userDetail.u_name }<br>
+
+
+
+<hr>
 <p>pp : <sec:authorize access="isAuthenticated()">111</sec:authorize> </p>
 <sec:authorize access="isAnonymous()">
     <a href="/customLogin">????</a>
