@@ -34,14 +34,37 @@ public class CommunityController {
 
 	@GetMapping("/community_main")
 	public String goCommunityMain(Model model, CommunityPostDTO cp) {
-		cDAO.getAllPinnedCommu();
+		/* model.addAttribute("pin", cDAO.getAllPinnedCommu().getPinnedCommu()); */
+		
+		getPinndedCommu();
 		cDAO.getAllCommunity(model);
-
+		
 		model.addAttribute("commu_header_page", "community_main_header.jsp");
 		model.addAttribute("commu_contents_page", "community_main_contents.jsp");
 		return "community/community_page";
 	}
 
+
+	@RequestMapping(value = "/get.pinned.commu", method = RequestMethod.GET,
+			produces="application/json; charset=utf-8")
+	public @ResponseBody CommunityPinned getPinndedCommu() {
+		return cDAO.getAllPinnedCommu();
+	}
+	
+	@RequestMapping(value = "/do.pinned.commu", method = RequestMethod.GET,
+			produces="application/json; charset=utf-8")
+	public @ResponseBody CommunityPinned doPinndedCommu(Model model, HttpServletRequest request, CommunityLikeDTO cl) {
+		cDAO.checkPinnedCommu(cl);
+		return cDAO.getAllPinnedCommu();
+	}
+	
+	@RequestMapping(value = "/update.pinned.commu", method = RequestMethod.GET,
+			produces="application/json; charset=utf-8")
+	public  @ResponseBody CommunityPinned updatePinndedCommu(CommunityLikeDTO cl) {
+		cDAO.updatePinnedCommuZero(cl);
+		return cDAO.getAllPinnedCommu();
+	}
+	
 	@GetMapping("/seach.community")
 	public String seachCommunity(Model model, CommunityDTO c) {
 		cDAO.seachCommunity(c, model);
@@ -79,24 +102,7 @@ public class CommunityController {
 	}
 	
 	
-	@RequestMapping(value = "/do.pinned.commu", method = RequestMethod.GET,
-				produces="application/json; charset=utf-8")
-	public @ResponseBody CommunityPinned doPinndedCommu(Model model, HttpServletRequest request, CommunityLikeDTO cl) {
-		cDAO.checkPinnedCommu(cl);
-		return cDAO.getAllPinnedCommu();
-	}
 	
-	@GetMapping("/update.pinned.commu")
-	public String updatePinndedCommu(Model model, HttpServletRequest request, CommunityLikeDTO cl) {
-		cDAO.updatePinnedCommuZero(cl);
-		
-		cDAO.getAllPinnedCommu();
-		cDAO.getAllCommunity(model);
-		
-		model.addAttribute("commu_header_page", "community_main_header.jsp");
-		model.addAttribute("commu_contents_page", "community_main_contents.jsp");
-		return "community/community_page";
-	}
 	
 	@GetMapping("/go.my.post")
 	public String goMyPost(Model model, CommunityDTO c, CommunityPostDTO cp) {

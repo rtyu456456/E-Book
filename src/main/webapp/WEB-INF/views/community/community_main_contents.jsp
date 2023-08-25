@@ -33,19 +33,9 @@
 						</button>
 					</form>
 
-					<form action="">
-					<div id="pinned-commu">
-					
-					</div>
-					</form>	
-
-	
-
-<%-- 
-							<button class="commu_board_btn">
-								<img onclick="notPinnedCommunity('${pin.c_no}')" alt=""
-									src="/img/커뮤니티_즐겨찾기함_icon.png"> &nbsp;
-							</button> --%>
+					<form action="/go.commu.post">
+						<div id="pinned-commu"></div>
+					</form>
 					<br>
 				</div>
 			</div>
@@ -95,8 +85,10 @@
 					<br>
 					<c:forEach var="c" items="${communitys }">
 						<form action="/go.commu.post">
-							<button class="commu_board_btn" name="c_no" value="${c.c_no }">
-								<img id="not-pinned" onclick="pinnedMyCommunity('${c.c_no }')"
+							<button id="not-pinned-btn" class="commu_board_btn" name="c_no"
+								value="${c.c_no }">
+								<img class="not-pinned"
+									onclick="pinnedCommunity(event, '${c.c_no}')"
 									src="/img/커뮤니티_즐겨찾기안함_icon.png"> &nbsp; ${c.c_name }
 							</button>
 						</form>
@@ -108,11 +100,51 @@
 	</div>
 </body>
 <script type="text/javascript">
-	let pinnedCommu = document.getElementById("pinned-commu");
+	var addedCommunities = {};
+	$(function() {
+		loadPinnedCommu();
+	})
 
-	function pinnedMyCommunity(c_no) {
+	function loadPinnedCommu() {
+		$.ajax({
+			url : "get.pinned.commu",
+			dataType : "JSON",
+			success : function(data) {
+				console.log(data);
+
+				$.each(data.pinnedCommu, function(index, item) {
+					
+					console.log(item.c_name);
+
+					var pinnedCommuContainer = $("#pinned-commu");
+					if (!addedCommunities[item.c_no]) { // 이미 추가한 커뮤니티인지 확인
+						var button = $("<button>").addClass("pinned-btn").attr(
+								"name", "c_no");
+							$(button).val(item.c_no);
+						var img = $("<img>").addClass("pinned").attr("src",
+								"/img/커뮤니티_즐겨찾기함_icon.png").click(function() {
+							notPinnedCommunity(this,item.c_no); // item.c_no는 클로저로 캡쳐될 것입니다.
+						});
+						var text = $("<span>").css("white-space", "pre").text(" " + item.c_name);
+
+						button.append(img, text);
+						pinnedCommuContainer.append(button);
+
+						addedCommunities[item.c_no] = true; // 커뮤니티 추가 기록
+					}
+
+				});
+
+			},
+			error : function(request, status, error) {
+				console.log("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
+		})
+	}
+
+	function pinnedCommunity(event, c_no) {
 		event.preventDefault();
-		console.log(c_no);
 		$.ajax({
 			url : "do.pinned.commu",
 			data : {
@@ -124,20 +156,23 @@
 
 				$.each(data.pinnedCommu, function(index, item) {
 					console.log(item.c_name);
-					
-					var button = document.createElement("button");
-					button.className = "commu_board_btn";
-			        var pinnedImage = document.createElement("img");
-			        pinnedImage.src = "/img/커뮤니티_즐겨찾기함_icon.png";
-			        var textNode = document.createTextNode(" " + item.c_name);
-					
-			        button.appendChild(pinnedImage);
-			        button.appendChild(textNode);
-			        
-			        pinnedCommu.appendChild(button);
 
-			        pinnedImage.onclick = notPinnedCommunity(item.c_no);
-			        
+					var pinnedCommuContainer = $("#pinned-commu");
+
+					if (!addedCommunities[item.c_no]) { // 이미 추가한 커뮤니티인지 확인
+// 						var button = $("<button>").addClass("pinned-btn").attr(
+// 								"name", "c_no");
+// 						var img = $("<img>").addClass("pinned").attr("src",
+// 								"/img/커뮤니티_즐겨찾기함_icon.png");
+// 						var text = $("<span>").text(item.c_name);
+
+// 						button.append(img, text);
+// 						pinnedCommuContainer.append(button);
+
+// 						addedCommunities[item.c_no] = true; // 커뮤니티 추가 기록
+						loadPinnedCommu();
+					}
+
 				});
 
 			},
@@ -146,11 +181,27 @@
 						+ request.responseText + "\n" + "error:" + error);
 			}
 		})
+
 	}
 
-	function notPinnedCommunity(c_no) {
+	function notPinnedCommunity(btn, lr_where_no) {
 		event.preventDefault();
-		location.href = "/update.pinned.commu?lr_where_no=" + c_no;
+		$.ajax({
+			type : "GET",
+			url : "/update.pinned.commu?lr_where_no=" + lr_where_no,
+			success : function(response) {
+				// 요청이 성공했을 때 처리할 코드
+				// response에는 서버에서 반환한 데이터가 포함될 수 있음
+				console.log("Ajax request success:", response);
+				// 여기서 필요한 업데이트나 변경 작업 수행
+				$(btn).parent().remove();
+				
+			},
+			error : function(request, status, error) {
+				console.log("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
+		})
 	}
 </script>
 </html>

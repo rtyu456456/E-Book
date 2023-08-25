@@ -156,13 +156,13 @@ public class CommunityDAO {
 	 return new CommunityPinned((ss.getMapper(CommunityMapper.class).getAllPinnedCommu()));
 	}
 
-	public void updatePinnedCommuZero(CommunityLikeDTO cl) {
+	public int updatePinnedCommuZero(CommunityLikeDTO cl) {
 		if (ss.getMapper(CommunityMapper.class).updatePinnedCommuZero(cl) == 1) {
 			System.out.println("핀 0으로 업뎃 성공");
 		} else {
 			System.out.println("핀 0으로 업뎃 실패");
 		}
-
+		return ss.getMapper(CommunityMapper.class).updatePinnedCommuZero(cl);
 	}
 
 	public void checkPinnedCommu(CommunityLikeDTO cl) {
