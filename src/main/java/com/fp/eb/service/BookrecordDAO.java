@@ -64,8 +64,13 @@ public class BookrecordDAO {
 	public void regIng(BookrecordDTO brDTO, UserDTO uDTO) {
 		System.out.println(brDTO.getB_no());
 		System.out.println(brDTO.getLr_no());
+		
 		if (brMapper.getIngByNo(brDTO, uDTO) == 0) {
-			brMapper.regIng(brDTO, uDTO);
+			if (brMapper.getIngCnt(uDTO) >= 5) {
+				System.out.println("5개 넘어서 등록 x");
+			} else {
+				brMapper.regIng(brDTO, uDTO);
+			}
 		}
 
 		if (brDTO.getLr_no() != null) {
@@ -74,6 +79,7 @@ public class BookrecordDAO {
 	}
 
 	public void regBookModalAPI(BookDTO bDTO, HttpServletRequest req, UserDTO uDTO) {
+		
 		String url = bDTO.getB_url();
 		System.out.println(url);
 
@@ -143,7 +149,11 @@ public class BookrecordDAO {
 			brDTO.setB_no(bDTO.getB_no());
 
 			if (brMapper.getIngByNo(brDTO, uDTO) == 0) {
-				brMapper.regIngModal(bDTO, uDTO);
+				if (brMapper.getIngCnt(uDTO) >= 5) {
+					System.out.println("5개 넘어서 등록 x");
+				} else {
+					brMapper.regIngModal(bDTO, uDTO);
+				}
 			}
 
 			System.out.println("모달에서 등록 성공");

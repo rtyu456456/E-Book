@@ -30,6 +30,10 @@
 	SELECT BR_PAGE FROM EB_BOOK_RECORD WHERE BR_NO = #{br_no} 
 </select>
 
+<select id="getIngCnt" resultType="integer">
+	SELECT COUNT(*) FROM EB_BOOK_RECORD, EB_BOOK WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE != BR_PAGE
+</select>
+
 <update id="updateCurPage" parameterType="com.fp.eb.model.BookrecordDTO">
 	UPDATE EB_BOOK_RECORD SET BR_PAGE = #{br_page} WHERE BR_NO = #{br_no}
 </update>

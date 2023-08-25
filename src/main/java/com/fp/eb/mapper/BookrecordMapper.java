@@ -31,4 +31,6 @@ public interface BookrecordMapper {
 
 	int delBr(BookrecordDTO brDTO);
 
+	int getIngCnt(UserDTO uDTO);
+
 }

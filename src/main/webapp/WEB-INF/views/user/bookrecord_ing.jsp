@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +35,12 @@
 </head>
 <body>
 	<div class="flex flex-col w-full">
+		<div class="br-box block w-11/12 h-1/6 ml-10 mb-10">
+			<div class="w-full h-full flex justify-center items-center">
+				<span class="text-[2rem] font-bold">읽고 있는 책은 동시에 5권까지 등록
+					가능합니다</span>
+			</div>
+		</div>
 		<c:forEach items="${bookrecords }" var="br">
 			<div
 				class="br-box block rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/6 bg-white ml-10 mb-10">
@@ -47,10 +54,18 @@
 							class="absolute object-fit w-8 h-8 top-4 right-10" alt=""
 							src="imgs/x_icon.png">
 						</a>
-						<div
-							class="w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3">
-							<span>${br.b_title }</span>
-						</div>
+					<div class="w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3">
+						<span> 
+							<c:choose>
+								<c:when test="${fn:length(br.b_title) > 12}">
+   									${fn:substring(br.b_title, 0, 12)}...
+            					</c:when>
+								<c:otherwise>
+               						 ${br.b_title}
+            					</c:otherwise>
+							</c:choose>
+						</span>
+					</div>
 						<div
 							class="text-[1.7rem] text-[rgba(38,40,61,0.5)] font-bold h-1/4">
 							<span>${br.b_authors.replace("!", ", ") }</span>
@@ -127,8 +142,7 @@
 		</div>
 	</div>
 	<div class="flex justify-center items-center w-full h-5/6">
-		<div class="result-box flex flex-col w-11/12 h-full bg-white">
-		</div>
+		<div class="result-box flex flex-col w-11/12 h-full bg-white"></div>
 	</div>
 
 	</dialog>

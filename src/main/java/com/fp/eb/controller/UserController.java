@@ -5,9 +5,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.fp.eb.model.BookDTO;
+import com.fp.eb.model.ReviewDTO;
 import com.fp.eb.model.UserDTO;
 import com.fp.eb.service.UserDAO;
 
@@ -46,7 +49,15 @@ public class UserController {
 
 	@GetMapping("/login.do")
 	public String loginDo(HttpServletRequest req, UserDTO uDTO, String id) {
-		return "user/detail_user1";
+		
+		return "redirect:/main";
+	}
+	
+	@PostMapping("/login.dodo")
+	public String loginDodo(HttpServletRequest req, UserDTO uDTO) {
+		System.out.println(uDTO);
+		uDAO.login2(req, uDTO);
+		return "redirect:/main";
 	}
 	
 	@GetMapping("/userUpdate.go")

@@ -250,13 +250,20 @@ public class BookDAO {
 		System.out.println(bDTO.getB_title());
 		try {
 			// 검색할 도서이름 입력
-			String book = bDTO.getB_title();
+			String title = bDTO.getB_title();
+			String authors = bDTO.getB_authors();
 
-			// book을 한글로 입력할 수 도 있으므로 인코딩
-			book = URLEncoder.encode(book, "utf-8");
+			// 제목, 작가를 한글로 입력할 수 도 있으므로 인코딩
 			JSONParser jp = new JSONParser();
+			URL url = null;
 			// 다운로드 받을 URL생성
-			URL url = new URL("https://dapi.kakao.com/v3/search/book?size=50&sort=latest&target=title&query=" + book);
+			if(title != null) {
+				title = URLEncoder.encode(title, "utf-8");
+				url = new URL("https://dapi.kakao.com/v3/search/book?size=50&sort=latest&target=title&query=" + title);
+			} else {
+				authors = URLEncoder.encode(authors, "utf-8");
+				url = new URL("https://dapi.kakao.com/v3/search/book?size=50&sort=latest&target=person&query=" + authors);
+			}
 			// 연결 객체 생성
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			// 옵션 설정

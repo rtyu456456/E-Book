@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,16 @@
 								</a>
 						<div
 							class="w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3">
-							<span>${br.b_title }</span>
+							<span> 
+							<c:choose>
+								<c:when test="${fn:length(br.b_title) > 12}">
+   									${fn:substring(br.b_title, 0, 12)}...
+            					</c:when>
+								<c:otherwise>
+               						 ${br.b_title}
+            					</c:otherwise>
+							</c:choose>
+						</span>
 							<div class="w-1/4 h-full flex justify-center">
 							</div>
 						</div>

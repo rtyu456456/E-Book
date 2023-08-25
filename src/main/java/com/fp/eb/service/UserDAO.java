@@ -49,4 +49,21 @@ public class UserDAO {
 		return uMapper.getUserById(id);
 	}
 
+	public void login2(HttpServletRequest req, UserDTO uDTO) {
+		UserDTO dbMember = uMapper.getUserById(uDTO.getU_id());
+		System.out.println(">>" + dbMember);
+		if (dbMember != null) {
+			if (uDTO.getU_pw().equals(dbMember.getU_pw())) {
+				req.getSession().setAttribute("user", dbMember);
+				req.getSession().setMaxInactiveInterval(60 * 10);
+			} else {
+				req.setAttribute("result", "password error!");
+			}
+		} else {
+			req.setAttribute("result", "can't find user");
+		}
+
+		
+	}
+
 }
