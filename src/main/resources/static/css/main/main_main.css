@@ -1,41 +1,11 @@
 @charset "UTF-8";
 
-/********추천 도서********/
-.age-recommend-book h4 {
-	margin-left: 16.5vw;
-}
-
-.age-box {
-	width: 68vw;
-	height: 15rem;
-	background-color: #ffffff;
-	border-radius: 3rem;
-	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
-	display: flex;
-	margin-top: 1.5rem;
-	margin-bottom: 4rem;
-	margin-left: 16vw;
-	padding-top: 0.7rem;
-	padding-bottom: 0.7rem;
-	position: relative;
-}
-
-.age-box div {
-	display: flex;
-	position: absolute;
-	right: 5vw;
-}
-
 /********화제의 도서********/
-.hot-book h4 {
-	margin-left: 16.5vw;
-}
-
-.hot-book-box {
+.issue-book-box {
 	width: 68vw;
-	height: 15rem;
+	height: 19rem;
 	background-color: #ffffff;
-	border-radius: 3rem;
+	border-radius: 1.5rem;
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
 	display: flex;
 	margin-top: 1.5rem;
@@ -46,11 +16,48 @@
 	position: relative;
 }
 
-.hot-book-box div {
+.issue-title-gh {
+	font-size: 2rem;
+	margin-top: 1rem;
+	margin-left: 13vw;
+}
+
+.issue-book-box div {
 	display: flex;
 	position: absolute;
-	right: 5vw;
+	top: 5rem;
+	right: 5.2vw;
 }
+
+/********추천 도서********/
+.popular-box {
+	width: 68vw;
+	height: 19rem;
+	background-color: #ffffff;
+	border-radius: 1.5rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	display: flex;
+	margin-top: 1.5rem;
+	margin-bottom: 4rem;
+	margin-left: 16vw;
+	padding-top: 0.7rem;
+	padding-bottom: 0.7rem;
+	position: relative;
+}
+
+.popular-title-gh {
+	font-size: 2rem;
+	margin-top: 1rem;
+	margin-left:10vw;
+}
+
+.popular-box div {
+	display: flex;
+	position: absolute;
+	top: 5rem;
+	right: 5.2vw;
+}
+
 /********베스트 서평********/
 .best-gh {
 	height: 100vh;
@@ -81,7 +88,7 @@
 	width: 85vw;
 	height: 27rem;
 	background-color: #ffffff;
-	border-radius: 3rem;
+	border-radius: 2rem;
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
 	margin-left: 3vw;
 	position: relative;

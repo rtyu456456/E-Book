@@ -8,7 +8,7 @@
 <title>서평-검색</title>
 </head>
 <body>
-	<!------ 검색 결과(페이징 필요?)------>
+	<!------ 검색 결과------>
 	<c:forEach var="bs" items="${bookSearch }">
 		<div class="result-box-gh">
 			<a href="book.detail?b_no=${bs.b_no }"><img class="small-book-gh"

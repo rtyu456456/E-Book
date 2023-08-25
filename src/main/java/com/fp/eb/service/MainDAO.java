@@ -26,8 +26,6 @@ public class MainDAO {
 		String searchText = req.getParameter("searchText");
 		System.out.println(searchOption);
 		System.out.println(searchText);
-		// 1. bean
-		// 2. map
 		List<BookDTO> books = mainMapper.bookSearch(searchOption, searchText); // 검색어로 책 리스트 가져오기 (%가 없음)
 
 		ArrayList<BookDTO> bookSearch = new ArrayList<BookDTO>(); // %를 포함한 bookDTO를 담아줄 새로운 그릇 준비
@@ -48,7 +46,9 @@ public class MainDAO {
 	}
 
 	public void bookDetail(BookDTO bDTO, ReviewDTO rDTO, Model model) {
-		model.addAttribute("bookSearch", mainMapper.bookDetail(bDTO));
+		System.out.println(bDTO.getB_no());
+		model.addAttribute("hotBook", mainMapper.bookDetail(bDTO));
+		//model.addAttribute("bookSearch", mainMapper.bookDetail(bDTO));
 	}
 
 	public void reviews(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
@@ -72,12 +72,6 @@ public class MainDAO {
 		model.addAttribute("reviews", reviews);
 	}
 
-//	public void reviewUser(UserDTO uDTO, ReviewDTO rDTO, Model model) {
-//		List<UserDTO> rUsers = mainMapper.rUsers(rDTO);
-//		System.out.println(rUsers);
-//		model.addAttribute("rUsers", rUsers);
-//	}
-
 	public void getPercent1(BookDTO bDTO, ReviewDTO rDTO, Model model) {
 		model.addAttribute("getPercent1", mainMapper.getPercent(bDTO));
 	}
@@ -98,6 +92,13 @@ public class MainDAO {
 			mainMapper.updateLike(likeDTO);
 			return likeDTO.getLr_type();
 		}
+	}
+
+	public void hotBook(BookDTO bDTO, LikeDTO lDTO, Model model, HttpServletRequest req) {
+		BookDTO HB = mainMapper.hotBooks(bDTO);
+		model.addAttribute("hotBooks", mainMapper.hotBooks(bDTO));
+		System.out.println(mainMapper.hotBooks(bDTO));
+		System.out.println(HB.getB_no());
 	}
 
 	// 오늘의 베스트 서평
@@ -138,5 +139,9 @@ public class MainDAO {
 	public void monthlyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("monthlyUser", mainMapper.monthlyUser(uDTO, rDTO, model, req));
 	}
+
+	
+
+	
 
 }

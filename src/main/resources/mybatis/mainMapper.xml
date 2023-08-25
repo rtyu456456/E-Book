@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.eb.mapper.MainMapper">
+	<!-- 검색 -->
+	<select id="bookSearch" resultType="com.fp.eb.model.BookDTO">
+		<if test="searchOption == 'b_title'">
+			select * from eb_book where b_title like '%'||
+			#{searchText}||'%'
+		</if>
+		<if test="searchOption == 'b_authors'">
+			select * from eb_book where b_authors like '%'||
+			#{searchText}||'%'
+		</if>
+	</select>
 
+	<!-- 상세 -->
+	<select id="bookDetail" resultType="com.fp.eb.model.BookDTO">
+		select * from eb_book where
+		b_no = #{b_no}
+	</select>
+
+	<!-- 상세 서평 -->
+	<select id="reviews" resultType="com.fp.eb.model.ReviewDTO">
+		select * from eb_review, eb_book, eb_user
+		where r_b_no = b_no and b_no=#{b_no} and u_id = r_owner
+		order by r_date desc
+	</select>
+
+
+	<!-- 기타 기능 -->
 	<select id="getLikeInfo" resultType="com.fp.eb.model.LikeDTO">
 		select * from EB_LIKE_RECORD
 		where LR_OWNER = #{lr_owner} and LR_WHERE_TYPE = #{lr_where_type} and
@@ -22,35 +48,6 @@
 		LR_WHERE_NO = #{lr_where_no}
 	</update>
 
-
-	<select id="bookSearch" resultType="com.fp.eb.model.BookDTO">
-		<if test="searchOption == 'b_title'">
-			select * from eb_book where b_title like '%'||
-			#{searchText}||'%'
-		</if>
-		<if test="searchOption == 'b_authors'">
-			select * from eb_book where b_authors like '%'||
-			#{searchText}||'%'
-		</if>
-	</select>
-
-	<select id="bookDetail" resultType="com.fp.eb.model.BookDTO">
-		select * from eb_book where
-		b_no = #{b_no}
-	</select>
-
-	<select id="reviews" resultType="com.fp.eb.model.ReviewDTO">
-		select * from eb_review, eb_book
-		where r_b_no = b_no and b_no=#{b_no}
-		order by r_date desc
-	</select>
-
-	<!-- <select id="rUsers" parameterType="com.fp.eb.model.BookDTO" resultType="com.fp.eb.model.ReviewDTO">
-		select * from eb_review, eb_user, eb_book
-		where u_id = r_owner
-		and r_b_no = #{b_no}
-	</select> -->
-
 	<select id="getPercent" resultType="com.fp.eb.model.BookDTO">
 		SELECT
 		r_b_no,
@@ -70,6 +67,19 @@
 		r_b_no
 	</select>
 
+	<!-- 화제의 도서 -->
+	<select id="hotBooks" resultType="com.fp.eb.model.BookDTO">
+		select * from eb_book
+		join
+		eb_like_record on eb_book.b_no = eb_like_record.lr_where_no
+		where
+		lr_date >= to_char(current_date -30, 'YYMMDD')
+		and lr_where_type =
+		'BOOK'
+		and lr_type = 1
+		order by lr_date desc
+		fetch first 1 row only
+	</select>
 
 	<!-- 오늘의 베스트 서평 -->
 	<select id="dailyBest" resultType="com.fp.eb.model.ReviewDTO">

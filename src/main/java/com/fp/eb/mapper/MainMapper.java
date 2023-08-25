@@ -22,8 +22,6 @@ public interface MainMapper {
 
 	public List<ReviewDTO> reviews(BookDTO bDTO);
 
-//	public List<UserDTO> rUsers(ReviewDTO rDTO);
-	
 	public BookDTO getPercent(BookDTO bDTO);
 
 	public LikeDTO getLikeInfo(LikeDTO likeDTO);
@@ -46,6 +44,8 @@ public interface MainMapper {
 	public ReviewDTO monthlyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
 	public BookDTO monthlyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
 	public UserDTO monthlyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
+
+	public BookDTO hotBooks(BookDTO bDTO);
 
 
 

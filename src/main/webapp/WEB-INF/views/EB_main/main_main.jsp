@@ -16,10 +16,36 @@
 </head>
 <body>
 	<!-- 가데이터는 앞에 *(나중에 EL문 등으로 바꿔야 함) -->
+
+	<!------ 화제의 도서 ------>
+	<div class="issue-book">
+		<div class="issue-book-box">
+			<h4 class="issue-title-gh">✧  서평을 부르는 화제의 도서  ✧</h4>
+			<div>
+				<form action="book.detail">
+					<input hidden="hidden" name="b_no" value="${hotBooks.b_no }">
+					<button class="small-book-gh">
+						<img src="${hotBooks.b_thumbnail }">
+					</button>
+				</form>
+				<form action="book.detail?b_no=${hotBooks.b_no }">
+					<button class="small-book-gh">
+						<img src="/img/book.png">
+					</button>
+				</form>
+				<form action="book.detail?b_no=${hotBooks.b_no }">
+					<button class="small-book-gh">
+						<img src="/img/book.png">
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<!------ 추천 도서 ------->
-	<div class="age-recommend-book">
-		<h4 class="best-title-gh">**대 **이 많이 추천한 책</h4>
-		<div class="age-box">
+	<div class="popular-book">
+		<div class="popular-box">
+			<h4 class="popular-title-gh">✧  많은 사람들이 좋아한 인기 도서  ✧</h4>
 			<div>
 				<!-- <form action="book.detail"> -->
 				<button class="small-book-gh">
@@ -40,34 +66,11 @@
 		</div>
 	</div>
 
-	<!------ 화제의 도서 ------>
-	<div class="hot-book">
-		<h4 class="best-title-gh">요즘 HOT한 도서</h4>
-		<div class="hot-book-box">
-			<div>
-				<!-- <form action="book.detail"> -->
-				<button class="small-book-gh">
-					<img src="/img/book.png">
-				</button>
-				<!-- </form> -->
-				<!-- <form action="book.detail"> -->
-				<button class="small-book-gh">
-					<img src="/img/book.png">
-				</button>
-				<!-- </form> -->
-				<!-- <form action="book.detail"> -->
-				<button class="small-book-gh">
-					<img src="/img/book.png">
-				</button>
-				<!-- </form> -->
-			</div>
-		</div>
-	</div>
 
 	<!------ 베스트 서평 ------>
 	<div class="best-gh">
 		<div class="today-best-gh">
-			<h4 class="best-title-gh">오늘의 베스트 서평</h4>
+			<h4 class="best-title-gh">오늘의 베스트 서평  🖉</h4>
 			<div class="best-box-gh">
 				<div class="best-review-info">
 					<!-- <form action="book.detail"> -->
@@ -78,7 +81,7 @@
 					<div class="best-review-info2">
 						<div class="best-review-profile">
 							<div class="small-profile-gh">
-								<img src="${dailyUser.u_profile }">
+								<img src="/img/${dailyUser.u_profile }">
 							</div>
 							<div class="best-review-user">
 								<h5>
@@ -119,7 +122,7 @@
 			</div>
 		</div>
 		<div class="weekly-best-gh">
-			<h4 class="best-title-gh">이번주 베스트 서평</h4>
+			<h4 class="best-title-gh">이번주 베스트 서평  🖉</h4>
 			<div class="best-box-gh">
 				<div class="best-review-info">
 					<!-- <form action="book.detail"> -->
@@ -130,7 +133,7 @@
 					<div class="best-review-info2">
 						<div class="best-review-profile">
 							<div class="small-profile-gh">
-								<img src="${weeklyUser.u_profile }">
+								<img src="/img/${weeklyUser.u_profile }">
 							</div>
 							<div class="best-review-user">
 								<h5>
@@ -173,7 +176,7 @@
 		</div>
 
 		<div class="monthly-best-gh">
-			<h4 class="best-title-gh">이번달 베스트 서평</h4>
+			<h4 class="best-title-gh">이번달 베스트 서평  🖉</h4>
 			<div class="best-box-gh">
 				<div class="best-review-info">
 					<%-- <form action="book.detail?b_no=${montlyBook.b_no }"> --%>
