@@ -44,6 +44,7 @@
 			<p>${trade.t_contents }</p>
 		</div>
 		<div class="trade-map">
+			<span>거래 희망 장소</span>
 			<div id="map"></div>
 		</div>
 		<br>
