@@ -32,14 +32,20 @@
 							<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png"> &nbsp;댓글 단 글
 						</button>
 					</form>
-					<c:forEach var="pin" items="${pinnedCommu  }">
-						<form action="/go.commu.post">
+
+					<form action="">
+					<div id="pinned-commu">
+					
+					</div>
+					</form>	
+
+	
+
+<%-- 
 							<button class="commu_board_btn">
 								<img onclick="notPinnedCommunity('${pin.c_no}')" alt=""
-									src="/img/커뮤니티_즐겨찾기함_icon.png"> &nbsp; <div id="pin">${pin.c_name }</div> 
-							</button>
-						</form>
-					</c:forEach>
+									src="/img/커뮤니티_즐겨찾기함_icon.png"> &nbsp;
+							</button> --%>
 					<br>
 				</div>
 			</div>
@@ -102,7 +108,7 @@
 	</div>
 </body>
 <script type="text/javascript">
-
+	let pinnedCommu = document.getElementById("pinned-commu");
 
 	function pinnedMyCommunity(c_no) {
 		event.preventDefault();
@@ -112,25 +118,35 @@
 			data : {
 				"lr_where_no" : c_no
 			},
-			datatype: "JSON",
-			success : function(pinnedCommu) {
-				console.log(pinnedCommu);
-				
-			/* 	var data = JSON.parse(pinnedCommu);
-				
-				  $.each(data, function (k, v) {
-                      $('<div></div>').val(k).text(v).appendTo($('#pin'));
-                  });
-				 */
+			dataType : "JSON",
+			success : function(data) {
+				console.log(data);
+
+				$.each(data.pinnedCommu, function(index, item) {
+					console.log(item.c_name);
+					
+					var button = document.createElement("button");
+					button.className = "commu_board_btn";
+			        var pinnedImage = document.createElement("img");
+			        pinnedImage.src = "/img/커뮤니티_즐겨찾기함_icon.png";
+			        var textNode = document.createTextNode(" " + item.c_name);
+					
+			        button.appendChild(pinnedImage);
+			        button.appendChild(textNode);
+			        
+			        pinnedCommu.appendChild(button);
+
+			        pinnedImage.onclick = notPinnedCommunity(item.c_no);
+			        
+				});
+
 			},
 			error : function(request, status, error) {
-                console.log("code:" + request.status + "\n"
-                        + "message:" + request.responseText + "\n"
-                        + "error:" + error);
-            }
+				console.log("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
 		})
 	}
-
 
 	function notPinnedCommunity(c_no) {
 		event.preventDefault();
