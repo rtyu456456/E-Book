@@ -3,7 +3,7 @@
 .container-reg {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	/* 	align-items: center; */
 }
 
 .reginfo span {
@@ -15,33 +15,46 @@
 	background-color: rgba(255, 255, 255, 1);
 	border-radius: 10px;
 	width: 80vw;
-	max-height: 80vh;
+	max-height: 70vh;
 	padding: 20px;
 	box-sizing: border-box;
 	overflow: auto;
+	max-width: 800pt;
+	height: 100%;
 }
 
-.input-group {
-	margin-bottom: 15px;
+.input-group , .input-group2 {
+	margin-top: 15px;
+	height: 7vh;
+	min-height: 40pt;
 }
 
-.input-group input, .input-group textarea {
-	width: 100%;
+.input-group-text {
+	margin-top: 10px;
+}
+
+.input-group-text textarea, .input-group input {
 	padding: 10px;
-	border: none;
+	font-size: 14pt;
+	width: 100%;
+	height: 78%; border : none;
 	border-radius: 5px;
 	box-sizing: border-box;
 	background-color: rgba(245, 246, 250, 1);
-	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	border: none;
 }
 
+}
 .input-group2 {
 	margin-bottom: 15px;
 }
 
 .input-group2 input, .input-group2 textarea {
-	width: 100%;
 	padding: 10px;
+	font-size: 14pt;
+	width: 100%;
+	height: 78%;
 	border: none;
 	border-radius: 5px;
 	box-sizing: border-box;
@@ -52,12 +65,18 @@
 
 .input-group a {
 	display: inline-block;
+	height: 2.5rem;
 	text-align: center;
 	background-color: rgba(245, 246, 250, 1);
 	border-radius: 5px;
 	text-decoration: none;
 	width: 100%;
-	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	font-size: 18pt;
+}
+
+.reg-btn {
+	margin: 10pt;
 }
 
 .reginfo button {

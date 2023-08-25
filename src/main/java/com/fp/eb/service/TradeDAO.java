@@ -119,7 +119,7 @@ public class TradeDAO {
 		tDTO.setT_book_title(req.getParameter("t_book_title"));
 		tDTO.setT_authors(req.getParameter("t_authors"));
 		tDTO.setT_publisher(req.getParameter("t_publisher"));
-		tDTO.setT_contents(req.getParameter("t_content"));
+		tDTO.setT_contents(req.getParameter("t_contents"));
 		tDTO.setT_price(Integer.parseInt(req.getParameter("t_price")));
 		tDTO.setT_thumbnail(req.getParameter("t_thumbnail"));
 		tDTO.setT_map_lat(Double.parseDouble(req.getParameter("t_map_lat")));
@@ -182,7 +182,10 @@ public class TradeDAO {
 			req.setAttribute("result", "삭제 실패");
 		}
 	}
-
+	
+//	public void updateTrade(TradeDAO tDTO, HttpServletRequest req) {
+//		
+//	}
 
 
 

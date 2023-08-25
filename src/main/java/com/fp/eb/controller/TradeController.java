@@ -169,5 +169,16 @@ public class TradeController {
 		req.setAttribute("contentPage", "saleNow.jsp");
 		return "redirect:/trade.sale.now";
 	}
+	
+	
+// 거래 정보 수정 기능 이동
+	@GetMapping("/trade.update.go")
+	public String updateTrade(TradeDTO tDTO, HttpServletRequest req) {
+		tDAO.getTradeDetail(tDTO, req);
+		req.setAttribute("contentPage", "infoRegUpdate.jsp");
+		return "trade/tradeIndex";
+	}
+	
+	
 
 }

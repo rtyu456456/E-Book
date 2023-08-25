@@ -18,7 +18,7 @@
 			<div class="msg-info">
 				<div class="msg-trader">
 
-					<div>${m.m_from } 님으로 부터</div>
+					<div>${m.m_from }님으로 부터</div>
 					<div class="cancle">
 						<img alt="" src="img/cancleXbutton.png"
 							onclick="location.href='/delete.msg.to?m_no=${m.m_no }&u_id=${sessionScope.u_id}'">
@@ -73,7 +73,7 @@
 		        map.setZoomable(false);
 		    }
 		});
-</script>
+		</script>
 
 
 </body>
