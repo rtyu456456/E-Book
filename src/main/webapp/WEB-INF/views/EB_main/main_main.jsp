@@ -20,21 +20,23 @@
 	<div class="age-recommend-book">
 		<h4 class="best-title-gh">**대 **이 많이 추천한 책</h4>
 		<div class="age-box">
-			<!-- <form action="book.detail"> -->
+			<div>
+				<!-- <form action="book.detail"> -->
 				<button class="small-book-gh">
 					<img src="/img/book.png">
 				</button>
-			<!-- </form> -->
-			<!-- <form action="book.detail"> -->
+				<!-- </form> -->
+				<!-- <form action="book.detail"> -->
 				<button class="small-book-gh">
 					<img src="/img/book.png">
 				</button>
-			<!-- </form> -->
-			<!-- <form action="book.detail"> -->
+				<!-- </form> -->
+				<!-- <form action="book.detail"> -->
 				<button class="small-book-gh">
 					<img src="/img/book.png">
 				</button>
-			<!-- </form> -->
+				<!-- </form> -->
+			</div>
 		</div>
 	</div>
 
@@ -42,21 +44,23 @@
 	<div class="hot-book">
 		<h4 class="best-title-gh">요즘 HOT한 도서</h4>
 		<div class="hot-book-box">
-			<!-- <form action="book.detail"> -->
+			<div>
+				<!-- <form action="book.detail"> -->
 				<button class="small-book-gh">
 					<img src="/img/book.png">
 				</button>
-			<!-- </form> -->
-			<!-- <form action="book.detail"> -->
+				<!-- </form> -->
+				<!-- <form action="book.detail"> -->
 				<button class="small-book-gh">
 					<img src="/img/book.png">
 				</button>
-			<!-- </form> -->
-			<!-- <form action="book.detail"> -->
+				<!-- </form> -->
+				<!-- <form action="book.detail"> -->
 				<button class="small-book-gh">
 					<img src="/img/book.png">
 				</button>
-			<!-- </form> -->
+				<!-- </form> -->
+			</div>
 		</div>
 	</div>
 
@@ -67,9 +71,9 @@
 			<div class="best-box-gh">
 				<div class="best-review-info">
 					<!-- <form action="book.detail"> -->
-						<button class="small-book-gh">
-							<img src="${dailyBook.b_thumbnail }">
-						</button>
+					<button class="small-book-gh">
+						<img src="${dailyBook.b_thumbnail }">
+					</button>
 					<!-- </form> -->
 					<div class="best-review-info2">
 						<div class="best-review-profile">
@@ -119,9 +123,9 @@
 			<div class="best-box-gh">
 				<div class="best-review-info">
 					<!-- <form action="book.detail"> -->
-						<button class="small-book-gh">
-							<img src="${weeklyBook.b_thumbnail }">
-						</button>
+					<button class="small-book-gh">
+						<img src="${weeklyBook.b_thumbnail }">
+					</button>
 					<!-- </form> -->
 					<div class="best-review-info2">
 						<div class="best-review-profile">
@@ -173,9 +177,9 @@
 			<div class="best-box-gh">
 				<div class="best-review-info">
 					<%-- <form action="book.detail?b_no=${montlyBook.b_no }"> --%>
-						<button class="small-book-gh">
-							<img src="${monthlyBook.b_thumbnail }">
-						</button>
+					<button class="small-book-gh">
+						<img src="${monthlyBook.b_thumbnail }">
+					</button>
 					</form>
 					<div class="best-review-info2">
 						<div class="best-review-profile">

@@ -101,6 +101,10 @@ public class MainDAO {
 	public void dailyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("dailyBook", mainMapper.dailyBook(bDTO, rDTO, model, req));
 	}
+//	public void dailyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+//		model.addAttribute("dailyUser", mainMapper.dailyUser(uDTO, rDTO, model, req));
+//		
+//	}
 
 	public void weeklyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("weeklyBest", mainMapper.weeklyBest(bDTO, rDTO, model, req));
@@ -117,6 +121,8 @@ public class MainDAO {
 		model.addAttribute("monthlyBook", mainMapper.monthlyBook(bDTO, rDTO, model, req));
 		
 	}
+
+	
 
 
 		

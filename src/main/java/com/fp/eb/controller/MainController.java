@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.fp.eb.model.BookDTO;
 import com.fp.eb.model.ReviewDTO;
+import com.fp.eb.model.UserDTO;
 import com.fp.eb.service.MainDAO;
 
 @Controller
@@ -18,10 +19,11 @@ public class MainController {
 	private MainDAO mDAO;
 
 	@GetMapping("/main")
-	public String mainMain(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+	public String mainMain(BookDTO bDTO, ReviewDTO rDTO, UserDTO uDTO, Model model, HttpServletRequest req) {
 		//mDAO.hotBook(bDTO, rDTO, model, req);
 		mDAO.dailyBest(bDTO, rDTO, model, req);
 		mDAO.dailyBook(bDTO, rDTO, model, req);
+		//mDAO.dailyUser(uDTO, rDTO, model, req);
 		mDAO.weeklyBest(bDTO, rDTO, model, req);
 		mDAO.weeklyBook(bDTO, rDTO, model, req);
 		mDAO.monthlyBest(bDTO, rDTO, model, req);

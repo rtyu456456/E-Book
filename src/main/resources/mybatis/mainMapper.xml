@@ -66,17 +66,18 @@
 
 	<select id="dailyBest" resultType="com.fp.eb.model.ReviewDTO">
 		select * from eb_review
-		where r_date >= to_char(current_date, 'YYMMDD')
+		where r_date >= to_char(current_date-1, 'YYMMDD')
 		order by r_like DESC
 		fetch first 1 rows only
 	</select>
 	<select id="dailyBook" resultType="com.fp.eb.model.BookDTO">
 		select * from eb_book, eb_review
 		where b_no = r_b_no
-		and r_date >= to_char(current_date, 'YYMMDD')
+		and r_date >= to_char(current_date-1, 'YYMMDD')
 		order by r_like DESC
 		fetch first 1 rows only
 	</select>
+	
 	
 	<select id="weeklyBest" resultType="com.fp.eb.model.ReviewDTO">
 		select * from eb_review

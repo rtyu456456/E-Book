@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import com.fp.eb.model.BookDTO;
 import com.fp.eb.model.LikeDTO;
 import com.fp.eb.model.ReviewDTO;
+import com.fp.eb.model.UserDTO;
 
 @Mapper
 public interface MainMapper {
@@ -31,12 +32,14 @@ public interface MainMapper {
 
 	public ReviewDTO dailyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
 	public BookDTO dailyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
+	//public UserDTO dailyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
 
 	public ReviewDTO weeklyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
 	public BookDTO weeklyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
 
 	public ReviewDTO monthlyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
 	public BookDTO monthlyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
+
 
 
 

@@ -71,7 +71,8 @@
 			<div class="menu-list-box">
 				<div class="menu-list-gh">
 					<img src="/imgs/my_page_txt.png">
-					<h4 onclick="location.href='user_main'">내 정보</h4>
+					<!-- onclick="location.href='user_main'" -->
+					<h4 >내 정보</h4>
 					<h4>읽은 책</h4>
 					<h4>읽고 있는 책</h4>
 					<h4>읽고 싶은 책</h4>
