@@ -78,11 +78,11 @@
 					<div class="best-review-info2">
 						<div class="best-review-profile">
 							<div class="small-profile-gh">
-								<img src="/img/daejeon_profile.png">
+								<img src="${dailyUser.u_profile }">
 							</div>
 							<div class="best-review-user">
 								<h5>
-									${dailyBest.r_owner }<span>*실버 책벌레</span>
+									${dailyBest.r_owner }<span>${dailyUser.u_achievement }</span>
 								</h5>
 							</div>
 						</div>
@@ -130,11 +130,11 @@
 					<div class="best-review-info2">
 						<div class="best-review-profile">
 							<div class="small-profile-gh">
-								<img src="/img/daejeon_profile.png">
+								<img src="${weeklyUser.u_profile }">
 							</div>
 							<div class="best-review-user">
 								<h5>
-									${weeklyBest.r_owner }<span>*실버 책벌레</span>
+									${weeklyBest.r_owner }<span>${weeklyUser.u_achievement }</span>
 								</h5>
 							</div>
 						</div>
@@ -184,11 +184,11 @@
 					<div class="best-review-info2">
 						<div class="best-review-profile">
 							<div class="small-profile-gh">
-								<img src="/img/daejeon_profile.png">
+								<img src="/img/${monthlyUser.u_profile }">
 							</div>
 							<div class="best-review-user">
 								<h5>
-									${monthlyBest.r_owner }<span>*실버 책벌레</span>
+									${monthlyBest.r_owner }<span>${monthlyUser.u_achievement }</span>
 								</h5>
 							</div>
 						</div>
