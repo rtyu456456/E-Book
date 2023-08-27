@@ -182,4 +182,8 @@ public class CommunityDAO {
 
 	}
 
+	public void commentMyPost(Model model) {
+		model.addAttribute("comment", ss.getMapper(CommunityMapper.class).commentMyPost());
+	}
+
 }

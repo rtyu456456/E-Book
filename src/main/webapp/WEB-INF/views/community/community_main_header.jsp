@@ -19,9 +19,12 @@
 				<img src="/img/menu_icon.png">
 			</button>
 			<div id="community_txt">커뮤니티</div>
+			
+			<form action="/comment.my.post">
 			<button class="login_box">
 				<img class="login_img" alt="" src="/img/유저 img.jpg">
 			</button>
+			</form>
 		</div>
 
 

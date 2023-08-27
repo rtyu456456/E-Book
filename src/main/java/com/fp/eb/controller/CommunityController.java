@@ -34,13 +34,22 @@ public class CommunityController {
 
 	@GetMapping("/community_main")
 	public String goCommunityMain(Model model, CommunityPostDTO cp) {
-		/* model.addAttribute("pin", cDAO.getAllPinnedCommu().getPinnedCommu()); */
 		
 		getPinndedCommu();
 		cDAO.getAllCommunity(model);
 		
 		model.addAttribute("commu_header_page", "community_main_header.jsp");
 		model.addAttribute("commu_contents_page", "community_main_contents.jsp");
+		return "community/community_page";
+	}
+	
+	
+	@GetMapping("/comment.my.post")
+	public String getMyReply(Model model) {
+		cDAO.commentMyPost(model);
+		
+		model.addAttribute("commu_header_page", "community_commentMyPost_header.jsp");
+		model.addAttribute("commu_contents_page", "community_commentMyPost_contents.jsp");
 		return "community/community_page";
 	}
 
@@ -100,7 +109,6 @@ public class CommunityController {
 		model.addAttribute("commu_contents_page", "community_post_contents.jsp");
 		return "community/community_page";
 	}
-	
 	
 	
 	

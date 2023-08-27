@@ -37,7 +37,13 @@
 		#{cr_owner}
 		and cp_no = cr_cp_no
 		) order by cp_date desc
+	</select>
 
+	<select id="commentMyPost"
+		resultType="com.fp.eb.model.CommunityReplyDTO">
+		select * from eb_community_reply, eb_community_post, eb_community where
+		cp_no= cr_cp_no and c_no = cp_community and cp_owner = '김포공주' and not cr_owner = '김포공주'
+		order by cr_date desc
 	</select>
 
 	<select id="seachAllCommunityPost"
@@ -91,15 +97,17 @@
 	</select>
 
 	<select id="cheakPinnedTypeCommu" resultType="int">
-		select lr_type from eb_like_record where
-		lr_where_type = 'COMMUNITY' and lr_owner = '김포공주' and lr_where_no = #{lr_where_no}
+		select lr_type from
+		eb_like_record where
+		lr_where_type = 'COMMUNITY' and lr_owner = '김포공주'
+		and lr_where_no = #{lr_where_no}
 	</select>
 
 	<update id="updatePinnedCommuZero">
 		update eb_like_record set lr_type = 0 where
 		lr_where_no = #{lr_where_no}
 	</update>
-	
+
 	<update id="updatePinnedCommuOne">
 		update eb_like_record set lr_type = 1 where
 		lr_where_no = #{lr_where_no}
