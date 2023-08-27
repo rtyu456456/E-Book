@@ -2,6 +2,7 @@
 
 @media only screen and (max-width:1000px) {
 	.comment-notice-box {
+		border: none;
 		text-align: left;
 		margin: auto;
 		position: relative;

@@ -13,11 +13,21 @@ public class CommunityReplyDTO {
 	private BigDecimal cr_dislike;
 	private Date cr_date;
 	
+	private int cp_no;
+	
 	private String c_name;
 	private int c_no;
 	
 	
 	
+	public int getCp_no() {
+		return cp_no;
+	}
+	
+	
+	public void setCp_no(int cp_no) {
+		this.cp_no = cp_no;
+	}
 	public String getC_name() {
 		return c_name;
 	}

@@ -14,21 +14,25 @@
 		<%-- 	<fmt:formatDate value="${comment.cr_date }" pattern=""/>
  --%>
 		<c:forEach var="comment" items="${comment }">
-			<div class="comment-notice-box">
-				<div class="comment-notice">새로운 댓글이 달렸어요</div>
-				<br>
-				<div style="position: relative; align-content: center;">
-					<div class="comment-post">${comment.c_name }</div>
-					<div class="comment-content">
-						<div class="comment-user">${comment.cr_owner } :</div>
-						<div class="comment-txt">&nbsp; ${comment.cr_contents }</div>
+			<form action="/go.commu.detail">
+			<input type="hidden" name="c_no" value="${comment.c_no }">
+				<button name="cp_no" value="${comment.cp_no }"
+					class="comment-notice-box">
+					<div class="comment-notice">새로운 댓글이 달렸어요</div>
+					<br>
+					<div style="position: relative; align-content: center;">
+						<div class="comment-post">${comment.c_name }</div>
+						<div class="comment-content">
+							<div class="comment-user">${comment.cr_owner }:</div>
+							<div class="comment-txt">&nbsp; ${comment.cr_contents }</div>
+						</div>
+						<div class="comment-date">
+							<fmt:formatDate value="${comment.cr_date }" pattern="MM/dd HH:mm" />
+						</div>
 					</div>
-					<div class="comment-date">
-						<fmt:formatDate value="${comment.cr_date }" pattern="MM/dd HH:mm" />
-					</div>
-				</div>
-				<br>
-			</div>
+					<br>
+				</button>
+			</form>
 			<br>
 			<br>
 		</c:forEach>
