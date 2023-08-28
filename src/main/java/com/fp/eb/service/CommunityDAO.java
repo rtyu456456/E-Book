@@ -78,7 +78,7 @@ public class CommunityDAO {
 	}
 
 	public void seachCommunity(CommunityDTO c, Model model) {
-		model.addAttribute("communitys", ss.getMapper(CommunityMapper.class).seachAllCommunity(c));
+			model.addAttribute("communitys", ss.getMapper(CommunityMapper.class).seachAllCommunity(c));
 	}
 
 	public void insertCommunityPost(CommunityDTO c, Model model) {

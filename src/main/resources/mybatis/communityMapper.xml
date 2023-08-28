@@ -57,9 +57,11 @@
 
 	<select id="seachAllCommunityPost"
 		resultType="com.fp.eb.model.CommunityPostDTO">
-		select * from eb_community_post where cp_title like
+		select * from eb_community_post where (cp_title like
 		'%'||#{cp_seach}||'%' or
-		cp_contents like '%'||#{cp_seach}||'%' order
+		cp_contents like '%'||#{cp_seach}||'%')
+		and cp_community = #{c_no}
+		order
 		by cp_date desc
 	</select>
 
