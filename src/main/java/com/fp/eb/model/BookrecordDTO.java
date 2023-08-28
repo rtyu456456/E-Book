@@ -13,14 +13,56 @@ public class BookrecordDTO {
 	private BigDecimal br_page;
 	private Date br_date;
 	private BigDecimal lr_no;
+	private BigDecimal r_no;
+	private BigDecimal r_type;
+	private String r_contents;
+	
 
 	public BookrecordDTO() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public BigDecimal getR_no() {
+		return r_no;
+	}
+
+
+
+	public void setR_no(BigDecimal r_no) {
+		this.r_no = r_no;
+	}
+
+
+
+	public BigDecimal getR_type() {
+		return r_type;
+	}
+
+
+
+	public void setR_type(BigDecimal r_type) {
+		this.r_type = r_type;
+	}
+
+
+	public String getR_contents() {
+		return r_contents;
+	}
+
+
+
+	public void setR_contents(String r_contents) {
+		this.r_contents = r_contents;
+	}
+
+
 
 	public int getB_no() {
 		return b_no;
 	}
+
 
 	public void setB_no(int b_no) {
 		this.b_no = b_no;

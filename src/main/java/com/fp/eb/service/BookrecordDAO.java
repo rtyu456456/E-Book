@@ -2,6 +2,7 @@ package com.fp.eb.service;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +16,7 @@ import com.fp.eb.mapper.BookMapper;
 import com.fp.eb.mapper.BookrecordMapper;
 import com.fp.eb.model.BookDTO;
 import com.fp.eb.model.BookrecordDTO;
+import com.fp.eb.model.ReviewDTO;
 import com.fp.eb.model.UserDTO;
 
 @Service
@@ -33,9 +35,9 @@ public class BookrecordDAO {
 	}
 
 	public void getBookFin(HttpServletRequest req) {
-
+		
 		req.setAttribute("bookrecords", brMapper.getBookFin());
-
+		
 	}
 
 	public int getPage(BookrecordDTO brDTO) {
@@ -162,6 +164,26 @@ public class BookrecordDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void regReview(ReviewDTO rDTO, HttpServletRequest req) {
+		
+		
+		if(brMapper.regReview(rDTO) == 1) {
+			System.out.println("등록성공");
+		}
+		
+		
+	}
+
+	public int reviewCheck(ReviewDTO rDTO, HttpServletRequest req) {
+		
+		return brMapper.reviewCheck(rDTO);
+	}
+
+	public BookrecordDTO getReviewBook(ReviewDTO rDTO, HttpServletRequest req) {
+		
+		return brMapper.getReviewBook(rDTO);
 	}
 
 }

@@ -1,14 +1,19 @@
 package com.fp.eb.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fp.eb.model.BookDTO;
 import com.fp.eb.model.BookrecordDTO;
+import com.fp.eb.model.ReviewDTO;
 import com.fp.eb.model.UserDTO;
 import com.fp.eb.service.BookDAO;
 import com.fp.eb.service.BookrecordDAO;
@@ -83,6 +88,28 @@ public class BookrecordController {
 		brDAO.regBookModalAPI(bDTO, req, uDTO);
 		
 		return "redirect:/bookRecord.ing";
+	}
+
+	@GetMapping("/regReview.do")
+	public String regReviewDo(HttpServletRequest req, ReviewDTO rDTO) {
+		brDAO.regReview(rDTO, req);
+		
+		return "redirect:/bookRecord.fin";
+	}
+	
+	@ResponseBody
+	@GetMapping("/reviewCheck.do")
+	public int regCheckDo(HttpServletRequest req, ReviewDTO rDTO) {
+		
+		return brDAO.reviewCheck(rDTO, req);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getReviewbyNo.do", method = RequestMethod.GET,
+			produces = "application/json; charset=utf-8")
+	public BookrecordDTO getReviewBook(ReviewDTO rDTO, HttpServletRequest req) {
+		System.out.println(rDTO.getR_b_no());
+		return brDAO.getReviewBook(rDTO, req);
 	}
 
 }

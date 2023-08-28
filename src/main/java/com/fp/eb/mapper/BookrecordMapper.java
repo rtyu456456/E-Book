@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.fp.eb.model.BookDTO;
 import com.fp.eb.model.BookrecordDTO;
+import com.fp.eb.model.ReviewDTO;
 import com.fp.eb.model.UserDTO;
 
 @Mapper
@@ -32,5 +33,11 @@ public interface BookrecordMapper {
 	int delBr(BookrecordDTO brDTO);
 
 	int getIngCnt(UserDTO uDTO);
+
+	int regReview(ReviewDTO rDTO);
+
+	int reviewCheck(ReviewDTO rDTO);
+
+	BookrecordDTO getReviewBook(ReviewDTO rDTO);
 
 }

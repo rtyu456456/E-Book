@@ -10,6 +10,10 @@
 	INSERT INTO EB_BOOK_RECORD VALUES (EB_BR_SEQ.NEXTVAL, #{bDTO.b_no}, 'kkh', 0, SYSDATE)
 </insert>
 
+<insert id="regReview">
+	INSERT INTO EB_REVIEW VALUES (EB_REVIEW_SEQ.NEXTVAL, 'kkh', #{r_b_no}, #{r_contents}, #{r_type}, 0, 0, SYSDATE)
+</insert>
+
 <select id="getBookIng" resultType="com.fp.eb.model.BookrecordDTO">
 	SELECT B_TITLE, B_THUMBNAIL, B_PAGE, B_AUTHORS, BR_NO, BR_PAGE, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE != BR_PAGE ORDER BY BR_NO DESC
 </select>
@@ -23,7 +27,15 @@
 </select>
 
 <select id="getBookFin" resultType="com.fp.eb.model.BookrecordDTO">
-	SELECT B_TITLE, B_THUMBNAIL, B_PAGE, B_AUTHORS, BR_NO, BR_PAGE, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE = BR_PAGE ORDER BY BR_DATE 
+	SELECT B_NO, B_TITLE, B_THUMBNAIL, B_PAGE, B_AUTHORS, BR_NO, BR_PAGE, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE = BR_PAGE ORDER BY BR_DATE 
+</select>
+
+<select id="getReviewBook" resultType="com.fp.eb.model.BookrecordDTO">
+	SELECT B_THUMBNAIL, B_TITLE, B_AUTHORS, BR_NO, BR_DATE, R_NO, R_TYPE, R_CONTENTS FROM EB_BOOK, EB_BOOK_RECORD, EB_REVIEW WHERE B_NO = BR_BOOK AND BR_BOOK = R_B_NO AND R_OWNER = 'kkh' AND R_B_NO = #{r_b_no}
+</select>
+
+<select id="reviewCheck" resultType="integer">
+	SELECT COUNT(*) FROM EB_REVIEW WHERE R_OWNER = 'kkh' AND R_B_NO = #{r_b_no}
 </select>
 
 <select id="getCurPage" resultType="integer">
