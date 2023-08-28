@@ -9,8 +9,14 @@
 
 	<select id="getTradelistMe"
 		resultType="com.fp.eb.model.TradeDTO">
-		select * from eb_trade where t_owner = #{u_id }
+		select * from eb_trade where t_owner = #{u_id } and t_soldout = 0
 		<!-- 나중에 유저 닉네임과 연동할 것 -->
+	</select>
+
+	<select id="getTradeListMeComplete"
+		resultType="com.fp.eb.model.TradeDTO">
+		select * from eb_trade where t_owner = #{u_id } and
+		t_soldout = 1
 	</select>
 
 	<select id="getTradeDetail"
@@ -29,17 +35,19 @@
 	<select id="getTradeList" resultType="com.fp.eb.model.TradeDTO">
 		SELECT * FROM eb_trade
 		WHERE t_book_title LIKE '%'||#{t_book_title}||'%'
+		  OR t_title LIKE '%' || #{t_title} || '%';
 	</select>
 
 
-	<select id="tradeRegSearch"
+	<select id="tradeRegSearch" resultType="com.fp.eb.model.BookDTO">
+		select * from eb_book
+	</select>
+
+	<select id="tradeRegSearchName"
 		resultType="com.fp.eb.model.BookDTO">
 		select * from eb_book
-	</select>
-
-	<select id="tradeRegSearchName" resultType="com.fp.eb.model.BookDTO">
-		select * from eb_book
-		where b_title Like '%'||#{b_title}||'%'
+		where b_title Like
+		'%'||#{b_title}||'%'
 	</select>
 
 
@@ -50,19 +58,22 @@
 		#{t_title },
 		#{t_book_title },
 		#{t_authors },
-		#{t_publisher },
+		#{t_publisher
+		},
 		#{t_contents },
 		#{t_price },
 		#{t_thumbnail },
 		#{t_map_lat},
-		#{t_map_lng	},
+		#{t_map_lng
+		},
 		0,
 		sysdate,
 		#{t_marker_name })
 	</insert>
 
 	<update id="tradeComplete">
-		update eb_trade set t_soldout = 1 where t_no = #{t_no }
+		update eb_trade set t_soldout = 1 where t_no = #{t_no
+		}
 	</update>
 
 
@@ -71,16 +82,24 @@
 
 
 	<select id="getToMsg" resultType="com.fp.eb.model.TradeTotalDTO">
-		Select * From Eb_Trade_Msg
-		Emsg, Eb_User Eu
-		Where Emsg.M_To = Eu.U_Id And Emsg.M_To = #{u_id}
+		SELECT *
+		FROM Eb_Trade_Msg Emsg
+		JOIN Eb_User Eu ON Emsg.M_To = Eu.U_Id
+		WHERE Emsg.M_To = #{u_id}
+		ORDER
+		BY Emsg.M_when DESC
 	</select>
 
 	<select id="getFromMsg"
 		resultType="com.fp.eb.model.TradeTotalDTO">
-		Select * From Eb_Trade_Msg Emsg, Eb_User Eu
-		Where
-		Emsg.M_From = Eu.U_Id And Emsg.M_From = #{u_id}
+
+		SELECT *
+		FROM Eb_Trade_Msg Emsg
+		JOIN Eb_User Eu ON Emsg.M_from = Eu.U_Id
+		WHERE
+		Emsg.M_from = #{u_id}
+		ORDER BY Emsg.M_when DESC
+
 	</select>
 
 
@@ -101,6 +120,20 @@
 		delete from eb_trade_msg where m_no = #{m_no }
 	</delete>
 
+
+	<update id="updateTradeInfo">
+		update Trade set t_title = #{t_title }, t_book_title
+		= #{t_book_title },
+		t_authors =#{t_authors },
+		t_publisher =
+		#{t_publisher }, t_contents = #{t_contents }, t_price = #{t_price
+		},
+		t_thumbnail = #{t_thumbnail },
+		t_map_lat = #{t_map_lat}, t_map_lng =
+		#{t_map_lng }, t_marker_name =
+		#{t_marker_name } where t_no =#{t_no }
+
+	</update>
 
 
 

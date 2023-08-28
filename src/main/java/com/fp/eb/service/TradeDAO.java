@@ -51,6 +51,10 @@ public class TradeDAO {
 		req.setAttribute("trades", ss.getMapper(TradeMapper.class).getTradelistMe(uDTO));
 		System.out.println("내 판매 도서 목록 조회");
 	}
+	public void getTradeListMeComplete(UserDTO uDTO, HttpServletRequest req) {
+		req.setAttribute("trades", ss.getMapper(TradeMapper.class).getTradeListMeComplete(uDTO));
+		System.out.println("내 판매  완료 도서 목록 조회");
+	}
 
 // ---------------------------------- 쪽지 기능
 
@@ -125,7 +129,7 @@ public class TradeDAO {
 		tDTO.setT_map_lat(Double.parseDouble(req.getParameter("t_map_lat")));
 		tDTO.setT_map_lng(Double.parseDouble(req.getParameter("t_map_lng")));
 		tDTO.setT_marker_name(req.getParameter("t_marker_name"));
-		
+
 		System.out.println(tDTO);
 		System.out.println(uploadPath);
 
@@ -168,12 +172,10 @@ public class TradeDAO {
 	}
 
 	public void tradeRegSearchName(BookDTO bDTO, HttpServletRequest req) {
-		req.setAttribute("book",ss.getMapper(TradeMapper.class).tradeRegSearchName(bDTO));
+		req.setAttribute("book", ss.getMapper(TradeMapper.class).tradeRegSearchName(bDTO));
 		System.out.println("책 정보 검색 입력");
 	}
-	
-	
-	
+
 	// ------------------------ 내용 수정---------------
 	public void tradeComplete(TradeDTO tDTO, HttpServletRequest req) {
 		if (ss.getMapper(TradeMapper.class).tradeComplete(tDTO) == 1) {
@@ -182,12 +184,33 @@ public class TradeDAO {
 			req.setAttribute("result", "삭제 실패");
 		}
 	}
-	
-//	public void updateTrade(TradeDAO tDTO, HttpServletRequest req) {
-//		
-//	}
 
+	public void updateTrade(MultipartFile file, TradeDTO tDTO, HttpServletRequest req) {
+		try {
+			String orgFileName = file.getOriginalFilename();
+//			String savePath = sc.getRealPath("resources/img");
+//			System.out.println(savePath);
+			String saveFileName = UUID.randomUUID().toString().split("-")[0]
+					+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
+			System.out.println("오리지널널파일네임 : " + orgFileName);
+			System.out.println("세이브파일네임 : " + saveFileName);
 
+			if (!file.getOriginalFilename().isEmpty()) {
+				// 실제 업로드 코드
+				file.transferTo(new File(uploadPath, saveFileName));
+				tDTO.setT_thumbnail(saveFileName);
+				System.out.println(tDTO);
 
+				if (ss.getMapper(TradeMapper.class).updateInfo(tDTO) >= 1) {
+					System.out.println("정보 변경 완료");
+					req.setAttribute("result", "정보 변경 완료");
+
+				}
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 
 }

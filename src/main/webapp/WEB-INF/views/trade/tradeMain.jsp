@@ -22,7 +22,7 @@
 		</form>
 	</div>
 
-	
+
 	<div class="trade-all-list">
 		<c:forEach var="t" items="${trades }">
 			<div class="trade-list"
@@ -42,6 +42,10 @@
 			</div>
 		</c:forEach>
 	</div>
-
+	<script>
+		if(${param.title == null}){
+			localStorage.clear()
+		}
+	</script>
 </body>
 </html>

@@ -29,9 +29,9 @@
 					</div>
 				</div>
 				<div class="trade-soldout">
-							<div class="sale">
-								<span> 판매 중 </span>
-							</div>
+					<div class="soldout">
+						<span> 판매 완료</span>
+					</div>
 				</div>
 			</div>
 		</c:forEach>

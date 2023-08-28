@@ -58,7 +58,8 @@
 					<div class="trade-sell-me">
 						<button class="selled" onclick="confirmAndComplete(${trade.t_no})">판매
 							완료하기</button>
-						<button class="update" onclick="location.href='trade.update.go?t_no=${trade.t_no}'">수정하기</button>
+						<button class="update"
+							onclick="location.href='trade.update.go?t_no=${trade.t_no}'">수정하기</button>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -129,7 +130,10 @@
     }
 }
         
-	</script>
+	if(${param.title == null}){
+		localStorage.clear()
+	}
+</script>
 
 </body>
 </html>

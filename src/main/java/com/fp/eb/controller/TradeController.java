@@ -28,7 +28,7 @@ public class TradeController {
 	@GetMapping("/trade.go")
 	public String goTrade(TradeDTO tDTO, HttpServletRequest req) {
 
-		// 로그인 가 데이터
+//		 로그인 가 데이터
 		UserDTO uDTO = new UserDTO("hm", "hm", "하민", "img_test", "hmin0701@naver.com", "male", 27, 230203, 10, 30,
 				"초심자", "0");
 		req.getSession().setAttribute("loginMember", uDTO);
@@ -72,7 +72,19 @@ public class TradeController {
 		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
 		uDTO.setU_id(u.getU_id());
 		tDAO.getTradeListMe(uDTO, req);
-		req.setAttribute("contentPage", "saleNow.jsp");
+		req.setAttribute("contentPage", "sale.jsp");
+		req.setAttribute("salePage", "saleNow.jsp");
+		return "trade/tradeIndex";
+	}
+//판매 완료 도서	
+	@GetMapping("/trade.sale.complete")
+	public String goTradeMyBook2(UserDTO uDTO, HttpServletRequest req) {
+		
+		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
+		uDTO.setU_id(u.getU_id());
+		tDAO.getTradeListMeComplete(uDTO, req);
+		req.setAttribute("contentPage", "sale.jsp");
+		req.setAttribute("salePage", "saleComplete.jsp");
 		return "trade/tradeIndex";
 	}
 	
@@ -175,10 +187,18 @@ public class TradeController {
 	@GetMapping("/trade.update.go")
 	public String updateTrade(TradeDTO tDTO, HttpServletRequest req) {
 		tDAO.getTradeDetail(tDTO, req);
-		req.setAttribute("contentPage", "infoRegUpdate.jsp");
+		req.setAttribute("contentPage", "infoUpdate.jsp");
 		return "trade/tradeIndex";
 	}
 	
+	@PostMapping("/trade.update.do")
+	public String updateTradeinfo(@RequestParam("t_file") MultipartFile file , TradeDTO tDTO, HttpServletRequest req) {
+		System.out.println(tDTO);
+		tDAO.updateTrade(file, tDTO ,req);
+		tDAO.getTradeDetail(tDTO, req);
+		req.setAttribute("contentPage", "tradeBookDetail.jsp");
+		return "trade/tradeIndex";
+	}
 	
 
 }

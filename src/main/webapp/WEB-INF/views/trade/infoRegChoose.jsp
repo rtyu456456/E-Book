@@ -21,7 +21,6 @@
 	</div>
 
 	<script>
-		
 		if(${param.title == null}){
 			localStorage.clear()
 		}
