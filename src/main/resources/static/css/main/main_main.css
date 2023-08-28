@@ -1,7 +1,57 @@
 @charset "UTF-8";
 
+.card-content {
+  width: 20rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 5rem auto;
+  padding-bottom: 3rem;
+}
+
+.card-header {
+  padding: 0 1rem;
+  margin: 2rem 0;
+  font-size: 24px;
+}
+
+.card-description {
+  font-size: 20px;
+  padding: 1rem;
+ 
+  /* 추가하기 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+}
+.card-content-img {
+  width: 100%;
+}
+
+.card-content__more-btn {
+  appearance: none;
+  border: 1px solid black;
+  padding: 0.5em;
+  border-radius: 0.25em;
+  cursor: pointer;
+  margin: 1rem;
+}
+
+.card-content__more-btn::before {
+  content: '더보기';
+}
+
+.card-content__more-btn:checked::before {
+  content: '닫기';
+}
+
+.card-description:has(+ .card-content__more-btn:checked) {
+  -webkit-line-clamp:unset
+}
+
 /********화제의 도서********/
-.issue-book-box {
+.age-book-box {
 	width: 68vw;
 	height: 19rem;
 	background-color: #ffffff;
@@ -16,19 +66,23 @@
 	position: relative;
 }
 
-.issue-title-gh {
+.age-title-gh {
+	width: 68vw;
 	font-size: 2rem;
 	margin-top: 1rem;
-	margin-left: 13vw;
+	text-align: center;
 }
 
-.issue-book-box div {
+.age-book-box div {
 	display: flex;
 	position: absolute;
 	top: 5rem;
-	right: 5.2vw;
+	left: 2.7vw;
 }
 
+.age-box button{
+	margin-right: 3vw;
+}
 /********추천 도서********/
 .popular-box {
 	width: 68vw;
@@ -46,16 +100,21 @@
 }
 
 .popular-title-gh {
+	width: 68vw;
 	font-size: 2rem;
 	margin-top: 1rem;
-	margin-left:10vw;
+	text-align: center;
 }
 
 .popular-box div {
 	display: flex;
 	position: absolute;
 	top: 5rem;
-	right: 5.2vw;
+	left: 2.7vw;
+}
+
+.popular-box button{
+	margin-right: 3vw;
 }
 
 /********베스트 서평********/
@@ -85,8 +144,8 @@
 }
 
 .best-box-gh {
-	width: 85vw;
-	height: 27rem;
+	width: 84vw;
+	height: 27.5rem;
 	background-color: #ffffff;
 	border-radius: 2rem;
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
@@ -106,8 +165,8 @@
 	border: none;
 	border-radius: 1rem;
 	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10) inset;
-	margin-top: 1.5rem;
-	margin-left: 5.9vw;
+	margin-top: 1.8rem;
+	margin-left: 4.6vw;
 	margin-right: 2vw;
 	border-radius: 1rem;
 }
@@ -247,16 +306,23 @@
 	background-color: #F5F6FA;
 	border-radius: 2rem;
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25) inset;
-	font-size: 1.3rem;
-	padding-top: 1.5rem;
-	padding-bottom: 1.3rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding: 1.5rem;
 	position: absolute;
-	top: 14rem;
-	left: 5.9vw;
+	top: 14.3rem;
+	left: 4.6vw;
+}
+
+.best-review-gh h6{
+	width: 70vw;
+	height: 8.7rem;
+	font-size: 1.5rem;
 	display: -webkit-box;
-	-webkit-line-clamp: 3;
+	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+	}
+
+.asdf {
+	-webkit-line-clamp: unset;
 }
+	

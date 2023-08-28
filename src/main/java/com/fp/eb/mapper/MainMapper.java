@@ -45,7 +45,7 @@ public interface MainMapper {
 	public BookDTO monthlyBook(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
 	public UserDTO monthlyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
 
-	public BookDTO hotBooks(BookDTO bDTO);
+	public List<BookDTO> hotBooks(BookDTO bDTO);
 
 
 

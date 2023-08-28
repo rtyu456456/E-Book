@@ -72,6 +72,7 @@
 							<h6>${r.r_contents }</h6>
 						</div>
 						<div class="detail-review-reputation">
+								<input class="user_id" hidden value="${sessionScope.user.u_id }">
 								<input class="like-no" hidden value="${r.r_no }">
 								<input class="like-check"  value="${r.likeCheck}">
 								<input hidden class="like-type" value="REVIEW">

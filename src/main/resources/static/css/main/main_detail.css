@@ -213,10 +213,12 @@
 		right: 1rem;
 	}
 	.reviewLikeImg.on {
+		color: #F66E6E;
 		filter: invert(73%) sepia(22%) saturate(3202%) hue-rotate(311deg)
 			brightness(94%) contrast(105%);
 	}
 	.reviewDislikeImg.on{
+	color: #6EB5F6;
 	filter: invert(74%) sepia(46%) saturate(4423%) hue-rotate(186deg) brightness(107%) contrast(93%);
 	}
 }

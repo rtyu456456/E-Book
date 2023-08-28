@@ -47,8 +47,8 @@ public class MainDAO {
 
 	public void bookDetail(BookDTO bDTO, ReviewDTO rDTO, Model model) {
 		System.out.println(bDTO.getB_no());
-		model.addAttribute("hotBook", mainMapper.bookDetail(bDTO));
-		//model.addAttribute("bookSearch", mainMapper.bookDetail(bDTO));
+		//model.addAttribute("hotBook", mainMapper.bookDetail(bDTO));
+		model.addAttribute("bookSearch", mainMapper.bookDetail(bDTO));
 	}
 
 	public void reviews(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
@@ -95,10 +95,9 @@ public class MainDAO {
 	}
 
 	public void hotBook(BookDTO bDTO, LikeDTO lDTO, Model model, HttpServletRequest req) {
-		BookDTO HB = mainMapper.hotBooks(bDTO);
+		List<BookDTO> HB = mainMapper.hotBooks(bDTO);
 		model.addAttribute("hotBooks", mainMapper.hotBooks(bDTO));
 		System.out.println(mainMapper.hotBooks(bDTO));
-		System.out.println(HB.getB_no());
 	}
 
 	// 오늘의 베스트 서평

@@ -21,8 +21,10 @@
 
 	<!-- 상세 서평 -->
 	<select id="reviews" resultType="com.fp.eb.model.ReviewDTO">
-		select * from eb_review, eb_book, eb_user
-		where r_b_no = b_no and b_no=#{b_no} and u_id = r_owner
+		select * from eb_review,
+		eb_book, eb_user
+		where r_b_no = b_no and b_no=#{b_no} and u_id =
+		r_owner
 		order by r_date desc
 	</select>
 
@@ -69,16 +71,21 @@
 
 	<!-- 화제의 도서 -->
 	<select id="hotBooks" resultType="com.fp.eb.model.BookDTO">
-		select * from eb_book
-		join
-		eb_like_record on eb_book.b_no = eb_like_record.lr_where_no
-		where
-		lr_date >= to_char(current_date -30, 'YYMMDD')
-		and lr_where_type =
-		'BOOK'
-		and lr_type = 1
-		order by lr_date desc
-		fetch first 1 row only
+		SELECT B.B_NO, B.B_THUMBNAIL,
+		(SELECT COUNT(*) FROM EB_REVIEW R
+		WHERE R.R_B_NO
+		= B.B_NO
+		AND R.R_TYPE = 1) AS COUNT_LIKE
+		FROM EB_BOOK B
+		JOIN EB_REVIEW R
+		ON B.B_NO = R.R_B_NO
+		WHERE R.R_DATE >= TO_CHAR(CURRENT_DATE - 30,
+		'YYMMDD')
+		AND R.R_TYPE = 1
+		GROUP BY B.B_NO, B.B_THUMBNAIL
+		ORDER BY
+		COUNT_LIKE DESC
+		FETCH FIRST 3 ROW ONLY
 	</select>
 
 	<!-- 오늘의 베스트 서평 -->

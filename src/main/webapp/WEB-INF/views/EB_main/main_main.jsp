@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>서평</title>
-<link rel="stylesheet" href="css/book_review.css">
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Diphylleia&family=Felipa&family=Orbit&display=swap')
@@ -16,68 +15,75 @@
 </head>
 <body>
 	<!-- 가데이터는 앞에 *(나중에 EL문 등으로 바꿔야 함) -->
+	<div class="card-content">
+		<img
+			src="https://images.unsplash.com/photo-1647773319917-f9a98647f6b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+			alt="바다 사진" class="card-content-img" />
+		<h1 class="card-header">제목1</h1>
+		<p class="card-description">Lorem ipsum dolor sit amet consectetur
+			adipisicing elit. Reiciendis esse fugit nihil earum aut nobis,
+			praesentium illum expedita quia, mollitia possimus sed, numquam et
+			velit aspernatur tenetur vero doloremque ipsum! Lorem ipsum dolor sit
+			amet consectetur adipisicing elit. Libero corporis sunt suscipit
+			beatae rerum exercitationem aliquam architecto? Aspernatur ex in cum
+			suscipit iusto repudiandae dolores hic, rerum, quae voluptatem
+			quidem.</p>
+		<!-- 추가 되는 부분 -->
+		<input type="checkbox" class="card-content__more-btn">
+	</div>
 
-	<!------ 화제의 도서 ------>
-	<div class="issue-book">
-		<div class="issue-book-box">
-			<h4 class="issue-title-gh">✧  서평을 부르는 화제의 도서  ✧</h4>
+
+
+
+
+	<!------ 나이대별 추천도서 ------>
+	<div class="age-book">
+		<div class="age-book-box">
+			<h4 class="age-title-gh">✧ ~대 ~이 좋아한 도서 ✧</h4>
 			<div>
-				<form action="book.detail">
-					<input hidden="hidden" name="b_no" value="${hotBooks.b_no }">
-					<button class="small-book-gh">
-						<img src="${hotBooks.b_thumbnail }">
-					</button>
-				</form>
-				<form action="book.detail?b_no=${hotBooks.b_no }">
-					<button class="small-book-gh">
-						<img src="/img/book.png">
-					</button>
-				</form>
-				<form action="book.detail?b_no=${hotBooks.b_no }">
-					<button class="small-book-gh">
-						<img src="/img/book.png">
-					</button>
-				</form>
+				<%-- <c:forEach var="" items=""> --%>
+				<button class="small-book-gh"
+					onclick="location.href='book.detail?b_no='">
+					<img src="/img/book.png">
+				</button>
+				<%-- </c:forEach> --%>
+				<button class="small-book-gh"
+					onclick="location.href='book.detail?b_no='">
+					<img src="/img/book.png">
+				</button>
+				<button class="small-book-gh"
+					onclick="location.href='book.detail?b_no='">
+					<img src="/img/book.png">
+				</button>
 			</div>
 		</div>
 	</div>
 
-	<!------ 추천 도서 ------->
+	<!------ 최근 인기 도서 ------->
 	<div class="popular-book">
 		<div class="popular-box">
-			<h4 class="popular-title-gh">✧  많은 사람들이 좋아한 인기 도서  ✧</h4>
+			<h4 class="popular-title-gh">✧ 최근 인기 도서 ✧</h4>
 			<div>
-				<!-- <form action="book.detail"> -->
-				<button class="small-book-gh">
-					<img src="/img/book.png">
-				</button>
-				<!-- </form> -->
-				<!-- <form action="book.detail"> -->
-				<button class="small-book-gh">
-					<img src="/img/book.png">
-				</button>
-				<!-- </form> -->
-				<!-- <form action="book.detail"> -->
-				<button class="small-book-gh">
-					<img src="/img/book.png">
-				</button>
-				<!-- </form> -->
+				<c:forEach var="hb" items="${hotBooks}">
+					<button class="small-book-gh"
+						onclick="location.href='book.detail?b_no=${hb.b_no }'">
+						<img src="${hb.b_thumbnail }">
+					</button>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
-
 
 	<!------ 베스트 서평 ------>
 	<div class="best-gh">
 		<div class="today-best-gh">
-			<h4 class="best-title-gh">오늘의 베스트 서평  🖉</h4>
+			<h4 class="best-title-gh">오늘의 베스트 서평 🖉</h4>
 			<div class="best-box-gh">
 				<div class="best-review-info">
-					<!-- <form action="book.detail"> -->
-					<button class="small-book-gh">
+					<button class="small-book-gh"
+						onclick="location.href='book.detail?b_no=${dailyBook.b_no }'">
 						<img src="${dailyBook.b_thumbnail }">
 					</button>
-					<!-- </form> -->
 					<div class="best-review-info2">
 						<div class="best-review-profile">
 							<div class="small-profile-gh">
@@ -89,8 +95,10 @@
 								</h5>
 							</div>
 						</div>
-						<h5 class="best-book-title">${dailyBook.b_title}</h5>
-						<h6 class="best-book-author">${dailyBook.b_authors}</h6>
+						<h5 class="best-book-title"
+							onclick="location.href='book.detail?b_no=${dailyBook.b_no }'">${dailyBook.b_title}</h5>
+						<h6 class="best-book-author"
+							onclick="location.href='book.detail?b_no=${dailyBook.b_no }'">${dailyBook.b_authors}</h6>
 						<div class="recommend-radio-gh">
 							추천<input type="radio" name="bestRadio" value="recommend">
 							비추천<input type="radio" name="bestRadio" value="notRecommend">
@@ -117,19 +125,22 @@
 						</span>
 					</button>
 				</div>
-
-				<h6 class="best-review-gh">${dailyBest.r_contents }</h6>
+				<div class="best-review-gh">
+					<h6>${dailyBest.r_contents }</h6>
+					<button class="moreReviewBtn">더보기</button>
+				</div>
 			</div>
 		</div>
+
+		<!------ 이번주 ------>
 		<div class="weekly-best-gh">
-			<h4 class="best-title-gh">이번주 베스트 서평  🖉</h4>
+			<h4 class="best-title-gh">이번주 베스트 서평 🖉</h4>
 			<div class="best-box-gh">
 				<div class="best-review-info">
-					<!-- <form action="book.detail"> -->
-					<button class="small-book-gh">
+					<button class="small-book-gh"
+						onclick="location.href='book.detail?b_no=${weeklyBook.b_no }'">
 						<img src="${weeklyBook.b_thumbnail }">
 					</button>
-					<!-- </form> -->
 					<div class="best-review-info2">
 						<div class="best-review-profile">
 							<div class="small-profile-gh">
@@ -170,20 +181,20 @@
 						</span>
 					</button>
 				</div>
-
-				<h6 class="best-review-gh">${weeklyBest.r_contents }</h6>
+				<div class="best-review-gh">
+					<h6>${weeklyBest.r_contents }</h6>
+				</div>
 			</div>
 		</div>
-
+		<!------ 이번달 ------>
 		<div class="monthly-best-gh">
-			<h4 class="best-title-gh">이번달 베스트 서평  🖉</h4>
+			<h4 class="best-title-gh">이번달 베스트 서평 🖉</h4>
 			<div class="best-box-gh">
 				<div class="best-review-info">
-					<%-- <form action="book.detail?b_no=${montlyBook.b_no }"> --%>
-					<button class="small-book-gh">
+					<button class="small-book-gh"
+						onclick="location.href='book.detail?b_no=${monthlyBook.b_no }'">
 						<img src="${monthlyBook.b_thumbnail }">
 					</button>
-					</form>
 					<div class="best-review-info2">
 						<div class="best-review-profile">
 							<div class="small-profile-gh">
@@ -225,8 +236,9 @@
 								value="${monthlyBest.r_dislike }" pattern="#,###" /> </span>
 					</button>
 				</div>
-
-				<h6 class="best-review-gh">${monthlyBest.r_contents }</h6>
+				<div class="best-review-gh">
+					<h6>${monthlyBest.r_contents }</h6>
+				</div>
 			</div>
 		</div>
 	</div>

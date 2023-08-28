@@ -1,3 +1,5 @@
+
+
 /*사이드 메뉴 창*/
 $(function() {
 	let menu = document.querySelector('.menu-gh img');
@@ -9,8 +11,52 @@ $(function() {
 });
 
 /*책갈피 끼우기*/
-$(function() {
+/*누르면 lr_where_no = b_no를 이용해서
+lr_where_type='BOOK' -> lr_type_number에 1을 넣었다 뺐다 할 수 있게*/
+
+function bookmarkFunc(){
 	let num = 0;
+	let bookmarkImg = [ "/img/logo_bookmark_empty.png",
+			"/img/logo_bookmark.png" ];
+	$(".bookmark-gh").click(function(){
+	let lr_owner = 'gh';   // $('.user_id').val();
+	let lr_where_type = $(this).parent().find('.like-type').val();
+	let lr_where_no = $(this).parent().find('.like-no').val();
+	//let bookmarkCnt = $(this).find('.reviewLikeCnt');
+	let lr_typeEl = $(this).parent().find('.like-check'); // 0, 1
+	let img = $(this).find('.bookmark-gh');
+	if($(lr_typeEl).val() == 0){
+		$(lr_typeEl).val(1);
+		return;
+	}else{
+		$(lr_typeEl).val(0);
+	}
+	lr_type= $(lr_typeEl).val()
+	$.ajax({
+		url : "like.do",
+		data : {lr_where_no,lr_owner,lr_where_type,lr_type}
+	}).done(function(data) {
+			console.log(data);
+			if(data == 1 && num == 1){
+				$(img).addClass('on');
+				$(lr_type).val(1);
+				num = 0;
+				jQuery("#logoGH").show();
+				//$(reviewLikeCnt).text(parseInt($(reviewLikeCnt).text())+1)
+			}else{
+				$(img).removeClass('on');
+				$(lr_type).val(0);
+				num++;
+				jQuery("#logoGH").hide();
+				//$(reviewLikeCnt).text(parseInt($(reviewLikeCnt).text())-1)
+			}
+			$(this).attr("src", bookmarkImg[num]);
+	});
+	});
+}
+
+$(function() {
+	/*let num = 0;
 	let bookmarkImg = [ "/img/logo_bookmark_empty.png",
 			"/img/logo_bookmark.png" ];
 	$("#bookmarkGH").click(function() {
@@ -23,11 +69,64 @@ $(function() {
 		}
 			$(this).attr("src", bookmarkImg[num]);
 		});
+		*/
 		
 sortItems();
 setLike();
 likeFunc();
+disLikeFunc();
+moreReview();
+bookmarkFunc();
+
 });
+
+
+/*베스트 서평 더보기*/
+
+function moreReview() {
+	 $('.moreReviewBtn').click(function() {
+    const h6 = $(this).prev('h6');
+    if (h6.hasClass('asdf')) {
+      h6.removeClass('asdf');
+      $(this).text('Show Less');
+    } else {
+      h6.addClass('asdf');
+      $(this).text('Show More');
+    }
+  });
+  
+};
+	
+	/*$('.best-review-gh').click(function() {
+		let h6 = $(this).prev('h6');
+		if (h6.hasClass('asdf')) {
+			h6.removeClass('asdf');
+			$(this).text('Show Less');
+		} else {
+			let r_contents = "<c:out value='${dailyBest.r_contents}'/>";
+			h6.addClass('asdf');
+			$(this).text(r_contents);
+			console.log(r_contents);
+		}
+		
+		
+	$('.best-review-gh').each(function(){
+		let h6 = $(this).find('h6');
+		let button = $(this).find('.best-review-gh');
+		if (h6[0].scrollHeight > h6.innerHeight()){
+			button.show();
+		} else{
+			button.hide();
+		}
+		
+	});*/
+
+
+
+
+
+
+
 
 
 
@@ -76,7 +175,6 @@ function sortItems() {
 };
 
 
-
 function setLike(){
 	let likeCheck = $(".like-check");
 	console.log(likeCheck);
@@ -93,46 +191,78 @@ function setLike(){
 
 
 
+let dataSet = ['', '좋아요','싫어요'];
 
-
-
-
-/*좋아요, 싫어요 버튼*/
 function likeFunc(){
-	// 임시 id
-	let lr_owner = 'gh';
-	let lr_where_type;   // type에  BOOK, REVIEW, COMMUNITY, POST, REPLY 값을 element 에서 찾아서 넣어주세요.
 	
-	// type
-	$(".like-dislike").click(function(){
-	let lr_type =	$(this).val();		// 1이면 좋아요 누른거  2이면 싫어요 누른거.
-											// 눌렀던걸 또 누르면 0 으로
-	let likeDisLikes = $(this).parent().find('.like-dislike-img');									
-	lr_where_type = $(this).parent().find('.like-type').val();
-	console.log(lr_where_type);
+	$(".reviewLikeBtn").click(function(){
+	let lr_owner = 'gh';   // $('.user_id').val();
+	let lr_where_type = $(this).parent().find('.like-type').val();
 	let lr_where_no = $(this).parent().find('.like-no').val();
-	let imgBtn = $(this).find(".like-dislike-img");
-	let active = $(imgBtn).attr('class').includes("on");
-	// 눌린거면 true	// 안눌린거면 false
-	// id, 댓글의 pk
-	console.log(lr_type)
-	console.log(active);
-	if(active){
-		lr_type = 0;
+	let reviewLikeCnt = $(this).find('.reviewLikeCnt');
+	let lr_typeEl = $(this).parent().find('.like-check'); // 0, 1
+	let img = $(this).find('.reviewLikeImg');
+	if($(lr_typeEl).val() == 2){
+		alert("이미" + dataSet[$(lr_typeEl).val()] + '를 눌렀어요');
+		return;
+	}else if($(lr_typeEl).val() == 0){
+		$(lr_typeEl).val(1);
+	}else{
+		$(lr_typeEl).val(0);
 	}
+	lr_type= $(lr_typeEl).val()
 	$.ajax({
 		url : "like.do",
 		data : {lr_where_no,lr_owner,lr_where_type,lr_type}
 	}).done(function(data) {
-		console.log(data);
-		$(likeDisLikes).removeClass('on');
-		if(data == 0){
-			return;
-		}		
-		$(imgBtn).toggleClass('on');
-		
-		
-		});
+			console.log(data);
+			if(data == 1){
+				$(img).addClass('on');
+				$(lr_type).val(1);
+				$(reviewLikeCnt).text(parseInt($(reviewLikeCnt).text())+1)
+			}else{
+				$(img).removeClass('on');
+				$(lr_type).val(0);
+				$(reviewLikeCnt).text(parseInt($(reviewLikeCnt).text())-1)
+			}
 	});
-	
+	});
 }
+
+function disLikeFunc(){
+	
+	$(".reviewDislikeBtn").click(function(){
+	let lr_owner = 'gh';   // $('.user_id').val();
+	let lr_where_type = $(this).parent().find('.like-type').val();
+	let lr_where_no = $(this).parent().find('.like-no').val();
+	let reviewDislikeCnt = $(this).find('.reviewDislikeCnt');
+	let lr_typeEl = $(this).parent().find('.like-check'); // 0, 1
+	let img = $(this).find('.reviewDislikeImg');
+	if($(lr_typeEl).val() == 1){
+		alert("이미" + dataSet[$(lr_typeEl).val()] + '를 눌렀어요');
+		return;
+	}else if($(lr_typeEl).val() == 0){
+		$(lr_typeEl).val(2);
+	}else{
+		$(lr_typeEl).val(0);
+	}
+	lr_type= $(lr_typeEl).val()
+	$.ajax({
+		url : "like.do",
+		data : {lr_where_no,lr_owner,lr_where_type,lr_type}
+	}).done(function(data) {
+			console.log(data);
+			if(data == 2){
+				$(img).addClass('on');
+				$(lr_type).val(2);
+				$(reviewDislikeCnt).text(parseInt($(reviewDislikeCnt).text())+1)
+			}else{
+				$(img).removeClass('on');
+				$(lr_type).val(0);
+				$(reviewDislikeCnt).text(parseInt($(reviewDislikeCnt).text())-1)
+			}
+	});
+	});
+}
+
+	
