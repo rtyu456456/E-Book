@@ -111,5 +111,13 @@ public class BookrecordController {
 		System.out.println(rDTO.getR_b_no());
 		return brDAO.getReviewBook(rDTO, req);
 	}
+	
+	@GetMapping("/updateReview.do")
+	public String updateReviewDo(HttpServletRequest req, ReviewDTO rDTO) {
+		brDAO.updateReview(rDTO, req);
+		
+		return "redirect:/bookRecord.fin";
+	}
+	
 
 }

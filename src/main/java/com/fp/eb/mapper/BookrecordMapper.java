@@ -40,4 +40,6 @@ public interface BookrecordMapper {
 
 	BookrecordDTO getReviewBook(ReviewDTO rDTO);
 
+	int updateReview(ReviewDTO rDTO);
+
 }

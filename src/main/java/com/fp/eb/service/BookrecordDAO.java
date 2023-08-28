@@ -168,7 +168,6 @@ public class BookrecordDAO {
 
 	public void regReview(ReviewDTO rDTO, HttpServletRequest req) {
 		
-		
 		if(brMapper.regReview(rDTO) == 1) {
 			System.out.println("등록성공");
 		}
@@ -184,6 +183,13 @@ public class BookrecordDAO {
 	public BookrecordDTO getReviewBook(ReviewDTO rDTO, HttpServletRequest req) {
 		
 		return brMapper.getReviewBook(rDTO);
+	}
+
+	public void updateReview(ReviewDTO rDTO, HttpServletRequest req) {
+		
+		if(brMapper.updateReview(rDTO) == 1) {
+			System.out.println("수정성공");
+		}
 	}
 
 }

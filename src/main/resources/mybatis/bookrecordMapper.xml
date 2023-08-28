@@ -50,6 +50,10 @@
 	UPDATE EB_BOOK_RECORD SET BR_PAGE = #{br_page} WHERE BR_NO = #{br_no}
 </update>
 
+<update id="updateReview">
+	UPDATE EB_REVIEW SET R_CONTENTS = #{r_contents}, R_TYPE = #{r_type} WHERE R_NO = #{r_no}
+</update>
+
 <delete id="delBr" parameterType="com.fp.eb.model.BookrecordDTO">
 	DELETE FROM EB_BOOK_RECORD WHERE BR_NO = #{br_no}
 </delete>

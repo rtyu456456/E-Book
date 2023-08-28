@@ -152,7 +152,7 @@
 			<div class="w-full h-full flex">
 				<div class="flex justify-center items-center ml-10 w-1/3 h-full">
 					<img class="review-thumbnail object-fit w-48 h-72" alt="" src="">
-					<input hidden class="r-b-no">
+					<input hidden class="r-no">
 				</div>
 				<div
 					class="relative flex flex-col justify-center items-start pl-5 w-3/4 h-full text-[rgba(38,40,61,1)]">
@@ -170,11 +170,11 @@
 									pattern="yyyy-MM-dd" /> </span>
 						</div>
 						<div class="h-1/6 text-[2rem] font-bold mt-4">
-							<label for="r-type1">추천</label> <input disabled type="radio" id="r-type1"
-								class="w-[1.8rem] h-[1.8rem] ml-2" name="r_type" value="1">
-							<label class="ml-10" for="r-type2">비추천</label> <input disabled
-								type="radio" class="w-[1.8rem] h-[1.8rem] ml-2" id="r-type2"
-								name="r_type" value="2">
+							<label for="r-type1">추천</label> <input disabled type="radio"
+								id="r-type1" class="w-[1.8rem] h-[1.8rem] ml-2" name="r_type"
+								value="1"> <label class="ml-10" for="r-type2">비추천</label>
+							<input disabled type="radio" class="w-[1.8rem] h-[1.8rem] ml-2"
+								id="r-type2" name="r_type" value="2">
 						</div>
 					</div>
 				</div>
@@ -186,7 +186,8 @@
 			class="review-contents-box flex flex-col justify-center items-center w-full h-full bg-white">
 			<div
 				class="flex flex-col justify-center items-center w-11/12 h-5/6 text-[2.3rem] rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500">
-				<textarea disabled class="review-contents w-11/12 h-5/6 mt-10 leading-[4rem]"
+				<textarea disabled
+					class="review-contents w-11/12 h-5/6 mt-10 leading-[4rem]"
 					id="review-textarea" rows="4" cols="50"></textarea>
 				<div class="flex w-full h-1/6 justify-end">
 					<div class="h-1/6 mt-4">
@@ -210,7 +211,7 @@
 		</div>
 	</div>
 	</dialog>
-	
+
 	<!-- 서평 작성 취소용 dialog  -->
 	<dialog
 		class="review-cancel-modal rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/6">
@@ -228,8 +229,8 @@
 		</div>
 	</div>
 	</dialog>
-	
-	<!-- 서평 type 안정했을 떄 정하게하는 dialog  -->	
+
+	<!-- 서평 type 안정했을 떄 정하게하는 dialog  -->
 	<dialog
 		class="review-alert-modal rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/6">
 	<div class="w-full h-full flex flex-col justify-center items-center">
@@ -322,7 +323,7 @@ $(function() {
         let review_title = review_book_box.querySelector('.review-title');
         let review_authors = review_book_box.querySelector('.review-authors');
         let review_date = review_book_box.querySelector('.review-date');
-		let review_book_no = review_book_box.querySelector('.r-b-no');
+		let review_no = review_book_box.querySelector('.r-no');
 		let review_contents = review_update_modal.querySelector('.review-contents');
 		
 		let review_update_open = review_update_modal.querySelector('.review-update-open');
@@ -365,7 +366,7 @@ $(function() {
 			    let review_type = review_book_box.querySelector('input[name="r_type"][value="' + data.r_type  + '"]');
 			    review_type.checked = true;
 			    
-			    review_book_no.value = data.r_b_no;
+			    review_no.value = data.r_no;
 			    review_contents.value = data.r_contents.replaceAll('<br>', '\n');
 			    
 			}
@@ -379,8 +380,8 @@ $(function() {
 		review_update_modal.showModal();
 	}); // click end
 	
-	$('review-update-open').click(function(){
-		
+	$('.review-update-cancel').click(function(){
+		review_cancel_modal.showModal();
 	});
 		
 	
@@ -397,6 +398,7 @@ $(function() {
 	$('.review-cancel-yes').click(function(){
 		review_cancel_modal.close();
 		review_modal.close();
+		review_update_modal.close();
 	});
 	
 	
@@ -452,9 +454,19 @@ $(function() {
 	    review_update_cancel.style.display = 'inline-block';
 	});
 	
+	$('.review-update-btn').click(function(){
+		let review_book_box = review_update_modal.querySelector('.review-book-box');
+		let review_no = review_book_box.querySelector('.r-no');
+		let review_type = review_book_box.querySelector('input[name="r_type"]:checked');
+		let review_contents = review_update_modal.querySelector('.review-contents');
+		
+		// 줄 바꿈 예외처리
+		let r_contents = encodeURIComponent(review_contents.value.replaceAll(/\n/g, '<br>'));
+		
+		location.href='updateReview.do?r_no=' + review_no.value + '&r_contents=' + r_contents + '&r_type=' + review_type.value;
+	});
 	
-	
-})
+}); // ready end
 
 // js로 글자수 세기 및 200자 넘으면 못쓰게 하기
 
