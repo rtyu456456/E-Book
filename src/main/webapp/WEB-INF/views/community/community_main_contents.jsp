@@ -113,19 +113,20 @@
 				console.log(data);
 
 				$.each(data.pinnedCommu, function(index, item) {
-					
+
 					console.log(item.c_name);
 
 					var pinnedCommuContainer = $("#pinned-commu");
 					if (!addedCommunities[item.c_no]) { // 이미 추가한 커뮤니티인지 확인
 						var button = $("<button>").addClass("pinned-btn").attr(
 								"name", "c_no");
-							$(button).val(item.c_no);
+						$(button).val(item.c_no);
 						var img = $("<img>").addClass("pinned").attr("src",
 								"/img/커뮤니티_즐겨찾기함_icon.png").click(function() {
-							notPinnedCommunity(this,item.c_no); // item.c_no는 클로저로 캡쳐될 것입니다.
+							notPinnedCommunity(this, item.c_no); // item.c_no는 클로저로 캡쳐될 것입니다.
 						});
-						var text = $("<span>").css("white-space", "pre").text(" " + item.c_name);
+						var text = $("<span>").css("white-space", "pre").text(
+								" " + item.c_name);
 
 						button.append(img, text);
 						pinnedCommuContainer.append(button);
@@ -160,20 +161,21 @@
 					var pinnedCommuContainer = $("#pinned-commu");
 
 					if (!addedCommunities[item.c_no]) { // 이미 추가한 커뮤니티인지 확인
-// 						var button = $("<button>").addClass("pinned-btn").attr(
-// 								"name", "c_no");
-// 						var img = $("<img>").addClass("pinned").attr("src",
-// 								"/img/커뮤니티_즐겨찾기함_icon.png");
-// 						var text = $("<span>").text(item.c_name);
+						// 						var button = $("<button>").addClass("pinned-btn").attr(
+						// 								"name", "c_no");
+						// 						var img = $("<img>").addClass("pinned").attr("src",
+						// 								"/img/커뮤니티_즐겨찾기함_icon.png");
+						// 						var text = $("<span>").text(item.c_name);
 
-// 						button.append(img, text);
-// 						pinnedCommuContainer.append(button);
+						// 						button.append(img, text);
+						// 						pinnedCommuContainer.append(button);
 
-// 						addedCommunities[item.c_no] = true; // 커뮤니티 추가 기록
-						loadPinnedCommu();
+						// 						addedCommunities[item.c_no] = true; // 커뮤니티 추가 기록
 					}
 
 				});
+
+				loadPinnedCommu();
 
 			},
 			error : function(request, status, error) {
@@ -189,13 +191,17 @@
 		$.ajax({
 			type : "GET",
 			url : "/update.pinned.commu?lr_where_no=" + lr_where_no,
-			success : function(response) {
-				// 요청이 성공했을 때 처리할 코드
-				// response에는 서버에서 반환한 데이터가 포함될 수 있음
-				console.log("Ajax request success:", response);
-				// 여기서 필요한 업데이트나 변경 작업 수행
-				$(btn).parent().remove();
+			dataType : "JSON",
+			success : function(data) {
+				console.log("Ajax request success:", data);
+				const valueToDelete = $(btn).parent().attr("value");
+				console.log(valueToDelete);
+				console.log(addedCommunities);
+				delete addedCommunities[valueToDelete];
 				
+				console.log(addedCommunities);
+				//delete addedCommunities.
+				$(btn).parent().remove();
 			},
 			error : function(request, status, error) {
 				console.log("code:" + request.status + "\n" + "message:"

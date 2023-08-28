@@ -103,9 +103,12 @@ and
 }
 #commu-alarm {
 	position: absolute;
+	right: 4.7rem;
+	top: 0.4rem;
 	height: 1rem;
 	width: 1rem;
 	visibility: visible;
+	z-index: 500;
 }
 
 .commu_seach {
