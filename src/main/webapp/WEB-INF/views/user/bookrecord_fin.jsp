@@ -16,6 +16,17 @@
 </head>
 <body>
 	<div class="flex flex-col w-full">
+		<div class="flex h-1/6 justify-center items-center">
+			<div class="mr-20">
+				<span class="prev-month text-[4rem]"> < </span>
+			</div>
+			<div class="flex flex-col justify-center items-center h-full">
+				<span class="cur-year text-[4.5rem] font-bold">${cur_year }</span> <span class="cur-month text-[3.5rem]">${cur_month }월</span>
+			</div>
+			<div class="ml-20">
+				<span class="next-month text-[4rem]"> > </span>
+			</div>
+		</div>
 		<c:forEach items="${bookrecords }" var="br">
 			<div
 				class="br-box block rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/6 bg-white ml-10 mb-10">
@@ -277,6 +288,35 @@ br_boxes.forEach(function(br_box){
 		}
 	}); // ajax end
 }); // foreach end
+
+	let prev_month = document.querySelector('.prev-month');
+	let next_month = document.querySelector('.next-month');
+	let cur_month_span = document.querySelector('.cur-month');
+	let cur_year_span = document.querySelector('.cur-year');
+	
+	prev_month.addEventListener("click", function() {
+    	let cur_month = parseInt(cur_month_span.textContent.replace("월", ""));
+    	let cur_year = parseInt(cur_year_span.textContent);
+    	if (cur_month > 1) {
+        	cur_month_span.textContent = (cur_month - 1) + "월";
+    	} else {
+    		cur_month = 12;
+    		cur_month_span.textContent = cur_month + "월";
+            cur_year_span.textContent = cur_year - 1;
+    	}
+	});
+
+	next_month.addEventListener("click", function() {
+   	 	let cur_month = parseInt(cur_month_span.textContent.replace("월", ""));
+	   	let cur_year = parseInt(cur_year_span.textContent);
+   	 	if (cur_month < 12) {
+    	    cur_month_span.textContent = (cur_month + 1) + "월";
+    	} else {
+    		cur_month = 1;
+    		cur_month_span.textContent = cur_month + "월";
+            cur_year_span.textContent = cur_year + 1;
+    	}
+	});	
 }); // eventlistener end
 
 

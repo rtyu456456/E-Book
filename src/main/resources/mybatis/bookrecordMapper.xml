@@ -27,7 +27,7 @@
 </select>
 
 <select id="getBookFin" resultType="com.fp.eb.model.BookrecordDTO">
-	SELECT B_NO, B_TITLE, B_THUMBNAIL, B_PAGE, B_AUTHORS, BR_NO, BR_PAGE, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE = BR_PAGE ORDER BY BR_DATE 
+	SELECT B_NO, B_THUMBNAIL, B_TITLE, B_AUTHORS, BR_NO, BR_DATE, R_NO, R_TYPE, R_CONTENTS FROM EB_BOOK, EB_BOOK_RECORD, EB_REVIEW WHERE B_NO = BR_BOOK AND B_PAGE = BR_PAGE AND R_OWNER = 'kkh' AND EXTRACT(YEAR FROM BR_DATE) = #{cur_year} AND EXTRACT(MONTH FROM BR_DATE) = #{cur_month}
 </select>
 
 <select id="getReviewBook" resultType="com.fp.eb.model.BookrecordDTO">

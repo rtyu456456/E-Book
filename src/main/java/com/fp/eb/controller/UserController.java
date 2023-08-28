@@ -60,6 +60,13 @@ public class UserController {
 		return "redirect:/main";
 	}
 	
+	
+	@GetMapping("/logout.go")
+	public String logoutGo(HttpServletRequest req, UserDTO uDTO) {
+		req.getSession().removeAttribute("user");;
+		return "redirect:/main";
+	}
+	
 	@GetMapping("/userUpdate.go")
 	public String userUpdateGo(HttpServletRequest req, UserDTO uDTO) {
 		req.setAttribute("contentPage", "update_user.jsp");

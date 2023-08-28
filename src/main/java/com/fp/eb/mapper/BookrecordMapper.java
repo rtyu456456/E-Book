@@ -14,7 +14,7 @@ public interface BookrecordMapper {
 
 	List<BookrecordDTO> getBookIng();
 
-	List<BookrecordDTO> getBookFin();
+	List<BookrecordDTO> getBookFin(int cur_year, int cur_month);
 
 	int updateCurPage(BookrecordDTO brDTO);
 

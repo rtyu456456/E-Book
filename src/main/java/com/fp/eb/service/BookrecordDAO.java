@@ -36,7 +36,10 @@ public class BookrecordDAO {
 
 	public void getBookFin(HttpServletRequest req) {
 		
-		req.setAttribute("bookrecords", brMapper.getBookFin());
+		int cur_year = (int) req.getAttribute("cur_year");
+		int cur_month = (int) req.getAttribute("cur_month");
+		
+		req.setAttribute("bookrecords", brMapper.getBookFin(cur_year, cur_month));
 		
 	}
 

@@ -22,24 +22,25 @@
 				<div id="u-name-div"
 					class="flex flex-row block justify-center items-center text-center">
 					<div
-						class="flex flex-row items-center h-[6.5rem] mt-10 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
+						class="flex flex-row items-center h-[6.5rem] mt-16 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
 						<div class="w-1/4">
 							<span class="text-black">이름 | </span>
 						</div>
 						<div class="w-2/3">
 							<input class="w-5/6 text-black text-center bg-[#F5F6FA]" name="u_name"
-								value="참새경찰">
+								value="${sessionScope.user.u_name }">
 						</div>
 					</div>
 				</div>
 
 				<!-- age div  -->
-				<div id="u-name-div"
+				<div id="u-age-div"
 					class="flex flex-row justify-center items-center text-center">
 					<div
-						class="flex flex-row items-center h-[6.5rem] mt-10 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
+						class="flex flex-row items-center h-[6.5rem] mt-12 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
 						<div class="w-1/4">
 							<span class="text-black">나이 | </span>
+							<input hidden class="u-old-age" name="u_old_age" value="${sessionScope.user.u_age }">
 						</div>
 						<div class="w-2/3">
 							<select class="w-5/6 text-black text-center bg-[#F5F6FA]"
@@ -58,30 +59,12 @@
 					</div>
 				</div>
 
-				<!-- PW div  -->
-				<div id="u-achieve-div"
-					class="flex flex-row justify-center items-center text-center">
-					<div
-						class="flex flex-row items-center h-[6.5rem] mt-10 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
-						<div class="w-1/4">
-							<span class="text-black">등급 | </span>
-						</div>
-						<div class="w-3/4">
-							<select class="w-11/12 text-black text-center bg-[#F5F6FA]"
-								name="u_age">
-								<option value="10">작심삼일 탈출</option>
-								<option value="20">신참 책벌레</option>
-								<option value="30">베이커가 이웃주민</option>
-							</select>
-						</div>
-					</div>
-				</div>
 
 				<!-- PW div  -->
 				<div id="u-pw-div"
 					class="flex flex-row justify-center items-center text-center">
 					<div
-						class="flex flex-row items-center h-[6.5rem] mt-10 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
+						class="flex flex-row items-center h-[6.5rem] mt-12 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
 						<div class="w-1/3">
 							<span class="text-black text-[2.2rem]">비밀번호 | </span>
 						</div>
@@ -94,7 +77,7 @@
 				<div id="u-pw-div"
 					class="flex flex-row justify-center items-center text-center">
 					<div
-						class="flex flex-row items-center h-[6.5rem] mt-10 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
+						class="flex flex-row items-center h-[6.5rem] mt-12 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
 						<div class="w-1/3">
 							<span class="text-black text-[2.2rem]">새 비밀번호 | </span>
 						</div>
@@ -108,7 +91,7 @@
 				<div id="u-pwcheck-div"
 					class="flex flex-row justify-center items-center text-center">
 					<div
-						class="flex flex-row items-center h-[6.5rem] mt-10 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
+						class="flex flex-row items-center h-[6.5rem] mt-12 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
 						<div class="w-1/3">
 							<span class="text-black text-[2.2rem]">비밀번호 <br> 확인</span> 
 						</div>
@@ -123,7 +106,7 @@
 				<div id="u-profile-div"
 					class="flex flex-row justify-center items-center text-center">
 					<div
-						class="flex flex-row items-center h-[6.5rem] mt-10 w-3/4 rounded-3xl border=none border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
+						class="flex flex-row items-center h-[6.5rem] mt-12 w-3/4 rounded-3xl border=none border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
 						<div class="w-1/3">
 							<span class="text-black text-[2.2rem]"> 프로필 사진 변경 </span> 
 						</div>
@@ -145,4 +128,24 @@
 		</form>
 	</div>
 </body>
+<script>
+  // 페이지 로딩이 완료되면 실행되는 함수
+  window.addEventListener('DOMContentLoaded', function () {
+    // sessionScope.user.u_age 값을 가져옵니다.
+    let u_old_age = document.querySelector(".u-old-age").value;
+
+    // select 요소를 찾습니다.
+    var age_select_box = document.querySelector('select[name="u_age"]');
+
+    // select 요소 내의 모든 option 요소를 순회하며 선택 여부를 결정합니다.
+    for (var i = 0; i < age_select_box.options.length; i++) {
+      let age_option = age_select_box.options[i];
+
+      // option의 value와 selectedAge가 일치하면 selected 속성을 추가합니다.
+      if (age_option.value === u_old_age) {
+        age_option.selected = true;
+      }
+    }
+  });
+</script>
 </html>

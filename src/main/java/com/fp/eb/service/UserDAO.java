@@ -55,12 +55,14 @@ public class UserDAO {
 		if (dbMember != null) {
 			if (uDTO.getU_pw().equals(dbMember.getU_pw())) {
 				req.getSession().setAttribute("user", dbMember);
-				req.getSession().setMaxInactiveInterval(60 * 10);
+				req.getSession().setMaxInactiveInterval(60 * 60);
 			} else {
 				req.setAttribute("result", "password error!");
+				return;
 			}
 		} else {
 			req.setAttribute("result", "can't find user");
+			return;
 		}
 
 		

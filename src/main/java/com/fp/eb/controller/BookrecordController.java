@@ -1,5 +1,6 @@
 package com.fp.eb.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +27,17 @@ public class BookrecordController {
 
 	@GetMapping("/bookRecord.fin")
 	public String bookRecordFin(HttpServletRequest req, UserDTO uDTO) {
+		
+		LocalDateTime current_date = LocalDateTime.now();
+		int cur_year = current_date.getYear();
+		int cur_month = current_date.getMonthValue();
+		req.setAttribute("cur_year", cur_year);
+		
+		req.setAttribute("cur_month", cur_month);
+
 		brDAO.getBookFin(req);
 		req.setAttribute("contentPage", "bookrecord_fin.jsp");
+		
 		return "user/user_main";
 	}
 
