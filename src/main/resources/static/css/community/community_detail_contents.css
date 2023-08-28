@@ -179,9 +179,11 @@
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	.reply_txt {
+		word-break:break-all;
+		word-wrap: break-word;
 		position: relative;
 		padding: 1em;
-		font-size: 2.5rem;
+		font-size: 2.5em;
 		font-weight: 300;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
@@ -224,7 +226,8 @@
 		width: 90%;
 	}
 	.post_reply_text {
-		resize: none;
+	
+		resize : none;
 		position: relative;
 		background-color: transparent;
 		font-size: 3rem;
@@ -234,6 +237,7 @@
 		border: none;
 		outline-color: #F5F6FA;
 		caret-color: #F66E6E;
+		resize: none;
 	}
 	.post_reply_text:focus::placeholder {
 		color: #F5F6FA;
