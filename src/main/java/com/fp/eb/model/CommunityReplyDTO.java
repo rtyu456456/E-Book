@@ -12,6 +12,7 @@ public class CommunityReplyDTO {
 	private BigDecimal cr_like;
 	private BigDecimal cr_dislike;
 	private Date cr_date;
+	private String cr_date2;
 	
 	private int cp_no;
 	
@@ -20,6 +21,16 @@ public class CommunityReplyDTO {
 	
 	
 	
+	public String getCr_date2() {
+		return cr_date2;
+	}
+
+
+	public void setCr_date2(String cr_date2) {
+		this.cr_date2 = cr_date2;
+	}
+
+
 	public int getCp_no() {
 		return cp_no;
 	}
@@ -133,6 +144,7 @@ public class CommunityReplyDTO {
 
 	public void setCr_date(Date cr_date) {
 		this.cr_date = cr_date;
+		this.cr_date2 = Time.calccommentdate(cr_date);
 	}
 
 

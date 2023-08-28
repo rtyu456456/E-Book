@@ -42,7 +42,16 @@
 	<select id="commentMyPost"
 		resultType="com.fp.eb.model.CommunityReplyDTO">
 		select * from eb_community_reply, eb_community_post, eb_community where
-		cp_no= cr_cp_no and c_no = cp_community and cp_owner = '김포공주' and not cr_owner = '김포공주'
+		cp_no= cr_cp_no and c_no = cp_community and cp_owner = '김포공주' and not cr_owner = '김포공주' and cr_like = 0
+		and cr_date between current_date -30 and current_date
+		order by cr_date desc
+	</select>
+	
+	<select id="commentAlarm"
+		resultType="int">
+		select count(*) from eb_community_reply, eb_community_post, eb_community where
+		cp_no= cr_cp_no and c_no = cp_community and cp_owner = '김포공주' and not cr_owner = '김포공주' and cr_like = 0
+		and cr_date between current_date -30 and current_date
 		order by cr_date desc
 	</select>
 
@@ -102,6 +111,10 @@
 		lr_where_type = 'COMMUNITY' and lr_owner = '김포공주'
 		and lr_where_no = #{lr_where_no}
 	</select>
+	
+	<update id="updateCheckComment">
+	update eb_community_reply set cr_like = 1 where cr_no = #{cr_no}
+	</update>
 
 	<update id="updatePinnedCommuZero">
 		update eb_like_record set lr_type = 0 where

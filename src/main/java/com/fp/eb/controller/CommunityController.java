@@ -36,6 +36,7 @@ public class CommunityController {
 	public String goCommunityMain(Model model, CommunityPostDTO cp) {
 		
 		getPinndedCommu();
+		cDAO.commentAlarm(model);
 		cDAO.getAllCommunity(model);
 		
 		model.addAttribute("commu_header_page", "community_main_header.jsp");
@@ -45,7 +46,7 @@ public class CommunityController {
 	
 	
 	@GetMapping("/comment.my.post")
-	public String getMyReply(Model model) {
+	public String getMyReply(Model model, CommunityReplyDTO cr) {
 		cDAO.commentMyPost(model);
 		
 		model.addAttribute("commu_header_page", "community_commentMyPost_header.jsp");
@@ -180,6 +181,8 @@ public class CommunityController {
 
 	@GetMapping("/go.commu.detail")
 	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
+		cDAO.updateCheckComment(cr);
+		
 		cDAO.getCommunity(c, model);
 		cDAO.getCommunityPost(cp, model);
 		cDAO.getReplys(cp, model);

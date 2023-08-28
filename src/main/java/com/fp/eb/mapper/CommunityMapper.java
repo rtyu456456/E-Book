@@ -75,6 +75,10 @@ public interface CommunityMapper {
 	
 	int cheakPinnedTypeCommu(CommunityLikeDTO cl);
 
+	int updateCheckComment(CommunityReplyDTO cr);
+
+	int commentAlarm();
+
 	
 	
 }
