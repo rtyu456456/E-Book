@@ -12,7 +12,8 @@
 		select * from eb_trade where t_owner = #{u_id } and t_soldout = 0
 		<!-- 나중에 유저 닉네임과 연동할 것 -->
 	</select>
-
+ 
+ 
 	<select id="getTradeListMeComplete"
 		resultType="com.fp.eb.model.TradeDTO">
 		select * from eb_trade where t_owner = #{u_id } and
@@ -72,10 +73,12 @@
 	</insert>
 
 	<update id="tradeComplete">
-		update eb_trade set t_soldout = 1 where t_no = #{t_no
-		}
+		update eb_trade set t_soldout = 1 where t_no = #{t_no }
 	</update>
 
+	 <delete id="tradeCancle" parameterType="com.fp.eb.model.TradeDTO">
+	  delete from eb_trade  where t_no = #{t_no }
+	 </delete>
 
 
 

@@ -75,7 +75,8 @@
 
 .trade-list {
 	display: flex;
-	background: rgba(255, 255, 255, 1);
+	background: rgba(245, 246, 250, 1);
+
 	margin: 15px;
 	border-radius: 20px;
 	height: 16%;

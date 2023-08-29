@@ -12,7 +12,7 @@
 	<c:forEach var="m" items="${msgsTo }">
 		<div class="msg-list">
 			<div class="trade-book-img">
-				<img alt="" src="/img/bookimgsample.jpg">
+				<img alt="" src="tradeimgs/${t.t_thumbnail}">
 				<div>${m.t_book_title }</div>
 			</div>
 			<div class="msg-info">

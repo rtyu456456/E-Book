@@ -25,7 +25,8 @@ public interface TradeMapper {
 
 	List<TradeDTO> getTradelistMe(UserDTO uDTO);
 	List<TradeDTO> getTradeListMeComplete(UserDTO uDTO);
-	
+
+
 	TradeDTO locationChoose(TradeDTO tDTO);
 	
 	//쪽지기능
@@ -43,7 +44,7 @@ public interface TradeMapper {
 	List<BookDTO> tradeRegSearchName(BookDTO bDTO);
 
 	public int updateInfo(TradeDTO tDTO);
-
+	public int tradeCancle(TradeDTO tDTO);	
 
 
 

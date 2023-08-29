@@ -21,6 +21,7 @@
 		const t_publisher = localStorage.getItem('t_publisher');
 		const t_price = localStorage.getItem('t_price');
 		const t_contents = localStorage.getItem('t_contents');
+		const t_thumbnail = localStorage.getItem('t_thumbnail');
 		
 		if (localStorage.length !== 0) {
 			document.getElementsByName('t_title')[0].value = t_title;
@@ -29,6 +30,7 @@
 			document.getElementsByName('t_publisher')[0].value = t_publisher;
 			document.getElementsByName('t_price')[0].value = t_price;
 			document.getElementsByName('t_contents')[0].value = t_contents;
+			document.getElementsByName('t_thumbnail')[0].value = t_thumbnail;
 		}
 	}
 
@@ -45,8 +47,7 @@
 	<div class="container-reg">
 		<div class="reginfo">
 			<br>
-			<form action="reg.trade.book" method="post"
-				enctype="multipart/form-data" id="regForm">
+			<form action="reg.trade.book" method="post"	enctype="multipart/form-data" id="regForm">
 				<br>
 				<div class="book-info-reg">책 정보를 입력해 주세요</div>
 				<br> <input type="hidden"
@@ -59,7 +60,7 @@
 				<!-- 					검색 정보 불러오기  -->
 				<c:choose>
 					<%-- 검색 정보 불러오기  --%>
-					<c:when test="${param.title != null}">
+					<c:when test="${param.thumnail != null}">
 
 						<div class="input-group2">
 							<input value="${param.title }" name="t_book_title" readonly
@@ -89,8 +90,17 @@
  							</script>
 						</div>
 						<div class="input-group">
-							<input placeholder="판매가" name="t_price"
+							<input placeholder="판매가" name="t_price" value=""
 								oninput="localStorage.setItem('t_price', this.value)">
+						</div>
+						<div class="input-group3">
+							<img alt="" src="${param.thumbnail }"> 
+<%-- 							${param.thumbnail } --%>
+							<input type="hidden" value="${param.thumbnail }" name="t_thumbnail"
+							oninput="localStorage.setItem('t_thumbnail', this.value)">
+							<script> 
+// 								localStorage.setItem('t_file', '${param.thumbnail}');
+ 							</script>
 						</div>
 					</c:when>
 
@@ -113,23 +123,23 @@
 							<input placeholder="판매가" name="t_price"
 								oninput="localStorage.setItem('t_price', this.value)">
 						</div>
+						<div class="input-group">
+							<input type="file" name="t_file"
+							oninput="localStorage.setItem('t_file', this.value)">
+						</div>
 					</c:otherwise>
 				</c:choose>
 
-				<div class="input-group">
-					<input type="file" name="t_file">
-				</div>
 				<div class="input-group-text">
 					<textarea rows="8" cols="2" placeholder="도서 상태 정보"
 						name="t_contents"
 						oninput="localStorage.setItem('t_contents', this.value)"></textarea>
 				</div>
 				<div class="input-group">
-					<a class="btn-open-modal">희망 장소 선택하기</a> <br> <span
-						id="input-content"></span> <input hidden value="" name="t_map_lat"
-						id="t_map_lat"> <input hidden value="" name="t_map_lng"
-						id="t_map_lng"> <input hidden value="" name="t_marker_name" id="t_map_marker_name">
-
+					<a class="btn-open-modal">희망 장소 선택하기</a> <br> 
+					<span id="input-content"></span> <input hidden value="" name="t_map_lat" id="t_map_lat"> 
+					<input hidden value="" name="t_map_lng"	id="t_map_lng">
+					<input hidden value="" name="t_marker_name" id="t_map_marker_name">
 				</div>
 				<br>
 				<div class="reg-btn">

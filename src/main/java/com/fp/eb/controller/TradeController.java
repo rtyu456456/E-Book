@@ -1,11 +1,14 @@
 package com.fp.eb.controller;
 
+
 import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -68,7 +71,14 @@ public class TradeController {
 //판매중 도서
 	@GetMapping("/trade.sale.now")
 	public String goTradeMyBook(UserDTO uDTO, HttpServletRequest req) {
-
+		 ServletContext servletContext = applicationContext.getBean(ServletContext.class);
+	        String tomcatRoot = servletContext.getRealPath("/");
+		System.out.println(tomcatRoot);
+		
+		
+		
+		
+		
 		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
 		uDTO.setU_id(u.getU_id());
 		tDAO.getTradeListMe(uDTO, req);
@@ -158,7 +168,7 @@ public class TradeController {
 	@GetMapping("/trade.reg.search")
 	public String tradeRegSearch(BookDTO bDTO, HttpServletRequest req) {
 		tDAO.tradeRegSearch(bDTO, req);
-		req.setAttribute("contentPage", "tradeSerachBook.jsp");
+		req.setAttribute("contentPage", "tradeSearchBook.jsp");
 		return "trade/tradeIndex";
 	}
 	@GetMapping("/trade.reg.search.name")
@@ -181,6 +191,17 @@ public class TradeController {
 		req.setAttribute("contentPage", "saleNow.jsp");
 		return "redirect:/trade.sale.now";
 	}
+	
+//거래 취소 기능
+	@GetMapping("/trade.cancle")
+	public String tradeCancle(TradeDTO tDTO, UserDTO uDTO, HttpServletRequest req) {
+		tDAO.tradeCancle(tDTO, req);
+		tDAO.getTradeListMe(uDTO, req);
+		req.setAttribute("contentPage", "sale.jsp");
+		req.setAttribute("salePage", "saleNow.jsp");
+		return "trade/tradeIndex";
+	}
+	
 	
 	
 // 거래 정보 수정 기능 이동

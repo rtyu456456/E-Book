@@ -5,7 +5,8 @@
     display: flex;
     flex-direction: column; /* 요소들을 세로로 배열 */
     justify-content: center; /* 수평 중앙 정렬 */
-    width: 86vw;
+    width: 88%;
+    max-width: 550pt;
 }
 
 .search-book-reg, .self-book-reg {

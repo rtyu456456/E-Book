@@ -20,7 +20,7 @@
 
 		<div class="book-info">
 			<div class="book-img">
-				<img alt="" src="">
+				<img alt="" src="tradeimgs/${trade.t_thumbnail}">
 			</div>
 			<div class="book-basic">
 				<div class="book-title">${trade.t_book_title }</div>
@@ -55,12 +55,25 @@
 
 			<c:choose>
 				<c:when test="${trade.t_owner == loginMember.u_id }">
-					<div class="trade-sell-me">
-						<button class="selled" onclick="confirmAndComplete(${trade.t_no})">판매
-							완료하기</button>
-						<button class="update"
-							onclick="location.href='trade.update.go?t_no=${trade.t_no}'">수정하기</button>
-					</div>
+
+					<c:choose>
+						<c:when test="${trade.t_soldout == 0 }">
+							<div class="trade-sell-me">
+								<button class="selled"
+									onclick="confirmAndComplete(${trade.t_no})">판매 완료하기</button>
+								<button class="tradeCancle"
+									onclick="confirmAndCancle(${trade.t_no})">판매 취소하기</button>
+								<button class="update"
+									onclick="location.href='trade.update.go?t_no=${trade.t_no}'">수정하기</button>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="trade-sell-me">
+								<button class="tradeCancle"
+									onclick="confirmAndCancle(${trade.t_no})">판매 기록 삭제 하기</button>
+							</div>
+						</c:otherwise>
+					</c:choose>
 				</c:when>
 				<c:otherwise>
 					<form action="trade.Send.Msg">
@@ -124,6 +137,17 @@
     if (confirmation) {
         // 확인 버튼을 클릭한 경우
         location.href = 'trade.complete?t_no=' + t_no;
+    } else {
+        // 취소 버튼을 클릭한 경우
+        // 아무 작업도 수행하지 않음
+    }
+}
+       // 판매 삭제 확인 
+    function confirmAndCancle(t_no) {
+    var confirmation = confirm("정말로 판매를 취소하시겠습니까?");
+    if (confirmation) {
+        // 확인 버튼을 클릭한 경우
+        location.href = 'trade.cancle?t_no=' + t_no;
     } else {
         // 취소 버튼을 클릭한 경우
         // 아무 작업도 수행하지 않음
