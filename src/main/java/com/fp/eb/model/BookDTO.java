@@ -12,6 +12,17 @@ public class BookDTO {
 	private int b_price;
 	private String b_thumbnail;
 	private int positive_percentage;
+	
+	private int bookmarkCheck;
+
+	
+	public int getBookmarkCheck() {
+		return bookmarkCheck;
+	}
+
+	public void setBookmarkCheck(int bookmarkCheck) {
+		this.bookmarkCheck = bookmarkCheck;
+	}
 
 	public BookDTO() {
 		// TODO Auto-generated constructor stub

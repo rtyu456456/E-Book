@@ -6,6 +6,7 @@ public class LikeDTO {
 	private String lr_where_type;
 	private int lr_where_no;
 	private int lr_type;
+	
 	public int getLr_no() {
 		return lr_no;
 	}

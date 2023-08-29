@@ -1,6 +1,7 @@
 package com.fp.eb.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,6 +47,10 @@ public interface MainMapper {
 	public UserDTO monthlyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req);
 
 	public List<BookDTO> hotBooks(BookDTO bDTO);
+
+	public Map<String, Object> likeDislikeCount(LikeDTO likeDTO);
+
+	
 
 
 

@@ -59,7 +59,7 @@
 		</div>
 	</div>
 	<!------- 메뉴 -------->
-	<dialog id="menu-dialog"> <!-- <div class="menu-screen"></div> -->
+	<dialog id="menu-dialog">
 	<form method="dialog">
 		<div class="side-menu-gh">
 			<button class="menu-title-gh" onclick="location.href='main'">

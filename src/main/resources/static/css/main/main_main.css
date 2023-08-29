@@ -1,55 +1,4 @@
 @charset "UTF-8";
-
-.card-content {
-  width: 20rem;
-  background-color: #fff;
-  border-radius: 1rem;
-  overflow: hidden;
-  margin: 5rem auto;
-  padding-bottom: 3rem;
-}
-
-.card-header {
-  padding: 0 1rem;
-  margin: 2rem 0;
-  font-size: 24px;
-}
-
-.card-description {
-  font-size: 20px;
-  padding: 1rem;
- 
-  /* 추가하기 */
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical; 
-  overflow: hidden;
-}
-.card-content-img {
-  width: 100%;
-}
-
-.card-content__more-btn {
-  appearance: none;
-  border: 1px solid black;
-  padding: 0.5em;
-  border-radius: 0.25em;
-  cursor: pointer;
-  margin: 1rem;
-}
-
-.card-content__more-btn::before {
-  content: '더보기';
-}
-
-.card-content__more-btn:checked::before {
-  content: '닫기';
-}
-
-.card-description:has(+ .card-content__more-btn:checked) {
-  -webkit-line-clamp:unset
-}
-
 /********화제의 도서********/
 .age-book-box {
 	width: 68vw;
@@ -236,8 +185,8 @@
 	opacity: 0.5;
 }
 
-.recommend-radio-gh {
-	font-family: inherit;
+.recommend-radio-gh div{
+	color: #779A76;
 	font-size: 1.2rem;
 	font-weight: 800;
 	margin-top: 1rem;
@@ -302,7 +251,6 @@
 
 .best-review-gh {
 	width: 70vw;
-	height: 8.5rem;
 	background-color: #F5F6FA;
 	border-radius: 2rem;
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25) inset;
@@ -322,7 +270,22 @@
 	overflow: hidden;
 	}
 
-.asdf {
-	-webkit-line-clamp: unset;
-}
+.best-review-gh.more{
+	width: 70vw;
+	height: 8.5rem;
+	background-color: #F5F6FA;
+	border-radius: 2rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25) inset;
+	padding: 1.5rem;
+	position: absolute;
+	top: 14.3rem;
+	left: 4.6vw;
 	
+	width: 70vw;
+	height: 8.7rem;
+	font-size: 1.5rem;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}	

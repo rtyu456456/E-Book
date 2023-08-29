@@ -13,9 +13,11 @@
 	<div class="detail-container-gh">
 		<!------- 책 정보 ------->
 		<div class="detail-top-gh">
+			<input hidden class="user_id" hidden value="${sessionScope.user.u_id }">
+			<input class="like-check" value="${bookSearch.bookmarkCheck}">
+			<input hidden class="like-no" hidden value="${bookSearch.b_no }">
 			<input hidden class="like-type" value="BOOK">
-			<img class="bookmark-gh" id="bookmarkGH"
-				src="/img/logo_bookmark_empty.png">
+			<img class="bookmark-gh" src="/img/logo_bookmark_empty.png">
 			<div class="detail-box-gh">
 				<img class="book-gh" src=${bookSearch.b_thumbnail }>
 				<div class="detail-info-gh">
@@ -61,8 +63,8 @@
 							<div class="detail-review-profile">
 								<img src="/img/${r.u_profile }">
 							</div>
-							<h6 class="detail-name-gh">${r.r_owner } / ${r.r_no } / ${r.likeCheck}</h6>
-							<h6 class="detail-grade-gh">현자</h6>
+							<h6 class="detail-name-gh">${r.r_owner }/ ${r.r_no } /
+								${r.likeCheck}</h6>
 							<h6 class="detail-date-gh">
 								<fmt:formatDate value="${r.r_date }"
 									pattern="yyyy-MM-dd / HH:mm" />
@@ -72,18 +74,19 @@
 							<h6>${r.r_contents }</h6>
 						</div>
 						<div class="detail-review-reputation">
-								<input class="user_id" hidden value="${sessionScope.user.u_id }">
-								<input class="like-no" hidden value="${r.r_no }">
-								<input class="like-check"  value="${r.likeCheck}">
-								<input hidden class="like-type" value="REVIEW">
+							<input class="user_id" hidden value="${sessionScope.user.u_id }">
+							<input class="like-no" hidden value="${r.r_no }"> <input
+								class="like-check" value="${r.likeCheck}"> <input hidden
+								class="like-type" value="REVIEW">
 							<button class="reviewLikeBtn like-dislike" value="1">
-								<img class="reviewLikeImg like-dislike-img" src="/img/review_like.png"> <span
-									class="reviewLikeCnt"><fmt:formatNumber
+								<img class="reviewLikeImg like-dislike-img"
+									src="/img/review_like.png"> <span class="reviewLikeCnt"><fmt:formatNumber
 										value="${r.r_like }" pattern="#,###" /></span>
 							</button>
 							<button class="reviewDislikeBtn like-dislike" value="2">
-								<img class="reviewDislikeImg like-dislike-img" src="/img/review_dislike.png">
-								<span class="reviewDislikeCnt"><fmt:formatNumber
+								<img class="reviewDislikeImg like-dislike-img"
+									src="/img/review_dislike.png"> <span
+									class="reviewDislikeCnt"><fmt:formatNumber
 										value="${r.r_dislike }" pattern="#,###" /></span>
 							</button>
 						</div>
