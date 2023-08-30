@@ -18,6 +18,7 @@ import com.fp.eb.model.CommunityLikeDTO;
 import com.fp.eb.model.CommunityPinned;
 import com.fp.eb.model.CommunityPostDTO;
 import com.fp.eb.model.CommunityReplyDTO;
+import com.fp.eb.model.UserDTO;
 
 @Service
 public class CommunityDAO {
@@ -89,8 +90,8 @@ public class CommunityDAO {
 		}
 	}
 
-	public void insertWritingPost(CommunityPostDTO cp) {
-		if (ss.getMapper(CommunityMapper.class).insertWritingPost(cp) == 1) {
+	public void insertWritingPost(CommunityPostDTO cp, UserDTO uDTO) {
+		if (ss.getMapper(CommunityMapper.class).insertWritingPost(cp, uDTO) == 1) {
 			System.out.println("글쓰기 등록 성공");
 		} else {
 			System.out.println("글쓰기 등록 실패");
@@ -98,8 +99,8 @@ public class CommunityDAO {
 
 	}
 
-	public void regReply(CommunityReplyDTO cr) {
-		if (ss.getMapper(CommunityMapper.class).regReply(cr) == 1) {
+	public void regReply(CommunityReplyDTO cr,  UserDTO uDTO) {
+		if (ss.getMapper(CommunityMapper.class).regReply(cr, uDTO) == 1) {
 			System.out.println("댓글 등록 성공");
 		} else {
 			System.out.println("댓글 등록 실패");
@@ -143,8 +144,8 @@ public class CommunityDAO {
 		}
 	}
 
-	public void insertPinnedCommu(CommunityLikeDTO cl) {
-		if (ss.getMapper(CommunityMapper.class).insertPinnedCommu(cl) == 1) {
+	public void insertPinnedCommu(CommunityLikeDTO cl, UserDTO uDTO) {
+		if (ss.getMapper(CommunityMapper.class).insertPinnedCommu(cl, uDTO) == 1) {
 			System.out.println("핀 등록 성공");
 		} else {
 			System.out.println("핀 등록 실패");
@@ -152,8 +153,8 @@ public class CommunityDAO {
 
 	}
 
-	public CommunityPinned getAllPinnedCommu() {
-	 return new CommunityPinned((ss.getMapper(CommunityMapper.class).getAllPinnedCommu()));
+	public CommunityPinned getAllPinnedCommu(UserDTO uDTO) {
+	 return new CommunityPinned((ss.getMapper(CommunityMapper.class).getAllPinnedCommu(uDTO)));
 	}
 
 	public int updatePinnedCommuZero(CommunityLikeDTO cl) {
@@ -165,9 +166,9 @@ public class CommunityDAO {
 		return ss.getMapper(CommunityMapper.class).updatePinnedCommuZero(cl);
 	}
 
-	public void checkPinnedCommu(CommunityLikeDTO cl) {
-		if (ss.getMapper(CommunityMapper.class).checkPinnedCommu(cl) == 1) {
-			if ((ss.getMapper(CommunityMapper.class).cheakPinnedTypeCommu(cl) == 0)) {
+	public void checkPinnedCommu(CommunityLikeDTO cl, UserDTO uDTO) {
+		if (ss.getMapper(CommunityMapper.class).checkPinnedCommu(cl, uDTO) == 1) {
+			if ((ss.getMapper(CommunityMapper.class).cheakPinnedTypeCommu(cl, uDTO) == 0)) {
 				ss.getMapper(CommunityMapper.class).updatePinnedCommuOne(cl);
 				System.out.println("핀 1로 업뎃 성공");
 			} else {
@@ -175,15 +176,15 @@ public class CommunityDAO {
 				return;
 
 			}
-		} else if (ss.getMapper(CommunityMapper.class).checkPinnedCommu(cl) == 0) {
-			insertPinnedCommu(cl);
+		} else if (ss.getMapper(CommunityMapper.class).checkPinnedCommu(cl, uDTO) == 0) {
+			insertPinnedCommu(cl, uDTO);
 			System.out.println("등록 성공");
 		}
 
 	}
 
-	public void commentMyPost(Model model) {
-		model.addAttribute("comment", ss.getMapper(CommunityMapper.class).commentMyPost());
+	public void commentMyPost(Model model, UserDTO uDTO) {
+		model.addAttribute("comment", ss.getMapper(CommunityMapper.class).commentMyPost(uDTO));
 	}
 
 	public void updateCheckComment(CommunityReplyDTO cr) {
@@ -194,8 +195,9 @@ public class CommunityDAO {
 		}
 	}
 
-	public void commentAlarm(Model model) {
-		model.addAttribute("commentAlarm", ss.getMapper(CommunityMapper.class).commentAlarm());
+	public void commentAlarm(Model model, UserDTO uDTO) {
+		model.addAttribute("commentAlarm", ss.getMapper(CommunityMapper.class).commentAlarm(uDTO));
 	}
+
 
 }

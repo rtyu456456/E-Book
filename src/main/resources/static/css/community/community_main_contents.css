@@ -2,6 +2,7 @@
 
 @media only screen and (max-width:1000px) {
 	.commu_contents {
+	height: 82vh;
 		margin: 0;
 		padding: 0;
 		background-color: #F5F6FA;

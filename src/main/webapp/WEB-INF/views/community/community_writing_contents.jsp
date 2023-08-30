@@ -22,6 +22,7 @@
 	</div>
 	<div class="commu-writing-btn">
 	<input type="hidden" name="c_no" value="${community.c_no }">
+	<input type="hidden" name="cp_owner" value="${sessionScope.user.u_id }">
 		<button name="cp_community" value="${community.c_no }" class="writing-btn">완료</button>
 	</div>
 </form>

@@ -42,7 +42,7 @@
 	<select id="commentMyPost"
 		resultType="com.fp.eb.model.CommunityReplyDTO">
 		select * from eb_community_reply, eb_community_post, eb_community where
-		cp_no= cr_cp_no and c_no = cp_community and cp_owner = '김포공주' and not cr_owner = '김포공주' and cr_like = 0
+		cp_no= cr_cp_no and c_no = cp_community and cp_owner = #{u_id} and not cr_owner = #{u_id} and cr_like = 0
 		and cr_date between current_date -30 and current_date
 		order by cr_date desc
 	</select>
@@ -50,7 +50,7 @@
 	<select id="commentAlarm"
 		resultType="int">
 		select count(*) from eb_community_reply, eb_community_post, eb_community where
-		cp_no= cr_cp_no and c_no = cp_community and cp_owner = '김포공주' and not cr_owner = '김포공주' and cr_like = 0
+		cp_no= cr_cp_no and c_no = cp_community and cp_owner = #{u_id} and not cr_owner = #{u_id} and cr_like = 0
 		and cr_date between current_date -30 and current_date
 		order by cr_date desc
 	</select>
@@ -87,30 +87,30 @@
 
 	<select id="getCountReplys" resultType="int">
 		select count(*) from
-		eb_community_reply where cr_cp_no = #{no}
+		eb_community_reply where cr_cp_no = #{cp_no}
 	</select>
 
-	<select id="getAllPinnedCommu"
+	<select id="getAllPinnedCommu" parameterType="com.fp.eb.model.UserDTO"
 		resultType="com.fp.eb.model.CommunityDTO">
 		select c_name, c_no, lr_type from eb_community,
 		eb_like_record
 		where lr_where_no = c_no and
 		lr_type = 1 and
 		lr_owner =
-		'김포공주'
+		#{u_id}
 	</select>
 
 	<select id="checkPinnedCommu" resultType="int">
 		select count(*) from
 		eb_like_record where lr_where_type = 'COMMUNITY' and
-		lr_owner = '김포공주'
-		and lr_where_no = #{lr_where_no}
+		lr_owner = #{uDTO.u_id}
+		and lr_where_no = #{cl.lr_where_no}
 	</select>
 
 	<select id="cheakPinnedTypeCommu" resultType="int">
 		select lr_type from
 		eb_like_record where
-		lr_where_type = 'COMMUNITY' and lr_owner = '김포공주'
+		lr_where_type = 'COMMUNITY' and lr_owner = #{u_id}
 		and lr_where_no = #{lr_where_no}
 	</select>
 	
@@ -142,18 +142,18 @@
 
 	<insert id="insertWritingPost">
 		insert into eb_community_post
-		values(eb_cp_seq.nextval, '김포공주', #{cp_title}, #{cp_contents},
-		#{cp_community}, 0, 0, current_date)
+		values(eb_cp_seq.nextval, #{uDTO.u_id}, #{cp.cp_title}, #{cp.cp_contents},
+		#{cp.cp_community}, 0, 0, current_date)
 	</insert>
 
 	<insert id="insertPinnedCommu">
 		insert into eb_like_record values(eb_lr_seq.nextval,
-		'김포공주', 'COMMUNITY', #{lr_where_no}, 1, current_date)
+		#{uDTO.u_id}, 'COMMUNITY', #{cl.lr_where_no}, 1, current_date)
 	</insert>
 
 	<insert id="regReply">
 		insert into eb_community_reply
-		values(eb_cr_seq.nextval, '김포공주', #{cr_cp_no}, #{cr_contents} ,0,0,
+		values(eb_cr_seq.nextval, #{uDTO.u_id}, #{cr.cr_cp_no}, #{cr.cr_contents} ,0,0,
 		current_date)
 	</insert>
 

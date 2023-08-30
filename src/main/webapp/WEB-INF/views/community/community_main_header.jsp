@@ -23,7 +23,7 @@
 			<form action="/comment.my.post">
 				<img id="commu-alarm" src="/img/commentAlarm.png">
 				<button class="login_box">
-					<img class="login_img" alt="" src="/img/유저 img.jpg">
+					<img class="login_img" alt="" src="${sessionScope.user.u_profile }">
 				</button>
 			</form>
 			<input type="hidden" id="count-alarm" value="${commentAlarm }">

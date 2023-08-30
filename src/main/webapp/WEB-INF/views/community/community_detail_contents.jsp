@@ -14,40 +14,45 @@
 		<br>
 		<div class="white-line">
 			<div class="post_detail">
-				<div class="post_user_img">
-					<img alt="" src="/img/유저 img.jpg">
-				</div>
+				<c:if test="${communityPost.cp_owner == sessionScope.user.u_id }">
+					<div class="post_user_img">
+						<img alt="" src="${sessionScope.user.u_profile }">
+					</div>
+				</c:if>
+				
 				<div class="post_info">
 					<div class="post_user_info">
 						<div class="post_user">${communityPost.cp_owner }</div>
-						<div class="post_user_grade">유저 등급</div>
+						<div class="post_user_grade"></div>
 					</div>
 					<div class="post_time">
 						<fmt:formatDate value="${communityPost.cp_date }"
 							pattern="MM/dd hh:mm" />
 					</div>
 				</div>
-				<div class="menu-etc-onoff">
-					<div id="post_menu_etc">
-						<button name="cp_no" value="${communityPost.cp_no }"
-							class="menu-etc-btn" onclick="showMenu(this)">
-							<img alt="" src="/img/menu_etc.png">
-						</button>
-					</div>
-					<div id="menu-etc">
-						<img alt="" src="/img/etc-btn2.png">
-						<div class="etc-btn">
-							<form action="/go.update.post">
-								<input type="hidden" name="c_no" value="${community.c_no }">
-								<button name="cp_no" value="${communityPost.cp_no }"
-									class="etc-btn-1">수정</button>
-							</form>
-							<br> <br>
-							<button id="delete-post-btn" value="${communityPost.cp_no }"
-								class="etc-btn-2">삭제</button>
+				<c:if test="${communityPost.cp_owner == sessionScope.user.u_id }">
+					<div class="menu-etc-onoff">
+						<div id="post_menu_etc">
+							<button name="cp_no" value="${communityPost.cp_no }"
+								class="menu-etc-btn" onclick="showMenu(this)">
+								<img alt="" src="/img/menu_etc.png">
+							</button>
+						</div>
+						<div id="menu-etc">
+							<img alt="" src="/img/etc-btn2.png">
+							<div class="etc-btn">
+								<form action="/go.update.post">
+									<input type="hidden" name="c_no" value="${community.c_no }">
+									<button name="cp_no" value="${communityPost.cp_no }"
+										class="etc-btn-1">수정</button>
+								</form>
+								<br> <br>
+								<button id="delete-post-btn" value="${communityPost.cp_no }"
+									class="etc-btn-2">삭제</button>
+							</div>
 						</div>
 					</div>
-				</div>
+				</c:if>
 			</div>
 			<br>
 			<div class="post">
@@ -80,7 +85,7 @@
 					<div class="reply_date">
 						<fmt:formatDate value="${cr.cr_date }" pattern="MM/dd HH:mm" />
 
-						<c:if test="${cr.cr_owner == '김포공주'}">
+						<c:if test="${cr.cr_owner == sessionScope.user.u_id }">
 							<div class="empty-width"></div>
 							<button
 								onclick="deleteReply('${cr.cr_no}', '${communityPost.cp_no }', '${community.c_no }')"
@@ -114,7 +119,7 @@
 				</div>
 			</div>
 		</form>
-		 <div class="empty_space"></div> 
+		<div class="empty_space"></div>
 	</div>
 
 	<dialog id="deleteModal">
