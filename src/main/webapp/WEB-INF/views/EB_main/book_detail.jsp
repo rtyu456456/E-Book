@@ -13,11 +13,12 @@
 	<div class="detail-container-gh">
 		<!------- 책 정보 ------->
 		<div class="detail-top-gh">
-			<input hidden class="user_id" hidden value="${sessionScope.user.u_id }">
-			<input class="like-check" value="${bookSearch.bookmarkCheck}">
+			<input hidden class="user_id" hidden
+				value="${sessionScope.user.u_id }"> <input
+				class="like-check-bookmark" value="${bookSearch.bookmarkCheck}">
 			<input hidden class="like-no" hidden value="${bookSearch.b_no }">
-			<input hidden class="like-type" value="BOOK">
-			<img class="bookmark-gh" src="/img/logo_bookmark_empty.png">
+			<input hidden class="like-type" value="BOOK"> <img
+				class="bookmark-gh" src="/img/logo_bookmark_empty.png">
 			<div class="detail-box-gh">
 				<img class="book-gh" src=${bookSearch.b_thumbnail }>
 				<div class="detail-info-gh">
@@ -63,8 +64,21 @@
 							<div class="detail-review-profile">
 								<img src="/img/${r.u_profile }">
 							</div>
-							<h6 class="detail-name-gh">${r.r_owner }/ ${r.r_no } /
-								${r.likeCheck}</h6>
+							<h6 class="detail-name-gh">${r.r_owner }</h6>
+							<div class="recommend-radio-gh">
+								<c:set var="r.r_type" value="1" />
+								<c:choose>
+									<c:when test="${r.r_type eq 1}">
+										<div>이 책을 추천합니다</div>
+									</c:when>
+									<c:when test="${r.r_type eq 2}">
+										<div>이 책을 추천하지 않습니다</div>
+									</c:when>
+									<c:otherwise>
+										<div> </div>
+									</c:otherwise>
+								</c:choose>
+							</div>
 							<h6 class="detail-date-gh">
 								<fmt:formatDate value="${r.r_date }"
 									pattern="yyyy-MM-dd / HH:mm" />

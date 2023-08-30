@@ -3,12 +3,21 @@ sortItems();
 setLike();
 likeFunc();
 disLikeFunc();
-moreReview();
 bookmarkFunc();
 setBookmark();
 
 });
 
+
+/*베스트 서평 상세*/
+$(function() {
+	let bestReview = document.querySelector('.best-review-gh');
+	let reviewDialog = document.querySelector('#best-review-dialog');
+	menu.addEventListener('click', function (event){
+		console.log(111);
+		reviewDialog.showModal();
+	})
+});
 
 /*사이드 메뉴 창*/
 $(function() {
@@ -20,26 +29,10 @@ $(function() {
 	})
 });
 
-	/*let num = 0;
-	let bookmarkImg = [ "/img/logo_bookmark_empty.png",
-			"/img/logo_bookmark.png" ];
-	$("#bookmarkGH").click(function() {
-		if (num == 1) {
-			num = 0;
-			jQuery("#logoGH").show();
-		} else {
-			num++;
-			jQuery("#logoGH").hide();
-		}
-			$(this).attr("src", bookmarkImg[num]);
-		});
-		*/
-/*책갈피 끼우기*/
-/*누르면 lr_where_no = b_no를 이용해서
-lr_where_type='BOOK' -> lr_type_number에 1을 넣었다 뺐다 할 수 있게*/
 
+/*책갈피 끼우기*/
 function setBookmark(){
-	let likeCheck = $(".like-check");
+	let likeCheck = $(".like-check-bookmark");
 	console.log(likeCheck);
 	$(likeCheck).each(function(i, e){
 		console.log("i 값: " + i);
@@ -47,7 +40,7 @@ function setBookmark(){
 		if(e.value == 0){
 			$(e).val(1);
 			jQuery("#logoGH").show();
-			console.log($(".bookmark-gh").attr("src", "/img/logo_bookmark_emty.png"));
+			console.log($(".bookmark-gh").attr("src", "/img/logo_bookmark_empty.png"));
 		}else if(e.value == 1){
 			$(e).val(0);
 			jQuery("#logoGH").hide();
@@ -63,7 +56,7 @@ function bookmarkFunc(){
 	let lr_owner = 'gh';   // $('.user_id').val();
 	let lr_where_type = $(this).parent().find('.like-type').val();
 	let lr_where_no = $(this).parent().find('.like-no').val();
-	let lr_typeEl = $(this).parent().find('.like-check'); // 0, 1
+	let lr_typeEl = $(this).parent().find('.like-check-bookmark'); // 0, 1
 		if ($(lr_typeEl).val() == 0 || $(lr_typeEl).val() == "") {
 			console.log("끼우기-------------");
 			num++;
@@ -100,56 +93,6 @@ function bookmarkFunc(){
 
 	
 }
-
-
-
-/*베스트 서평 더보기*/
-
-function moreReview() {
-	 $('.moreReviewBtn').click(function() {
-    const h6 = $(this).prev('h6');
-    if (h6.hasClass('asdf')) {
-      h6.removeClass('asdf');
-      $(this).text('Show Less');
-    } else {
-      h6.addClass('asdf');
-      $(this).text('Show More');
-    }
-  });
-  
-};
-	
-	/*$('.best-review-gh').click(function() {
-		let h6 = $(this).prev('h6');
-		if (h6.hasClass('asdf')) {
-			h6.removeClass('asdf');
-			$(this).text('Show Less');
-		} else {
-			let r_contents = "<c:out value='${dailyBest.r_contents}'/>";
-			h6.addClass('asdf');
-			$(this).text(r_contents);
-			console.log(r_contents);
-		}
-		
-		
-	$('.best-review-gh').each(function(){
-		let h6 = $(this).find('h6');
-		let button = $(this).find('.best-review-gh');
-		if (h6[0].scrollHeight > h6.innerHeight()){
-			button.show();
-		} else{
-			button.hide();
-		}
-		
-	});*/
-
-
-
-
-
-
-
-
 
 
 /*서평 정렬*/
@@ -202,6 +145,7 @@ function setLike(){
 	let likeCheck = $(".like-check");
 	console.log(likeCheck);
 	$(likeCheck).each(function(i, e){
+		console.log(e.value)
 		if(e.value == 1){
 			console.log($(e).parent().find('.reviewLikeImg').addClass( 'on' ));
 			//console.log($(e).parent().find('.reviewLikeCnt').addClass( 'on' ));

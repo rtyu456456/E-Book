@@ -54,6 +54,20 @@
 	</div>
 
 	<!------ 베스트 서평 ------>
+	<dialog id="best-review-dialog">
+	<form method="dialog">
+	<div class="best-review-detail">
+		asdfasdf
+	</div>
+	</form>
+	</dialog>
+	
+	
+	
+	
+	
+	
+	<!------ 오늘 ------>
 	<div class="best-gh">
 		<div class="today-best-gh">
 			<h4 class="best-title-gh">오늘의 베스트 서평 🖉</h4>
@@ -79,9 +93,6 @@
 						<div class="recommend-radio-gh">
 							<c:set var="dailyBest.r_type" value="1" />
 							<c:choose>
-								<c:when test="${dailyBest.r_type eq 0}">
-									<div>선택하지 않음</div>
-								</c:when>
 								<c:when test="${dailyBest.r_type eq 1}">
 									<div>이 책을 추천합니다</div>
 								</c:when>
@@ -146,9 +157,6 @@
 						<div class="recommend-radio-gh">
 							<c:set var="weeklyBest.r_type" value="1" />
 							<c:choose>
-								<c:when test="${weeklyBest.r_type eq 0}">
-									<div>선택하지 않음</div>
-								</c:when>
 								<c:when test="${weeklyBest.r_type eq 1}">
 									<div>이 책을 추천합니다</div>
 								</c:when>
@@ -156,7 +164,7 @@
 									<div>이 책을 추천하지 않습니다</div>
 								</c:when>
 								<c:otherwise>
-									<div>알 수 없는 값</div>
+									<div> </div>
 								</c:otherwise>
 							</c:choose>
 						</div>

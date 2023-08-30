@@ -78,6 +78,7 @@ public class MainDAO {
 			if (user != null) {
 			//if (mainMapper.getLikeInfo(likeDTO) != null) {
 				r.setLikeCheck(mainMapper.getLikeInfo(likeDTO).getLr_type());
+				System.out.println(mainMapper.getLikeInfo(likeDTO).getLr_type());
 				Map<String, Object> likeDislike = mainMapper.likeDislikeCount(likeDTO);
 				System.out.println("-----------------");
 				System.out.println(likeDislike);
