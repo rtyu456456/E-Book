@@ -25,7 +25,7 @@ public class TradeDAO {
 
 	@Autowired
 	private SqlSession ss;
-	
+
 	@Autowired
 	private ServletContext uploadPath;
 
@@ -117,31 +117,30 @@ public class TradeDAO {
 
 	public void regTrade(TradeDTO tDTO, HttpServletRequest req) {
 
-	
-
 		System.out.println(tDTO);
 		String path = uploadPath.getRealPath("uploadFolder");
 		System.out.println(path);
-		try {
-			String orgFileName = tDTO.getT_file().getOriginalFilename();
-			String saveFileName = UUID.randomUUID().toString().split("-")[0]
-					+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
-			System.out.println(orgFileName);
-			System.out.println(saveFileName);
-			System.out.println("----------------");
-			String rootPath = req.getServletContext().getRealPath("/");
-	       System.out.println(rootPath);
-			if (! tDTO.getT_file().getOriginalFilename().isEmpty()) {
-				// 실제 업로드 코드
-				tDTO.getT_file().transferTo(new File(path, saveFileName));
-				req.setAttribute("r", "file uploaded successfully!");
-				req.setAttribute("fileName", saveFileName);
-				tDTO.setT_thumbnail("uploadFolder/" + saveFileName);
+		if (tDTO.getT_file() != null) {
+			try {
+				String orgFileName = tDTO.getT_file().getOriginalFilename();
+				String saveFileName = UUID.randomUUID().toString().split("-")[0]
+						+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
+				System.out.println(orgFileName);
+				System.out.println(saveFileName);
+				System.out.println("----------------");
+				String rootPath = req.getServletContext().getRealPath("/");
+				System.out.println(rootPath);
+				if (!tDTO.getT_file().getOriginalFilename().isEmpty()) {
+					// 실제 업로드 코드
+					tDTO.getT_file().transferTo(new File(path, saveFileName));
+					req.setAttribute("r", "file uploaded successfully!");
+					req.setAttribute("fileName", saveFileName);
+					tDTO.setT_thumbnail("uploadFolder/" + saveFileName);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-
 		try {
 			if (ss.getMapper(TradeMapper.class).regTradeBook(tDTO) == 1) {
 				req.setAttribute("result", "등록 성공");
@@ -199,6 +198,7 @@ public class TradeDAO {
 		} catch (Exception e) {
 		}
 	}
+
 //책 판매 취소하기 == 등록 삭제
 	public void tradeCancle(TradeDTO tDTO, HttpServletRequest req) {
 

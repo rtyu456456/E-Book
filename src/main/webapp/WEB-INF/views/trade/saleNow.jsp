@@ -10,8 +10,6 @@
 <link rel="stylesheet" href="css/trade/saleNow.css">
 </head>
 <body>
-${pageContext.request.contextPath}111111
-<img src="<c:url value='${pageContext.request.contextPath}' />" alt="My Image">
 	<div class="trade-all-list">
 		<c:forEach var="t" items="${trades }">
 			<div class="trade-list"

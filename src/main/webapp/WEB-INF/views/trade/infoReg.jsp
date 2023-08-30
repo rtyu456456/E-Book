@@ -95,11 +95,10 @@
 						</div>
 						<div class="input-group3">
 							<img alt="" src="${param.thumbnail }"> 
-<%-- 							${param.thumbnail } --%>
-							<input type="hidden" value="${param.thumbnail }" name="t_thumbnail"
-							oninput="localStorage.setItem('t_thumbnail', this.value)">
+ 							${param.thumbnail }
+							<input type="" value="${param.thumbnail}" name="t_thumbnail">
 							<script> 
-// 								localStorage.setItem('t_file', '${param.thumbnail}');
+ 								localStorage.setItem('t_thumbnail', '${param.thumbnail}');
  							</script>
 						</div>
 					</c:when>
