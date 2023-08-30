@@ -2,7 +2,6 @@ package com.fp.eb.service;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,7 @@ public class UserDAO {
 
 	@Autowired
 	private UserMapper uMapper;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder bEncoder;
 
@@ -44,16 +43,18 @@ public class UserDAO {
 		}
 
 	}
-	
+
 	public UserDTO getUserByID(String id) {
 		return uMapper.getUserById(id);
 	}
 
 	public void login2(HttpServletRequest req, UserDTO uDTO) {
 		UserDTO dbMember = uMapper.getUserById(uDTO.getU_id());
+		System.out.println(uDTO.getU_pw());
 		System.out.println(">>" + dbMember);
 		if (dbMember != null) {
-			if (uDTO.getU_pw().equals(dbMember.getU_pw())) {
+			if (bEncoder.matches(uDTO.getU_pw(), dbMember.getU_pw())) {
+				System.out.println("세션에 넣기 성공");
 				req.getSession().setAttribute("user", dbMember);
 				req.getSession().setMaxInactiveInterval(60 * 60);
 			} else {
@@ -65,7 +66,25 @@ public class UserDAO {
 			return;
 		}
 
+	}
+
+	public int pwCheck(HttpServletRequest req, UserDTO uDTO) {
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		uDTO.setU_id(user.getU_id());
+		UserDTO dbMember = uMapper.getUserById(uDTO.getU_id());
+		System.out.println(uDTO.getU_pw());
 		
+		if (dbMember != null) {
+			if (bEncoder.matches(uDTO.getU_pw(), dbMember.getU_pw())) {
+				System.out.println("비밀번호 일치");
+				return 1;
+			} else {
+				System.out.println("비밀번호 불일치");
+				return 0;
+			}
+		}
+		System.out.println("아이디가 업어");
+		return 0;
 	}
 
 }

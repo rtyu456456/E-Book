@@ -192,12 +192,18 @@ body * {
 			console.log(del_pw.value);
 			
 			$.ajax({
-				url : "checkDelpw.do",
+				type : 'post',
+				url : "pwCheck.do",
 				data : {
 					u_pw : del_pw.value
 				},
 				success : function(data) {
 					console.log('ajax는 돌아간듯');
+					if(data == 1){
+						location.href="delUser.do";
+					} else {
+						console.log('비밀번호 불일치');
+					}
 				    
 				}
 			}); // ajax end

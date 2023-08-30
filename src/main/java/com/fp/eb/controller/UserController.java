@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fp.eb.model.BookDTO;
 import com.fp.eb.model.ReviewDTO;
@@ -57,7 +58,22 @@ public class UserController {
 	public String loginDodo(HttpServletRequest req, UserDTO uDTO) {
 		System.out.println(uDTO);
 		uDAO.login2(req, uDTO);
-		return "redirect:/main";
+		return "redirect:/usermain";
+	}
+	
+	@ResponseBody
+	@PostMapping("/pwCheck.do")
+	public int pwCheck(HttpServletRequest req, UserDTO uDTO) {
+		
+		return uDAO.pwCheck(req, uDTO);
+	}
+	
+	
+	@PostMapping("/delUser.do")
+	public String delUser(HttpServletRequest req, UserDTO uDTO) {
+		System.out.println(uDTO);
+		uDAO.login2(req, uDTO);
+		return "redirect:/usermain";
 	}
 	
 	
