@@ -39,6 +39,8 @@ public interface CommunityMapper {
 
 	List<CommunityReplyDTO> getAllReplys(CommunityPostDTO cp);
 	
+	List<CommunityReplyDTO> commentMyPost();
+	
 	int getCountReplys(BigDecimal bigDecimal);
 
 	int deleteCommunityPost(CommunityPostDTO cp);
@@ -72,6 +74,10 @@ public interface CommunityMapper {
 	int checkPinnedCommu(CommunityLikeDTO cl);
 	
 	int cheakPinnedTypeCommu(CommunityLikeDTO cl);
+
+	int updateCheckComment(CommunityReplyDTO cr);
+
+	int commentAlarm();
 
 	
 	

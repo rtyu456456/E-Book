@@ -12,8 +12,53 @@ public class CommunityReplyDTO {
 	private BigDecimal cr_like;
 	private BigDecimal cr_dislike;
 	private Date cr_date;
+	private String cr_date2;
+	
+	private int cp_no;
+	
+	private String c_name;
+	private int c_no;
 	
 	
+	
+	public String getCr_date2() {
+		return cr_date2;
+	}
+
+
+	public void setCr_date2(String cr_date2) {
+		this.cr_date2 = cr_date2;
+	}
+
+
+	public int getCp_no() {
+		return cp_no;
+	}
+	
+	
+	public void setCp_no(int cp_no) {
+		this.cp_no = cp_no;
+	}
+	public String getC_name() {
+		return c_name;
+	}
+
+
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
+	}
+
+
+	public int getC_no() {
+		return c_no;
+	}
+
+
+	public void setC_no(int c_no) {
+		this.c_no = c_no;
+	}
+
+
 	public CommunityReplyDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -99,6 +144,7 @@ public class CommunityReplyDTO {
 
 	public void setCr_date(Date cr_date) {
 		this.cr_date = cr_date;
+		this.cr_date2 = Time.calccommentdate(cr_date);
 	}
 
 

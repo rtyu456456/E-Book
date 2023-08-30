@@ -10,7 +10,7 @@
 		background-color: white;
 	}
 	.white-line {
-		border: 5px solid white;
+		height: 100%;
 	}
 	.post_detail {
 		display: flex;
@@ -18,7 +18,6 @@
 		margin: auto;
 		padding: auto;
 		align-items: center;
-		justify-content: space-between;
 		padding: auto;
 	}
 	.post_user_img {
@@ -32,7 +31,7 @@
 	}
 	.post_info {
 		position: relative;
-		left: -11rem;
+		margin-left: 2rem;
 	}
 	.post_user_info {
 		display: flex;
@@ -72,8 +71,8 @@
 	}
 	#menu-etc {
 		position: relative;
-		top: -7rem;
-		right: 6rem;
+		top: -4rem;
+		left: 21rem;
 		visibility: hidden;
 	}
 	#menu-etc img {
@@ -180,21 +179,22 @@
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	.reply_txt {
+		word-break:break-all;
+		word-wrap: break-word;
 		position: relative;
 		padding: 1em;
-		font-size: 2.5rem;
+		font-size: 2.5em;
 		font-weight: 300;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	.reply_date {
-		align-items: center; 
-		display : flex;
+		align-items: center;
+		display: flex;
 		position: relative;
 		left: 2rem;
 		font-size: 2rem;
 		font-weight: 500;
 		font-family: 'IBM Plex Sans KR', sans-serif;
-		display: flex;
 	}
 	.empty-width {
 		width: 66%;
@@ -226,7 +226,8 @@
 		width: 90%;
 	}
 	.post_reply_text {
-		resize: none;
+	
+		resize : none;
 		position: relative;
 		background-color: transparent;
 		font-size: 3rem;
@@ -236,6 +237,7 @@
 		border: none;
 		outline-color: #F5F6FA;
 		caret-color: #F66E6E;
+		resize: none;
 	}
 	.post_reply_text:focus::placeholder {
 		color: #F5F6FA;

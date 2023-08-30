@@ -114,6 +114,7 @@
 				</div>
 			</div>
 		</form>
+		 <div class="empty_space"></div> 
 	</div>
 
 	<dialog id="deleteModal">

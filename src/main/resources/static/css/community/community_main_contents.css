@@ -7,7 +7,7 @@
 		background-color: #F5F6FA;
 	}
 	.commu_content {
-		margin-top:5rem;
+		margin-top: 5rem;
 		vertical-align: middle;
 	}
 	.commu_board {
@@ -41,6 +41,24 @@
 		max-height: 30px;
 		max-width: 30px;
 	}
+	.pinned-btn {
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		padding-left: 3rem;
+		margin: 1.5rem;
+		font-size: 2.2em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight: 700;
+		color: #26283D;
+		border: none;
+		background-color: transparent;
+	}
+	.pinned-btn img{
+		max-height: 30px;
+		max-width: 30px;
+	}
+	
 	.board_box {
 		border-radius: 3rem;
 		background-color: white;

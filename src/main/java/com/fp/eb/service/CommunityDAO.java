@@ -78,7 +78,7 @@ public class CommunityDAO {
 	}
 
 	public void seachCommunity(CommunityDTO c, Model model) {
-		model.addAttribute("communitys", ss.getMapper(CommunityMapper.class).seachAllCommunity(c));
+			model.addAttribute("communitys", ss.getMapper(CommunityMapper.class).seachAllCommunity(c));
 	}
 
 	public void insertCommunityPost(CommunityDTO c, Model model) {
@@ -156,13 +156,13 @@ public class CommunityDAO {
 	 return new CommunityPinned((ss.getMapper(CommunityMapper.class).getAllPinnedCommu()));
 	}
 
-	public void updatePinnedCommuZero(CommunityLikeDTO cl) {
+	public int updatePinnedCommuZero(CommunityLikeDTO cl) {
 		if (ss.getMapper(CommunityMapper.class).updatePinnedCommuZero(cl) == 1) {
 			System.out.println("핀 0으로 업뎃 성공");
 		} else {
 			System.out.println("핀 0으로 업뎃 실패");
 		}
-
+		return ss.getMapper(CommunityMapper.class).updatePinnedCommuZero(cl);
 	}
 
 	public void checkPinnedCommu(CommunityLikeDTO cl) {
@@ -180,6 +180,22 @@ public class CommunityDAO {
 			System.out.println("등록 성공");
 		}
 
+	}
+
+	public void commentMyPost(Model model) {
+		model.addAttribute("comment", ss.getMapper(CommunityMapper.class).commentMyPost());
+	}
+
+	public void updateCheckComment(CommunityReplyDTO cr) {
+		if (ss.getMapper(CommunityMapper.class).updateCheckComment(cr) == 1) {
+			System.out.println("like 1로 업뎃 성공");
+		} else {
+			System.out.println("like 1로 업뎃 실패");
+		}
+	}
+
+	public void commentAlarm(Model model) {
+		model.addAttribute("commentAlarm", ss.getMapper(CommunityMapper.class).commentAlarm());
 	}
 
 }

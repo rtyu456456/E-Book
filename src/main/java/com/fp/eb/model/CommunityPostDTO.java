@@ -20,6 +20,18 @@ public class CommunityPostDTO {
 	private String cp_seach;
 	
 	
+	private int c_no;
+	
+	
+	
+
+	public int getC_no() {
+		return c_no;
+	}
+
+	public void setC_no(int c_no) {
+		this.c_no = c_no;
+	}
 
 	public String getCp_seach() {
 		return cp_seach;
