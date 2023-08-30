@@ -22,6 +22,10 @@
 		const t_price = localStorage.getItem('t_price');
 		const t_contents = localStorage.getItem('t_contents');
 		const t_thumbnail = localStorage.getItem('t_thumbnail');
+		const t_thumbnail = localStorage.getItem('t_map_lat');
+		const t_thumbnail = localStorage.getItem('t_map_lng');
+		const t_thumbnail = localStorage.getItem('t_map_marker_name');
+		
 		
 		if (localStorage.length !== 0) {
 			document.getElementsByName('t_title')[0].value = t_title;
@@ -31,9 +35,11 @@
 			document.getElementsByName('t_price')[0].value = t_price;
 			document.getElementsByName('t_contents')[0].value = t_contents;
 			document.getElementsByName('t_thumbnail')[0].value = t_thumbnail;
-		}
+			document.getElementsByName('t_map_lat')[0].value = t_map_lat;
+			document.getElementsByName('t_map_lng')[0].value = t_map_lng;
+			document.getElementsByName('t_marker_name')[0].value = t_marker_name;
 	}
-
+	}
 // 	페이지 로드 시에 Local Storage에서 값 불러오기
 	window.onload = function() {
 		loadInputsFromLocalStorage();
@@ -47,13 +53,13 @@
 	<div class="container-reg">
 		<div class="reginfo">
 			<br>
-			<form action="reg.trade.book" method="post"
+			<form action="trade.update.do" method="post"
 				enctype="multipart/form-data" id="regForm">
 				<br>
 				<div class="book-info-reg">책 정보를 입력해 주세요</div>
-				<br> <input type="hidden"
-					value="${sessionScope.loginMember.u_id }" name="t_owner">
-
+				<br> <input type="hidden" value="${sessionScope.user.u_id }"
+					name="t_owner"> <input type="hidden" value="${trade.t_no }"
+					name="t_no">
 				<div class="input-group">
 					<input placeholder="글 제목" name="t_title"
 						oninput="localStorage.setItem('t_title', this.value)">
@@ -61,7 +67,6 @@
 						localStorage.setItem('t_title', '${trade.t_title}');
 					</script>
 				</div>
-
 
 				<div class="input-group">
 					<input placeholder="책 이름" name="t_book_title"
@@ -95,10 +100,12 @@
  					</script>
 				</div>
 
-
 				<div class="input-group">
-					<input type="file" name="t_file" value=""
+					<input type="file" name="t_thumbmail" value="${trade.t_thumbnail }"
 						oninput="localStorage.setItem('t_thumbnail', this.value)">
+					<script> 
+						localStorage.setItem('t_thumbnail', '${trade.t_thumbnail}');
+ 					</script>
 				</div>
 
 
@@ -110,14 +117,29 @@
 							localStorage.setItem('t_contents', '${trade.t_contents}');
  					</script>
 				</div>
-				<div class="input-group">
-					<a class="btn-open-modal">희망 장소 선택하기</a> <br> <span
-						id="input-content"></span> <input hidden value="" name="t_map_lat"
-						id="t_map_lat"> <input hidden value="" name="t_map_lng"
-						id="t_map_lng"> <input hidden value="" name="t_marker_name" id="t_map_marker_name">
 
+				<div class="input-group">
+					<a class="btn-open-modal">희망 장소 선택하기</a> <br>
+					 <span id="input-content"></span>
+					<div>
+						<input type="hidden" value="" name="t_map_lat" id="t_map_lat">
+						<script> 
+							localStorage.setItem('t_map_lat', '${trade.t_map_lat}');
+						</script>
+					</div>
+					<div>
+						<input type="hidden" value="" name="t_map_lng" id="t_map_lng">
+						<script> 
+							localStorage.setItem('t_map_lng', '${trade.t_map_lng}');
+						</script>
+					</div>
+					<div>
+						<input type="hidden" value="" name="t_marker_name" id="t_marker_name">
+						<script> 
+							localStorage.setItem('t_marker_name', 'input-content'); <br>
+						</script>
+					</div>
 				</div>
-				<br>
 				<div class="reg-btn">
 					<button>등록하기</button>
 				</div>
@@ -206,7 +228,7 @@
 
 			let t_map_lat = document.getElementById('t_map_lat').value = latitude;
 			let t_map_lng = document.getElementById('t_map_lng').value = longitude;
-			let t_map_marker_name = document.getElementById('t_map_marker_name').value = inputContent;
+			let t_map_marker_name = document.getElementById('t_marker_name').value = inputContent;
 			document.getElementById('input-content').innerText = inputContent;
 			
 		    // 모달 닫기

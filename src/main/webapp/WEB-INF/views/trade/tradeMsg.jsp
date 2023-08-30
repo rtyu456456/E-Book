@@ -9,18 +9,17 @@
 <link rel="stylesheet" href="css/trade/tradeMsg.css">
 </head>
 <body>
-
 	<div class="container-msg">
 		<div class="msg-nav">
 			<div class="msg-to">
-				<a href="/trade.Msg.get.to?u_id=${sessionScope.loginMember.u_id}">
-					<span> 받은 쪽지 </span>
+				<a href="/trade.Msg.get.to?u_id=${sessionScope.user.u_id}"> <span>
+						받은 쪽지 </span>
 				</a>
 			</div>
 
 			<div class="msg-from">
-				<a href="/trade.Msg.get.from?u_id=${sessionScope.loginMember.u_id}">
-					<span> 보낸 쪽지 </span>
+				<a href="/trade.Msg.get.from?u_id=${sessionScope.user.u_id}"> <span>
+						보낸 쪽지 </span>
 				</a>
 			</div>
 		</div>

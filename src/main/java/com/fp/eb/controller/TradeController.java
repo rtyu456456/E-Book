@@ -28,13 +28,19 @@ public class TradeController {
 	@Autowired
 	private TradeDAO tDAO;
 
+	
+//	  private UserDTO getUserFromSession(HttpServletRequest req) {
+//	        return (UserDTO) req.getSession().getAttribute("user");
+//	    }
+	
 	@GetMapping("/trade.go")
 	public String goTrade(TradeDTO tDTO, HttpServletRequest req) {
 
 //		 로그인 가 데이터
-		UserDTO uDTO = new UserDTO("hm", "hm", "하민", "img_test", "hmin0701@naver.com", "male", 27, 230203, 10, 30,
-				"초심자", "0");
-		req.getSession().setAttribute("loginMember", uDTO);
+//		UserDTO uDTO = new UserDTO("hm", "hm", "하민", "img_test", "hmin0701@naver.com", "male", 27, 230203, 10, 30,
+//				"초심자", "0");
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		req.getSession().setAttribute("user", user);
 
 		tDAO.getAlltradelist(tDTO, req);
 		req.setAttribute("contentPage", "tradeMain.jsp");
@@ -71,8 +77,8 @@ public class TradeController {
 //판매중 도서
 	@GetMapping("/trade.sale.now")
 	public String goTradeMyBook(UserDTO uDTO, HttpServletRequest req) {
-		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
-		uDTO.setU_id(u.getU_id());
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		uDTO.setU_id(user.getU_id());
 		tDAO.getTradeListMe(uDTO, req);
 		req.setAttribute("contentPage", "sale.jsp");
 		req.setAttribute("salePage", "saleNow.jsp");
@@ -82,8 +88,8 @@ public class TradeController {
 	@GetMapping("/trade.sale.complete")
 	public String goTradeMyBook2(UserDTO uDTO, HttpServletRequest req) {
 		
-		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
-		uDTO.setU_id(u.getU_id());
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		uDTO.setU_id(user.getU_id());
 		tDAO.getTradeListMeComplete(uDTO, req);
 		req.setAttribute("contentPage", "sale.jsp");
 		req.setAttribute("salePage", "saleComplete.jsp");
@@ -94,8 +100,8 @@ public class TradeController {
 	// 받은거 조회
 	@GetMapping("/trade.Msg.get.to")
 	public String getToMsg(TradeTotalDTO ttDTO, HttpServletRequest req) {
-		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
-		ttDTO.setU_id(u.getU_id());
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		ttDTO.setU_id(user.getU_id());
 		tDAO.getToMsg(ttDTO, req);
 		System.out.println(ttDTO.getM_when());
 		req.setAttribute("contentPage", "tradeMsg.jsp");
@@ -105,9 +111,10 @@ public class TradeController {
 
 	// 보낸거 조회
 	@GetMapping("/trade.Msg.get.from")
-	public String getFromMsg(TradeTotalDTO ttDTO, HttpServletRequest req) {
-		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
-		ttDTO.setU_id(u.getU_id());
+	public String getFromMsg(TradeTotalDTO ttDTO, TradeDTO tDTO, HttpServletRequest req) {
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		ttDTO.setU_id(user.getU_id());
+		ttDTO.setT_thumbnail(tDTO.getT_thumbnail());
 		tDAO.getFromMsg(ttDTO, req);
 		req.setAttribute("contentPage", "tradeMsg.jsp");
 		req.setAttribute("msgpage", "tradeMsgFrom.jsp");
@@ -116,8 +123,8 @@ public class TradeController {
 
 	@GetMapping("/trade.Send.Msg")
 	public String sendMsg(TradeTotalDTO ttDTO, HttpServletRequest req, Date d) {
-		UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
-		ttDTO.setU_id(uDTO.getU_id());
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		ttDTO.setU_id(user.getU_id());
 		System.out.println(ttDTO.getM_to());
 		tDAO.sendMsg(ttDTO, req, d);
 		return "redirect:/trade.Msg.get.from";
@@ -126,8 +133,7 @@ public class TradeController {
 	// 내 쪽지 삭제
 	@GetMapping("/delete.msg.to")
 	public String deleteMsgTo(TradeTotalDTO ttDTO, HttpServletRequest req) {
-		UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
-		System.out.println(uDTO);
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
 		tDAO.deleteMsg(ttDTO, req);
 		// 받은 쪽지 조회 페이지로 리디렉션
 		return "redirect:/trade.Msg.get.to";
@@ -135,8 +141,7 @@ public class TradeController {
 
 	@GetMapping("/delete.msg.from")
 	public String deleteMsgFrom(TradeTotalDTO ttDTO, HttpServletRequest req) {
-		UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
-		System.out.println(uDTO);
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
 		tDAO.deleteMsg(ttDTO, req);
 		// 받은 쪽지 조회 페이지로 리디렉션
 		return "redirect:/trade.Msg.get.from";
@@ -186,12 +191,10 @@ public class TradeController {
 	
 //거래 취소 기능
 	@GetMapping("/trade.cancle")
-	public String tradeCancle(TradeDTO tDTO, UserDTO uDTO, HttpServletRequest req) {
+	public String tradeCancle(TradeDTO tDTO,  HttpServletRequest req) {
 		tDAO.tradeCancle(tDTO, req);
-		tDAO.getTradeListMe(uDTO, req);
-		req.setAttribute("contentPage", "sale.jsp");
-		req.setAttribute("salePage", "saleNow.jsp");
-		return "trade/tradeIndex";
+		req.setAttribute("contentPage", "saleNow.jsp");
+		return "redirect:/trade.sale.now";
 	}
 	
 	
@@ -203,11 +206,11 @@ public class TradeController {
 		req.setAttribute("contentPage", "infoUpdate.jsp");
 		return "trade/tradeIndex";
 	}
-	
+//거래 수정 기능	
 	@PostMapping("/trade.update.do")
-	public String updateTradeinfo(@RequestParam("t_file") MultipartFile file , TradeDTO tDTO, HttpServletRequest req) {
+	public String updateTradeinfo(TradeDTO tDTO, HttpServletRequest req) {
 		System.out.println(tDTO);
-		tDAO.updateTrade(file, tDTO ,req);
+		tDAO.updateTrade(tDTO ,req);
 		tDAO.getTradeDetail(tDTO, req);
 		req.setAttribute("contentPage", "tradeBookDetail.jsp");
 		return "trade/tradeIndex";

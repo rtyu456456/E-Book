@@ -51,7 +51,7 @@
 				<br>
 				<div class="book-info-reg">책 정보를 입력해 주세요</div>
 				<br> <input type="hidden"
-					value="${sessionScope.loginMember.u_id }" name="t_owner">
+					value="${sessionScope.user.u_id }" name="t_owner">
 
 				<div class="input-group">
 					<input placeholder="글 제목" name="t_title"
@@ -95,8 +95,7 @@
 						</div>
 						<div class="input-group3">
 							<img alt="" src="${param.thumbnail }"> 
- 							${param.thumbnail }
-							<input type="" value="${param.thumbnail}" name="t_thumbnail">
+							<input type="hidden" value="${param.thumbnail}" name="t_thumbnail">
 							<script> 
  								localStorage.setItem('t_thumbnail', '${param.thumbnail}');
  							</script>
@@ -138,7 +137,7 @@
 					<a class="btn-open-modal">희망 장소 선택하기</a> <br> 
 					<span id="input-content"></span> <input hidden value="" name="t_map_lat" id="t_map_lat"> 
 					<input hidden value="" name="t_map_lng"	id="t_map_lng">
-					<input hidden value="" name="t_marker_name" id="t_map_marker_name">
+					<input hidden value="" name="t_marker_name" id="t_marker_name">
 				</div>
 				<br>
 				<div class="reg-btn">
@@ -229,7 +228,7 @@
 
 			let t_map_lat = document.getElementById('t_map_lat').value = latitude;
 			let t_map_lng = document.getElementById('t_map_lng').value = longitude;
-			let t_map_marker_name = document.getElementById('t_map_marker_name').value = inputContent;
+			let t_map_marker_name = document.getElementById('t_marker_name').value = inputContent;
 			document.getElementById('input-content').innerText = inputContent;
 			
 		    // 모달 닫기

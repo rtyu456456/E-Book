@@ -54,7 +54,7 @@
 		<div class="trade-btn">
 
 			<c:choose>
-				<c:when test="${trade.t_owner == loginMember.u_id }">
+				<c:when test="${trade.t_owner == user.u_id }">
 
 					<c:choose>
 						<c:when test="${trade.t_soldout == 0 }">
@@ -81,7 +81,7 @@
 							<div class="modal_body">
 								<input type="hidden" value="${trade.t_no }" name="m_trade">
 								<input type="hidden" value="${trade.t_owner }" name="m_to">
-								<input type="hidden" value="${sessionScope.loginMember.u_id }"
+								<input type="hidden" value="${sessionScope.user.u_id }"
 									name="m_from">
 								<h1>${trade.t_owner}님에게보내는쪽지</h1>
 								<br>

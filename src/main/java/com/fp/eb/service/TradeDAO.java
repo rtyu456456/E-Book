@@ -1,6 +1,7 @@
 package com.fp.eb.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
 
@@ -75,7 +76,8 @@ public class TradeDAO {
 
 	public void sendMsg(TradeTotalDTO ttDTO, HttpServletRequest req, Date sysdate) {
 		try {
-			UserDTO uDTO = (UserDTO) req.getSession().getAttribute("loginMember");
+			UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+			req.getSession().setAttribute("user", user);
 
 			ttDTO.setM_trade(Integer.parseInt(req.getParameter("m_trade")));
 			System.out.println(ttDTO.getM_trade());
@@ -166,36 +168,46 @@ public class TradeDAO {
 	// ------------------------ 내용 수정---------------
 	public void tradeComplete(TradeDTO tDTO, HttpServletRequest req) {
 		if (ss.getMapper(TradeMapper.class).tradeComplete(tDTO) == 1) {
-			req.setAttribute("result", "삭제 성공");
+			req.setAttribute("result", "변경 완료");
 		} else {
-			req.setAttribute("result", "삭제 실패");
+			req.setAttribute("result", "변경 실패");
 		}
 	}
 
-	public void updateTrade(MultipartFile file, TradeDTO tDTO, HttpServletRequest req) {
-		try {
-			String orgFileName = file.getOriginalFilename();
-//			String savePath = sc.getRealPath("resources/img");
-//			System.out.println(savePath);
-			String saveFileName = UUID.randomUUID().toString().split("-")[0]
-					+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
-			System.out.println("오리지널널파일네임 : " + orgFileName);
-			System.out.println("세이브파일네임 : " + saveFileName);
-			String path = uploadPath.getRealPath("img/");
-			System.out.println(path);
-			if (!file.getOriginalFilename().isEmpty()) {
-				// 실제 업로드 코드
-				file.transferTo(new File(path, saveFileName));
-				tDTO.setT_thumbnail(saveFileName);
+// 정보 수정
+	public void updateTrade(TradeDTO tDTO, HttpServletRequest req) {
+
+		if (tDTO.getT_file() != null) {
+
+			try {
 				System.out.println(tDTO);
+				String path = uploadPath.getRealPath("uploadFolder");
+				System.out.println(path);
 
-				if (ss.getMapper(TradeMapper.class).updateInfo(tDTO) >= 1) {
-					System.out.println("정보 변경 완료");
-					req.setAttribute("result", "정보 변경 완료");
+				String orgFileName = tDTO.getT_file().getOriginalFilename();
+				String saveFileName = UUID.randomUUID().toString().split("-")[0]
+						+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
+				
+				
+				System.out.println("오리지널널파일네임 : " + orgFileName);
+				System.out.println("세이브파일네임 : " + saveFileName);
+				String rootPath = req.getServletContext().getRealPath("/");
+				System.out.println("a" + rootPath);
+				if (!tDTO.getT_file().getOriginalFilename().isEmpty()) {
+					// 실제 업로드 코드
+					tDTO.getT_file().transferTo(new File(path, saveFileName));
+					tDTO.setT_thumbnail(saveFileName);
+					System.out.println(tDTO);
 				}
-			}
 
-		} catch (Exception e) {
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			if (ss.getMapper(TradeMapper.class).updateInfo(tDTO) >= 1) {
+				System.out.println("정보 변경 완료");
+				req.setAttribute("result", "정보 변경 완료");
+			}
 		}
 	}
 

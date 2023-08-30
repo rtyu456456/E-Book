@@ -19,15 +19,15 @@
 		<header>
 			<div class="head-line">
 				<img alt="" src="/img/menutab.png">
-					<h1 onclick="location.href='/trade.go'">책방</h1>
+					<h1 onclick="location.href='/trade.go?u_id=${sessionScope.user.u_id }'">책방</h1>
 				<div>
 					<img alt="" src="/img/PageUpLog.png">
 					<table id="loginSuccessTable">
 						<tr>
-							<td style="height: 20px;">${sessionScope.loginMember.u_id }</td>
+							<td style="height: 20px;">${sessionScope.user.u_id }</td>
 						</tr>
 						<tr>
-							<td align="right" valign="top">(${sessionScope.loginMember.u_name })</td>
+							<td align="right" valign="top">(${sessionScope.user.u_name })</td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
@@ -51,8 +51,8 @@
 		<footer>
 			<div class="foot-line">
 				<a href="/trade.choose.go"> <img src="/img/Group7.png"></a>
-				<a href="/trade.sale.now?u_id=${sessionScope.loginMember.u_id}"> <img src="/img/Group6.png"></a>
-				<a href="/trade.Msg.get.to?u_id=${sessionScope.loginMember.u_id}"> <img src="/img/Group5.png"></a>
+				<a href="/trade.sale.now?u_id=${sessionScope.user.u_id}"> <img src="/img/Group6.png"></a>
+				<a href="/trade.Msg.get.to?u_id=${sessionScope.user.u_id}"> <img src="/img/Group5.png"></a>
 				
 				
 			</div>

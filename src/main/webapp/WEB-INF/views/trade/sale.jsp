@@ -13,13 +13,13 @@
 	<div class="container-sale">
 		<div class="sale-nav">
 			<div class="sale-now">
-				<a href="/trade.sale.now?u_id=${sessionScope.loginMember.u_id}">
+				<a href="/trade.sale.now?u_id=${sessionScope.user.u_id}">
 					<span> 판매 중 </span>
 				</a>
 			</div>
 
 			<div class="sale-complete">
-				<a href="/trade.sale.complete?u_id=${sessionScope.loginMember.u_id}">
+				<a href="/trade.sale.complete?u_id=${sessionScope.user.u_id}">
 					<span> 판매 완료 </span>
 				</a>
 			</div>
