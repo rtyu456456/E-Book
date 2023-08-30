@@ -115,28 +115,15 @@ public class TradeDAO {
 	}
 //---------------------------------------- 등록기능
 
-	public void regTrade(MultipartFile file, TradeDTO tDTO, HttpServletRequest req) {
+	public void regTrade(TradeDTO tDTO, HttpServletRequest req) {
 
-		tDTO.setT_owner(req.getParameter("t_owner"));
-		tDTO.setT_title(req.getParameter("t_title"));
-		tDTO.setT_book_title(req.getParameter("t_book_title"));
-		tDTO.setT_authors(req.getParameter("t_authors"));
-		tDTO.setT_publisher(req.getParameter("t_publisher"));
-		tDTO.setT_contents(req.getParameter("t_contents"));
-		tDTO.setT_price(Integer.parseInt(req.getParameter("t_price")));
-		tDTO.setT_thumbnail(req.getParameter("t_thumbnail"));
-		tDTO.setT_map_lat(Double.parseDouble(req.getParameter("t_map_lat")));
-		tDTO.setT_map_lng(Double.parseDouble(req.getParameter("t_map_lng")));
-		tDTO.setT_marker_name(req.getParameter("t_marker_name"));
+	
 
 		System.out.println(tDTO);
-		System.out.println(uploadPath);
-		String path = uploadPath.getRealPath("WEB-INF/views/img/");
+		String path = uploadPath.getRealPath("uploadFolder");
 		System.out.println(path);
 		try {
-			String orgFileName = file.getOriginalFilename();
-//			String savePath = sc.getRealPath("./imgs");
-//			System.out.println(savePath);
+			String orgFileName = tDTO.getT_file().getOriginalFilename();
 			String saveFileName = UUID.randomUUID().toString().split("-")[0]
 					+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
 			System.out.println(orgFileName);
@@ -144,12 +131,12 @@ public class TradeDAO {
 			System.out.println("----------------");
 			String rootPath = req.getServletContext().getRealPath("/");
 	       System.out.println(rootPath);
-			if (!file.getOriginalFilename().isEmpty()) {
+			if (! tDTO.getT_file().getOriginalFilename().isEmpty()) {
 				// 실제 업로드 코드
-				file.transferTo(new File(path, saveFileName));
+				tDTO.getT_file().transferTo(new File(path, saveFileName));
 				req.setAttribute("r", "file uploaded successfully!");
 				req.setAttribute("fileName", saveFileName);
-				tDTO.setT_thumbnail(saveFileName);
+				tDTO.setT_thumbnail("uploadFolder/" + saveFileName);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

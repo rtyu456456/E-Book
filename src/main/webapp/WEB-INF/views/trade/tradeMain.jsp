@@ -28,7 +28,7 @@
 			<div class="trade-list"
 				onclick="location.href='trade.detail.go?t_no=${t.t_no }'">
 				<div class="book-img">
-					<img alt="" src="tradeimgs/${t.t_thumbnail}">
+					<img alt="" src="uploadFolder/${t.t_thumbnail}">
 				</div>
 				<div class="trade-book-info">
 					<div class="title">${t.t_title }</div>

@@ -20,7 +20,7 @@
 
 		<div class="book-info">
 			<div class="book-img">
-				<img alt="" src="tradeimgs/${trade.t_thumbnail}">
+				<img alt="" src="${trade.t_thumbnail}">
 			</div>
 			<div class="book-basic">
 				<div class="book-title">${trade.t_book_title }</div>

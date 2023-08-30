@@ -167,5 +167,15 @@ public class TradeDTO {
 		this.t_file = t_file;
 	}
 
+	@Override
+	public String toString() {
+		return "TradeDTO [t_no=" + t_no + ", t_owner=" + t_owner + ", t_title=" + t_title + ", t_book_title="
+				+ t_book_title + ", t_authors=" + t_authors + ", t_publisher=" + t_publisher + ", t_contents="
+				+ t_contents + ", t_price=" + t_price + ", t_thumbnail=" + t_thumbnail + ", t_map_lat=" + t_map_lat
+				+ ", t_map_lng=" + t_map_lng + ", t_soldout=" + t_soldout + ", t_date=" + t_date + ", t_marker_name="
+				+ t_marker_name + ", t_file=" + t_file + "]";
+	}
+
+	
 
 }

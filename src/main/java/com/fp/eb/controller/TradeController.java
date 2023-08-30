@@ -71,14 +71,6 @@ public class TradeController {
 //판매중 도서
 	@GetMapping("/trade.sale.now")
 	public String goTradeMyBook(UserDTO uDTO, HttpServletRequest req) {
-		 ServletContext servletContext = applicationContext.getBean(ServletContext.class);
-	        String tomcatRoot = servletContext.getRealPath("/");
-		System.out.println(tomcatRoot);
-		
-		
-		
-		
-		
 		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
 		uDTO.setU_id(u.getU_id());
 		tDAO.getTradeListMe(uDTO, req);
@@ -152,8 +144,8 @@ public class TradeController {
 
 // 거래 등록 기능
 	@PostMapping("/reg.trade.book")
-	public String regTradeBook(@RequestParam("t_file") MultipartFile file, TradeDTO tDTO, HttpServletRequest req) {
-		tDAO.regTrade(file, tDTO, req);
+	public String regTradeBook(TradeDTO tDTO, HttpServletRequest req) {
+		tDAO.regTrade(tDTO, req);
 		return "redirect:/trade.sale.now";
 	}
 

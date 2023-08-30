@@ -60,7 +60,7 @@
 				<!-- 					검색 정보 불러오기  -->
 				<c:choose>
 					<%-- 검색 정보 불러오기  --%>
-					<c:when test="${param.thumnail != null}">
+					<c:when test="${param.title != null}">
 
 						<div class="input-group2">
 							<input value="${param.title }" name="t_book_title" readonly
