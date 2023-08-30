@@ -18,22 +18,9 @@
 	<div class="container">
 		<header>
 			<div class="head-line">
-				<img alt="" src="/img/menutab.png">
-					<h1 onclick="location.href='/trade.go'">책방</h1>
+					<a> <img src="/img/backspace.png" ></a> <h1>판매 내역</h1>
 				<div>
-					<img alt="" src="/img/PageUpLog.png">
 					<table id="loginSuccessTable">
-						<tr>
-							<td style="height: 20px;">${sessionScope.loginMember.u_id }</td>
-						</tr>
-						<tr>
-							<td align="right" valign="top">(${sessionScope.loginMember.u_name })</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center">
-								<button onclick="logout()">로그아웃</button>
-							</td>
-						<tr>
 					</table>
 				</div>
 			</div>

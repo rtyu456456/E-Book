@@ -47,7 +47,8 @@
 	<div class="container-reg">
 		<div class="reginfo">
 			<br>
-			<form action="reg.trade.book" method="post"	enctype="multipart/form-data" id="regForm">
+			<form action="reg.trade.book" method="post"
+				enctype="multipart/form-data" id="regForm">
 				<br>
 				<div class="book-info-reg">책 정보를 입력해 주세요</div>
 				<br> <input type="hidden"
@@ -56,90 +57,65 @@
 				<div class="input-group">
 					<input placeholder="글 제목" name="t_title"
 						oninput="localStorage.setItem('t_title', this.value)">
+					<script> 
+						localStorage.setItem('t_title', '${trade.t_title}');
+					</script>
 				</div>
-				<!-- 					검색 정보 불러오기  -->
-				<c:choose>
-					<%-- 검색 정보 불러오기  --%>
-					<c:when test="${param.title != null}">
 
-						<div class="input-group2">
-							<input value="${param.title }" name="t_book_title" readonly
-								oninput="localStorage.setItem('t_book_title', this.value)">
-							<script> 
-								localStorage.setItem('t_book_title', '${param.title}');
-  							</script>
-						</div>
-						<div class="input-group2">
-							<input value="${param.authors }" name="t_authors" readonly
-								oninput="localStorage.setItem('t_authors', this.value)">
-							<script> 
- 								localStorage.setItem('t_authors','${param.authors}');
- 							</script>
-						</div>
-						<div class="input-group2">
-							<input value="${param.publisher }" name="t_publisher" readonly
-								oninput="localStorage.setItem('t_publisher', this.value)">
-							<script> 
- 								localStorage.setItem('t_publisher', '${param.publisher}'); 
- 							</script>
-						</div>
-						<div class="input-group2">
-							<input value="${param.price }" name="price" readonly>
-							<script> 
-								localStorage.setItem('b_price', '${param.price}');
- 							</script>
-						</div>
-						<div class="input-group">
-							<input placeholder="판매가" name="t_price" value=""
-								oninput="localStorage.setItem('t_price', this.value)">
-						</div>
-						<div class="input-group3">
-							<img alt="" src="${param.thumbnail }"> 
-<%-- 							${param.thumbnail } --%>
-							<input type="hidden" value="${param.thumbnail }" name="t_thumbnail"
-							oninput="localStorage.setItem('t_thumbnail', this.value)">
-							<script> 
-// 								localStorage.setItem('t_file', '${param.thumbnail}');
- 							</script>
-						</div>
-					</c:when>
 
-					<%-- 수동 입력  --%>
-					<c:otherwise>
+				<div class="input-group">
+					<input placeholder="책 이름" name="t_book_title"
+						value="${trade.t_book_title }"
+						oninput="localStorage.setItem('t_book_title', this.value)">
+					<script> 
+						localStorage.setItem('t_book_title', '${trade.t_book_title}');
+					</script>
+				</div>
+				<div class="input-group">
+					<input placeholder="저자" name="t_authors"
+						value="${trade.t_authors }"
+						oninput="localStorage.setItem('t_authors', this.value)">
+					<script> 
+ 								localStorage.setItem('t_authors','${trade.t_authors}');
+ 							</script>
+				</div>
+				<div class="input-group">
+					<input placeholder="출판사" name="t_publisher"
+						value="${trade.t_publisher }"
+						oninput="localStorage.setItem('t_publisher', this.value)">
+					<script> 
+						localStorage.setItem('t_publisher', '${trade.t_publisher}'); 
+ 					</script>
+				</div>
+				<div class="input-group">
+					<input placeholder="판매가" name="t_price" value="${trade.t_price }"
+						oninput="localStorage.setItem('t_price', this.value)">
+					<script> 
+						localStorage.setItem('t_price', '${trade.t_price}');
+ 					</script>
+				</div>
 
-						<div class="input-group">
-							<input placeholder="책 이름" name="t_book_title"
-								oninput="localStorage.setItem('t_book_title', this.value)">
-						</div>
-						<div class="input-group">
-							<input placeholder="저자" name="t_authors"
-								oninput="localStorage.setItem('t_authors', this.value)">
-						</div>
-						<div class="input-group">
-							<input placeholder="출판사" name="t_publisher"
-								oninput="localStorage.setItem('t_publisher', this.value)">
-						</div>
-						<div class="input-group">
-							<input placeholder="판매가" name="t_price"
-								oninput="localStorage.setItem('t_price', this.value)">
-						</div>
-						<div class="input-group">
-							<input type="file" name="t_file"
-							oninput="localStorage.setItem('t_file', this.value)">
-						</div>
-					</c:otherwise>
-				</c:choose>
+
+				<div class="input-group">
+					<input type="file" name="t_file" value=""
+						oninput="localStorage.setItem('t_thumbnail', this.value)">
+				</div>
+
 
 				<div class="input-group-text">
 					<textarea rows="8" cols="2" placeholder="도서 상태 정보"
 						name="t_contents"
 						oninput="localStorage.setItem('t_contents', this.value)"></textarea>
+					<script> 
+							localStorage.setItem('t_contents', '${trade.t_contents}');
+ 					</script>
 				</div>
 				<div class="input-group">
-					<a class="btn-open-modal">희망 장소 선택하기</a> <br> 
-					<span id="input-content"></span> <input hidden value="" name="t_map_lat" id="t_map_lat"> 
-					<input hidden value="" name="t_map_lng"	id="t_map_lng">
-					<input hidden value="" name="t_marker_name" id="t_map_marker_name">
+					<a class="btn-open-modal">희망 장소 선택하기</a> <br> <span
+						id="input-content"></span> <input hidden value="" name="t_map_lat"
+						id="t_map_lat"> <input hidden value="" name="t_map_lng"
+						id="t_map_lng"> <input hidden value="" name="t_marker_name" id="t_map_marker_name">
+
 				</div>
 				<br>
 				<div class="reg-btn">

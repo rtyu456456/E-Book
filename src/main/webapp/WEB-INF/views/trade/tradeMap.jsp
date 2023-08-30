@@ -64,16 +64,35 @@
 			infowindow.setContent(iwContent);
 		}
 
+		var previousController = '<%=request.getAttribute("previousController")%>';
+
 		function regTradeLocation() {
 			var markerPosition = marker.getPosition();
 			var latitude = markerPosition.getLat();
 			var longitude = markerPosition.getLng();
 			var inputContent = document.getElementById('inputContent').value;
 
-			// URL 생성 및 쿼리 파라미터 추가
-			var nextPageUrl = '/trade.reg.go' + '?latitude=' + latitude
-					+ '&longitude=' + longitude + '&inputContent='
-					+ encodeURIComponent(inputContent);
+			var nextPageUrl;
+
+			// 이전 컨트롤러에 따라 다음 페이지로 이동할 URL 설정
+			if (previousController === "trade.map.go") {
+				nextPageUrl = '/trade.reg.go' + '?latitude=' + latitude
+						+ '&longitude=' + longitude + '&inputContent='
+						+ encodeURIComponent(inputContent);
+			} else if (previousController === "trade.update.go") {
+				nextPageUrl = '/trade.update.go' + '?latitude=' + latitude
+						+ '&longitude=' + longitude + '&inputContent='
+						+ encodeURIComponent(inputContent);
+			} 
+
+			// 			// URL 생성 및 쿼리 파라미터 추가
+			// 			var nextPageUrl = '/trade.reg.go' + '?latitude=' + latitude
+			// 					+ '&longitude=' + longitude + '&inputContent='
+			// 					+ encodeURIComponent(inputContent)
+
+			// 			var nextPageUrl2 = '/trade.update.go' + '?latitude=' + latitude
+			// 					+ '&longitude=' + longitude + '&inputContent='
+			// 					+ encodeURIComponent(inputContent)		
 
 			// 다음 페이지로 이동
 			window.location.href = nextPageUrl;
@@ -85,5 +104,5 @@
 	</script>
 </body>
 
-<script type="text/javascript" src="js/map.jsp"></script>
+<!-- <script type="text/javascript" src="js/map.jsp"></script> -->
 </html>

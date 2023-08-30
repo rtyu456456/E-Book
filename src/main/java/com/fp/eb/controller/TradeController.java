@@ -1,11 +1,14 @@
 package com.fp.eb.controller;
 
+
 import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,10 +31,10 @@ public class TradeController {
 	@GetMapping("/trade.go")
 	public String goTrade(TradeDTO tDTO, HttpServletRequest req) {
 
-		// 로그인 가 데이터
-//		UserDTO uDTO = new UserDTO("hm", "hm", "하민", "img_test", "hmin0701@naver.com", "male", 27, 230203, 10, 30,
-//				"초심자", "0");
-//		req.getSession().setAttribute("loginMember", uDTO);
+//		 로그인 가 데이터
+		UserDTO uDTO = new UserDTO("hm", "hm", "하민", "img_test", "hmin0701@naver.com", "male", 27, 230203, 10, 30,
+				"초심자", "0");
+		req.getSession().setAttribute("loginMember", uDTO);
 
 		tDAO.getAlltradelist(tDTO, req);
 		req.setAttribute("contentPage", "tradeMain.jsp");
@@ -63,18 +66,30 @@ public class TradeController {
 		req.setAttribute("contentPage", "tradeMain.jsp");
 		return "trade/tradeIndex";
 	}
-
+	
+	
 //판매중 도서
 	@GetMapping("/trade.sale.now")
 	public String goTradeMyBook(UserDTO uDTO, HttpServletRequest req) {
-
 		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
 		uDTO.setU_id(u.getU_id());
 		tDAO.getTradeListMe(uDTO, req);
-		req.setAttribute("contentPage", "saleNow.jsp");
+		req.setAttribute("contentPage", "sale.jsp");
+		req.setAttribute("salePage", "saleNow.jsp");
 		return "trade/tradeIndex";
 	}
-
+//판매 완료 도서	
+	@GetMapping("/trade.sale.complete")
+	public String goTradeMyBook2(UserDTO uDTO, HttpServletRequest req) {
+		
+		UserDTO u = (UserDTO) req.getSession().getAttribute("loginMember");
+		uDTO.setU_id(u.getU_id());
+		tDAO.getTradeListMeComplete(uDTO, req);
+		req.setAttribute("contentPage", "sale.jsp");
+		req.setAttribute("salePage", "saleComplete.jsp");
+		return "trade/tradeIndex";
+	}
+	
 // 쪽지 기능 컨트롤
 	// 받은거 조회
 	@GetMapping("/trade.Msg.get.to")
@@ -129,8 +144,8 @@ public class TradeController {
 
 // 거래 등록 기능
 	@PostMapping("/reg.trade.book")
-	public String regTradeBook(@RequestParam("t_file") MultipartFile file, TradeDTO tDTO, HttpServletRequest req) {
-		tDAO.regTrade(file, tDTO, req);
+	public String regTradeBook(TradeDTO tDTO, HttpServletRequest req) {
+		tDAO.regTrade(tDTO, req);
 		return "redirect:/trade.sale.now";
 	}
 
@@ -145,22 +160,21 @@ public class TradeController {
 	@GetMapping("/trade.reg.search")
 	public String tradeRegSearch(BookDTO bDTO, HttpServletRequest req) {
 		tDAO.tradeRegSearch(bDTO, req);
-		req.setAttribute("contentPage", "tradeSerachBook.jsp");
+		req.setAttribute("contentPage", "tradeSearchBook.jsp");
 		return "trade/tradeIndex";
 	}
-
 	@GetMapping("/trade.reg.search.name")
 	public String tradeRegSearchName(BookDTO bDTO, HttpServletRequest req) {
 		tDAO.tradeRegSearchName(bDTO, req);
 		req.setAttribute("contentPage", "tradeSerachBook.jsp");
 		return "trade/tradeIndex";
 	}
-
 	@GetMapping("/reg.Search.Book.Info")
 	public String regSearchBookInfo(BookDTO bDTO, HttpServletRequest req) {
 		req.setAttribute("contentPage", "infoReg.jsp");
 		return "trade/tradeIndex";
 	}
+
 
 // 거래 완료 기능
 	@GetMapping("/trade.complete")
@@ -169,5 +183,35 @@ public class TradeController {
 		req.setAttribute("contentPage", "saleNow.jsp");
 		return "redirect:/trade.sale.now";
 	}
+	
+//거래 취소 기능
+	@GetMapping("/trade.cancle")
+	public String tradeCancle(TradeDTO tDTO, UserDTO uDTO, HttpServletRequest req) {
+		tDAO.tradeCancle(tDTO, req);
+		tDAO.getTradeListMe(uDTO, req);
+		req.setAttribute("contentPage", "sale.jsp");
+		req.setAttribute("salePage", "saleNow.jsp");
+		return "trade/tradeIndex";
+	}
+	
+	
+	
+// 거래 정보 수정 기능 이동
+	@GetMapping("/trade.update.go")
+	public String updateTrade(TradeDTO tDTO, HttpServletRequest req) {
+		tDAO.getTradeDetail(tDTO, req);
+		req.setAttribute("contentPage", "infoUpdate.jsp");
+		return "trade/tradeIndex";
+	}
+	
+	@PostMapping("/trade.update.do")
+	public String updateTradeinfo(@RequestParam("t_file") MultipartFile file , TradeDTO tDTO, HttpServletRequest req) {
+		System.out.println(tDTO);
+		tDAO.updateTrade(file, tDTO ,req);
+		tDAO.getTradeDetail(tDTO, req);
+		req.setAttribute("contentPage", "tradeBookDetail.jsp");
+		return "trade/tradeIndex";
+	}
+	
 
 }

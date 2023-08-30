@@ -1,23 +1,88 @@
 @charset "UTF-8";
 
+.container-sale {
+	width: 90%;
+	height: 100%;
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, 0.7);
+	overflow: auto;
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
+	max-width: 600px;
+}
+
+.sale-nav {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	height: 3rem;
+	align-items: center;
+	font-size: 16px;
+	color: white;
+}
+
+.sale-nav a {
+	text-decoration: none;
+	color: white;
+}
+
+.sale-nav span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.sale-now {
+	text-align: center;
+	width: 50%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.25);
+}
+
+.sale-complete {
+	align-items: center;
+	text-align: center;
+	width: 50%;
+	height: 100%;
+	width: 50%;
+	background-color: rgba(246, 110, 110, 1);
+}
+
+.sale-Page {
+	overflow: auto;
+	height: 80%;
+	width: 100%;
+}
+
+.sale-list {
+	display: flex;
+	background: rgba(245, 246, 250, 1);
+	margin: 15px;
+	border-radius: 20px;
+	height: 20%;
+	min-height: 80pt;
+	justify-content: space-around;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
 .trade-all-list {
 	overflow: auto;
 	margin-top: 30px;
-	width: 80%;
+	width: 100%;
 	text-align: center;
 	max-width: 660px;
 }
 
 .trade-list {
 	display: flex;
-	background: rgba(255, 255, 255, 1);
-	margin-top: 15px;
+	background: rgba(245, 246, 250, 1);
+
+	margin: 15px;
 	border-radius: 20px;
 	height: 16%;
 	min-height: 80pt;
 	justify-content: space-around;
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
-
 }
 
 .book-img {

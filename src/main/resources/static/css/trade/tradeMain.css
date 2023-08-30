@@ -78,11 +78,10 @@
 
 .book-img img {
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.0625);
-	margin: 5pt;
+	margin: 10pt;
 	align-items: center;
 	max-width: 80pt;
 	height: 80%;
-	width: 80%;
 	border-radius:5px; 
 }
 

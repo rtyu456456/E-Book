@@ -1,7 +1,58 @@
 @charset "UTF-8";
 
-.container-map{
-	width: 100vw;
-	height: 80vh;
-	
+.container-map {
+	height: 100%;
+}
+
+#map {
+	width: 100%;
+	height: 66vh;
+}
+
+.enterMapInfo {
+	padding: 5pt;
+	height: 16%;
+	width: 100%;
+}
+
+#inputContent {
+	font-size: 25px;
+	width: 90%;
+	height: 40%;
+}
+
+.btn-menu {
+	padding: 5pt;
+}
+
+.btn-menu button {
+	font-size: 15px;
+	height: 100%;
+	width: 27%;
+}
+
+.modal {
+	overflow:auto;
+	position: absolute;
+	display: none;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal_body {
+	overflow:auto;
+	position: absolute;
+	top: 50%;
+	width: 80%;
+	height: 90%;
+	padding: 15px;
+	text-align: center;
+	background-color: rgb(255, 255, 255);
+	border-radius: 10px;
+	box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+	transform: translateY(-50%);
 }

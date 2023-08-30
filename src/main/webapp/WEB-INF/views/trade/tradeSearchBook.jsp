@@ -24,12 +24,12 @@
 
 
 	<div class="trade-all-list">
-		<c:forEach var="b" items="${book }" varStatus="loop">
+		<c:forEach var="b" items="${books }" varStatus="loop">
 			<form class="trade-list-form">
 				<div class="trade-list clickable-book" id="book-${loop.index}">
 					<!-- 클릭 영역 -->
 					<div class="book-img">
-						<img alt="" src="/img/bookimgsample.jpg">
+						<img alt="" src="${b.b_thumbnail }">
 					</div>
 					<div class="trade-book-info">
 						<div class="book-title">${b.b_title }</div>
@@ -45,19 +45,20 @@
             // 각 도서 정보의 클릭 영역을 선택하여 클릭 이벤트 처리
             const bookElement${loop.index} = document.getElementById("book-${loop.index}");
             bookElement${loop.index}.addEventListener("click", function() {
-                redirectToTradeRegGo('${b.b_title}', '${b.b_authors}', '${b.b_publisher}', ${b.b_price}); // 페이지 이동 함수 호출
+                redirectToTradeRegGo('${b.b_title}', '${b.b_authors}', '${b.b_publisher}', ${b.b_price}, '${b.b_thumbnail}'); // 페이지 이동 함수 호출
             });
         </script>
 		</c:forEach>
 	</div>
 	<script>
     // 페이지 이동 함수
-    function redirectToTradeRegGo(title, authors, publisher, price) {
+    function redirectToTradeRegGo(title, authors, publisher, price, thumbnail) {
         // 원하는 컨트롤러 경로로 페이지 이동
         window.location.href = "trade.reg.go?title=" + encodeURIComponent(title) +
                                "&authors=" + encodeURIComponent(authors) +
                                "&publisher=" + encodeURIComponent(publisher) +
-                               "&price=" + price;
+                               "&price=" + price +
+                               "&thumbnail=" + encodeURIComponent(thumbnail);
     }
 </script>
 </body>
