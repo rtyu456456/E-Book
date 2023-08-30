@@ -1,41 +1,10 @@
 @charset "UTF-8";
-
-/********추천 도서********/
-.age-recommend-book h4 {
-	margin-left: 16.5vw;
-}
-
-.age-box {
-	width: 68vw;
-	height: 15rem;
-	background-color: #ffffff;
-	border-radius: 3rem;
-	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
-	display: flex;
-	margin-top: 1.5rem;
-	margin-bottom: 4rem;
-	margin-left: 16vw;
-	padding-top: 0.7rem;
-	padding-bottom: 0.7rem;
-	position: relative;
-}
-
-.age-box div {
-	display: flex;
-	position: absolute;
-	right: 5vw;
-}
-
 /********화제의 도서********/
-.hot-book h4 {
-	margin-left: 16.5vw;
-}
-
-.hot-book-box {
+.age-book-box {
 	width: 68vw;
-	height: 15rem;
+	height: 19rem;
 	background-color: #ffffff;
-	border-radius: 3rem;
+	border-radius: 1.5rem;
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
 	display: flex;
 	margin-top: 1.5rem;
@@ -46,11 +15,69 @@
 	position: relative;
 }
 
-.hot-book-box div {
+.age-title-gh {
+	width: 68vw;
+	font-size: 2rem;
+	margin-top: 1rem;
+	text-align: center;
+}
+
+.age-book-box div {
 	display: flex;
 	position: absolute;
-	right: 5vw;
+	top: 5rem;
+	left: 2.7vw;
 }
+
+.age-box button{
+	margin-right: 3vw;
+}
+/********추천 도서********/
+.popular-box {
+	width: 68vw;
+	height: 19rem;
+	background-color: #ffffff;
+	border-radius: 1.5rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	display: flex;
+	margin-top: 1.5rem;
+	margin-bottom: 4rem;
+	margin-left: 16vw;
+	padding-top: 0.7rem;
+	padding-bottom: 0.7rem;
+	position: relative;
+}
+
+.popular-title-gh {
+	width: 68vw;
+	font-size: 2rem;
+	margin-top: 1rem;
+	text-align: center;
+}
+
+.popular-box div {
+	display: flex;
+	position: absolute;
+	top: 5rem;
+	left: 2.7vw;
+}
+
+.popular-box button{
+	margin-right: 3vw;
+}
+
+/********베스트 서평 전체********/
+.best-review-detail{
+	width: 10vw;
+	height: 10rem;
+	border: 1px solid black;
+	background-color: white;
+}
+
+
+
+
+
 /********베스트 서평********/
 .best-gh {
 	height: 100vh;
@@ -78,10 +105,10 @@
 }
 
 .best-box-gh {
-	width: 85vw;
-	height: 27rem;
+	width: 84vw;
+	height: 27.5rem;
 	background-color: #ffffff;
-	border-radius: 3rem;
+	border-radius: 2rem;
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
 	margin-left: 3vw;
 	position: relative;
@@ -99,8 +126,8 @@
 	border: none;
 	border-radius: 1rem;
 	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10) inset;
-	margin-top: 1.5rem;
-	margin-left: 5.9vw;
+	margin-top: 1.8rem;
+	margin-left: 4.6vw;
 	margin-right: 2vw;
 	border-radius: 1rem;
 }
@@ -170,40 +197,18 @@
 	opacity: 0.5;
 }
 
-.recommend-radio-gh {
-	font-family: inherit;
+.recommend-radio-gh div{
+	color: #779A76;
 	font-size: 1.2rem;
 	font-weight: 800;
 	margin-top: 1rem;
 	margin-left: 0.7rem;
 }
 
-/* .recommend-radio-gh input {
-	display: none;
-}
-
-.recommend-radio-gh label {
-	width: 1.2rem;
-	height: 1.2rem;
-	border: 2.5px solid #26283d;
-	border-radius: 4px;
-	cursor: pointer;
-	display: inline-block;
-	margin-left: 0.7rem;
-	margin-right: 1.5rem;
-}
-
-.recommend-radio-gh input:checked+.recommend-radio-gh label::after {
-	content: "";
-	display: block;
-	width: 0.6rem;
-	height: 0.6rem;
-	background-color: rgba(246, 110, 110, 0.8);
-} */
 .reputation-gh {
 	display: flex;
 	position: absolute;
-	left: 53vw;
+	right: 4.5vw;
 	top: 10.8rem;
 }
 
@@ -236,20 +241,41 @@
 
 .best-review-gh {
 	width: 70vw;
+	background-color: #F5F6FA;
+	border-radius: 2rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25) inset;
+	padding: 1.5rem;
+	position: absolute;
+	top: 14.3rem;
+	left: 4.6vw;
+}
+
+.best-review-gh h6{
+	width: 70vw;
+	height: 8.7rem;
+	font-size: 1.5rem;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	}
+
+.best-review-gh.more{
+	width: 70vw;
 	height: 8.5rem;
 	background-color: #F5F6FA;
 	border-radius: 2rem;
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25) inset;
-	font-size: 1.3rem;
-	padding-top: 1.5rem;
-	padding-bottom: 1.3rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding: 1.5rem;
 	position: absolute;
-	top: 14rem;
-	left: 5.9vw;
+	top: 14.3rem;
+	left: 4.6vw;
+	
+	width: 70vw;
+	height: 8.7rem;
+	font-size: 1.5rem;
 	display: -webkit-box;
-	-webkit-line-clamp: 3;
+	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
-}
+}	

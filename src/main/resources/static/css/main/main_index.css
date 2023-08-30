@@ -141,18 +141,7 @@ width/height 먼저, 그 다음은 알파벳순
 	}
 
 	/********메뉴********/
-	 .menu-screen {
-		/*width: 100vw;
-		height:100%;
-		backdrop-filter: blur(5px);
-		background: rgba(38, 40, 61, 0.15);
-		display: none;
-		position: fixed;
-		z-index: 100;*/
-	}
 	.side-menu-gh {
-		
-		/* margin-left: -100vw; */
 	}
 	.menu-title-gh {
 		width: 12rem;

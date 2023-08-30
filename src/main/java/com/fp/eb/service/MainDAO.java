@@ -1,7 +1,9 @@
 package com.fp.eb.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,14 +22,14 @@ public class MainDAO {
 
 	@Autowired
 	private MainMapper mainMapper;
-
+	
+	
+	//--------------------------책 검색
 	public void bookSearch(BookDTO bDTO, Model model, HttpServletRequest req) {
 		String searchOption = req.getParameter("searchOption");
 		String searchText = req.getParameter("searchText");
 		System.out.println(searchOption);
 		System.out.println(searchText);
-		// 1. bean
-		// 2. map
 		List<BookDTO> books = mainMapper.bookSearch(searchOption, searchText); // 검색어로 책 리스트 가져오기 (%가 없음)
 
 		ArrayList<BookDTO> bookSearch = new ArrayList<BookDTO>(); // %를 포함한 bookDTO를 담아줄 새로운 그릇 준비
@@ -46,42 +48,63 @@ public class MainDAO {
 		}
 		model.addAttribute("bookSearch", bookSearch);
 	}
-
+	
+	
+	
+	//--------------------------책 상세
 	public void bookDetail(BookDTO bDTO, ReviewDTO rDTO, Model model) {
+		System.out.println(bDTO.getB_no());
+		//model.addAttribute("hotBook", mainMapper.bookDetail(bDTO));
 		model.addAttribute("bookSearch", mainMapper.bookDetail(bDTO));
 	}
-
+	
+	
+	
+	//--------------------------서평
 	public void reviews(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		List<ReviewDTO> reviews = mainMapper.reviews(bDTO);
 		LikeDTO likeDTO = new LikeDTO();
-//		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
-//		if (user != null) {
-//			likeDTO.setLr_owner(user.getU_id());
+		//UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		UserDTO user = new UserDTO();
+		user.setU_id("gh");
+		//if (user != null) {
+			//likeDTO.setLr_owner(user.getU_id());
 		likeDTO.setLr_owner("gh");
 		likeDTO.setLr_where_type("REVIEW");
-//		}
+		//}
 		for (ReviewDTO r : reviews) {
 			System.out.println(r.getR_no());
 			likeDTO.setLr_where_no(r.getR_no());
-//			if (user != null) {
-			if (mainMapper.getLikeInfo(likeDTO) != null) {
+			if (user != null) {
+			//if (mainMapper.getLikeInfo(likeDTO) != null) {
 				r.setLikeCheck(mainMapper.getLikeInfo(likeDTO).getLr_type());
+				System.out.println(mainMapper.getLikeInfo(likeDTO).getLr_type());
+				Map<String, Object> likeDislike = mainMapper.likeDislikeCount(likeDTO);
+				System.out.println("-----------------");
+				System.out.println(likeDislike);
+				System.out.println(likeDislike.get("LIKE_COUNT"));
+				System.out.println(likeDislike.get("DISLIKE_COUNT"));
+				BigDecimal like = (BigDecimal) likeDislike.get("LIKE_COUNT");
+				BigDecimal dislike = (BigDecimal) likeDislike.get("DISLIKE_COUNT");
+				r.setR_like(like.intValue());
+				r.setR_dislike(dislike.intValue());
+				System.out.println("-----------------");
 			}
-//			}
+			//}
 		}
 		model.addAttribute("reviews", reviews);
 	}
-
-//	public void reviewUser(UserDTO uDTO, ReviewDTO rDTO, Model model) {
-//		List<UserDTO> rUsers = mainMapper.rUsers(rDTO);
-//		System.out.println(rUsers);
-//		model.addAttribute("rUsers", rUsers);
-//	}
-
+	
+	
+	
+	//--------------------------평가 퍼센트
 	public void getPercent1(BookDTO bDTO, ReviewDTO rDTO, Model model) {
 		model.addAttribute("getPercent1", mainMapper.getPercent(bDTO));
 	}
 
+	
+	
+	//--------------------------좋아요
 	public int likeFunc(HttpServletRequest req, LikeDTO likeDTO) {
 		System.out.println(likeDTO.getLr_where_no());
 		System.out.println(likeDTO.getLr_owner());
@@ -93,12 +116,14 @@ public class MainDAO {
 			mainMapper.insertLike(likeDTO);
 			return likeDTO.getLr_type();
 		} else {
-			// 이미 있었던 데이터에 lr_type을 보고
+			// 이미 있었던 데이터의 lr_type을 보고
 			// 그 내용을 유저가 누른값으로 세팅
 			mainMapper.updateLike(likeDTO);
 			return likeDTO.getLr_type();
 		}
 	}
+	
+	
 
 	// 오늘의 베스트 서평
 	public void dailyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
@@ -138,5 +163,14 @@ public class MainDAO {
 	public void monthlyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("monthlyUser", mainMapper.monthlyUser(uDTO, rDTO, model, req));
 	}
+	
+	//인기 도서
+	public void hotBook(BookDTO bDTO, LikeDTO lDTO, Model model, HttpServletRequest req) {
+		List<BookDTO> HB = mainMapper.hotBooks(bDTO);
+		model.addAttribute("hotBooks", mainMapper.hotBooks(bDTO));
+		System.out.println(mainMapper.hotBooks(bDTO));
+	}
+
+	
 
 }

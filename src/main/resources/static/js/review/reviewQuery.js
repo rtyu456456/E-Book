@@ -1,3 +1,24 @@
+$(function() {
+sortItems();
+setLike();
+likeFunc();
+disLikeFunc();
+bookmarkFunc();
+setBookmark();
+
+});
+
+
+/*베스트 서평 상세*/
+$(function() {
+	let bestReview = document.querySelector('.best-review-gh');
+	let reviewDialog = document.querySelector('#best-review-dialog');
+	menu.addEventListener('click', function (event){
+		console.log(111);
+		reviewDialog.showModal();
+	})
+});
+
 /*사이드 메뉴 창*/
 $(function() {
 	let menu = document.querySelector('.menu-gh img');
@@ -8,27 +29,70 @@ $(function() {
 	})
 });
 
-/*책갈피 끼우기*/
-$(function() {
-	let num = 0;
-	let bookmarkImg = [ "/img/logo_bookmark_empty.png",
-			"/img/logo_bookmark.png" ];
-	$("#bookmarkGH").click(function() {
-		if (num == 1) {
-			num = 0;
-			jQuery("#logoGH").show();
-		} else {
-			num++;
-			jQuery("#logoGH").hide();
-		}
-			$(this).attr("src", bookmarkImg[num]);
-		});
-		
-sortItems();
-setLike();
-likeFunc();
-});
 
+/*책갈피 끼우기*/
+function setBookmark(){
+	let likeCheck = $(".like-check-bookmark");
+	console.log(likeCheck);
+	$(likeCheck).each(function(i, e){
+		console.log("i 값: " + i);
+		console.log("e 값: " + e);
+		if(e.value == 0){
+			$(e).val(1);
+			jQuery("#logoGH").show();
+			console.log($(".bookmark-gh").attr("src", "/img/logo_bookmark_empty.png"));
+		}else if(e.value == 1){
+			$(e).val(0);
+			jQuery("#logoGH").hide();
+			console.log($(".bookmark-gh").attr("src", "/img/logo_bookmark.png"));
+		}
+	});
+}
+
+
+function bookmarkFunc(){
+	let num = 0;
+	$(".bookmark-gh").click(function() {
+	let lr_owner = 'gh';   // $('.user_id').val();
+	let lr_where_type = $(this).parent().find('.like-type').val();
+	let lr_where_no = $(this).parent().find('.like-no').val();
+	let lr_typeEl = $(this).parent().find('.like-check-bookmark'); // 0, 1
+		if ($(lr_typeEl).val() == 0 || $(lr_typeEl).val() == "") {
+			console.log("끼우기-------------");
+			num++;
+			$(lr_typeEl).val(1);
+			console.log("lr_typeEl: " + lr_typeEl);
+		} else {
+			console.log("뺴기-------------");
+			num = 0;
+			$(lr_typeEl).val(0);
+			console.log("lr_typeEl: " + lr_typeEl);
+		}
+		lr_type = $(lr_typeEl).val();
+
+	$.ajax({
+		url: "like.do",
+		data: {lr_where_no, lr_owner, lr_where_type, lr_type}		
+	}).done(function(data){
+		console.log(data);
+		if(data == 0 && num == 0){
+			jQuery("#logoGH").show();
+			$(".bookmark-gh").attr("src", "/img/logo_bookmark_empty.png");
+			$(lr_type).val(1);
+			console.log("책갈피 num: " + num);
+			console.log("lr_type: " + lr_type);
+		} else if (data == 1 && num == 1){
+			jQuery("#logoGH").hide();
+			$(".bookmark-gh").attr("src", "/img/logo_bookmark.png");
+			$(lr_type).val(0);
+			console.log("책갈피 num: " + num);
+			console.log("lr_type: " + lr_type);
+		}
+	});
+	});
+
+	
+}
 
 
 /*서평 정렬*/
@@ -76,63 +140,101 @@ function sortItems() {
 };
 
 
-
+/*좋아요 싫어요 버튼*/
 function setLike(){
 	let likeCheck = $(".like-check");
 	console.log(likeCheck);
 	$(likeCheck).each(function(i, e){
+		console.log(e.value)
 		if(e.value == 1){
 			console.log($(e).parent().find('.reviewLikeImg').addClass( 'on' ));
+			//console.log($(e).parent().find('.reviewLikeCnt').addClass( 'on' ));
 		}else if(e.value == 2){
 			console.log($(e).parent().find('.reviewDislikeImg').addClass( 'on' ));
+			//console.log($(e).parent().find('.reviewDislikeCnt').addClass( 'on' ));
 		}
 	});
-	
-	
 }
 
+let dataSet = ['', '좋아요','싫어요'];
 
-
-
-
-
-
-/*좋아요, 싫어요 버튼*/
 function likeFunc(){
-	// 임시 id
-	let lr_owner = 'gh';
-	let lr_where_type;   // type에  BOOK, REVIEW, COMMUNITY, POST, REPLY 값을 element 에서 찾아서 넣어주세요.
 	
-	// type
-	$(".like-dislike").click(function(){
-	let lr_type =	$(this).val();		// 1이면 좋아요 누른거  2이면 싫어요 누른거.
-											// 눌렀던걸 또 누르면 0 으로
-	let likeDisLikes = $(this).parent().find('.like-dislike-img');									
-	lr_where_type = $(this).parent().find('.like-type').val();
-	console.log(lr_where_type);
+	$(".reviewLikeBtn").click(function(){
+	let lr_owner = 'gh';   // $('.user_id').val();
+	let lr_where_type = $(this).parent().find('.like-type').val();
 	let lr_where_no = $(this).parent().find('.like-no').val();
-	let imgBtn = $(this).find(".like-dislike-img");
-	let active = $(imgBtn).attr('class').includes("on");
-	// 눌린거면 true	// 안눌린거면 false
-	// id, 댓글의 pk
-	console.log(lr_type)
-	console.log(active);
-	if(active){
-		lr_type = 0;
+	let reviewLikeCnt = $(this).find('.reviewLikeCnt');
+	let lr_typeEl = $(this).parent().find('.like-check'); // 0, 1
+	let img = $(this).find('.reviewLikeImg');
+	//let span = $(this).find('.reviewLikeCnt');
+	
+	if($(lr_typeEl).val() == 2){
+		alert("이미" + dataSet[$(lr_typeEl).val()] + '를 눌렀어요');
+		return;
+	}else if($(lr_typeEl).val() == 0){
+		$(lr_typeEl).val(1);
+	}else{
+		$(lr_typeEl).val(0);
 	}
+	lr_type= $(lr_typeEl).val()
 	$.ajax({
 		url : "like.do",
 		data : {lr_where_no,lr_owner,lr_where_type,lr_type}
 	}).done(function(data) {
-		console.log(data);
-		$(likeDisLikes).removeClass('on');
-		if(data == 0){
-			return;
-		}		
-		$(imgBtn).toggleClass('on');
-		
-		
-		});
+			console.log(data);
+			if(data == 1){
+				//$(span).addClass('on');
+				$(img).addClass('on');
+				$(lr_type).val(1);
+				$(reviewLikeCnt).text(parseInt($(reviewLikeCnt).text())+1)
+			}else{
+				//$(span).removeClass('on');
+				$(img).removeClass('on');
+				$(lr_type).val(0);
+				$(reviewLikeCnt).text(parseInt($(reviewLikeCnt).text())-1)
+			}
 	});
-	
+	});
 }
+
+function disLikeFunc(){
+	
+	$(".reviewDislikeBtn").click(function(){
+	let lr_owner = 'gh';   // $('.user_id').val();
+	let lr_where_type = $(this).parent().find('.like-type').val();
+	let lr_where_no = $(this).parent().find('.like-no').val();
+	let reviewDislikeCnt = $(this).find('.reviewDislikeCnt');
+	let lr_typeEl = $(this).parent().find('.like-check'); // 0, 1
+	let img = $(this).find('.reviewDislikeImg');
+	//let span = $(this).find('.reviewDislikeCnt');
+	if($(lr_typeEl).val() == 1){
+		alert("이미" + dataSet[$(lr_typeEl).val()] + '를 눌렀어요');
+		return;
+	}else if($(lr_typeEl).val() == 0){
+		$(lr_typeEl).val(2);
+	}else{
+		$(lr_typeEl).val(0);
+	}
+	lr_type= $(lr_typeEl).val()
+	$.ajax({
+		url : "like.do",
+		data : {lr_where_no,lr_owner,lr_where_type,lr_type}
+	}).done(function(data) {
+			console.log(data);
+			if(data == 2){
+				$(img).addClass('on');
+				//$(span).addClass('on');
+				$(lr_type).val(2);
+				$(reviewDislikeCnt).text(parseInt($(reviewDislikeCnt).text())+1)
+			}else{
+				$(img).removeClass('on');
+				//$(span).removeClass('on');
+				$(lr_type).val(0);
+				$(reviewDislikeCnt).text(parseInt($(reviewDislikeCnt).text())-1)
+			}
+	});
+	});
+}
+
+	

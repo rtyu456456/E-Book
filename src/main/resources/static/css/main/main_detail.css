@@ -4,7 +4,6 @@
 	/****** 상세 페이지 ******/
 	.detail-container-gh {
 		width: 100vw;
-		height: 100%;
 		background-color: white;
 		border-radius: 70px 70px 0px 0px;
 		box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
@@ -216,7 +215,14 @@
 		filter: invert(73%) sepia(22%) saturate(3202%) hue-rotate(311deg)
 			brightness(94%) contrast(105%);
 	}
-	.reviewDislikeImg.on{
-	filter: invert(74%) sepia(46%) saturate(4423%) hue-rotate(186deg) brightness(107%) contrast(93%);
+	.reviewLikeCnt.on {
+		color: #F66E6E;
+	}
+	.reviewDislikeCnt.on {
+		color: #6EB5F6;
+	}
+	.reviewDislikeImg.on {
+		filter: invert(74%) sepia(46%) saturate(4423%) hue-rotate(186deg)
+			brightness(107%) contrast(93%);
 	}
 }

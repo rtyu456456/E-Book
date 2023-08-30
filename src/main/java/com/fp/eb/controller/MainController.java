@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.fp.eb.model.BookDTO;
+import com.fp.eb.model.LikeDTO;
 import com.fp.eb.model.ReviewDTO;
 import com.fp.eb.model.UserDTO;
 import com.fp.eb.service.MainDAO;
@@ -19,8 +20,8 @@ public class MainController {
 	private MainDAO mDAO;
 
 	@GetMapping("/main")
-	public String mainMain(BookDTO bDTO, ReviewDTO rDTO, UserDTO uDTO, Model model, HttpServletRequest req) {
-		//mDAO.hotBook(bDTO, rDTO, model, req);
+	public String mainMain(BookDTO bDTO, LikeDTO lDTO, ReviewDTO rDTO, UserDTO uDTO, Model model, HttpServletRequest req) {
+		mDAO.hotBook(bDTO, lDTO, model, req);
 		mDAO.dailyBest(bDTO, rDTO, model, req);
 		mDAO.dailyBook(bDTO, rDTO, model, req);
 		mDAO.dailyUser(uDTO, rDTO, model, req);
@@ -44,8 +45,8 @@ public class MainController {
 
 	@GetMapping("/book.detail")
 	public String bookDetail(UserDTO uDTO, BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+		System.out.println("이거 한번 보여줘" + bDTO);
 		mDAO.bookDetail(bDTO, rDTO, model);
-//		mDAO.reviewUser(uDTO, rDTO, model);
 		mDAO.reviews(bDTO, rDTO, model, req);
 		mDAO.getPercent1(bDTO, rDTO, model);
 		model.addAttribute("contentPage", "../EB_main/book_detail.jsp");
