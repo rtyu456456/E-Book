@@ -44,6 +44,7 @@
 
 	</div>
 
+
 </body>
 <script type="text/javascript">
 let countAlarm = document.getElementById("count-alarm").value;
@@ -55,8 +56,6 @@ if(countAlarm >= 1){
 	alarmImg.style.visibility = "hidden";
 	
 }
-
-
 
 
 </script>
