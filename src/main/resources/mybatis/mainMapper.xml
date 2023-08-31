@@ -55,6 +55,8 @@
 	<select id="bookDetail" resultType="com.fp.eb.model.BookDTO">
 		select * from eb_book where
 		b_no = #{b_no}
+		
+		
 	</select>
 
 	<!-- 상세 서평 -->
@@ -87,6 +89,12 @@
 		LR_OWNER = #{lr_owner} and LR_WHERE_TYPE = #{lr_where_type} and
 		LR_WHERE_NO = #{lr_where_no}
 	</update>
+	
+	<select id="likeCheck" resultType="String">
+		select lr_type from eb_like_record
+		where lr_owner = #{lr_owner} and LR_WHERE_TYPE = #{lr_where_type} and
+		LR_WHERE_NO = #{lr_where_no}
+	</select>
 
 	<select id="getPercent" resultType="com.fp.eb.model.BookDTO">
 		SELECT

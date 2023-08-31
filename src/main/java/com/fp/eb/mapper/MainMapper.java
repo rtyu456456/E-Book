@@ -21,6 +21,8 @@ public interface MainMapper {
 
 	public BookDTO bookDetail(BookDTO bDTO);
 
+	public String likeCheck(LikeDTO likeDTO);
+	
 	public List<ReviewDTO> reviews(BookDTO bDTO);
 	public String likeCheck(LikeDTO likeDTO);
 	public BookDTO getPercent(BookDTO bDTO);

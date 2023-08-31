@@ -8,6 +8,7 @@
 <title>서평-검색</title>
 </head>
 <body>
+	<div clas="search-result-gh">
 	<!------ 검색 결과------>
 	<c:forEach var="bs" items="${bookSearch }">
 		<div class="result-box-gh">
@@ -27,5 +28,6 @@
 			</div>
 		</div>
 	</c:forEach>
+	</div>
 </body>
 </html>

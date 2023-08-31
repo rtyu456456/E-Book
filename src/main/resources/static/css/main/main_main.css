@@ -29,7 +29,7 @@
 	left: 2.7vw;
 }
 
-.age-box button{
+.age-box button {
 	margin-right: 3vw;
 }
 /********추천 도서********/
@@ -62,22 +62,107 @@
 	left: 2.7vw;
 }
 
-.popular-box button{
+.popular-box button {
 	margin-right: 3vw;
 }
 
-/********베스트 서평 전체********/
-.best-review-detail{
-	width: 10vw;
-	height: 10rem;
-	border: 1px solid black;
-	background-color: white;
+/********베스트 서평 모달********/
+
+/*box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);*/
+.best-review-dialog {
+	width: 84vw;
+	height: 52rem;
+	background-color: #ffffff;
+	border: none;
+	border-radius: 2rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	position: relative;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
 }
 
+.review-close-gh {
+	width: 4.5rem;
+	heigt: 4.5rem;
+	background-color: transparent;
+	border: none;
+}
 
+.review-close-gh img {
+	width: 1.5rem;
+	heigt: 1.5rem;
+	position: absolute;
+	top: 2rem;
+	right: 2rem;
+}
 
+.modal-best-gh {
+	margin-top: 0.5rem;
+}
 
+.modal-date-gh {
+	font-size: 1.2rem;
+	opacity: 0.5;
+	position: absolute;
+	top: 13rem;
+	right: 4rem;
+	opacity: 0.5;
+}
 
+.modal-review-content {
+	width: 70vw;
+	height: 30rem;
+	background-color: #F5F6FA;
+	border-radius: 2rem;
+	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
+	padding: 1.5rem;
+	position: absolute;
+	top: 16.5rem;
+	left: 4.6vw;
+	background-color: #F5F6FA;
+}
+
+.modal-review-content h6 {
+	width: 70vw;
+	font-size: 1.5rem;
+}
+
+.modal-reputation-gh {
+	display: flex;
+	position: absolute;
+	bottom: 1.5rem;
+	right: 4.5vw;
+}
+
+.modal-reputation-gh button {
+	width: 6.5rem;
+	height: 2rem;
+	background: #F5F6FA;
+	border: none;
+	border-radius: 30px;
+	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1) inset;
+	margin-left: 1rem;
+	position: relative;
+}
+
+.modal-reputation-gh img {
+	width: 1.2rem;
+	height: 1.2rem;
+	position: absolute;
+	bottom: 0.4rem;
+	left: 1rem;
+}
+
+.modal-reputation-gh span {
+	font-size: 1rem;
+	text-align: right;
+	position: absolute;
+	bottom: 0.2rem;
+	right: 1rem;
+}
 /********베스트 서평********/
 .best-gh {
 	height: 100vh;
@@ -197,7 +282,7 @@
 	opacity: 0.5;
 }
 
-.recommend-radio-gh div{
+.recommend-radio-gh div {
 	color: #779A76;
 	font-size: 1.2rem;
 	font-weight: 800;
@@ -250,7 +335,7 @@
 	left: 4.6vw;
 }
 
-.best-review-gh h6{
+.best-review-gh h6 {
 	width: 70vw;
 	height: 8.7rem;
 	font-size: 1.5rem;
@@ -258,9 +343,9 @@
 	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
-	}
+}
 
-.best-review-gh.more{
+.best-review-gh.more {
 	width: 70vw;
 	height: 8.5rem;
 	background-color: #F5F6FA;
@@ -270,7 +355,6 @@
 	position: absolute;
 	top: 14.3rem;
 	left: 4.6vw;
-	
 	width: 70vw;
 	height: 8.7rem;
 	font-size: 1.5rem;
@@ -278,4 +362,4 @@
 	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
-}	
+}

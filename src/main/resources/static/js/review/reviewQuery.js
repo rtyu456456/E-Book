@@ -10,14 +10,57 @@ setBookmark();
 
 
 /*베스트 서평 상세*/
+/* 오늘 */
 $(function() {
-	let bestReview = document.querySelector('.best-review-gh');
-	let reviewDialog = document.querySelector('#best-review-dialog');
-	menu.addEventListener('click', function (event){
+	let best = document.querySelector('.best-review-day');
+	let dialog = document.querySelector('.best-day-dialog');
+	best.addEventListener('click', function (event){
 		console.log(111);
-		reviewDialog.showModal();
-	})
-});
+		dialog.showModal();
+		console.log(111);
+	});
+
+	dialog.addEventListener('click', function(event) {
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
+
+  });
+/* 이번주 */
+$(function() {
+	let best = document.querySelector('.best-review-week');
+	let dialog = document.querySelector('.best-week-dialog');
+	best.addEventListener('click', function (event){
+		console.log(111);
+		dialog.showModal();
+		console.log(111);
+	});
+
+	dialog.addEventListener('click', function(event) {
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
+
+  });
+/*이번달*/
+$(function() {
+	let best = document.querySelector('.best-review-month');
+	let dialog = document.querySelector('.best-month-dialog');
+	best.addEventListener('click', function (event){
+		console.log(111);
+		dialog.showModal();
+		console.log(111);
+	});
+
+	dialog.addEventListener('click', function(event) {
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
+
+  });
 
 /*사이드 메뉴 창*/
 $(function() {
@@ -26,43 +69,42 @@ $(function() {
 	menu.addEventListener('click', function (event){
 		console.log(111);
 		dialog.showModal();
-	})
+	});
+	
+	dialog.addEventListener('click', function(event) {
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
 });
 
 
 /*책갈피 끼우기*/
 function setBookmark(){
 	let likeCheck = $(".like-check-bookmark");
-	console.log(likeCheck);
-	$(likeCheck).each(function(i, e){
-		console.log("i 값: " + i);
-		console.log("e 값: " + e);
-		if(e.value == 0){
-			$(e).val(1);
+		if($(likeCheck).val() == 0){
 			jQuery("#logoGH").show();
 			console.log($(".bookmark-gh").attr("src", "/img/logo_bookmark_empty.png"));
-		}else if(e.value == 1){
-			$(e).val(0);
+		}else if($(likeCheck).val() == 1){
 			jQuery("#logoGH").hide();
 			console.log($(".bookmark-gh").attr("src", "/img/logo_bookmark.png"));
 		}
-	});
 }
 
 
 function bookmarkFunc(){
 	let num = 0;
 	$(".bookmark-gh").click(function() {
-	let lr_owner = 'gh';   // $('.user_id').val();
+	let lr_owner = $('.user_id').val();
 	let lr_where_type = $(this).parent().find('.like-type').val();
 	let lr_where_no = $(this).parent().find('.like-no').val();
 	let lr_typeEl = $(this).parent().find('.like-check-bookmark'); // 0, 1
-		if ($(lr_typeEl).val() == 0 || $(lr_typeEl).val() == "") {
+		if ($(lr_typeEl).val() == 0) {
 			console.log("끼우기-------------");
 			num++;
 			$(lr_typeEl).val(1);
 			console.log("lr_typeEl: " + lr_typeEl);
-		} else {
+		} else if ($(lr_typeEl).val() == 1){
 			console.log("뺴기-------------");
 			num = 0;
 			$(lr_typeEl).val(0);
@@ -148,10 +190,10 @@ function setLike(){
 		console.log(e.value)
 		if(e.value == 1){
 			console.log($(e).parent().find('.reviewLikeImg').addClass( 'on' ));
-			//console.log($(e).parent().find('.reviewLikeCnt').addClass( 'on' ));
+			console.log($(e).parent().find('.reviewLikeCnt').addClass( 'on' ));
 		}else if(e.value == 2){
 			console.log($(e).parent().find('.reviewDislikeImg').addClass( 'on' ));
-			//console.log($(e).parent().find('.reviewDislikeCnt').addClass( 'on' ));
+			console.log($(e).parent().find('.reviewDislikeCnt').addClass( 'on' ));
 		}
 	});
 }
@@ -161,13 +203,13 @@ let dataSet = ['', '좋아요','싫어요'];
 function likeFunc(){
 	
 	$(".reviewLikeBtn").click(function(){
-	let lr_owner = 'gh';   // $('.user_id').val();
+	let lr_owner = $('.user_id').val(); //'gh';
 	let lr_where_type = $(this).parent().find('.like-type').val();
 	let lr_where_no = $(this).parent().find('.like-no').val();
 	let reviewLikeCnt = $(this).find('.reviewLikeCnt');
 	let lr_typeEl = $(this).parent().find('.like-check'); // 0, 1
 	let img = $(this).find('.reviewLikeImg');
-	//let span = $(this).find('.reviewLikeCnt');
+	let span = $(this).find('.reviewLikeCnt');
 	
 	if($(lr_typeEl).val() == 2){
 		alert("이미" + dataSet[$(lr_typeEl).val()] + '를 눌렀어요');
@@ -182,14 +224,15 @@ function likeFunc(){
 		url : "like.do",
 		data : {lr_where_no,lr_owner,lr_where_type,lr_type}
 	}).done(function(data) {
-			console.log(data);
+			console.log('data  ' + data);
+			console.log('lr_owner  ' + lr_owner);
 			if(data == 1){
-				//$(span).addClass('on');
+				$(span).addClass('on');
 				$(img).addClass('on');
 				$(lr_type).val(1);
 				$(reviewLikeCnt).text(parseInt($(reviewLikeCnt).text())+1)
 			}else{
-				//$(span).removeClass('on');
+				$(span).removeClass('on');
 				$(img).removeClass('on');
 				$(lr_type).val(0);
 				$(reviewLikeCnt).text(parseInt($(reviewLikeCnt).text())-1)
@@ -201,13 +244,13 @@ function likeFunc(){
 function disLikeFunc(){
 	
 	$(".reviewDislikeBtn").click(function(){
-	let lr_owner = 'gh';   // $('.user_id').val();
+	let lr_owner = $('.user_id').val(); //
 	let lr_where_type = $(this).parent().find('.like-type').val();
 	let lr_where_no = $(this).parent().find('.like-no').val();
 	let reviewDislikeCnt = $(this).find('.reviewDislikeCnt');
 	let lr_typeEl = $(this).parent().find('.like-check'); // 0, 1
 	let img = $(this).find('.reviewDislikeImg');
-	//let span = $(this).find('.reviewDislikeCnt');
+	let span = $(this).find('.reviewDislikeCnt');
 	if($(lr_typeEl).val() == 1){
 		alert("이미" + dataSet[$(lr_typeEl).val()] + '를 눌렀어요');
 		return;
@@ -221,15 +264,16 @@ function disLikeFunc(){
 		url : "like.do",
 		data : {lr_where_no,lr_owner,lr_where_type,lr_type}
 	}).done(function(data) {
-			console.log(data);
+			console.log('data  ' + data);
+			console.log('lr_owner  ' + lr_owner);
 			if(data == 2){
 				$(img).addClass('on');
-				//$(span).addClass('on');
+				$(span).addClass('on');
 				$(lr_type).val(2);
 				$(reviewDislikeCnt).text(parseInt($(reviewDislikeCnt).text())+1)
 			}else{
 				$(img).removeClass('on');
-				//$(span).removeClass('on');
+				$(span).removeClass('on');
 				$(lr_type).val(0);
 				$(reviewDislikeCnt).text(parseInt($(reviewDislikeCnt).text())-1)
 			}
