@@ -1,12 +1,19 @@
 package com.fp.eb.service;
 
+import java.io.File;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fp.eb.mapper.TradeMapper;
 import com.fp.eb.mapper.UserMapper;
+import com.fp.eb.model.TradeDTO;
 import com.fp.eb.model.UserDTO;
 
 @Service
@@ -17,6 +24,9 @@ public class UserDAO {
 
 	@Autowired
 	private BCryptPasswordEncoder bEncoder;
+
+	@Autowired
+	private ServletContext uploadPath;
 
 	public void regUser(HttpServletRequest req, UserDTO uDTO) {
 		uDTO.setU_pw(bEncoder.encode(uDTO.getU_pw()));
@@ -73,7 +83,7 @@ public class UserDAO {
 		uDTO.setU_id(user.getU_id());
 		UserDTO dbMember = uMapper.getUserById(uDTO.getU_id());
 		System.out.println(uDTO.getU_pw());
-		
+
 		if (dbMember != null) {
 			if (bEncoder.matches(uDTO.getU_pw(), dbMember.getU_pw())) {
 				System.out.println("비밀번호 일치");
@@ -85,6 +95,69 @@ public class UserDAO {
 		}
 		System.out.println("아이디가 업어");
 		return 0;
+	}
+
+	public void delUser(HttpServletRequest req, UserDTO uDTO) {
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		uDTO.setU_id(user.getU_id());
+		System.out.println(uDTO.getU_id());
+		if (uMapper.delUser(uDTO) == 1) {
+			System.out.println("삭제성공");
+		} else {
+			System.out.println("삭제실패");
+		}
+
+	}
+
+	// ---------------------------------------- 유저정보 수정
+
+	public void updateUser(UserDTO uDTO, HttpServletRequest req) {
+
+		System.out.println(uDTO);
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		
+		uDTO.setU_id(user.getU_id());
+		
+		if(uDTO.getU_pw() != null) {
+			uDTO.setU_pw(bEncoder.encode(uDTO.getU_pw()));
+		} else {
+			uDTO.setU_pw("nono");
+		}
+		
+		String path = uploadPath.getRealPath("userProfile");
+		System.out.println(path);
+
+		if (uDTO.getU_file() != null) {
+			try {
+				String orgFileName = uDTO.getU_file().getOriginalFilename();
+				String saveFileName = UUID.randomUUID().toString().split("-")[0]
+						+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
+				System.out.println(orgFileName);
+				System.out.println(saveFileName);
+				System.out.println("----------------");
+				String rootPath = req.getServletContext().getRealPath("/");
+				System.out.println(rootPath);
+				if (!uDTO.getU_file().getOriginalFilename().isEmpty()) { // 실제 업로드 코드
+					uDTO.getU_file().transferTo(new File(path, saveFileName));
+					req.setAttribute("r", "file uploaded successfully!");
+					req.setAttribute("fileName", saveFileName);
+					uDTO.setU_profile("userProfile/" + saveFileName);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		try {
+			if (uMapper.updateUser(uDTO) == 1) {
+				System.out.println("등록성공");
+				req.getSession().setAttribute("user", uMapper.getUserById(uDTO.getU_id()));
+			} else {
+				req.setAttribute("result", "등록 실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

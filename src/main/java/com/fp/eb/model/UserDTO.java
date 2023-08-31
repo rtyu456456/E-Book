@@ -1,6 +1,9 @@
 package com.fp.eb.model;
 
+import java.io.File;
 import java.util.Date;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -23,6 +26,7 @@ public class UserDTO {
 	private String u_achievement;
 	private String u_achievement_show;
 	private String u_auth;
+	private MultipartFile u_file;
 
 	
 	

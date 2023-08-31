@@ -2,6 +2,8 @@ package com.fp.eb.mapper;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.fp.eb.model.BookDTO;
@@ -12,15 +14,15 @@ import com.fp.eb.model.UserDTO;
 @Mapper
 public interface BookrecordMapper {
 
-	List<BookrecordDTO> getBookIng();
+	List<BookrecordDTO> getBookIng(UserDTO uDTO);
 
-	List<BookrecordDTO> getBookFin(int cur_year, int cur_month);
+	List<BookrecordDTO> getBookFin(int cur_year, int cur_month, UserDTO uDTO);
 
 	int updateCurPage(BookrecordDTO brDTO);
 
 	int getCurPage(BookrecordDTO brDTO);
 
-	List<BookrecordDTO> getBookWish();
+	List<BookrecordDTO> getBookWish(UserDTO uDTO);
 
 	int delWish(BookrecordDTO brDTO);
 
@@ -34,7 +36,7 @@ public interface BookrecordMapper {
 
 	int getIngCnt(UserDTO uDTO);
 
-	int regReview(ReviewDTO rDTO);
+	int regReview(UserDTO uDTO, ReviewDTO rDTO);
 
 	int reviewCheck(ReviewDTO rDTO);
 

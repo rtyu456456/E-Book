@@ -28,19 +28,37 @@ public class BookrecordDAO {
 	@Autowired
 	BookMapper bMapper;
 
-	public void getBookIng(HttpServletRequest req) {
+	public void getBookIng(HttpServletRequest req, UserDTO uDTO) {
 
-		req.setAttribute("bookrecords", brMapper.getBookIng());
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+
+		uDTO.setU_id(user.getU_id());
+
+		req.setAttribute("bookrecords", brMapper.getBookIng(uDTO));
 
 	}
 
-	public void getBookFin(HttpServletRequest req) {
+	public void getBookFin(HttpServletRequest req, UserDTO uDTO) {
+
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+
+		uDTO.setU_id(user.getU_id());
 		
-		int cur_year = (int) req.getAttribute("cur_year");
-		int cur_month = (int) req.getAttribute("cur_month");
+		int cur_year = 0;
+		int cur_month = 0;
 		
-		req.setAttribute("bookrecords", brMapper.getBookFin(cur_year, cur_month));
-		
+		if(req.getParameter("cur_year") != null) {
+			cur_year = Integer.parseInt(req.getParameter("cur_year"));
+			cur_month = Integer.parseInt(req.getParameter("cur_month"));
+			req.setAttribute("cur_year", cur_year);
+			req.setAttribute("cur_month", cur_month);
+		} else {
+			cur_year = (int) req.getAttribute("cur_year");
+			cur_month = (int) req.getAttribute("cur_month");
+		}
+
+		req.setAttribute("bookrecords", brMapper.getBookFin(cur_year, cur_month, uDTO));
+
 	}
 
 	public int getPage(BookrecordDTO brDTO) {
@@ -51,9 +69,13 @@ public class BookrecordDAO {
 		// get br_page
 	}
 
-	public void getBookWish(HttpServletRequest req) {
+	public void getBookWish(HttpServletRequest req, UserDTO uDTO) {
 
-		req.setAttribute("bookrecords", brMapper.getBookWish());
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+
+		uDTO.setU_id(user.getU_id());
+
+		req.setAttribute("bookrecords", brMapper.getBookWish(uDTO));
 
 	}
 
@@ -66,10 +88,15 @@ public class BookrecordDAO {
 		brMapper.delBr(brDTO);
 	}
 
-	public void regIng(BookrecordDTO brDTO, UserDTO uDTO) {
+	public void regIng(HttpServletRequest req, BookrecordDTO brDTO, UserDTO uDTO) {
+
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+
+		uDTO.setU_id(user.getU_id());
+
 		System.out.println(brDTO.getB_no());
 		System.out.println(brDTO.getLr_no());
-		
+
 		if (brMapper.getIngByNo(brDTO, uDTO) == 0) {
 			if (brMapper.getIngCnt(uDTO) >= 5) {
 				System.out.println("5개 넘어서 등록 x");
@@ -84,7 +111,11 @@ public class BookrecordDAO {
 	}
 
 	public void regBookModalAPI(BookDTO bDTO, HttpServletRequest req, UserDTO uDTO) {
-		
+
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+
+		uDTO.setU_id(user.getU_id());
+
 		String url = bDTO.getB_url();
 		System.out.println(url);
 
@@ -169,28 +200,31 @@ public class BookrecordDAO {
 		}
 	}
 
-	public void regReview(ReviewDTO rDTO, HttpServletRequest req) {
+	public void regReview(ReviewDTO rDTO, HttpServletRequest req, UserDTO uDTO) {
 		
-		if(brMapper.regReview(rDTO) == 1) {
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+
+		uDTO.setU_id(user.getU_id());
+		
+		if (brMapper.regReview(uDTO, rDTO) == 1) {
 			System.out.println("등록성공");
 		}
-		
-		
+
 	}
 
 	public int reviewCheck(ReviewDTO rDTO, HttpServletRequest req) {
-		
+
 		return brMapper.reviewCheck(rDTO);
 	}
 
 	public BookrecordDTO getReviewBook(ReviewDTO rDTO, HttpServletRequest req) {
-		
+
 		return brMapper.getReviewBook(rDTO);
 	}
 
 	public void updateReview(ReviewDTO rDTO, HttpServletRequest req) {
-		
-		if(brMapper.updateReview(rDTO) == 1) {
+
+		if (brMapper.updateReview(rDTO) == 1) {
 			System.out.println("수정성공");
 		}
 	}

@@ -141,15 +141,15 @@ body * {
 	</div>
 	</dialog>
 
-	<!-- logout용 modal -->
+	<!-- 탈퇴용 modal -->
 	<dialog
 		class="del-user-modal rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/4">
 	<div class="w-full h-full flex flex-col justify-center items-center">
 		<div
 			class="flex flex-col justify-center items-center rounded-[60px] w-11/12 h-1/2 mt-20 bg-white">
 			<span class="text-[2.5rem] font-bold">탈퇴 하시겠습니까? 모든 기록이 삭제됩니다.</span>
-			<span class="text-[2.5rem] font-bold">탈퇴하시려면 비밀번호를 입력하세요.</span> 
-			<input class="del-pw h-24 mt-10 w-2/3 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
+			<span class="text-[2.5rem] font-bold">탈퇴하시려면 비밀번호를 입력하세요.</span> <input
+				class="del-pw h-24 mt-10 w-2/3 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
 		</div>
 		<div class="flex w-full h-1/2 justify-end items-end pt-20">
 			<button
@@ -159,10 +159,28 @@ body * {
 		</div>
 	</div>
 	</dialog>
+
+	<!-- 비밀번호 불일치 modal -->
+	<dialog
+		class="wrong-pw-modal rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner shadow-slate-500 w-11/12 h-1/6">
+	<div class="w-full h-full flex flex-col justify-center items-center">
+		<div
+			class="flex flex-col justify-center rounded-[60px] w-11/12 h-1/2 mt-20 bg-white">
+			<span class="text-[2.5rem] font-bold">비밀번호가 일치하지 않습니다.</span>
+		</div>
+		<div class="flex w-full h-1/2 justify-end items-end pt-20">
+			<button
+				class="wrong-pw-confirm bg-[rgba(38,40,61,1)] w-1/4 h-[5rem] rounded-br-[60px] rounded-tl-[60px] mr-0 text-[3rem] font-bold text-[#FFFFFF]">확인</button>
+		</div>
+	</div>
+	</dialog>
+
+
 </body>
 <script type="text/javascript">
 	let logout_modal = document.querySelector(".logout-modal");
 	let del_user_modal = document.querySelector(".del-user-modal");
+	let wrong_pw_modal = document.querySelector(".wrong-pw-modal")
 	$(function() {
 
 		$('.logout-confirm').click(function() {
@@ -178,19 +196,23 @@ body * {
 		$('.logout-yes').click(function() {
 			location.href = 'logout.go';
 		});
-		
-		$('.del-user-confirm').click(function(){
+
+		$('.del-user-confirm').click(function() {
 			del_user_modal.showModal();
 		});
-		
+
 		$('.del-user-cancel').click(function() {
 			del_user_modal.close();
 		});
-		
+
+		$('.wrong-pw-confirm').click(function() {
+			wrong_pw_modal.close();
+		});
+
 		$('.del-user-yes').click(function() {
 			let del_pw = del_user_modal.querySelector('.del-pw');
 			console.log(del_pw.value);
-			
+
 			$.ajax({
 				type : 'post',
 				url : "pwCheck.do",
@@ -199,15 +221,16 @@ body * {
 				},
 				success : function(data) {
 					console.log('ajax는 돌아간듯');
-					if(data == 1){
-						location.href="delUser.do";
+					if (data == 1) {
+						location.href = "delUser.do";
 					} else {
 						console.log('비밀번호 불일치');
+						wrong_pw_modal.showModal();
 					}
-				    
+
 				}
 			}); // ajax end
-			
+
 		});
 
 	}); // ready end

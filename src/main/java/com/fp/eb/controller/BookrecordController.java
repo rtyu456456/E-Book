@@ -28,14 +28,18 @@ public class BookrecordController {
 	@GetMapping("/bookRecord.fin")
 	public String bookRecordFin(HttpServletRequest req, UserDTO uDTO) {
 		
-		LocalDateTime current_date = LocalDateTime.now();
-		int cur_year = current_date.getYear();
-		int cur_month = current_date.getMonthValue();
-		req.setAttribute("cur_year", cur_year);
 		
-		req.setAttribute("cur_month", cur_month);
+		
+		if(req.getParameter("cur_year") == null) {
+			LocalDateTime current_date = LocalDateTime.now();
+			int cur_year = current_date.getYear();
+			int cur_month = current_date.getMonthValue();
+			req.setAttribute("cur_month", cur_month);
+			req.setAttribute("cur_year", cur_year);
+		}
+		
 
-		brDAO.getBookFin(req);
+		brDAO.getBookFin(req, uDTO);
 		req.setAttribute("contentPage", "bookrecord_fin.jsp");
 		
 		return "user/user_main";
@@ -43,46 +47,46 @@ public class BookrecordController {
 
 	@GetMapping("/bookRecord.ing")
 	public String bookRecordIng(HttpServletRequest req, UserDTO uDTO) {
-		brDAO.getBookIng(req);
+		brDAO.getBookIng(req, uDTO);
 		req.setAttribute("contentPage", "bookrecord_ing.jsp");
 		return "user/user_main";
 	}
 
 	@GetMapping("/reg.ing")
 	public String regIng(HttpServletRequest req, UserDTO uDTO, BookrecordDTO brDTO) {
-		brDAO.regIng(brDTO, uDTO);
-		brDAO.getBookIng(req);
+		brDAO.regIng(req, brDTO, uDTO);
+		brDAO.getBookIng(req, uDTO);
 		req.setAttribute("contentPage", "bookrecord_ing.jsp");
 		return "user/user_main";
 	}
 
 	@GetMapping("/bookRecord.wish")
 	public String bookRecordWish(HttpServletRequest req, UserDTO uDTO) {
-		brDAO.getBookWish(req);
+		brDAO.getBookWish(req, uDTO);
 		req.setAttribute("contentPage", "bookrecord_wish.jsp");
 		return "user/user_main";
 	}
 
 	@GetMapping("/del.fin")
-	public String delFin(HttpServletRequest req, BookrecordDTO brDTO) {
+	public String delFin(HttpServletRequest req, BookrecordDTO brDTO, UserDTO uDTO) {
 		brDAO.delBr(brDTO);
-		brDAO.getBookFin(req);
+		brDAO.getBookFin(req, uDTO);
 		req.setAttribute("contentPage", "bookrecord_fin.jsp");
 		return "user/user_main";
 	}
 
 	@GetMapping("/del.ing")
-	public String delIng(HttpServletRequest req, BookrecordDTO brDTO) {
+	public String delIng(HttpServletRequest req, BookrecordDTO brDTO, UserDTO uDTO) {
 		brDAO.delBr(brDTO);
-		brDAO.getBookIng(req);
+		brDAO.getBookIng(req, uDTO);
 		req.setAttribute("contentPage", "bookrecord_ing.jsp");
 		return "user/user_main";
 	}
 	
 	@GetMapping("/del.wish")
-	public String delWish(HttpServletRequest req, BookrecordDTO brDTO) {
+	public String delWish(HttpServletRequest req, BookrecordDTO brDTO, UserDTO uDTO) {
 		brDAO.delWish(brDTO);
-		brDAO.getBookWish(req);
+		brDAO.getBookWish(req, uDTO);
 		req.setAttribute("contentPage", "bookrecord_wish.jsp");
 		return "user/user_main";
 	}
@@ -101,8 +105,8 @@ public class BookrecordController {
 	}
 
 	@GetMapping("/regReview.do")
-	public String regReviewDo(HttpServletRequest req, ReviewDTO rDTO) {
-		brDAO.regReview(rDTO, req);
+	public String regReviewDo(HttpServletRequest req, ReviewDTO rDTO, UserDTO uDTO) {
+		brDAO.regReview(rDTO, req, uDTO);
 		
 		return "redirect:/bookRecord.fin";
 	}

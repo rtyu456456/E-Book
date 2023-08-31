@@ -298,24 +298,30 @@ br_boxes.forEach(function(br_box){
     	let cur_month = parseInt(cur_month_span.textContent.replace("월", ""));
     	let cur_year = parseInt(cur_year_span.textContent);
     	if (cur_month > 1) {
-        	cur_month_span.textContent = (cur_month - 1) + "월";
+    		cur_month -= 1;
+        	cur_month_span.textContent = cur_month + "월";
     	} else {
     		cur_month = 12;
     		cur_month_span.textContent = cur_month + "월";
             cur_year_span.textContent = cur_year - 1;
     	}
+    	
+    	location.href='bookRecord.fin?cur_year=' + cur_year + '&cur_month=' + cur_month;
 	});
 
 	next_month.addEventListener("click", function() {
    	 	let cur_month = parseInt(cur_month_span.textContent.replace("월", ""));
 	   	let cur_year = parseInt(cur_year_span.textContent);
    	 	if (cur_month < 12) {
-    	    cur_month_span.textContent = (cur_month + 1) + "월";
+   	 		cur_month += 1;
+    	    cur_month_span.textContent = cur_month + "월";
     	} else {
     		cur_month = 1;
     		cur_month_span.textContent = cur_month + "월";
             cur_year_span.textContent = cur_year + 1;
     	}
+	    	location.href='bookRecord.fin?cur_year=' + cur_year + '&cur_month=' + cur_month;
+   	 	
 	});	
 }); // eventlistener end
 

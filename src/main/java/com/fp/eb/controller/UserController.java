@@ -40,7 +40,7 @@ public class UserController {
 	@PostMapping("/reguser.do")
 	public String regUserDo(HttpServletRequest req, UserDTO uDTO) {
 		uDAO.regUser(req, uDTO);
-		return "redirect:/";
+		return "redirect:/login.go";
 	}
 
 	@GetMapping("/login.go")
@@ -69,11 +69,12 @@ public class UserController {
 	}
 	
 	
-	@PostMapping("/delUser.do")
+	@GetMapping("/delUser.do")
 	public String delUser(HttpServletRequest req, UserDTO uDTO) {
 		System.out.println(uDTO);
-		uDAO.login2(req, uDTO);
-		return "redirect:/usermain";
+		uDAO.delUser(req, uDTO);
+		
+		return "redirect:/logout.go";
 	}
 	
 	
@@ -87,6 +88,12 @@ public class UserController {
 	public String userUpdateGo(HttpServletRequest req, UserDTO uDTO) {
 		req.setAttribute("contentPage", "update_user.jsp");
 		return "user/user_main";
+	}
+
+	@PostMapping("/userUpdate.do")
+	public String userUpdateDo(HttpServletRequest req, UserDTO uDTO) {
+		uDAO.updateUser(uDTO, req);
+		return "redirect:/usermain";
 	}
 	
 

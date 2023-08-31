@@ -3,39 +3,39 @@
 <mapper namespace="com.fp.eb.mapper.BookrecordMapper">
 
 <insert id="regIng">
-	INSERT INTO EB_BOOK_RECORD VALUES (EB_BR_SEQ.NEXTVAL, #{brDTO.b_no}, 'kkh', 0, SYSDATE)
+	INSERT INTO EB_BOOK_RECORD VALUES (EB_BR_SEQ.NEXTVAL, #{brDTO.b_no}, #{uDTO.u_id}, 0, SYSDATE)
 </insert>
 
 <insert id="regIngModal">
-	INSERT INTO EB_BOOK_RECORD VALUES (EB_BR_SEQ.NEXTVAL, #{bDTO.b_no}, 'kkh', 0, SYSDATE)
+	INSERT INTO EB_BOOK_RECORD VALUES (EB_BR_SEQ.NEXTVAL, #{bDTO.b_no}, #{uDTO.u_id}, 0, SYSDATE)
 </insert>
 
 <insert id="regReview">
-	INSERT INTO EB_REVIEW VALUES (EB_REVIEW_SEQ.NEXTVAL, 'kkh', #{r_b_no}, #{r_contents}, #{r_type}, 0, 0, SYSDATE)
+	INSERT INTO EB_REVIEW VALUES (EB_REVIEW_SEQ.NEXTVAL, #{uDTO.u_id}, #{rDTO.r_b_no}, #{rDTO.r_contents}, #{rDTO.r_type}, 0, 0, SYSDATE)
 </insert>
 
 <select id="getBookIng" resultType="com.fp.eb.model.BookrecordDTO">
-	SELECT B_TITLE, B_THUMBNAIL, B_PAGE, B_AUTHORS, BR_NO, BR_PAGE, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE != BR_PAGE ORDER BY BR_NO DESC
+	SELECT B_TITLE, B_THUMBNAIL, B_PAGE, B_AUTHORS, BR_NO, BR_PAGE, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE BR_OWNER = #{u_id} AND B_NO = BR_BOOK AND B_PAGE != BR_PAGE ORDER BY BR_NO DESC
 </select>
 
 <select id="getIngByNo" resultType="integer" parameterType="com.fp.eb.model.BookrecordDTO" >
-	SELECT COUNT(*) FROM EB_BOOK_RECORD WHERE BR_BOOK = #{brDTO.b_no} AND BR_OWNER = 'kkh'
+	SELECT COUNT(*) FROM EB_BOOK_RECORD WHERE BR_BOOK = #{brDTO.b_no} AND BR_OWNER = #{uDTO.u_id}
 </select>
 
 <select id="getBookWish" resultType="com.fp.eb.model.BookrecordDTO">
-	SELECT B_NO, B_TITLE, B_THUMBNAIL, B_AUTHORS, LR_NO, LR_OWNER FROM EB_BOOK, EB_LIKE_RECORD WHERE LR_OWNER = 'kkh' AND LR_WHERE_TYPE = 'BOOK' AND B_NO = LR_WHERE_NO
+	SELECT B_NO, B_TITLE, B_THUMBNAIL, B_AUTHORS, LR_NO, LR_OWNER FROM EB_BOOK, EB_LIKE_RECORD WHERE LR_OWNER = #{u_id} AND LR_WHERE_TYPE = 'BOOK' AND B_NO = LR_WHERE_NO
 </select>
 
 <select id="getBookFin" resultType="com.fp.eb.model.BookrecordDTO">
-	SELECT B_NO, B_THUMBNAIL, B_TITLE, B_AUTHORS, BR_NO, BR_DATE, R_NO, R_TYPE, R_CONTENTS FROM EB_BOOK, EB_BOOK_RECORD, EB_REVIEW WHERE B_NO = BR_BOOK AND B_NO = R_B_NO AND B_PAGE = BR_PAGE AND R_OWNER = 'kkh' AND EXTRACT(YEAR FROM BR_DATE) = #{cur_year} AND EXTRACT(MONTH FROM BR_DATE) = #{cur_month}
+	SELECT B_NO, B_THUMBNAIL, B_TITLE, B_AUTHORS, BR_NO, BR_DATE FROM EB_BOOK, EB_BOOK_RECORD WHERE B_NO = BR_BOOK AND B_PAGE = BR_PAGE AND BR_OWNER = #{uDTO.u_id} AND EXTRACT(YEAR FROM BR_DATE) = #{cur_year} AND EXTRACT(MONTH FROM BR_DATE) = #{cur_month}
 </select>
 
 <select id="getReviewBook" resultType="com.fp.eb.model.BookrecordDTO">
-	SELECT B_THUMBNAIL, B_TITLE, B_AUTHORS, BR_NO, BR_DATE, R_NO, R_TYPE, R_CONTENTS FROM EB_BOOK, EB_BOOK_RECORD, EB_REVIEW WHERE B_NO = BR_BOOK AND BR_BOOK = R_B_NO AND R_OWNER = 'kkh' AND R_B_NO = #{r_b_no}
+	SELECT B_THUMBNAIL, B_TITLE, B_AUTHORS, BR_NO, BR_DATE, R_NO, R_TYPE, R_CONTENTS FROM EB_BOOK, EB_BOOK_RECORD, EB_REVIEW WHERE B_NO = BR_BOOK AND BR_BOOK = R_B_NO AND R_OWNER = #{uDTO.u_id} AND R_B_NO = #{rDTO.r_b_no}
 </select>
 
 <select id="reviewCheck" resultType="integer">
-	SELECT COUNT(*) FROM EB_REVIEW WHERE R_OWNER = 'kkh' AND R_B_NO = #{r_b_no}
+	SELECT COUNT(*) FROM EB_REVIEW WHERE R_OWNER = #{uDTO.u_id} AND R_B_NO = #{r_b_no}
 </select>
 
 <select id="getCurPage" resultType="integer">
@@ -43,7 +43,7 @@
 </select>
 
 <select id="getIngCnt" resultType="integer">
-	SELECT COUNT(*) FROM EB_BOOK_RECORD, EB_BOOK WHERE BR_OWNER = 'kkh' AND B_NO = BR_BOOK AND B_PAGE != BR_PAGE
+	SELECT COUNT(*) FROM EB_BOOK_RECORD, EB_BOOK WHERE BR_OWNER = #{u_id} AND B_NO = BR_BOOK AND B_PAGE != BR_PAGE
 </select>
 
 <update id="updateCurPage" parameterType="com.fp.eb.model.BookrecordDTO">

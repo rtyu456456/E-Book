@@ -9,5 +9,21 @@
 	<select id="getUserById" resultType="com.fp.eb.model.UserDTO">
 		SELECT * FROM EB_USER WHERE U_ID = #{u_id}
 	</select>
-
+	
+	<update id="updateUser">
+		UPDATE EB_USER SET U_NAME = #{u_name}, U_PROFILE = #{u_profile}, U_AGE = #{u_age} 
+		<if test="u_pw == 'nono'">
+		,U_PW = #{u_pw} 
+		</if>
+		WHERE U_ID = #{u_id}
+		
+	</update>
+	
+	
+	
+	
+	<delete id="delUser">
+		DELETE FROM EB_USER WHERE U_ID = #{u_id}
+	</delete>
+	
 </mapper>
