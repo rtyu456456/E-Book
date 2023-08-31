@@ -11,6 +11,7 @@ import com.fp.eb.model.CommunityDTO;
 import com.fp.eb.model.CommunityLikeDTO;
 import com.fp.eb.model.CommunityPostDTO;
 import com.fp.eb.model.CommunityReplyDTO;
+import com.fp.eb.model.LikeDTO;
 import com.fp.eb.model.Time;
 import com.fp.eb.model.UserDTO;
 

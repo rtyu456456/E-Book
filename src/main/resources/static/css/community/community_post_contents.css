@@ -46,7 +46,6 @@
 		position: relative;
 	}
 	.post_like {
-		color: #F66E6E;
 		position: relative;
 		width: 5rem;
 	}
@@ -61,7 +60,6 @@
 	.post_dislike {
 		width: 5rem;
 		position: relative;
-		color: #26283D;
 	}
 	.post_dislike img {
 		left: -1.4rem;

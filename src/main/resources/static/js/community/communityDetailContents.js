@@ -31,14 +31,12 @@ document.addEventListener('mouseup', function(e) {
 
 
 
-
-
 /*모달 코드*/
 let deleteModal = document.getElementById("deleteModal");
 let deletePostBtn = document.getElementById("delete-post-btn");
 let cNo = document.getElementById("c-no");
-let c_no = cNo.value;
-let cp_no = deletePostBtn.value;
+let c_no = document.getElementById("c-no").value;
+let cp_no = document.getElementById("delete-post-btn").value;
 let modalBackBtn = document.getElementById("back-btn");
 let deleteOkBtn = document.getElementById("delete-ok");
 let deleteText = document.querySelector(".delete-text");
@@ -78,3 +76,4 @@ function deleteReply(cr_no, cp_no, c_no){
 		})
 	
 }
+

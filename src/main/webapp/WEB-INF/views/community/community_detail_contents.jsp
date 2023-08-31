@@ -7,6 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.0.js"
+	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+	crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css/main/main_detail.css">
 </head>
 <body>
 	<input hidden="hidden" id="c-no" value="${community.c_no }">
@@ -15,9 +19,9 @@
 		<div class="white-line">
 			<div class="post_detail">
 				<div class="post_user_img">
-						<img alt="" src="${userimg.u_profile }">
-					</div>
-				
+					<img alt="" src="${userimg.u_profile }">
+				</div>
+
 				<div class="post_info">
 					<div class="post_user_info">
 						<div class="post_user">${communityPost.cp_owner }</div>
@@ -58,14 +62,22 @@
 				<div class="post_cp_contents">${communityPost.cp_contents}</div>
 			</div>
 			<br>
-			<div class="post_icon">
-				<button class="post_like_icon" value="${communityPost.cp_no }">
-					<img alt="" src="/img/like_icon.png"> &nbsp;
-					<div>${communityPost.cp_like }</div>
+			<div class="post_icon" style="text-align: center;">
+				<input class="user_id" hidden value="${sessionScope.user.u_id }">
+				<input class="like-no" hidden value="${communityPost.cp_no }">
+				<input class="like-check" hidden value="${communityPost.likeCheck}">
+				<input hidden class="like-type" value="CP">
+
+
+				<button class="post_like_icon like-dislike" value="1">
+					<img class="reviewLikeImg Like-dislike-img" alt=""
+						src="/img/dislike_icon.png"> &nbsp; <span class="reviewLikeCnt">
+						${communityPost.cp_like }</span>
 				</button>
-				<button class="post_dislike_icon">
-					<img alt="" src="/img/dislike_icon.png"> &nbsp;
-					<div>${communityPost.cp_dislike }</div>
+				<button class="post_dislike_icon like-dislike" value="2">
+					<img class="reviewDislikeImg like-dislike-img" alt=""
+						src="/img/dislike_icon.png"> &nbsp; <span class="reviewDislikeCnt">
+						${communityPost.cp_dislike }</span>
 				</button>
 				<div class="post_chat_icon">
 					<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png"> &nbsp;
@@ -135,6 +147,8 @@
 
 
 </body>
+<script type="text/javascript"
+	src="js/community/like.js"></script>
 <script type="text/javascript"
 	src="js/community/communityDetailContents.js"></script>
 </html>

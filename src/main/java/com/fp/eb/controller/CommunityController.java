@@ -114,9 +114,10 @@ public class CommunityController {
 
 		UserDTO user = (UserDTO) req.getSession().getAttribute("user"); // 세션에 실린 유저값
 		uDTO.setU_id(user.getU_id());
+		
 		cDAO.commentMyPost(model, uDTO);
 		cDAO.getCommunity(c, model);
-		cDAO.getAllCommunityPost(c, model);
+		cDAO.getAllCommunityPost(c, model, req);
 
 		model.addAttribute("commu_header_page", "community_post_header.jsp");
 		model.addAttribute("commu_contents_page", "community_post_contents.jsp");
@@ -143,11 +144,11 @@ public class CommunityController {
 	}
 
 	@GetMapping("/delete.my.reply")
-	public String deleteMyReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
+	public String deleteMyReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr, HttpServletRequest req) {
 		cDAO.deleteMyReply(cr, model);
 
 		cDAO.getCommunity(c, model);
-		cDAO.getCommunityPost(cp, model);
+		cDAO.getCommunityPost(cp, model, c, req);
 		cDAO.getReplys(cp, model);
 		cDAO.getCountReplys(cp.getCp_no(), model);
 
@@ -192,7 +193,7 @@ public class CommunityController {
 
 		cDAO.getUserImg(cp, model);
 		cDAO.getCommunity(c, model);
-		cDAO.getCommunityPost(cp, model);
+		cDAO.getCommunityPost(cp, model, c, req);
 		cDAO.getReplys(cp, model);
 		cDAO.getCountReplys(cp.getCp_no(), model);
 
@@ -211,7 +212,7 @@ public class CommunityController {
 		
 		cDAO.getUserImg(cp, model);
 		cDAO.getCommunity(c, model);
-		cDAO.getCommunityPost(cp, model);
+		cDAO.getCommunityPost(cp, model, c, req);
 		cDAO.getReplys(cp, model);
 		cDAO.getCountReplys(cp.getCp_no(), model);
 		
@@ -230,7 +231,7 @@ public class CommunityController {
 		cDAO.getCountReplys(cp.getCp_no(), model);
 		cDAO.getUserImg(cp, model);
 		cDAO.getCommunity(c, model);
-		cDAO.getCommunityPost(cp, model);
+		cDAO.getCommunityPost(cp, model, c, req);
 		cDAO.getReplys(cp, model);
 
 		model.addAttribute("commu_header_page", "community_detail_header.jsp");
@@ -240,10 +241,10 @@ public class CommunityController {
 
 	@GetMapping("/do.delete.post")
 	public String doDeletePost(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr,
-			HttpServletRequest request) {
+			HttpServletRequest req) {
 		cDAO.deleteCommunityPost(cp, model);
 		cDAO.getCommunity(c, model);
-		cDAO.getAllCommunityPost(c, model);
+		cDAO.getAllCommunityPost(c, model, req);
 
 		model.addAttribute("commu_header_page", "community_post_header.jsp");
 		model.addAttribute("commu_contents_page", "community_post_contents.jsp");
@@ -268,16 +269,16 @@ public class CommunityController {
 		cDAO.insertWritingPost(cp, uDTO);
 
 		cDAO.getCommunity(c, model);
-		cDAO.getAllCommunityPost(c, model);
+		cDAO.getAllCommunityPost(c, model, req);
 		model.addAttribute("commu_header_page", "community_post_header.jsp");
 		model.addAttribute("commu_contents_page", "community_post_contents.jsp");
 		return "community/community_page";
 	}
 
 	@GetMapping("/go.update.post")
-	public String goUpdatePost(Model model, CommunityDTO c, CommunityPostDTO cp) {
+	public String goUpdatePost(Model model, CommunityDTO c, CommunityPostDTO cp, HttpServletRequest req) {
 		cDAO.getCommunity(c, model);
-		cDAO.getCommunityPost(cp, model);
+		cDAO.getCommunityPost(cp, model, c, req);
 
 		model.addAttribute("commu_header_page", "community_updateWriting_header.jsp");
 		model.addAttribute("commu_contents_page", "community_updateWriting_contents.jsp");
@@ -291,7 +292,7 @@ public class CommunityController {
 		cDAO.getUserImg(cp, model);
 		cDAO.updateCommunityPost(cp, model);
 		cDAO.getCommunity(c, model);
-		cDAO.getCommunityPost(cp, model);
+		cDAO.getCommunityPost(cp, model, c, req);
 
 		cDAO.getReplys(cp, model);
 		cDAO.getCountReplys(cp.getCp_no(), model);

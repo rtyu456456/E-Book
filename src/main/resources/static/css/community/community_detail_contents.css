@@ -72,7 +72,7 @@
 	#menu-etc {
 		position: relative;
 		top: -4rem;
-		left: 21rem;
+		left: 24rem;
 		visibility: hidden;
 	}
 	#menu-etc img {
@@ -117,8 +117,8 @@
 		display: flex;
 	}
 	.post_icon img {
-		max-height: 2rem;
-		max-width: 2rem;
+		height: 3rem;
+		width: 3rem;
 	}
 	.post_like_icon {
 		border: none;
@@ -126,8 +126,7 @@
 		align-items: center;
 		display: flex;
 		margin-left: 2rem;
-		font-size: 2rem;
-		color: #F66E6E;
+		font-size: 2.5rem;
 		font-weight: 500;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
@@ -140,7 +139,7 @@
 		align-items: center;
 		display: flex;
 		margin-left: 2rem;
-		font-size: 2rem;
+		font-size: 2.5rem;
 		font-weight: 500;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
@@ -150,7 +149,7 @@
 		align-items: center;
 		display: flex;
 		margin-left: 2rem;
-		font-size: 2rem;
+		font-size: 2.5rem;
 		font-weight: 500;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
@@ -179,7 +178,7 @@
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	.reply_txt {
-		word-break:break-all;
+		word-break: break-all;
 		word-wrap: break-word;
 		position: relative;
 		padding: 1em;
@@ -226,8 +225,7 @@
 		width: 90%;
 	}
 	.post_reply_text {
-	
-		resize : none;
+		resize: none;
 		position: relative;
 		background-color: transparent;
 		font-size: 3rem;

@@ -1,9 +1,8 @@
 package com.fp.eb.service;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,11 +12,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.fp.eb.mapper.CommunityMapper;
+import com.fp.eb.mapper.MainMapper;
 import com.fp.eb.model.CommunityDTO;
 import com.fp.eb.model.CommunityLikeDTO;
 import com.fp.eb.model.CommunityPinned;
 import com.fp.eb.model.CommunityPostDTO;
 import com.fp.eb.model.CommunityReplyDTO;
+import com.fp.eb.model.LikeDTO;
 import com.fp.eb.model.UserDTO;
 
 @Service
@@ -26,6 +27,9 @@ public class CommunityDAO {
 	@Autowired
 	private SqlSession ss;
 
+	@Autowired
+	private MainMapper mainMapper;
+	
 	public void getAllCommunity(Model model) {
 		model.addAttribute("communitys", ss.getMapper(CommunityMapper.class).getAllCommunity());
 	}
@@ -34,19 +38,76 @@ public class CommunityDAO {
 		model.addAttribute("community", ss.getMapper(CommunityMapper.class).getCommunity(c));
 	}
 
-	public void getAllCommunityPost(CommunityDTO c, Model model) {
+	public void getAllCommunityPost(CommunityDTO c, Model model, HttpServletRequest req) {
 		List<CommunityPostDTO> posts = ss.getMapper(CommunityMapper.class).getAllCommunityPost(c);
-		for (CommunityPostDTO cp : posts) {
-			cp.setCp_reviewCnt(getCountReplys(cp.getCp_no()));
+		LikeDTO likeDTO = new LikeDTO();
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		if (user != null) {
+			likeDTO.setLr_owner(user.getU_id());
+			likeDTO.setLr_where_type("CP");
 		}
-
+		for (CommunityPostDTO cpd : posts) {
+			cpd.setCp_reviewCnt(getCountReplys(cpd.getCp_no()));
+			System.out.println(cpd.getCp_no());
+			likeDTO.setLr_where_no(cpd.getCp_no().intValue());
+			if (user != null) {
+				if (mainMapper.getLikeInfo(likeDTO) != null) {
+					
+					cpd.setLikeCheck(mainMapper.getLikeInfo(likeDTO).getLr_type());
+					System.out.println(mainMapper.getLikeInfo(likeDTO).getLr_type());
+					Map<String, Object> likeDislike = mainMapper.likeDislikeCount(likeDTO);
+					System.out.println("-----------------");
+					System.out.println(likeDislike);
+					System.out.println(likeDislike.get("LIKE_COUNT"));
+					System.out.println(likeDislike.get("DISLIKE_COUNT"));
+					BigDecimal like = (BigDecimal) likeDislike.get("LIKE_COUNT");
+					BigDecimal dislike = (BigDecimal) likeDislike.get("DISLIKE_COUNT");
+					cpd.setCp_like(like.intValue());
+					cpd.setCp_dislike(dislike.intValue());
+					System.out.println("-----------------");
+				}
+			}
+		}
+	
+		
+		
+		
+		
+		
+		
 		model.addAttribute("communityPosts", posts);
 	}
+	
+	public void getCommunityPost(CommunityPostDTO cp, Model model, CommunityDTO c, HttpServletRequest req) {
 
-	public void getCommunityPost(CommunityPostDTO cp, Model model) {
-		model.addAttribute("communityPost", ss.getMapper(CommunityMapper.class).getCommunityPost(cp));
+		LikeDTO likeDTO = new LikeDTO();
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		CommunityPostDTO post = ss.getMapper(CommunityMapper.class).getCommunityPost(cp);
+		if (user != null) {
+			likeDTO.setLr_owner(user.getU_id());
+			likeDTO.setLr_where_type("CP");
+			BigDecimal cpno = cp.getCp_no();
+			System.out.println(cpno);
+			likeDTO.setLr_where_no(cpno.intValue());
+			if(mainMapper.likeCheck(likeDTO) != null){
+				post.setLikeCheck(Integer.parseInt(mainMapper.likeCheck(likeDTO)));
+			}
+			
+			
+			Map<String, Object> like_dislike = mainMapper.likeDislikeCount(likeDTO);
+			BigDecimal like = (BigDecimal)like_dislike.get("LIKE_COUNT");
+			BigDecimal dislike = (BigDecimal)like_dislike.get("DISLIKE_COUNT");
+			System.out.println(like);
+			System.out.println(dislike);
+			post.setCp_like(like.intValue());
+			post.setCp_dislike(dislike.intValue());
+		}
+		
+		model.addAttribute("communityPost", post);
 	}
 
+	
+	
 	public void getReplys(CommunityPostDTO cp, Model model) {
 		model.addAttribute("communityReplys", ss.getMapper(CommunityMapper.class).getAllReplys(cp));
 	}
