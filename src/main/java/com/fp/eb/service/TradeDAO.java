@@ -176,8 +176,9 @@ public class TradeDAO {
 
 // 정보 수정
 	public void updateTrade(TradeDTO tDTO, HttpServletRequest req) {
-
-		if (tDTO.getT_file() != null) {
+System.out.println(tDTO.getT_file().getOriginalFilename());
+System.out.println("--------------asd-");
+		if (!(tDTO.getT_file().getOriginalFilename().isEmpty())) {
 
 		try {
 			System.out.println(tDTO);
@@ -214,6 +215,11 @@ public class TradeDAO {
 			System.out.println("실패");
 		}
 
+		} else {
+			if (ss.getMapper(TradeMapper.class).updateInfo(tDTO) == 1) {
+				System.out.println("정보 변경 완료");
+				req.setAttribute("result", "정보 변경 완료");
+			}
 		}
 	}
 

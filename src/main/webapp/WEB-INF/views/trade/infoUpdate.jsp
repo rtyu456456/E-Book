@@ -22,10 +22,9 @@
 		const t_price = localStorage.getItem('t_price');
 		const t_contents = localStorage.getItem('t_contents');
 		const t_thumbnail = localStorage.getItem('t_thumbnail');
-		const t_thumbnail = localStorage.getItem('t_map_lat');
-		const t_thumbnail = localStorage.getItem('t_map_lng');
-		const t_thumbnail = localStorage.getItem('t_map_marker_name');
-		
+// 		const t_map_lat = localStorage.getItem('t_map_lat');
+// 		const t_map_lng = localStorage.getItem('t_map_lng');
+// 		const t_marker_name = localStorage.getItem('t_marker_name');
 		
 		if (localStorage.length !== 0) {
 			document.getElementsByName('t_title')[0].value = t_title;
@@ -35,9 +34,9 @@
 			document.getElementsByName('t_price')[0].value = t_price;
 			document.getElementsByName('t_contents')[0].value = t_contents;
 			document.getElementsByName('t_thumbnail')[0].value = t_thumbnail;
-			document.getElementsByName('t_map_lat')[0].value = t_map_lat;
-			document.getElementsByName('t_map_lng')[0].value = t_map_lng;
-			document.getElementsByName('t_marker_name')[0].value = t_marker_name;
+// 			document.getElementsByName('t_map_lat')[0].value = t_map_lat;
+// 			document.getElementsByName('t_map_lng')[0].value = t_map_lng;
+// 			document.getElementsByName('t_marker_name')[0].value = t_marker_name;
 	}
 	}
 // 	페이지 로드 시에 Local Storage에서 값 불러오기
@@ -56,12 +55,13 @@
 			<form action="trade.update.do" method="post"
 				enctype="multipart/form-data" id="regForm">
 				<br>
-				<div class="book-info-reg">책 정보를 입력해 주세요 	${trade.t_no }</div>
-				
-				<br> <input type="hidden" value="${sessionScope.user.u_id }" name="t_owner"> 
-					 <input type="hidden" value="${trade.t_no }" name="t_no"> 
+				<div class="book-info-reg">책 정보를 입력해 주세요 ${trade.t_no }</div>
+
+				<br> <input type="hidden" value="${sessionScope.user.u_id }"
+					name="t_owner"> <input type="hidden" value="${trade.t_no }"
+					name="t_no">
 				<div class="input-group">
-					<input placeholder="글 제목" name="t_title"
+					<input placeholder="글 제목" name="t_title" value="${trade.t_title}"
 						oninput="localStorage.setItem('t_title', this.value)">
 					<script> 
 						localStorage.setItem('t_title', '${trade.t_title}');
@@ -101,8 +101,8 @@
 				</div>
 
 				<div class="input-group">
-					<input type="file" name="t_file" value="${trade.t_thumbnail }"
-						oninput="localStorage.setItem('t_file', this.value)">
+					<input type="file" name="t_file" value="" oninput="localStorage.setItem('t_file', this.value)">
+					<input type="hidden" name="t_thumbnail" value="${trade.t_thumbnail }">
 					<script> 
 						localStorage.setItem('t_thumbnail', '${trade.t_thumbnail}');
  					</script>
@@ -112,7 +112,7 @@
 				<div class="input-group-text">
 					<textarea rows="8" cols="2" placeholder="도서 상태 정보"
 						name="t_contents"
-						oninput="localStorage.setItem('t_contents', this.value)"></textarea>
+						oninput="localStorage.setItem('t_contents', this.value)">${trade.t_contents}</textarea>
 					<script> 
 							localStorage.setItem('t_contents', '${trade.t_contents}');
  					</script>
@@ -137,7 +137,7 @@
 						<input type="hidden" value="" name="t_marker_name"
 							id="t_marker_name">
 						<script> 
-							localStorage.setItem('t_marker_name', 'input-content'); <br>
+							localStorage.setItem('t_marker_name', 't_marker_name'); <br>
 						</script>
 					</div>
 				</div>
@@ -239,6 +239,8 @@
 		function closeModal() {
             modal.style.display = "none";
         }
+		
+
 	</script>
 
 </body>

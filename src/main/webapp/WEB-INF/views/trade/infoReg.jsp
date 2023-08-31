@@ -47,11 +47,12 @@
 	<div class="container-reg">
 		<div class="reginfo">
 			<br>
-			<form action="reg.trade.book" method="post"	enctype="multipart/form-data" id="regForm">
+			<form action="reg.trade.book" method="post"
+				enctype="multipart/form-data" id="regForm">
 				<br>
 				<div class="book-info-reg">책 정보를 입력해 주세요</div>
-				<br> <input type="hidden"
-					value="${sessionScope.user.u_id }" name="t_owner">
+				<br> <input type="hidden" value="${sessionScope.user.u_id }"
+					name="t_owner">
 
 				<div class="input-group">
 					<input placeholder="글 제목" name="t_title"
@@ -94,8 +95,8 @@
 								oninput="localStorage.setItem('t_price', this.value)">
 						</div>
 						<div class="input-group3">
-							<img alt="" src="${param.thumbnail }"> 
-							<input type="hidden" value="${param.thumbnail}" name="t_thumbnail">
+							<img alt="" src="${param.thumbnail }"> <input type="hidden"
+								value="${param.thumbnail}" name="t_thumbnail">
 							<script> 
  								localStorage.setItem('t_thumbnail', '${param.thumbnail}');
  							</script>
@@ -123,7 +124,7 @@
 						</div>
 						<div class="input-group">
 							<input type="file" name="t_file"
-							oninput="localStorage.setItem('t_file', this.value)">
+								oninput="localStorage.setItem('t_file', this.value)">
 						</div>
 					</c:otherwise>
 				</c:choose>
@@ -134,11 +135,11 @@
 						oninput="localStorage.setItem('t_contents', this.value)"></textarea>
 				</div>
 				<div class="input-group">
-					<a class="btn-open-modal">희망 장소 선택하기</a> <br> 
-					<span id="input-content"></span> 
-					<input hidden value="" name="t_map_lat" id="t_map_lat"> 
-					<input hidden value="" name="t_map_lng"	id="t_map_lng">
-					<input hidden value="" name="t_marker_name" id="t_marker_name">
+					<a class="btn-open-modal">희망 장소 선택하기</a> <br> <span
+						id="input-content"></span> <input hidden value="" name="t_map_lat"
+						id="t_map_lat"> <input hidden value="" name="t_map_lng"
+						id="t_map_lng"> <input hidden value=""
+						name="t_marker_name" id="t_marker_name">
 				</div>
 				<br>
 				<div class="reg-btn">
