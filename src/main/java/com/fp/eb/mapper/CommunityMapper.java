@@ -4,13 +4,16 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.fp.eb.model.Community;
 import com.fp.eb.model.CommunityDTO;
 import com.fp.eb.model.CommunityLikeDTO;
 import com.fp.eb.model.CommunityPostDTO;
 import com.fp.eb.model.CommunityReplyDTO;
+import com.fp.eb.model.LikeDTO;
 import com.fp.eb.model.Time;
+import com.fp.eb.model.UserDTO;
 
 @Mapper
 public interface CommunityMapper {
@@ -39,7 +42,7 @@ public interface CommunityMapper {
 
 	List<CommunityReplyDTO> getAllReplys(CommunityPostDTO cp);
 	
-	List<CommunityReplyDTO> commentMyPost();
+	List<CommunityReplyDTO> commentMyPost(UserDTO uDTO);
 	
 	int getCountReplys(BigDecimal bigDecimal);
 
@@ -51,9 +54,9 @@ public interface CommunityMapper {
 
 	int insertCommunity(CommunityDTO c);
 
-	int insertWritingPost(CommunityPostDTO cp);
+	int insertWritingPost(@Param("cp")CommunityPostDTO cp, @Param("uDTO")UserDTO uDTO);
 	
-	int regReply(CommunityReplyDTO cr);
+	int regReply(@Param("cr")CommunityReplyDTO cr, @Param("uDTO")UserDTO uDTO);
 
 	List<CommunityPostDTO> seachAllCommunityPost(CommunityPostDTO cp);
 
@@ -63,21 +66,24 @@ public interface CommunityMapper {
 
 	int deleteMyReply(CommunityReplyDTO cr);
 
-	int insertPinnedCommu(CommunityLikeDTO cl);
+	int insertPinnedCommu(@Param("cl")CommunityLikeDTO cl, @Param("uDTO")UserDTO uDTO);
 
-	List<CommunityLikeDTO> getAllPinnedCommu();
+	List<CommunityLikeDTO> getAllPinnedCommu(UserDTO uDTO);
 
 	int updatePinnedCommuZero(CommunityLikeDTO cl);
 
 	int updatePinnedCommuOne(CommunityLikeDTO cl);
 	
-	int checkPinnedCommu(CommunityLikeDTO cl);
+	int checkPinnedCommu(@Param("cl")CommunityLikeDTO cl, @Param("uDTO")UserDTO uDTO);
 	
-	int cheakPinnedTypeCommu(CommunityLikeDTO cl);
+	int cheakPinnedTypeCommu(@Param("cl")CommunityLikeDTO cl, @Param("uDTO")UserDTO uDTO);
 
 	int updateCheckComment(CommunityReplyDTO cr);
 
-	int commentAlarm();
+	int commentAlarm(UserDTO uDTO);
+
+	UserDTO getUserImg(CommunityPostDTO cp);
+
 
 	
 	

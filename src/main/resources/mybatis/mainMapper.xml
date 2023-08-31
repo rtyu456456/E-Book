@@ -5,16 +5,37 @@
 	<!-- 좋아요 / 싫어요 개수 -->
 	<select id="likeDislikeCount" resultType="map" >
 	select
-		(select count(*) from eb_like_record, eb_review
-			where lr_where_no = r_no and lr_where_type = #{lr_where_type} and lr_type = 1 and lr_where_no = #{lr_where_no}
+		(select count(*) from eb_like_record, 
+	<if test="lr_where_type == 'REVIEW'">
+		eb_review
+		where lr_where_no = r_no
+	</if>
+	<if test="lr_where_type == 'CP'">
+		eb_community_post
+		where lr_where_no = cp_no
+	</if>
+		and lr_where_type = #{lr_where_type} and lr_type = 1 and lr_where_no = #{lr_where_no}
 		) as like_count,
-		(select count(*) from eb_like_record, eb_review
-			where lr_where_no = r_no and lr_where_type = #{lr_where_type} and lr_type = 2 and lr_where_no = #{lr_where_no}
+		(select count(*) from eb_like_record, 
+	<if test="lr_where_type == 'REVIEW'">
+		eb_review
+		where lr_where_no = r_no
+	</if>
+	<if test="lr_where_type == 'CP'">
+		eb_community_post
+		where lr_where_no = cp_no
+	</if>	
+		
+		and lr_where_type = #{lr_where_type} and lr_type = 2 and lr_where_no = #{lr_where_no}
 		) as dislike_count
 	from dual
 	</select>
 
-
+	<select id="likeCheck" resultType="String">
+		select lr_type from eb_like_record
+		where lr_owner = #{lr_owner} and lr_where_type = #{lr_where_type} and
+		lr_where_no = #{lr_where_no}
+	</select>
 
 
 

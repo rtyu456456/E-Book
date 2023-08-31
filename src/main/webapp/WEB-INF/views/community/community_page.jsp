@@ -33,5 +33,8 @@
 			<jsp:include page="${commu_contents_page }"></jsp:include>
 		</div>
 	</div>
+	
+	
+	
 </body>
 </html>

@@ -14,7 +14,6 @@
 <body>
 	<div class="commu_contents">
 		<div class="commu_content">
-
 			<div class="commu_board">
 				<br>
 				<div class="commu_board_title">My 게시판</div>
@@ -22,13 +21,13 @@
 				<div class="board_box">
 					<br>
 					<form action="/go.my.post">
-						<button name="cp_owner" value="김포공주" class="commu_board_btn">
+						<button name="cp_owner" value="${sessionScope.user.u_id }" class="commu_board_btn">
 							<img alt="" src="/img/커뮤니티_내가 쓴 글_icon.png"> &nbsp;내가 쓴 글
 						</button>
 					</form>
 
 					<form action="/go.my.reply">
-						<button name="cr_owner" value="김포공주" class="commu_board_btn">
+						<button name="cr_owner" value="${sessionScope.user.u_id }" class="commu_board_btn">
 							<img alt="" src="/img/커뮤니티_댓글 단 글_icon.png"> &nbsp;댓글 단 글
 						</button>
 					</form>
@@ -39,43 +38,6 @@
 					<br>
 				</div>
 			</div>
-
-
-
-
-			<!-- <div class="commu_board">
-				<br>
-				<div class="commu_board_title">실시간 HOT 게시판</div>
-				<br>
-				<div class="board_box">
-					<br>
-					<button class="commu_board_btn">1위</button>
-					<button class="commu_board_btn">2위</button>
-					<button class="commu_board_btn">3위</button>
-					<button class="commu_board_btn">4위</button>
-					<button class="commu_board_btn">5위</button>
-					<br>
-				</div>
-				<br>
-			</div>
-
-			<div class="commu_board">
-				<br>
-				<div class="commu_board_title">등급별 독서토론 게시판</div>
-				<br>
-				<div class="board_box">
-					<br>
-					<button class="grade_board_btn">현자 게시판</button>
-					<br>
-					<button class="grade_board_btn">학자 게시판</button>
-					<br>
-					<button class="grade_board_btn">조교 게시판</button>
-					<br>
-					<button class="grade_board_btn">학생 게시판</button>
-					<br> <br>
-				</div>
-				<br>
-			</div> -->
 
 			<div class="commu_board">
 				<br>
@@ -113,9 +75,6 @@
 				console.log(data);
 
 				$.each(data.pinnedCommu, function(index, item) {
-
-					console.log(item.c_name);
-
 					var pinnedCommuContainer = $("#pinned-commu");
 					if (!addedCommunities[item.c_no]) { // 이미 추가한 커뮤니티인지 확인
 						var button = $("<button>").addClass("pinned-btn").attr(

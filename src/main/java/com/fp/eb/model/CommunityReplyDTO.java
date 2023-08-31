@@ -20,7 +20,8 @@ public class CommunityReplyDTO {
 	private int c_no;
 	
 	
-	
+
+
 	public String getCr_date2() {
 		return cr_date2;
 	}

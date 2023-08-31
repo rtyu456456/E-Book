@@ -46,7 +46,6 @@
 		position: relative;
 	}
 	.post_like {
-		color: #F66E6E;
 		position: relative;
 		width: 5rem;
 	}
@@ -61,7 +60,6 @@
 	.post_dislike {
 		width: 5rem;
 		position: relative;
-		color: #26283D;
 	}
 	.post_dislike img {
 		left: -1.4rem;
@@ -86,12 +84,12 @@
 		width: 90%;
 		border: 0.1rem solid #26283D;
 	}
-	.empty_space {
+	 .empty_space {
 		border: 1rem solid white;
 		height: 10vh;
 		background-color: transparent;
 		border-radius: 4rem;
-	}
+	} 
 	.post_writing button {
 		position: fixed;
 		bottom: 0;

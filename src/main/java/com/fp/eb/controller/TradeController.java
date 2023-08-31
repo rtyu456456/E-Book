@@ -36,8 +36,9 @@ public class TradeController {
 		 * UserDTO uDTO = new UserDTO("hm", "hm", "하민", "img_test",
 		 * "hmin0701@naver.com", "male", 27, 230203, 10, 30, "초심자", "0");
 		 * req.getSession().setAttribute("loginMember", uDTO);
-		 * 
-		 */		tDAO.getAlltradelist(tDTO, req);
+		 */
+
+		tDAO.getAlltradelist(tDTO, req);
 		req.setAttribute("contentPage", "tradeMain.jsp");
 		return "trade/tradeIndex";
 	}
