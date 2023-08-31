@@ -188,6 +188,7 @@ public class CommunityDAO {
 	}
 
 	public void updateCheckComment(CommunityReplyDTO cr) {
+		
 		if (ss.getMapper(CommunityMapper.class).updateCheckComment(cr) == 1) {
 			System.out.println("like 1로 업뎃 성공");
 		} else {

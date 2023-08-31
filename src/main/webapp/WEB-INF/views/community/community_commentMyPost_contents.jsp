@@ -12,7 +12,7 @@
 	<div class="post_background" style="height: 100vh;">
 		<br> <br> <br>
 		<c:forEach var="comment" items="${comment }">
-			<form action="/go.commu.detail">
+			<form action="/go.commu.detail.mycomment">
 				<input type="hidden" name="c_no" value="${comment.c_no }"> <input
 					type="hidden" name="cr_no" value="${comment.cr_no }"> <input
 					type="hidden" class="cr-like" name="cr_like"

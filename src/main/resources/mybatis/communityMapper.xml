@@ -83,6 +83,11 @@
 		where
 		cr_cp_no = cp_no and cp_no=#{cp_no} order by cr_date asc
 	</select>
+	
+	<select id="getcr_no"
+		resultType="com.fp.eb.model.CommunityReplyDTO">
+		select * from eb_community_reply;
+	</select>
 
 
 	<select id="getCountReplys" resultType="int">

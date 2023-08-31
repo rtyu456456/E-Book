@@ -57,10 +57,6 @@ public class CommunityController {
 		return "community/community_page";
 	}
 
-	
-	
-	
-	
 	@RequestMapping(value = "/get.pinned.commu", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody CommunityPinned getPinndedCommu(HttpServletRequest req, UserDTO uDTO) {
 		UserDTO user = (UserDTO) req.getSession().getAttribute("user"); // 세션에 실린 유저값
@@ -86,11 +82,6 @@ public class CommunityController {
 		cDAO.updatePinnedCommuZero(cl);
 		return cDAO.getAllPinnedCommu(uDTO);
 	}
-	
-	
-	
-	
-	
 
 	@GetMapping("/seach.community")
 	public String seachCommunity(Model model, CommunityDTO c) {
@@ -119,7 +110,11 @@ public class CommunityController {
 	}
 
 	@GetMapping("/go.commu.post")
-	public String goBoard(Model model, CommunityDTO c, CommunityPostDTO cp) {
+	public String goBoard(Model model, CommunityDTO c, CommunityPostDTO cp, UserDTO uDTO, HttpServletRequest req) {
+
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user"); // 세션에 실린 유저값
+		uDTO.setU_id(user.getU_id());
+		cDAO.commentMyPost(model, uDTO);
 		cDAO.getCommunity(c, model);
 		cDAO.getAllCommunityPost(c, model);
 
@@ -189,23 +184,42 @@ public class CommunityController {
 		return "community/community_page";
 	}
 
-	@GetMapping("/go.commu.detail")
-	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr, UserDTO uDTO,
+	@GetMapping("/go.commu.detail.mycomment")
+	public String goCommuDetailMyComment(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr, UserDTO uDTO,
 			HttpServletRequest req) {
-		/* cDAO.updateCheckComment(cr); */
 		UserDTO user = (UserDTO) req.getSession().getAttribute("user"); // 세션에 실린 유저값
 		uDTO.setU_id(user.getU_id());
+
 		cDAO.getUserImg(cp, model);
 		cDAO.getCommunity(c, model);
 		cDAO.getCommunityPost(cp, model);
 		cDAO.getReplys(cp, model);
 		cDAO.getCountReplys(cp.getCp_no(), model);
 
+		cDAO.updateCheckComment(cr);
+
 		model.addAttribute("commu_header_page", "community_detail_header.jsp");
 		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
 		return "community/community_page";
 	}
 
+	@GetMapping("/go.commu.detail")
+	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr, UserDTO uDTO,
+			HttpServletRequest req) {
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user"); // 세션에 실린 유저값
+		uDTO.setU_id(user.getU_id());
+		
+		cDAO.getUserImg(cp, model);
+		cDAO.getCommunity(c, model);
+		cDAO.getCommunityPost(cp, model);
+		cDAO.getReplys(cp, model);
+		cDAO.getCountReplys(cp.getCp_no(), model);
+		
+		
+		model.addAttribute("commu_header_page", "community_detail_header.jsp");
+		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
+		return "community/community_page";
+	}
 	@GetMapping("/reg.reply")
 	public String regReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr, UserDTO uDTO,
 			HttpServletRequest req) {
@@ -271,8 +285,7 @@ public class CommunityController {
 	}
 
 	@GetMapping("/do.update.post")
-	public String doUpdatePost(Model model, CommunityDTO c, CommunityPostDTO cp,  HttpServletRequest req,
-			UserDTO uDTO) {
+	public String doUpdatePost(Model model, CommunityDTO c, CommunityPostDTO cp, HttpServletRequest req, UserDTO uDTO) {
 		UserDTO user = (UserDTO) req.getSession().getAttribute("user"); // 세션에 실린 유저값
 		uDTO.setU_id(user.getU_id());
 		cDAO.getUserImg(cp, model);
