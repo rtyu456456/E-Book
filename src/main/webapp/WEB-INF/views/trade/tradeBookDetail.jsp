@@ -21,9 +21,12 @@
 		<div class="book-info">
 			<div class="book-img">
 				<img alt="" src="${trade.t_thumbnail}">
-
 			</div>
+
+
 			<div class="book-basic">
+				<div class="trade-title">${trade.t_title }</div>
+				<br>
 				<div class="book-title">${trade.t_book_title }</div>
 				<div class="book-authors">${trade.t_authors }</div>
 				<div class="book-publisher">${trade.t_publisher }</div>
@@ -31,7 +34,7 @@
 					<fmt:formatNumber value="${trade.t_price }" pattern="#,###원" />
 				</div>
 				<br>
-				<div class="trade-title">${trade.t_title }</div>
+
 
 			</div>
 			<div class="trader_From">
@@ -47,9 +50,10 @@
 		<div class="trade-map">
 			<div class="map-location-info">
 				<h1>거래 희망 장소</h1>
-				<span> ${trade.t_marker_name }</span>
+
 			</div>
 			<div id="map"></div>
+			<span>${trade.t_marker_name }</span>
 		</div>
 		<br>
 		<form action="trade.Send.Msg">

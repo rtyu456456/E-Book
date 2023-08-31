@@ -29,7 +29,7 @@
 }
 
 .book-basic {
-	margin: 20px;
+	margin: 14px;
 }
 
 .book-title {
@@ -68,13 +68,13 @@
 /* 맵기능   */
 .trade-map {
 	justify-content: center;
-	height: 30vh;
-	max-height: 300px;
+	height: 70vh;
+	max-height: 320px;
 	padding: 10px;
 	background-color: rgba(245, 246, 250, 1);
 	box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
-	margin: 30px;
+	margin: 20px;
 }
 
 .map-location-info {
@@ -87,8 +87,7 @@
 	font-weight: 700;
 }
 
-.trade-map span {
-	font-size: 8px;
+.trade-map input {
 }
 
 #map {
@@ -117,7 +116,7 @@
 }
 
 .trade-sell-me button {
-	width: 40%;
+	width: 30%;
 	height: 2.5rem;
 	border-radius: 10px;
 	font-size: 15px;

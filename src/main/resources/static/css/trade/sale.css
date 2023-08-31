@@ -86,7 +86,7 @@
 }
 
 .book-img {
-	width: 30%;
+	width: 40%;
 }
 
 .book-img img {
@@ -101,8 +101,8 @@
 }
 
 .trade-book-info {
-	margin: 10pt;
-	width: 70%;
+	margin: 6pt;
+	width: 60%;
 	text-align: left;
 }
 

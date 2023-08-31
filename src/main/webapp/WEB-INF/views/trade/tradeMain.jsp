@@ -32,6 +32,7 @@
 				</div>
 				<div class="trade-book-info">
 					<div class="title">${t.t_title }</div>
+					<br>
 					<div class="booktitle">${t.t_book_title }</div>
 					<div class="authors">${t.t_authors }</div>
 					<div class="publisher">${t.t_publisher }</div>
