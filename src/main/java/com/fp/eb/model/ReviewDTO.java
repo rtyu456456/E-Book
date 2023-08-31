@@ -15,8 +15,21 @@ public class ReviewDTO {
 	private String u_profile;
 	
 	private int likeCheck;
+	private String u_name;
 	
 	
+	
+	
+	public String getU_name() {
+		return u_name;
+	}
+
+
+	public void setU_name(String u_name) {
+		this.u_name = u_name;
+	}
+
+
 	public String getU_profile() {
 		return u_profile;
 	}

@@ -21,6 +21,8 @@ public class MainController {
 
 	@GetMapping("/main")
 	public String mainMain(BookDTO bDTO, LikeDTO lDTO, ReviewDTO rDTO, UserDTO uDTO, Model model, HttpServletRequest req) {
+		UserDTO user =(UserDTO) req.getSession().getAttribute("user");
+		uDTO.setU_id(user.getU_id());
 		mDAO.hotBook(bDTO, lDTO, model, req);
 		mDAO.dailyBest(bDTO, rDTO, model, req);
 		mDAO.dailyBook(bDTO, rDTO, model, req);
@@ -36,7 +38,9 @@ public class MainController {
 	}
 
 	@GetMapping("/main.search")
-	public String bookSearch(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+	public String bookSearch(BookDTO bDTO, ReviewDTO rDTO, Model model, UserDTO uDTO, HttpServletRequest req) {
+		UserDTO user =(UserDTO) req.getSession().getAttribute("user");
+		uDTO.setU_id(user.getU_id());
 		mDAO.bookSearch(bDTO, model, req);
 //		mDAO.getPercent1(bDTO, rDTO, model);
 		model.addAttribute("contentPage", "../EB_main/main_search.jsp");
@@ -44,9 +48,11 @@ public class MainController {
 	}
 
 	@GetMapping("/book.detail")
-	public String bookDetail(UserDTO uDTO, BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+	public String bookDetail(UserDTO uDTO,LikeDTO lDTO, BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
+		UserDTO user =(UserDTO) req.getSession().getAttribute("user");
+		uDTO.setU_id(user.getU_id());
 		System.out.println("이거 한번 보여줘" + bDTO);
-		mDAO.bookDetail(bDTO, rDTO, model);
+		mDAO.bookDetail(req, bDTO, rDTO, model, lDTO);
 		mDAO.reviews(bDTO, rDTO, model, req);
 		mDAO.getPercent1(bDTO, rDTO, model);
 		model.addAttribute("contentPage", "../EB_main/book_detail.jsp");

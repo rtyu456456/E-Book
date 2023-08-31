@@ -26,7 +26,6 @@
 	<div class="main-container-gh">
 		<!------ 맨 위 ------>
 		<div class="main-top-gh">
-			<!-- 메뉴창 나오는 기능 해야함 -->
 			<button class="menu-gh">
 				<img src="/img/menuIcon.png">
 			</button>
@@ -38,9 +37,10 @@
 			<img class="logo-gh" id="logoGH" src="/img/logo_icon.png">
 			<div class="profile-img-gh">
 				<!-- a 태그 달아서 마이페이지 가게 하기 -->
-				<img src="/img/daejeon_profile.png">
+				<img src="/img/${sessionScope.user.u_profile }">
 			</div>
 		</div>
+				<input hidden value="${sessionScope.user.u_profile }">
 		<!------ 검색창 ------>
 		<form class="main-search-gh" action="main.search">
 			<select class="main-select" name="searchOption">

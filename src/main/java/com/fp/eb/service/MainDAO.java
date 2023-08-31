@@ -22,9 +22,8 @@ public class MainDAO {
 
 	@Autowired
 	private MainMapper mainMapper;
-	
-	
-	//--------------------------책 검색
+
+	// --------------------------책 검색
 	public void bookSearch(BookDTO bDTO, Model model, HttpServletRequest req) {
 		String searchOption = req.getParameter("searchOption");
 		String searchText = req.getParameter("searchText");
@@ -48,63 +47,66 @@ public class MainDAO {
 		}
 		model.addAttribute("bookSearch", bookSearch);
 	}
-	
-	
-	
-	//--------------------------책 상세
-	public void bookDetail(BookDTO bDTO, ReviewDTO rDTO, Model model) {
+
+	// --------------------------책 상세
+	public void bookDetail(HttpServletRequest req, BookDTO bDTO, ReviewDTO rDTO, Model model, LikeDTO likeDTO) {
 		System.out.println(bDTO.getB_no());
-		//model.addAttribute("hotBook", mainMapper.bookDetail(bDTO));
-		model.addAttribute("bookSearch", mainMapper.bookDetail(bDTO));
+		// model.addAttribute("hotBook", mainMapper.bookDetail(bDTO));
+		bDTO = mainMapper.bookDetail(bDTO);
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		if (user != null) {
+			likeDTO.setLr_owner(user.getU_id());
+			likeDTO.setLr_where_type("BOOK");
+			likeDTO.setLr_where_no(bDTO.getB_no());
+		};
+		
+		if (mainMapper.likeCheck(likeDTO) != null) {
+			bDTO.setBookmarkCheck(Integer.parseInt(mainMapper.likeCheck(likeDTO)));
+		}
+		BookDTO bookDetail = bDTO;
+		System.out.println(bookDetail.getBookmarkCheck());
+		model.addAttribute("bookSearch", bookDetail);
 	}
-	
-	
-	
-	//--------------------------서평
+
+	// --------------------------서평
 	public void reviews(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		List<ReviewDTO> reviews = mainMapper.reviews(bDTO);
 		LikeDTO likeDTO = new LikeDTO();
-		//UserDTO user = (UserDTO) req.getSession().getAttribute("user");
-		UserDTO user = new UserDTO();
-		user.setU_id("gh");
-		//if (user != null) {
-			//likeDTO.setLr_owner(user.getU_id());
-		likeDTO.setLr_owner("gh");
-		likeDTO.setLr_where_type("REVIEW");
-		//}
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		// UserDTO user = new UserDTO();
+		if (user != null) {
+			likeDTO.setLr_owner(user.getU_id());
+			likeDTO.setLr_where_type("REVIEW");
+		}
 		for (ReviewDTO r : reviews) {
 			System.out.println(r.getR_no());
 			likeDTO.setLr_where_no(r.getR_no());
 			if (user != null) {
-			//if (mainMapper.getLikeInfo(likeDTO) != null) {
-				r.setLikeCheck(mainMapper.getLikeInfo(likeDTO).getLr_type());
-				System.out.println(mainMapper.getLikeInfo(likeDTO).getLr_type());
-				Map<String, Object> likeDislike = mainMapper.likeDislikeCount(likeDTO);
-				System.out.println("-----------------");
-				System.out.println(likeDislike);
-				System.out.println(likeDislike.get("LIKE_COUNT"));
-				System.out.println(likeDislike.get("DISLIKE_COUNT"));
-				BigDecimal like = (BigDecimal) likeDislike.get("LIKE_COUNT");
-				BigDecimal dislike = (BigDecimal) likeDislike.get("DISLIKE_COUNT");
-				r.setR_like(like.intValue());
-				r.setR_dislike(dislike.intValue());
-				System.out.println("-----------------");
+				if (mainMapper.getLikeInfo(likeDTO) != null) {
+					r.setLikeCheck(mainMapper.getLikeInfo(likeDTO).getLr_type());
+					System.out.println(mainMapper.getLikeInfo(likeDTO).getLr_type());
+					Map<String, Object> likeDislike = mainMapper.likeDislikeCount(likeDTO);
+					System.out.println("-----------------");
+					System.out.println(likeDislike);
+					System.out.println(likeDislike.get("LIKE_COUNT"));
+					System.out.println(likeDislike.get("DISLIKE_COUNT"));
+					BigDecimal like = (BigDecimal) likeDislike.get("LIKE_COUNT");
+					BigDecimal dislike = (BigDecimal) likeDislike.get("DISLIKE_COUNT");
+					r.setR_like(like.intValue());
+					r.setR_dislike(dislike.intValue());
+					System.out.println("-----------------");
+				}
 			}
-			//}
 		}
 		model.addAttribute("reviews", reviews);
 	}
-	
-	
-	
-	//--------------------------평가 퍼센트
+
+	// --------------------------평가 퍼센트
 	public void getPercent1(BookDTO bDTO, ReviewDTO rDTO, Model model) {
 		model.addAttribute("getPercent1", mainMapper.getPercent(bDTO));
 	}
 
-	
-	
-	//--------------------------좋아요
+	// --------------------------좋아요
 	public int likeFunc(HttpServletRequest req, LikeDTO likeDTO) {
 		System.out.println(likeDTO.getLr_where_no());
 		System.out.println(likeDTO.getLr_owner());
@@ -122,8 +124,6 @@ public class MainDAO {
 			return likeDTO.getLr_type();
 		}
 	}
-	
-	
 
 	// 오늘의 베스트 서평
 	public void dailyBest(BookDTO bDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
@@ -163,14 +163,12 @@ public class MainDAO {
 	public void monthlyUser(UserDTO uDTO, ReviewDTO rDTO, Model model, HttpServletRequest req) {
 		model.addAttribute("monthlyUser", mainMapper.monthlyUser(uDTO, rDTO, model, req));
 	}
-	
-	//인기 도서
+
+	// 인기 도서
 	public void hotBook(BookDTO bDTO, LikeDTO lDTO, Model model, HttpServletRequest req) {
 		List<BookDTO> HB = mainMapper.hotBooks(bDTO);
 		model.addAttribute("hotBooks", mainMapper.hotBooks(bDTO));
 		System.out.println(mainMapper.hotBooks(bDTO));
 	}
-
-	
 
 }
