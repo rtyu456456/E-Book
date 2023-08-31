@@ -42,8 +42,10 @@ public interface TradeMapper {
 
 	List<BookDTO> tradeRegSearch(BookDTO bDTO);
 	List<BookDTO> tradeRegSearchName(BookDTO bDTO);
-
+	
+	//정보 수정하기
 	public int updateInfo(TradeDTO tDTO);
+	//등록 된거 지우기
 	public int tradeCancle(TradeDTO tDTO);	
 
 

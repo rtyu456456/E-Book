@@ -135,7 +135,8 @@
 				</div>
 				<div class="input-group">
 					<a class="btn-open-modal">희망 장소 선택하기</a> <br> 
-					<span id="input-content"></span> <input hidden value="" name="t_map_lat" id="t_map_lat"> 
+					<span id="input-content"></span> 
+					<input hidden value="" name="t_map_lat" id="t_map_lat"> 
 					<input hidden value="" name="t_map_lng"	id="t_map_lng">
 					<input hidden value="" name="t_marker_name" id="t_marker_name">
 				</div>
@@ -160,9 +161,9 @@
 				<div class="enterMapInfo">
 					<input type="text" id="inputContent" placeholder="장소에 대한 상세 설명">
 					<div class="btn-menu">
-						<button onclick="updateInfoWindowContent()">업데이트</button>
-						<button onclick="regTradeLocation()">등록하기</button>
-						<button onclick="closeModal()">취소하기</button>
+						<button onclick="updateInfoWindowContent()">입력</button>
+						<button onclick="regTradeLocation()">등록</button>
+						<button onclick="closeModal()">취소</button>
 					</div>
 				</div>
 			</div>

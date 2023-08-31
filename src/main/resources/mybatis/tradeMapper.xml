@@ -119,8 +119,8 @@
 	</delete>
 
 
-	<update id="updateTradeInfo" parameterType="com.fp.eb.model.TradeDTO">
-	update Trade 
+	<update id="updateInfo">
+	update eb_trade 
 	 set 
 		t_title = #{t_title },
 		t_book_title = #{t_book_title },
@@ -133,7 +133,7 @@
 		t_map_lng =	#{t_map_lng },
 		t_marker_name = #{t_marker_name } 
 	 where
-	 	t_no =#{t_no }
+	 	t_no = #{t_no }
 	</update>
 
 

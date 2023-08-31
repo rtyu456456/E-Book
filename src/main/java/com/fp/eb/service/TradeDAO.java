@@ -179,35 +179,41 @@ public class TradeDAO {
 
 		if (tDTO.getT_file() != null) {
 
-			try {
+		try {
+			System.out.println(tDTO);
+			String savepath = uploadPath.getRealPath("uploadFolder");
+			System.out.println(savepath);
+			System.out.println("-----------------------");
+			String orgFileName = tDTO.getT_file().getOriginalFilename();
+
+			String saveFileName = UUID.randomUUID().toString().split("-")[0]
+					+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
+
+			System.out.println("오리지널널파일네임 : " + orgFileName);
+			System.out.println("세이브파일네임 : " + saveFileName);
+			String rootPath = req.getServletContext().getRealPath("/");
+			System.out.println("a :" + rootPath);
+		
+
+			if (!tDTO.getT_file().getOriginalFilename().isEmpty()) {
+
+				// 실제 업로드 코드
+				tDTO.getT_file().transferTo(new File(savepath, saveFileName));
+				tDTO.setT_thumbnail(saveFileName);
 				System.out.println(tDTO);
-				String path = uploadPath.getRealPath("uploadFolder");
-				System.out.println(path);
+				tDTO.setT_thumbnail("uploadFolder/" + saveFileName);
 
-				String orgFileName = tDTO.getT_file().getOriginalFilename();
-				String saveFileName = UUID.randomUUID().toString().split("-")[0]
-						+ orgFileName.substring(orgFileName.lastIndexOf("."), orgFileName.length());
-				
-				
-				System.out.println("오리지널널파일네임 : " + orgFileName);
-				System.out.println("세이브파일네임 : " + saveFileName);
-				String rootPath = req.getServletContext().getRealPath("/");
-				System.out.println("a" + rootPath);
-				if (!tDTO.getT_file().getOriginalFilename().isEmpty()) {
-					// 실제 업로드 코드
-					tDTO.getT_file().transferTo(new File(path, saveFileName));
-					tDTO.setT_thumbnail(saveFileName);
-					System.out.println(tDTO);
+				if (ss.getMapper(TradeMapper.class).updateInfo(tDTO) == 1) {
+					System.out.println("정보 변경 완료");
+					req.setAttribute("result", "정보 변경 완료");
 				}
+			}
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			if (ss.getMapper(TradeMapper.class).updateInfo(tDTO) >= 1) {
-				System.out.println("정보 변경 완료");
-				req.setAttribute("result", "정보 변경 완료");
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("실패");
+		}
+
 		}
 	}
 

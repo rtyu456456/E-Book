@@ -1,4 +1,4 @@
-@charset "UTF-8";
+ @charset "UTF-8";
 
 .detail-container {
 	position: relative;
@@ -98,6 +98,11 @@
 	justify-content: center;
 	display: flex;
 	align-items: center;
+}
+
+#map.disabled {
+    opacity: 0.5; /* 투명도 설정으로 어둡게 처리 */
+    pointer-events: none; /* 이벤트 비활성화 */
 }
 
 .trade-btn {

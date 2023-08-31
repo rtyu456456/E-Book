@@ -56,10 +56,10 @@
 			<form action="trade.update.do" method="post"
 				enctype="multipart/form-data" id="regForm">
 				<br>
-				<div class="book-info-reg">책 정보를 입력해 주세요</div>
-				<br> <input type="hidden" value="${sessionScope.user.u_id }"
-					name="t_owner"> <input type="hidden" value="${trade.t_no }"
-					name="t_no">
+				<div class="book-info-reg">책 정보를 입력해 주세요 	${trade.t_no }</div>
+				
+				<br> <input type="hidden" value="${sessionScope.user.u_id }" name="t_owner"> 
+					 <input type="hidden" value="${trade.t_no }" name="t_no"> 
 				<div class="input-group">
 					<input placeholder="글 제목" name="t_title"
 						oninput="localStorage.setItem('t_title', this.value)">
@@ -101,8 +101,8 @@
 				</div>
 
 				<div class="input-group">
-					<input type="file" name="t_thumbmail" value="${trade.t_thumbnail }"
-						oninput="localStorage.setItem('t_thumbnail', this.value)">
+					<input type="file" name="t_file" value="${trade.t_thumbnail }"
+						oninput="localStorage.setItem('t_file', this.value)">
 					<script> 
 						localStorage.setItem('t_thumbnail', '${trade.t_thumbnail}');
  					</script>
@@ -119,8 +119,8 @@
 				</div>
 
 				<div class="input-group">
-					<a class="btn-open-modal">희망 장소 선택하기</a> <br>
-					 <span id="input-content"></span>
+					<a class="btn-open-modal">희망 장소 선택하기</a> <br> <span
+						id="input-content"></span>
 					<div>
 						<input type="hidden" value="" name="t_map_lat" id="t_map_lat">
 						<script> 
@@ -134,7 +134,8 @@
 						</script>
 					</div>
 					<div>
-						<input type="hidden" value="" name="t_marker_name" id="t_marker_name">
+						<input type="hidden" value="" name="t_marker_name"
+							id="t_marker_name">
 						<script> 
 							localStorage.setItem('t_marker_name', 'input-content'); <br>
 						</script>
