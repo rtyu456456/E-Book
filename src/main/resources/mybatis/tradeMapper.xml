@@ -25,10 +25,8 @@
 		select * from eb_trade where t_no = #{t_no }
 	</select>
 
-	<select id="getUserInfo"
-		resultType="com.fp.eb.model.TradeTotalDTO">
-		select * from eb_user where t_onwer = #{u_id } and t_no =
-		#{t_no }
+	<select id="getUserInfo" resultType="com.fp.eb.model.TradeTotalDTO">
+		select * from eb_user where t_onwer = #{u_id } and t_no = #{t_no }
 	</select>
 
 
@@ -77,32 +75,29 @@
 	</update>
 
 	 <delete id="tradeCancle" parameterType="com.fp.eb.model.TradeDTO">
-	  delete from eb_trade  where t_no = #{t_no }
+	  delete from eb_trade where t_no = #{t_no }
 	 </delete>
-
-
-
 
 
 	<select id="getToMsg" resultType="com.fp.eb.model.TradeTotalDTO">
 		SELECT *
-		FROM Eb_Trade_Msg Emsg
-		JOIN Eb_User Eu ON Emsg.M_To = Eu.U_Id
-		WHERE Emsg.M_To = #{u_id}
-		ORDER
-		BY Emsg.M_when DESC
+		FROM Eb_Trade, Eb_Trade_msg Emsg 
+		JOIN Eb_User Eu ON Emsg.M_to = Eu.U_Id
+		WHERE
+		Emsg.M_to = #{u_id} AND
+		t_no = m_trade
+		ORDER BY Emsg.M_when DESC
 	</select>
 
 	<select id="getFromMsg"
 		resultType="com.fp.eb.model.TradeTotalDTO">
-
 		SELECT *
-		FROM Eb_Trade_Msg Emsg
+		FROM Eb_Trade, Eb_Trade_msg Emsg 
 		JOIN Eb_User Eu ON Emsg.M_from = Eu.U_Id
 		WHERE
-		Emsg.M_from = #{u_id}
+		Emsg.M_from = #{u_id} AND
+		t_no = m_trade
 		ORDER BY Emsg.M_when DESC
-
 	</select>
 
 
@@ -124,18 +119,21 @@
 	</delete>
 
 
-	<update id="updateTradeInfo">
-		update Trade set t_title = #{t_title }, t_book_title
-		= #{t_book_title },
-		t_authors =#{t_authors },
-		t_publisher =
-		#{t_publisher }, t_contents = #{t_contents }, t_price = #{t_price
-		},
+	<update id="updateInfo">
+	update eb_trade 
+	 set 
+		t_title = #{t_title },
+		t_book_title = #{t_book_title },
+		t_authors = #{t_authors },
+		t_publisher = #{t_publisher },
+		t_contents = #{t_contents }, 
+		t_price = #{t_price },
 		t_thumbnail = #{t_thumbnail },
-		t_map_lat = #{t_map_lat}, t_map_lng =
-		#{t_map_lng }, t_marker_name =
-		#{t_marker_name } where t_no =#{t_no }
-
+		t_map_lat = #{t_map_lat}, 
+		t_map_lng =	#{t_map_lng },
+		t_marker_name = #{t_marker_name } 
+	 where
+	 	t_no = #{t_no }
 	</update>
 
 

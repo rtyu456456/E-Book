@@ -10,24 +10,26 @@
 <meta name="format-detection" content="telephone=no">
 
 <title>Insert title here</title>
-
+<script src="https://code.jquery.com/jquery-3.7.1.js"
+	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/trade/tradeIndex.css">
-
 </head>
 <body>
 	<div class="container">
 		<header>
 			<div class="head-line">
-				<img alt="" src="/img/menutab.png">
-					<h1 onclick="location.href='/trade.go'">책방</h1>
+				<a class="menu-gh"><img alt="" src="/img/menutab.png"></a>
+				<h1
+					onclick="location.href='/trade.go?u_id=${sessionScope.user.u_id }'">책방</h1>
 				<div>
 					<img alt="" src="/img/PageUpLog.png">
 					<table id="loginSuccessTable">
 						<tr>
-							<td style="height: 20px;">${sessionScope.loginMember.u_id }</td>
+							<td style="height: 20px;">${sessionScope.user.u_id }</td>
 						</tr>
 						<tr>
-							<td align="right" valign="top">(${sessionScope.loginMember.u_name })</td>
+							<td align="right" valign="top">(${sessionScope.user.u_name })</td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
@@ -38,8 +40,44 @@
 				</div>
 			</div>
 
-
-
+			<!------- 사이드 메뉴창 JSP -------->
+			<dialog id="menu-dialog"> <!-- <div class="menu-screen"></div> -->
+			<form method="dialog">
+				<div class="side-menu-gh">
+					<div class="menu-head-gh">
+						<button class="menu-title-gh" onclick="location.href='main'">
+							<img src="/img/pageup_logo.png">
+						</button>
+						<button class="menu-close-gh">
+							<img src="/img/x_icon.png">
+						</button>
+					</div>
+					<div class="menu-list-box">
+						<div class="menu-list-gh">
+							<img src="/imgs/my_page_txt.png">
+							<!-- onclick="location.href='user_main'" -->
+							<h4>내 정보</h4>
+							<h4>읽은 책</h4>
+							<h4>읽고 있는 책</h4>
+							<h4>읽고 싶은 책</h4>
+						</div>
+						<div class="menu-list-gh">
+							<h2>커뮤니티</h2>
+							<h4>내가 쓴 글</h4>
+							<h4>댓글 단 글</h4>
+						</div>
+						<div class="menu-list-gh">
+							<h2>
+								책방<span>중고거래</span>
+							</h2>
+							<h4>판매하기</h4>
+							<h4>판매 내역</h4>
+							<h4>쪽지함</h4>
+						</div>
+					</div>
+				</div>
+			</form>
+			</dialog>
 		</header>
 
 
@@ -50,13 +88,26 @@
 
 		<footer>
 			<div class="foot-line">
-				<a href="/trade.choose.go"> <img src="/img/Group7.png"></a>
-				<a href="/trade.sale.now?u_id=${sessionScope.loginMember.u_id}"> <img src="/img/Group6.png"></a>
-				<a href="/trade.Msg.get.to?u_id=${sessionScope.loginMember.u_id}"> <img src="/img/Group5.png"></a>
-				
-				
+				<a href="/trade.choose.go"> <img src="/img/Group7.png">
+				</a> <a href="/trade.sale.now?u_id=${sessionScope.user.u_id}"> <img
+					src="/img/Group6.png"></a> <a
+					href="/trade.Msg.get.to?u_id=${sessionScope.user.u_id}"> <img
+					src="/img/Group5.png"></a>
 			</div>
 		</footer>
 	</div>
+
+
+	<script>
+		$(function() {
+			let menu = document.querySelector('.menu-gh img');
+			let dialog = document.querySelector('#menu-dialog');
+			menu.addEventListener('click', function(event) {
+				console.log(111);
+				dialog.showModal();
+			})
+		});
+	</script>
+
 </body>
 </html>

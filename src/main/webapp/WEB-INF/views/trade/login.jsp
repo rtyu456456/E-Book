@@ -10,10 +10,10 @@
 
 	<table id="loginSuccessTable">
 		<tr>
-			<td style="height: 20px;">${sessionScope.loginMember.u_id }</td>
+			<td style="height: 20px;">${sessionScope.user.u_id }</td>
 		</tr>
 		<tr>
-			<td align="right" valign="top">(${sessionScope.loginMember.u_name })</td>
+			<td align="right" valign="top">(${sessionScope.user.u_name })</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">

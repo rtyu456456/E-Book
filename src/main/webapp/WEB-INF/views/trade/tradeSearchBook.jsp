@@ -36,7 +36,8 @@
 						<div class="authors">${b.b_authors }</div>
 						<div class="publisher">${b.b_publisher }</div>
 						<div class="price">
-							<fmt:formatNumber value="${b.b_price }" pattern="#,###원" />
+							<fmt:formatNumber value="${b.b_price }" pattern="#,###원" /> 
+							
 						</div>
 					</div>
 				</div>

@@ -47,11 +47,12 @@
 	<div class="container-reg">
 		<div class="reginfo">
 			<br>
-			<form action="reg.trade.book" method="post"	enctype="multipart/form-data" id="regForm">
+			<form action="reg.trade.book" method="post"
+				enctype="multipart/form-data" id="regForm" onsubmit="return validateAndSubmit();">
 				<br>
 				<div class="book-info-reg">책 정보를 입력해 주세요</div>
-				<br> <input type="hidden"
-					value="${sessionScope.loginMember.u_id }" name="t_owner">
+				<br> <input type="hidden" value="${sessionScope.user.u_id }"
+					name="t_owner">
 
 				<div class="input-group">
 					<input placeholder="글 제목" name="t_title"
@@ -94,9 +95,8 @@
 								oninput="localStorage.setItem('t_price', this.value)">
 						</div>
 						<div class="input-group3">
-							<img alt="" src="${param.thumbnail }"> 
- 							${param.thumbnail }
-							<input type="" value="${param.thumbnail}" name="t_thumbnail">
+							<img alt="" src="${param.thumbnail }"> <input type="hidden"
+								value="${param.thumbnail}" name="t_thumbnail">
 							<script> 
  								localStorage.setItem('t_thumbnail', '${param.thumbnail}');
  							</script>
@@ -124,7 +124,7 @@
 						</div>
 						<div class="input-group">
 							<input type="file" name="t_file"
-							oninput="localStorage.setItem('t_file', this.value)">
+								oninput="localStorage.setItem('t_file', this.value)">
 						</div>
 					</c:otherwise>
 				</c:choose>
@@ -136,18 +136,16 @@
 				</div>
 				<div class="input-group">
 					<a class="btn-open-modal">희망 장소 선택하기</a> <br> 
-					<span id="input-content"></span> <input hidden value="" name="t_map_lat" id="t_map_lat"> 
-					<input hidden value="" name="t_map_lng"	id="t_map_lng">
-					<input hidden value="" name="t_marker_name" id="t_map_marker_name">
+					<span id="input-content"></span> 
+					<input hidden value="" name="t_map_lat"	id="t_map_lat"> 
+					<input hidden value="" name="t_map_lng"	id="t_map_lng"> 
+					<input hidden value="" name="t_marker_name" id="t_marker_name">
 				</div>
 				<br>
 				<div class="reg-btn">
 					<button>등록하기</button>
 				</div>
 			</form>
-
-
-
 		</div>
 
 
@@ -161,9 +159,9 @@
 				<div class="enterMapInfo">
 					<input type="text" id="inputContent" placeholder="장소에 대한 상세 설명">
 					<div class="btn-menu">
-						<button onclick="updateInfoWindowContent()">업데이트</button>
-						<button onclick="regTradeLocation()">등록하기</button>
-						<button onclick="closeModal()">취소하기</button>
+						<button onclick="updateInfoWindowContent()">입력</button>
+						<button onclick="regTradeLocation()">등록</button>
+						<button onclick="closeModal()">취소</button>
 					</div>
 				</div>
 			</div>
@@ -229,7 +227,7 @@
 
 			let t_map_lat = document.getElementById('t_map_lat').value = latitude;
 			let t_map_lng = document.getElementById('t_map_lng').value = longitude;
-			let t_map_marker_name = document.getElementById('t_map_marker_name').value = inputContent;
+			let t_map_marker_name = document.getElementById('t_marker_name').value = inputContent;
 			document.getElementById('input-content').innerText = inputContent;
 			
 		    // 모달 닫기
@@ -239,7 +237,45 @@
 		function closeModal() {
             modal.style.display = "none";
         }
-	</script>
+		
+		//valid check
+		function validateAndSubmit() {
+		    var t_title = document.getElementsByName('t_title')[0].value;
+		    var t_book_title = document.getElementsByName('t_book_title')[0].value;
+		    var t_authors = document.getElementsByName('t_authors')[0].value;
+		    var t_publisher = document.getElementsByName('t_publisher')[0].value;
+		    var t_price = document.getElementsByName('t_price')[0].value;
+		    var t_contents = document.getElementsByName('t_contents')[0].value;
+		    var t_thumbnail = document.getElementsByName('t_thumbnail')[0].value;
+		    var t_map_lat = document.getElementById('t_map_lat').value;
+		    var t_map_lng = document.getElementById('t_map_lng').value;
+		    var t_marker_name = document.getElementById('t_marker_name').value;
+
+		    if (
+		        t_title === "" || 
+		        t_book_title === "" || 
+		        t_authors === "" || 
+		        t_publisher === "" || 
+		        t_price === "" || 
+		        t_contents === "" || 
+		        t_thumbnail === "" ||
+		        t_map_lat === "" ||  // 추가: t_map_lat 값 체크
+		        t_map_lng === "" ||  // 추가: t_map_lng 값 체크
+		        t_marker_name === ""  // 추가: t_marker_name 값 체크
+		    ) {
+		        alert("필수 정보를 모두 입력하세요.");
+		        return false; // 폼 제출 막기
+		    }
+			
+		    if (isNaN(t_price)) {
+		        alert("가격은 숫자로 입력하세요.");
+		        return false; // 이후 코드 실행 중지
+		    }
+
+		    // 여기까지 왔다면 모든 필드가 값이 채워져 있으므로, 페이지에 계속 머무르도록 처리
+		    return true;  // 폼 제출 허용
+		}
+		</script>
 
 </body>
 </html>

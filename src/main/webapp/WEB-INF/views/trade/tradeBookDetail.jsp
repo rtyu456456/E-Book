@@ -22,7 +22,11 @@
 			<div class="book-img">
 				<img alt="" src="${trade.t_thumbnail}">
 			</div>
+
+
 			<div class="book-basic">
+				<div class="trade-title">${trade.t_title }</div>
+				<br>
 				<div class="book-title">${trade.t_book_title }</div>
 				<div class="book-authors">${trade.t_authors }</div>
 				<div class="book-publisher">${trade.t_publisher }</div>
@@ -30,7 +34,7 @@
 					<fmt:formatNumber value="${trade.t_price }" pattern="#,###원" />
 				</div>
 				<br>
-				<div class="trade-title">${trade.t_title }</div>
+
 
 			</div>
 			<div class="trader_From">
@@ -46,15 +50,30 @@
 		<div class="trade-map">
 			<div class="map-location-info">
 				<h1>거래 희망 장소</h1>
-				<span> ${trade.t_marker_name }</span>
+
 			</div>
 			<div id="map"></div>
+			<span>${trade.t_marker_name }</span>
 		</div>
 		<br>
+		<form action="trade.Send.Msg">
+			<div class="modal">
+				<div class="modal_body">
+					<input type="hidden" value="${trade.t_no }" name="m_trade">
+					<input type="hidden" value="${trade.t_owner }" name="m_to">
+					<input type="hidden" value="${sessionScope.user.u_id }"
+						name="m_from">
+					<h1>${trade.t_owner}님에게보내는쪽지</h1>
+					<br>
+					<textarea name="m_txt"></textarea>
+					<button class="sendMsg">전송</button>
+				</div>
+			</div>
+		</form>
 		<div class="trade-btn">
 
 			<c:choose>
-				<c:when test="${trade.t_owner == loginMember.u_id }">
+				<c:when test="${trade.t_owner == user.u_id }">
 
 					<c:choose>
 						<c:when test="${trade.t_soldout == 0 }">
@@ -76,20 +95,7 @@
 					</c:choose>
 				</c:when>
 				<c:otherwise>
-					<form action="trade.Send.Msg">
-						<div class="modal">
-							<div class="modal_body">
-								<input type="hidden" value="${trade.t_no }" name="m_trade">
-								<input type="hidden" value="${trade.t_owner }" name="m_to">
-								<input type="hidden" value="${sessionScope.loginMember.u_id }"
-									name="m_from">
-								<h1>${trade.t_owner}님에게보내는쪽지</h1>
-								<br>
-								<textarea name="m_txt"></textarea>
-								<button class="sendMsg">전송</button>
-							</div>
-						</div>
-					</form>
+
 					<div class="open-modal">
 						<button class="btn-open-modal">쪽지 보내기</button>
 					</div>
@@ -117,9 +123,18 @@
 
         btnOpenModal.addEventListener("click", ()=>{
             modal.style.display="flex";
+            modalBackground.style.display = "block"; // 모달 배경 표시
             
             map.setDraggable(false);
             map.setZoomable(false);
+        });
+        
+        modalBackground.addEventListener("click", () => {
+            modal.style.display = "none";
+            modalBackground.style.display = "none"; // 모달 배경 숨김
+            // 맵 활성화
+            map.setDraggable(true);
+            map.setZoomable(true);
         });
         
         modal.addEventListener("click", (event) => {
