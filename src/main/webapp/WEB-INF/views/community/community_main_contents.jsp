@@ -75,13 +75,10 @@
 				console.log(data);
 
 				$.each(data.pinnedCommu, function(index, item) {
-
-					console.log(item.c_name);
-
 					var pinnedCommuContainer = $("#pinned-commu");
 					if (!addedCommunities[item.c_no]) { // 이미 추가한 커뮤니티인지 확인
 						var button = $("<button>").addClass("pinned-btn").attr(
-								"name");
+								"name", item.c_no);
 						$(button).val(item.c_no);
 						var img = $("<img>").addClass("pinned").attr("src",
 								"/img/커뮤니티_즐겨찾기함_icon.png").click(function() {

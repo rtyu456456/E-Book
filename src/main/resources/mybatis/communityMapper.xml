@@ -90,7 +90,7 @@
 		eb_community_reply where cr_cp_no = #{cp_no}
 	</select>
 
-	<select id="getAllPinnedCommu" parameterType="com.fp.eb.model.UserDTO"
+	<select id="getAllPinnedCommu" 
 		resultType="com.fp.eb.model.CommunityDTO">
 		select c_name, c_no, lr_type from eb_community,
 		eb_like_record
@@ -110,13 +110,15 @@
 	<select id="cheakPinnedTypeCommu" resultType="int">
 		select lr_type from
 		eb_like_record where
-		lr_where_type = 'COMMUNITY' and lr_owner = #{u_id}
-		and lr_where_no = #{lr_where_no}
+		lr_where_type = 'COMMUNITY' and lr_owner = #{uDTO.u_id}
+		and lr_where_no = #{cl.lr_where_no}
 	</select>
 	
 	<select id="getUserImg" resultType="com.fp.eb.model.UserDTO">
 		select * from eb_community_post, eb_user where cp_owner = u_id and cp_no = #{cp_no}
 	</select>
+	
+	
 	
 	<update id="updateCheckComment">
 	update eb_community_reply set cr_like = 1 where cr_no = #{cr_no}

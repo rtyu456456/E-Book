@@ -12,7 +12,7 @@
 		<c:forEach var="cp" items="${communityPosts }">
 			<form action="/go.commu.detail">
 				<input type="hidden" name="c_no" value="${cp.cp_community }">
-				<button type="button" class="post_contents" name="cp_no"
+				<button class="post_contents" name="cp_no"
 					value="${cp.cp_no }">
 					<div class="post_title">${cp.cp_title }</div>
 					<div style="position: absolute; margin-left: 50rem; margin-top: -4rem;"

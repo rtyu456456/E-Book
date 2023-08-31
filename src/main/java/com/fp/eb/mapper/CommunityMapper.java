@@ -75,7 +75,7 @@ public interface CommunityMapper {
 	
 	int checkPinnedCommu(@Param("cl")CommunityLikeDTO cl, @Param("uDTO")UserDTO uDTO);
 	
-	int cheakPinnedTypeCommu(CommunityLikeDTO cl, UserDTO uDTO);
+	int cheakPinnedTypeCommu(@Param("cl")CommunityLikeDTO cl, @Param("uDTO")UserDTO uDTO);
 
 	int updateCheckComment(CommunityReplyDTO cr);
 

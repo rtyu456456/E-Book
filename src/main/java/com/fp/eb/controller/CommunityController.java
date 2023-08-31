@@ -57,11 +57,15 @@ public class CommunityController {
 		return "community/community_page";
 	}
 
+	
+	
+	
+	
 	@RequestMapping(value = "/get.pinned.commu", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody CommunityPinned getPinndedCommu(HttpServletRequest req, UserDTO uDTO) {
 		UserDTO user = (UserDTO) req.getSession().getAttribute("user"); // 세션에 실린 유저값
 		uDTO.setU_id(user.getU_id());
-
+		System.out.println("aaaa");
 		return cDAO.getAllPinnedCommu(uDTO);
 	}
 
@@ -82,6 +86,11 @@ public class CommunityController {
 		cDAO.updatePinnedCommuZero(cl);
 		return cDAO.getAllPinnedCommu(uDTO);
 	}
+	
+	
+	
+	
+	
 
 	@GetMapping("/seach.community")
 	public String seachCommunity(Model model, CommunityDTO c) {
