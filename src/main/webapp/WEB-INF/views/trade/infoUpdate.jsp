@@ -119,25 +119,25 @@
 				</div>
 
 				<div class="input-group">
-					<a class="btn-open-modal">희망 장소 선택하기</a> <br> <span
-						id="input-content"></span>
+					<a class="btn-open-modal">희망 장소 선택하기</a> <br> 
+					<span id="input-content"></span>
+					<span id="input-lat"></span>/<span id="input-lng"></span>
 					<div>
 						<input type="hidden" value="" name="t_map_lat" id="t_map_lat">
 						<script> 
-							localStorage.setItem('t_map_lat', '${trade.t_map_lat}');
+// 							localStorage.setItem('t_map_lat', '${trade.t_map_lat}');
 						</script>
 					</div>
 					<div>
-						<input type="hidden" value="" name="t_map_lng" id="t_map_lng">
+						<input type="hidden" value="" name="t_map_lng" id="t_map_lng" >
 						<script> 
-							localStorage.setItem('t_map_lng', '${trade.t_map_lng}');
+// 							localStorage.setItem('t_map_lng', '${trade.t_map_lng}');
 						</script>
 					</div>
 					<div>
-						<input type="hidden" value="" name="t_marker_name"
-							id="t_marker_name">
+						<input type="hidden" value="" name="t_marker_name" id="t_marker_name">
 						<script> 
-							localStorage.setItem('t_marker_name', 't_marker_name'); <br>
+// 							localStorage.setItem('t_marker_name', 't_marker_name'); <br>
 						</script>
 					</div>
 				</div>
@@ -228,7 +228,9 @@
 			var inputContent = document.getElementById('inputContent').value;
 
 			let t_map_lat = document.getElementById('t_map_lat').value = latitude;
+			document.getElementById('input-lat').innerText = latitude;
 			let t_map_lng = document.getElementById('t_map_lng').value = longitude;
+			document.getElementById('input-lng').innerText = longitude;
 			let t_map_marker_name = document.getElementById('t_marker_name').value = inputContent;
 			document.getElementById('input-content').innerText = inputContent;
 			
