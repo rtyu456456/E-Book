@@ -14,11 +14,9 @@
 		<br>
 		<div class="white-line">
 			<div class="post_detail">
-				<c:if test="${communityPost.cp_owner == sessionScope.user.u_id }">
-					<div class="post_user_img">
-						<img alt="" src="${sessionScope.user.u_profile }">
+				<div class="post_user_img">
+						<img alt="" src="${userimg.u_profile }">
 					</div>
-				</c:if>
 				
 				<div class="post_info">
 					<div class="post_user_info">

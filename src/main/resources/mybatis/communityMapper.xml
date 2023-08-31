@@ -114,6 +114,10 @@
 		and lr_where_no = #{lr_where_no}
 	</select>
 	
+	<select id="getUserImg" resultType="com.fp.eb.model.UserDTO">
+		select * from eb_community_post, eb_user where cp_owner = u_id and cp_no = #{cp_no}
+	</select>
+	
 	<update id="updateCheckComment">
 	update eb_community_reply set cr_like = 1 where cr_no = #{cr_no}
 	</update>

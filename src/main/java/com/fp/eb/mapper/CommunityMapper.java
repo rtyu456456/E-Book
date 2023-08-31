@@ -81,6 +81,8 @@ public interface CommunityMapper {
 
 	int commentAlarm(UserDTO uDTO);
 
+	UserDTO getUserImg(CommunityPostDTO cp);
+
 
 	
 	

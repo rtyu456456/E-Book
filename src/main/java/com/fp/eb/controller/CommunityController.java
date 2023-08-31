@@ -181,17 +181,16 @@ public class CommunityController {
 	}
 
 	@GetMapping("/go.commu.detail")
-	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
+	public String goCommuDetail(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr, UserDTO uDTO,
+			HttpServletRequest req) {
 		/* cDAO.updateCheckComment(cr); */
-		System.out.println("111111");
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user"); // 세션에 실린 유저값
+		uDTO.setU_id(user.getU_id());
+		cDAO.getUserImg(cp, model);
 		cDAO.getCommunity(c, model);
-		System.out.println("222222222");
 		cDAO.getCommunityPost(cp, model);
-		System.out.println("333333333333");
 		cDAO.getReplys(cp, model);
-		System.out.println("44444");
 		cDAO.getCountReplys(cp.getCp_no(), model);
-		System.out.println("5555");
 
 		model.addAttribute("commu_header_page", "community_detail_header.jsp");
 		model.addAttribute("commu_contents_page", "community_detail_contents.jsp");
@@ -206,7 +205,7 @@ public class CommunityController {
 
 		cDAO.regReply(cr, uDTO);
 		cDAO.getCountReplys(cp.getCp_no(), model);
-
+		cDAO.getUserImg(cp, model);
 		cDAO.getCommunity(c, model);
 		cDAO.getCommunityPost(cp, model);
 		cDAO.getReplys(cp, model);
@@ -263,7 +262,11 @@ public class CommunityController {
 	}
 
 	@GetMapping("/do.update.post")
-	public String doUpdatePost(Model model, CommunityDTO c, CommunityPostDTO cp) {
+	public String doUpdatePost(Model model, CommunityDTO c, CommunityPostDTO cp,  HttpServletRequest req,
+			UserDTO uDTO) {
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user"); // 세션에 실린 유저값
+		uDTO.setU_id(user.getU_id());
+		cDAO.getUserImg(cp, model);
 		cDAO.updateCommunityPost(cp, model);
 		cDAO.getCommunity(c, model);
 		cDAO.getCommunityPost(cp, model);

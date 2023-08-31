@@ -199,5 +199,10 @@ public class CommunityDAO {
 		model.addAttribute("commentAlarm", ss.getMapper(CommunityMapper.class).commentAlarm(uDTO));
 	}
 
+	public void getUserImg(CommunityPostDTO cp, Model model) {
+		model.addAttribute("userimg", ss.getMapper(CommunityMapper.class).getUserImg(cp));
+		
+	}
+
 
 }
