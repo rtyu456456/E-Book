@@ -38,9 +38,9 @@ public interface BookrecordMapper {
 
 	int regReview(UserDTO uDTO, ReviewDTO rDTO);
 
-	int reviewCheck(ReviewDTO rDTO);
+	int reviewCheck(ReviewDTO rDTO, UserDTO uDTO);
 
-	BookrecordDTO getReviewBook(ReviewDTO rDTO);
+	BookrecordDTO getReviewBook(ReviewDTO rDTO, UserDTO uDTO);
 
 	int updateReview(ReviewDTO rDTO);
 

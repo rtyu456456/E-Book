@@ -212,14 +212,22 @@ public class BookrecordDAO {
 
 	}
 
-	public int reviewCheck(ReviewDTO rDTO, HttpServletRequest req) {
+	public int reviewCheck(ReviewDTO rDTO, HttpServletRequest req, UserDTO uDTO) {
+		
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
 
-		return brMapper.reviewCheck(rDTO);
+		uDTO.setU_id(user.getU_id());
+		
+		return brMapper.reviewCheck(rDTO, uDTO);
 	}
 
-	public BookrecordDTO getReviewBook(ReviewDTO rDTO, HttpServletRequest req) {
+	public BookrecordDTO getReviewBook(ReviewDTO rDTO, HttpServletRequest req, UserDTO uDTO) {
+		
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
 
-		return brMapper.getReviewBook(rDTO);
+		uDTO.setU_id(user.getU_id());
+		
+		return brMapper.getReviewBook(rDTO, uDTO);
 	}
 
 	public void updateReview(ReviewDTO rDTO, HttpServletRequest req) {

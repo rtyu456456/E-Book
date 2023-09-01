@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="flex absolute w-full justify-center items-center">
-		<img class="w-1/4" alt="" src="imgs/default_user.png">
+		<img class="w-[18rem] h-[18rem]" alt="" src="${sessionScope.user.u_profile }">
 	</div>
 	<div id="form"
 		class="flex flex-col rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner

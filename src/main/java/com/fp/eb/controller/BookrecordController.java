@@ -113,17 +113,17 @@ public class BookrecordController {
 	
 	@ResponseBody
 	@GetMapping("/reviewCheck.do")
-	public int regCheckDo(HttpServletRequest req, ReviewDTO rDTO) {
+	public int regCheckDo(HttpServletRequest req, ReviewDTO rDTO, UserDTO uDTO) {
 		
-		return brDAO.reviewCheck(rDTO, req);
+		return brDAO.reviewCheck(rDTO, req, uDTO);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/getReviewbyNo.do", method = RequestMethod.GET,
 			produces = "application/json; charset=utf-8")
-	public BookrecordDTO getReviewBook(ReviewDTO rDTO, HttpServletRequest req) {
+	public BookrecordDTO getReviewBook(ReviewDTO rDTO, HttpServletRequest req, UserDTO uDTO) {
 		System.out.println(rDTO.getR_b_no());
-		return brDAO.getReviewBook(rDTO, req);
+		return brDAO.getReviewBook(rDTO, req, uDTO);
 	}
 	
 	@GetMapping("/updateReview.do")

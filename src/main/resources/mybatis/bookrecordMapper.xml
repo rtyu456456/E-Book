@@ -35,7 +35,7 @@
 </select>
 
 <select id="reviewCheck" resultType="integer">
-	SELECT COUNT(*) FROM EB_REVIEW WHERE R_OWNER = #{uDTO.u_id} AND R_B_NO = #{r_b_no}
+	SELECT COUNT(*) FROM EB_REVIEW WHERE R_OWNER = #{uDTO.u_id} AND R_B_NO = #{rDTO.r_b_no}
 </select>
 
 <select id="getCurPage" resultType="integer">

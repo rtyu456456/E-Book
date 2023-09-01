@@ -17,7 +17,7 @@ body * {
 </head>
 <body>
 	<div class="flex absolute w-full justify-center items-center">
-		<img class="w-1/4" alt="" src="${sessionScope.user.u_profile }">
+		<img class="w-[18rem] h-[18rem]" alt="" src="${sessionScope.user.u_profile }">
 	</div>
 	<div id="form"
 		class="flex flex-col rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner
@@ -26,6 +26,14 @@ body * {
 
 			<div id="profile-img" class="w-full h-[12rem]"></div>
 			<div id="info-div" class="flex flex-col w-full h-96">
+			
+			<!-- PW div  -->
+				<div id="u_pw_div"
+					class="flex flex-row justify-center items-center text-center">
+					<div
+						class="flex flex-row items-center h-28 mt-10 w-3/4">
+					</div>
+				</div>
 				<!-- ID div  -->
 				<div id="u-id-div"
 					class="flex flex-row block justify-center items-center text-center">
@@ -54,19 +62,6 @@ body * {
 					</div>
 				</div>
 
-				<!-- PW div  -->
-				<div id="u_pw_div"
-					class="flex flex-row justify-center items-center text-center">
-					<div
-						class="flex flex-row items-center h-28 mt-10 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
-						<div class="w-1/4">
-							<span class="text-black">등급 | </span>
-						</div>
-						<div class="w-3/4">
-							<span class="text-black">${sessionScope.user.u_achievement }</span>
-						</div>
-					</div>
-				</div>
 
 				<!-- PW check div  -->
 				<div id="u_pw_check_div"
