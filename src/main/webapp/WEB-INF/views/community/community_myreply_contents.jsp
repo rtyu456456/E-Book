@@ -23,12 +23,16 @@
 							<div>${cp.cp_owner }</div>
 						</div>
 						<div class="post_flex_right">
-							<div class="post_like">
-								<img src="/img/like_icon.png"> ${cp.cp_like }
+							<div class="post_like" style="color: #F66E6E;">
+								<img
+									style="filter: invert(73%) sepia(22%) saturate(3202%) hue-rotate(311deg) brightness(94%) contrast(105%);"
+									src="/img/dislike_icon.png"> ${cp.cp_like }
 							</div>
 							&nbsp;&nbsp;
-							<div class="post_dislike">
-								<img alt="" src="/img/dislike_icon.png">${cp.cp_dislike }
+							<div class="post_dislike" style="color: #4677AF;">
+								<img
+									style="filter: invert(74%) sepia(46%) saturate(4423%) hue-rotate(186deg) brightness(70%) contrast(93%);"
+									alt="" src="/img/dislike_icon.png">${cp.cp_dislike }
 							</div>
 							&nbsp;&nbsp;
 							<div class="post_chat">

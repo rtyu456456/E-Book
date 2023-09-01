@@ -118,7 +118,7 @@
 					<div class="box-shadow-1">
 						<textarea name="cr_contents" rows="1" class="post_reply_text"
 							onkeydown="resize(this)" onkeyup="resize(this)"
-							placeholder="댓글을 입력하세요."></textarea>
+							placeholder="댓글을 입력하세요." ></textarea>
 					</div>
 					<div class="box-shadow-2">
 						<button name="cr_cp_no" value="${communityPost.cp_no }"

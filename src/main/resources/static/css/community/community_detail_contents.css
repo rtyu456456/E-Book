@@ -107,6 +107,7 @@
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	.post_cp_contents {
+		white-space: pre-wrap;
 		font-size: 3rem;
 		font-weight: 300;
 		font-family: 'IBM Plex Sans KR', sans-serif;
@@ -178,6 +179,7 @@
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	.reply_txt {
+		white-space: pre-wrap;
 		word-break: break-all;
 		word-wrap: break-word;
 		position: relative;

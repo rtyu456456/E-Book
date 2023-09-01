@@ -20,7 +20,7 @@
 					<img src="/img/left-arrow.png">
 				</button>
 			</form>
-			<div id="community_name">내가 쓴 댓글</div>
+			<div id="community_name">댓글 단 글</div>
 			<div id="empty"></div>
 		</div>
 

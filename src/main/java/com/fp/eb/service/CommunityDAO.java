@@ -178,19 +178,68 @@ public class CommunityDAO {
 		model.addAttribute("communityPosts", posts);
 	}
 
-	public void getAllMyPost(CommunityPostDTO cp, Model model) {
+	public void getAllMyPost(CommunityPostDTO cp, Model model, HttpServletRequest req) {
 		List<CommunityPostDTO> posts = ss.getMapper(CommunityMapper.class).getAllMyPost(cp);
+		LikeDTO likeDTO = new LikeDTO();
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		if (user != null) {
+			likeDTO.setLr_owner(user.getU_id());
+			likeDTO.setLr_where_type("CP");
+		}
+		
 		for (CommunityPostDTO scp : posts) {
 			scp.setCp_reviewCnt(getCountReplys(scp.getCp_no()));
+			likeDTO.setLr_where_no(scp.getCp_no().intValue());
+			if (user != null) {
+				if (mainMapper.getLikeInfo(likeDTO) != null) {
+					
+					scp.setLikeCheck(mainMapper.getLikeInfo(likeDTO).getLr_type());
+					System.out.println(mainMapper.getLikeInfo(likeDTO).getLr_type());
+					Map<String, Object> likeDislike = mainMapper.likeDislikeCount(likeDTO);
+					System.out.println("-----------------");
+					System.out.println(likeDislike);
+					System.out.println(likeDislike.get("LIKE_COUNT"));
+					System.out.println(likeDislike.get("DISLIKE_COUNT"));
+					BigDecimal like = (BigDecimal) likeDislike.get("LIKE_COUNT");
+					BigDecimal dislike = (BigDecimal) likeDislike.get("DISLIKE_COUNT");
+					scp.setCp_like(like.intValue());
+					scp.setCp_dislike(dislike.intValue());
+					System.out.println("-----------------");
+				}
+			}
 		}
 
 		model.addAttribute("communityPosts", posts);
 	}
 
-	public void getAllMyReply(CommunityReplyDTO cr, Model model) {
+	public void getAllMyReply(CommunityReplyDTO cr, Model model, HttpServletRequest req) {
 		List<CommunityPostDTO> posts = ss.getMapper(CommunityMapper.class).getAllMyReply(cr);
+		LikeDTO likeDTO = new LikeDTO();
+		UserDTO user = (UserDTO) req.getSession().getAttribute("user");
+		if (user != null) {
+			likeDTO.setLr_owner(user.getU_id());
+			likeDTO.setLr_where_type("CP");
+		}
 		for (CommunityPostDTO scp : posts) {
 			scp.setCp_reviewCnt(getCountReplys(scp.getCp_no()));
+			likeDTO.setLr_where_no(scp.getCp_no().intValue());
+			if (user != null) {
+				if (mainMapper.getLikeInfo(likeDTO) != null) {
+					
+					scp.setLikeCheck(mainMapper.getLikeInfo(likeDTO).getLr_type());
+					System.out.println(mainMapper.getLikeInfo(likeDTO).getLr_type());
+					Map<String, Object> likeDislike = mainMapper.likeDislikeCount(likeDTO);
+					System.out.println("-----------------");
+					System.out.println(likeDislike);
+					System.out.println(likeDislike.get("LIKE_COUNT"));
+					System.out.println(likeDislike.get("DISLIKE_COUNT"));
+					BigDecimal like = (BigDecimal) likeDislike.get("LIKE_COUNT");
+					BigDecimal dislike = (BigDecimal) likeDislike.get("DISLIKE_COUNT");
+					scp.setCp_like(like.intValue());
+					scp.setCp_dislike(dislike.intValue());
+					System.out.println("-----------------");
+				}
+			}
 		}
 
 		model.addAttribute("communityPosts", posts);

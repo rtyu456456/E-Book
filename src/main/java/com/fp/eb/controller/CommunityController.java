@@ -125,8 +125,8 @@ public class CommunityController {
 	}
 
 	@GetMapping("/go.my.post")
-	public String goMyPost(Model model, CommunityDTO c, CommunityPostDTO cp) {
-		cDAO.getAllMyPost(cp, model);
+	public String goMyPost(Model model, CommunityDTO c, CommunityPostDTO cp, HttpServletRequest req) {
+		cDAO.getAllMyPost(cp, model, req);
 
 		model.addAttribute("commu_header_page", "community_mypost_header.jsp");
 		model.addAttribute("commu_contents_page", "community_mypost_contents.jsp");
@@ -134,9 +134,9 @@ public class CommunityController {
 	}
 
 	@GetMapping("/delete.my.post")
-	public String deleteMyPost(Model model, CommunityDTO c, CommunityPostDTO cp) {
+	public String deleteMyPost(Model model, CommunityDTO c, CommunityPostDTO cp, HttpServletRequest req) {
 		cDAO.deleteCommunityPost(cp, model);
-		cDAO.getAllMyPost(cp, model);
+		cDAO.getAllMyPost(cp, model, req);
 
 		model.addAttribute("commu_header_page", "community_mypost_header.jsp");
 		model.addAttribute("commu_contents_page", "community_mypost_contents.jsp");
@@ -158,8 +158,8 @@ public class CommunityController {
 	}
 
 	@GetMapping("/go.my.reply")
-	public String goMyReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr) {
-		cDAO.getAllMyReply(cr, model);
+	public String goMyReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr, HttpServletRequest req) {
+		cDAO.getAllMyReply(cr, model, req);
 
 		model.addAttribute("commu_header_page", "community_myreply_header.jsp");
 		model.addAttribute("commu_contents_page", "community_myreply_contents.jsp");
