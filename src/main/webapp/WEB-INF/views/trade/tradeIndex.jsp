@@ -24,19 +24,26 @@
 					onclick="location.href='/trade.go?u_id=${sessionScope.user.u_id }'">책방</h1>
 				<div>
 					<img alt="" src="/img/PageUpLog.png">
-					<table id="loginSuccessTable">
-						<tr>
-							<td style="height: 20px;">${sessionScope.user.u_id }</td>
-						</tr>
-						<tr>
-							<td align="right" valign="top">(${sessionScope.user.u_name })</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center">
-								<button onclick="logout()">로그아웃</button>
-							</td>
-						<tr>
-					</table>
+					<div class="login-profile">
+						<img alt="" src="${sessionScope.user.u_profile }">
+					</div>
+
+					<!-- 					<table id="loginSuccessTable"> -->
+					<!-- 							<tr> -->
+					<!-- 							</tr> -->
+
+					<!-- 						<tr> -->
+					<%-- 							<td style="height: 20px;">${sessionScope.user.u_id }</td> --%>
+					<!-- 						</tr> -->
+					<!-- 						<tr> -->
+					<%-- 							<td align="right" valign="top">(${sessionScope.user.u_name })</td> --%>
+					<!-- 						</tr> -->
+					<!-- 						<tr> -->
+					<!-- 							<td colspan="2" align="center"> -->
+					<!-- 								<button onclick="logout()">로그아웃</button> -->
+					<!-- 							</td> -->
+					<!-- 						<tr> -->
+					<!-- 					</table> -->
 				</div>
 			</div>
 
@@ -55,7 +62,7 @@
 					<div class="menu-list-box">
 						<div class="menu-list-gh">
 							<img src="/imgs/my_page_txt.png">
-							<!-- onclick="location.href='user_main'" -->
+<!-- 							onclick="location.href='user_main'"> -->
 							<h4 onclick="location.href='usermain'">내 정보</h4>
 							<h4 onclick="location.href='bookRecord.fin'">읽은 책</h4>
 							<h4 onclick="location.href='bookRecord.ing'">읽고 있는 책</h4>
