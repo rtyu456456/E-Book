@@ -21,7 +21,14 @@
 	justify-content: space-around;
 }
 
+.login-profile{
+	margin-right: 20px;
+	margin-top: 10px;
+}
+
+
 .menu-gh {
+	margin-left:20px;
 	display: flex;
 	align-items: center;
 }

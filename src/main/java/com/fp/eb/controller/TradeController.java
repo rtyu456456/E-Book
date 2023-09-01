@@ -171,7 +171,7 @@ public class TradeController {
 	@GetMapping("/trade.reg.search.name")
 	public String tradeRegSearchName(BookDTO bDTO, HttpServletRequest req) {
 		tDAO.tradeRegSearchName(bDTO, req);
-		req.setAttribute("contentPage", "tradeSea /nrchBook.jsp");
+		req.setAttribute("contentPage", "tradeSearchBook.jsp");
 		return "trade/tradeIndex";
 	}
 	@GetMapping("/reg.Search.Book.Info")
@@ -185,8 +185,8 @@ public class TradeController {
 	@GetMapping("/trade.complete")
 	public String tradeComplete(TradeDTO tDTO, HttpServletRequest req) {
 		tDAO.tradeComplete(tDTO, req);
-		req.setAttribute("contentPage", "saleNow.jsp");
-		return "redirect:/trade.sale.now";
+
+		return "redirect:/trade.sale.complete";
 	}
 	
 //거래 취소 기능
