@@ -132,16 +132,16 @@
 		<div class="empty_space"></div>
 	</div>
 
-	<dialog id="deleteModal">
+	<dialog class="deleteModal">
 	<div class="delete-background">
 		<div class="delete-text">삭제하시겠습니까?</div>
 		<div class="delete-flex">
-			<button id="back-btn">취소</button>
-			<button id="delete-ok">확인</button>
+			<button class="back-btn">취소</button>
+			<button class="delete-ok">확인</button>
 		</div>
 	</div>
 	</dialog>
-
+	
 
 
 

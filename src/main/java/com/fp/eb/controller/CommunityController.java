@@ -146,7 +146,7 @@ public class CommunityController {
 	@GetMapping("/delete.my.reply")
 	public String deleteMyReply(Model model, CommunityDTO c, CommunityPostDTO cp, CommunityReplyDTO cr, HttpServletRequest req) {
 		cDAO.deleteMyReply(cr, model);
-
+		cDAO.getUserImg(cp, model);
 		cDAO.getCommunity(c, model);
 		cDAO.getCommunityPost(cp, model, c, req);
 		cDAO.getReplys(cp, model);

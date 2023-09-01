@@ -26,19 +26,14 @@ document.addEventListener('mouseup', function(e) {
 
 
 
-
-
-
-
-
 /*모달 코드*/
-let deleteModal = document.getElementById("deleteModal");
+let deleteModal = document.querySelector(".deleteModal");
 let deletePostBtn = document.getElementById("delete-post-btn");
 let cNo = document.getElementById("c-no");
 let c_no = document.getElementById("c-no").value;
 let cp_no = document.getElementById("delete-post-btn").value;
-let modalBackBtn = document.getElementById("back-btn");
-let deleteOkBtn = document.getElementById("delete-ok");
+let modalBackBtn = document.querySelector(".back-btn");
+let deleteOkBtn = document.querySelector(".delete-ok");
 let deleteText = document.querySelector(".delete-text");
 
 

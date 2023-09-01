@@ -247,7 +247,7 @@
 	}
 
 	/* delete 모달창  css*/
-	#deleteModal {
+	.deleteModal {
 		border-radius: 2rem;
 		background-color: white;
 		box-shadow: 1rem 3rem 5rem 0rem rgba(0, 0, 0, 0.25);
@@ -275,7 +275,7 @@
 		bottom: 0;
 		right: 0;
 	}
-	#back-btn {
+	.back-btn {
 		margin-left: 1.5rem;
 		width: 50%;
 		font-size: 2.5rem;
@@ -285,7 +285,7 @@
 		font-weight: 500;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
-	#delete-ok {
+	.delete-ok {
 		font-weight: 500;
 		font-family: 'IBM Plex Sans KR', sans-serif;
 		font-size: 2.5rem;
