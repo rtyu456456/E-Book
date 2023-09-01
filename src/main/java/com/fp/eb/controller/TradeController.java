@@ -171,7 +171,7 @@ public class TradeController {
 	@GetMapping("/trade.reg.search.name")
 	public String tradeRegSearchName(BookDTO bDTO, HttpServletRequest req) {
 		tDAO.tradeRegSearchName(bDTO, req);
-		req.setAttribute("contentPage", "tradeSerachBook.jsp");
+		req.setAttribute("contentPage", "tradeSea /nrchBook.jsp");
 		return "trade/tradeIndex";
 	}
 	@GetMapping("/reg.Search.Book.Info")

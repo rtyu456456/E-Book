@@ -56,23 +56,29 @@
 						<div class="menu-list-gh">
 							<img src="/imgs/my_page_txt.png">
 							<!-- onclick="location.href='user_main'" -->
-							<h4>내 정보</h4>
-							<h4>읽은 책</h4>
-							<h4>읽고 있는 책</h4>
-							<h4>읽고 싶은 책</h4>
+							<h4 onclick="location.href='usermain'">내 정보</h4>
+							<h4 onclick="location.href='bookRecord.fin'">읽은 책</h4>
+							<h4 onclick="location.href='bookRecord.ing'">읽고 있는 책</h4>
+							<h4 onclick="location.href='bookRecord.wish'">읽고 싶은 책</h4>
 						</div>
+
 						<div class="menu-list-gh">
-							<h2>커뮤니티</h2>
-							<h4>내가 쓴 글</h4>
-							<h4>댓글 단 글</h4>
+							<h2 onclick="location.href='community_main'">커뮤니티</h2>
+							<h4
+								onclick="location.href='go.my.post?cp_owner=${sessionScope.user.u_id }'">내가
+								쓴 글</h4>
+							<h4
+								onclick="location.href='go.my.reply?cr_owner=${sessionScope.user.u_id }'">댓글
+								단 글</h4>
 						</div>
+
 						<div class="menu-list-gh">
-							<h2>
+							<h2 onclick="location.href='trade.go'">
 								책방<span>중고거래</span>
 							</h2>
-							<h4>판매하기</h4>
-							<h4>판매 내역</h4>
-							<h4>쪽지함</h4>
+							<h4 onclick="location.href='trade.choose.go'">판매하기</h4>
+							<h4 onclick="location.href='trade.sale.now	'">판매 내역</h4>
+							<h4 onclick="location.href='trade.Msg.get.to'">쪽지함</h4>
 						</div>
 					</div>
 				</div>

@@ -25,7 +25,6 @@
 		eb_community_post
 		where lr_where_no = cp_no
 	</if>	
-		
 		and lr_where_type = #{lr_where_type} and lr_type = 2 and lr_where_no = #{lr_where_no}
 		) as dislike_count
 	from dual
@@ -90,12 +89,6 @@
 		LR_WHERE_NO = #{lr_where_no}
 	</update>
 	
-	<select id="likeCheck" resultType="String">
-		select lr_type from eb_like_record
-		where lr_owner = #{lr_owner} and LR_WHERE_TYPE = #{lr_where_type} and
-		LR_WHERE_NO = #{lr_where_no}
-	</select>
-
 	<select id="getPercent" resultType="com.fp.eb.model.BookDTO">
 		SELECT
 		r_b_no,

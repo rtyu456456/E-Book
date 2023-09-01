@@ -161,7 +161,7 @@ public class TradeDAO {
 	}
 
 	public void tradeRegSearchName(BookDTO bDTO, HttpServletRequest req) {
-		req.setAttribute("book", ss.getMapper(TradeMapper.class).tradeRegSearchName(bDTO));
+		req.setAttribute("books", ss.getMapper(TradeMapper.class).tradeRegSearchName(bDTO));
 		System.out.println("책 정보 검색 입력");
 	}
 

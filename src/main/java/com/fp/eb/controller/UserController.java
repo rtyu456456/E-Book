@@ -81,7 +81,7 @@ public class UserController {
 	@GetMapping("/logout.go")
 	public String logoutGo(HttpServletRequest req, UserDTO uDTO) {
 		req.getSession().removeAttribute("user");;
-		return "redirect:/main";
+		return "redirect:/login.go";
 	}
 	
 	@GetMapping("/userUpdate.go")

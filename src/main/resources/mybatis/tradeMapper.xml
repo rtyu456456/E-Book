@@ -34,7 +34,6 @@
 	<select id="getTradeList" resultType="com.fp.eb.model.TradeDTO">
 		SELECT * FROM eb_trade
 		WHERE t_book_title LIKE '%'||#{t_book_title}||'%'
-		  OR t_title LIKE '%' || #{t_title} || '%';
 	</select>
 
 

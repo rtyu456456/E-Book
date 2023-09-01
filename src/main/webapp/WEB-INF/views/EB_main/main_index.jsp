@@ -37,10 +37,10 @@
 			<img class="logo-gh" id="logoGH" src="/img/logo_icon.png">
 			<div class="profile-img-gh">
 				<!-- a 태그 달아서 마이페이지 가게 하기 -->
-				<img src="/img/${sessionScope.user.u_profile }">
+				<img src="${sessionScope.user.u_profile }">
 			</div>
 		</div>
-				<input hidden value="${sessionScope.user.u_profile }">
+		<input hidden value="${sessionScope.user.u_profile }">
 		<!------ 검색창 ------>
 		<form class="main-search-gh" action="main.search">
 			<select class="main-select" name="searchOption">
@@ -60,41 +60,43 @@
 	</div>
 	<!------- 메뉴 -------->
 	<dialog id="menu-dialog">
-	<form method="dialog">
-		<div class="side-menu-gh">
-			<button class="menu-title-gh" onclick="location.href='main'">
-				<img src="/img/pageup_logo.png">
-			</button>
-			<button class="menu-close-gh">
-				<img src="/img/x_icon.png">
-			</button>
-			<div class="menu-list-box">
-				<div class="menu-list-gh">
-					<img src="/imgs/my_page_txt.png">
-					<!-- onclick="location.href='user_main'" -->
-					<h4 >내 정보</h4>
-					<h4>읽은 책</h4>
-					<h4>읽고 있는 책</h4>
-					<h4>읽고 싶은 책</h4>
-				</div>
+	<div class="side-menu-gh">
+		<button class="menu-title-gh" onclick="location.href='main'">
+			<img src="/img/pageup_logo.png">
+		</button>
+		<button class="menu-close-gh">
+			<img src="/img/x_icon.png">
+		</button>
+		<div class="menu-list-box">
+			<div class="menu-list-gh">
+				<img src="/imgs/my_page_txt.png">
+				<!-- onclick="location.href='user_main'" -->
+				<h4 onclick="location.href='usermain'">내 정보</h4>
+				<h4 onclick="location.href='bookRecord.fin'">읽은 책</h4>
+				<h4 onclick="location.href='bookRecord.ing'">읽고 있는 책</h4>
+				<h4 onclick="location.href='bookRecord.wish'">읽고 싶은 책</h4>
+			</div>
 
-				<div class="menu-list-gh">
-					<h2>커뮤니티</h2>
-					<h4>내가 쓴 글</h4>
-					<h4>댓글 단 글</h4>
-				</div>
+			<div class="menu-list-gh">
+				<h2 onclick="location.href='community_main'">커뮤니티</h2>
+				<h4
+					onclick="location.href='go.my.post?cp_owner=${sessionScope.user.u_id }'">내가
+					쓴 글</h4>
+				<h4
+					onclick="location.href='go.my.reply?cr_owner=${sessionScope.user.u_id }'">댓글
+					단 글</h4>
+			</div>
 
-				<div class="menu-list-gh">
-					<h2>
-						책방<span>중고거래</span>
-					</h2>
-					<h4>판매하기</h4>
-					<h4>판매 내역</h4>
-					<h4>쪽지함</h4>
-				</div>
+			<div class="menu-list-gh">
+				<h2 onclick="location.href='trade.go'">
+					책방<span>중고거래</span>
+				</h2>
+				<h4 onclick="location.href='trade.choose.go'">판매하기</h4>
+				<h4 onclick="location.href='trade.sale.now	'">판매 내역</h4>
+				<h4 onclick="location.href='trade.Msg.get.to'">쪽지함</h4>
 			</div>
 		</div>
-	</form>
+	</div>
 	</dialog>
 
 
