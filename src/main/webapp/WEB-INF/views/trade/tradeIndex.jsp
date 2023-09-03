@@ -62,7 +62,7 @@
 					<div class="menu-list-box">
 						<div class="menu-list-gh">
 							<img src="/imgs/my_page_txt.png">
-<!-- 							onclick="location.href='user_main'"> -->
+							<!-- 							onclick="location.href='user_main'"> -->
 							<h4 onclick="location.href='usermain'">내 정보</h4>
 							<h4 onclick="location.href='bookRecord.fin'">읽은 책</h4>
 							<h4 onclick="location.href='bookRecord.ing'">읽고 있는 책</h4>
@@ -86,6 +86,10 @@
 							<h4 onclick="location.href='trade.choose.go'">판매하기</h4>
 							<h4 onclick="location.href='trade.sale.now	'">판매 내역</h4>
 							<h4 onclick="location.href='trade.Msg.get.to'">쪽지함</h4>
+						</div>
+						<div class="menu-list-gh">
+
+							<h4 onclick="location.href='logout.go'">로그아웃</h4>
 						</div>
 					</div>
 				</div>

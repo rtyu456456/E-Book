@@ -29,7 +29,7 @@
 				
 				<!-- PW div  -->
 				<div id="u_pw" class="flex flex-row justify-center items-center">
-					<input type="text" name="u_pw" id="u_pw"
+					<input type="password" name="u_pw" id="u_pw"
 						class="h-24 mt-12 w-2/3 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500"
 						placeholder="비밀번호">
 				</div>

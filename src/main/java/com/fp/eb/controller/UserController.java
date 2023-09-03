@@ -28,6 +28,10 @@ public class UserController {
 	@GetMapping("/usermain")
 	public String userMain(HttpServletRequest req) {
 		req.setAttribute("contentPage", "detail_user.jsp");
+		req.setAttribute("userDetail", "border-b-4 border-b-black text-black");
+		req.setAttribute("brFin", "");
+		req.setAttribute("brIng", "");
+		req.setAttribute("brWish", "");
 		return "user/user_main";
 	}
 	
@@ -58,6 +62,7 @@ public class UserController {
 	public String loginDodo(HttpServletRequest req, UserDTO uDTO) {
 		System.out.println(uDTO);
 		uDAO.login2(req, uDTO);
+		
 		return "redirect:/usermain";
 	}
 	

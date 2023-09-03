@@ -85,6 +85,10 @@
 					<h4 onclick="location.href='trade.sale.now	'">판매 내역</h4>
 					<h4 onclick="location.href='trade.Msg.get.to'">쪽지함</h4>
 				</div>
+				<div class="menu-list-gh">
+
+					<h4 onclick="location.href='logout.go'">로그아웃</h4>
+				</div>
 			</div>
 		</div>
 	</form>

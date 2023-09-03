@@ -40,14 +40,24 @@ public class BookrecordController {
 		
 
 		brDAO.getBookFin(req, uDTO);
+		req.setAttribute("userDetail", "");
+		req.setAttribute("brFin", "border-b-4 border-b-black text-black");
+		req.setAttribute("brIng", "");
+		req.setAttribute("brWish", "");
 		req.setAttribute("contentPage", "bookrecord_fin.jsp");
+		
 		
 		return "user/user_main";
 	}
 
 	@GetMapping("/bookRecord.ing")
 	public String bookRecordIng(HttpServletRequest req, UserDTO uDTO) {
+		
 		brDAO.getBookIng(req, uDTO);
+		req.setAttribute("userDetail", "");
+		req.setAttribute("brFin", "");
+		req.setAttribute("brIng", "border-b-4 border-b-black text-black");
+		req.setAttribute("brWish", "");
 		req.setAttribute("contentPage", "bookrecord_ing.jsp");
 		return "user/user_main";
 	}
@@ -56,6 +66,7 @@ public class BookrecordController {
 	public String regIng(HttpServletRequest req, UserDTO uDTO, BookrecordDTO brDTO) {
 		brDAO.regIng(req, brDTO, uDTO);
 		brDAO.getBookIng(req, uDTO);
+		req.setAttribute("brIng", "border-b-4 border-b-black text-black");
 		req.setAttribute("contentPage", "bookrecord_ing.jsp");
 		return "user/user_main";
 	}
@@ -64,6 +75,10 @@ public class BookrecordController {
 	public String bookRecordWish(HttpServletRequest req, UserDTO uDTO) {
 		brDAO.getBookWish(req, uDTO);
 		req.setAttribute("contentPage", "bookrecord_wish.jsp");
+		req.setAttribute("userDetail", "");
+		req.setAttribute("brFin", "");
+		req.setAttribute("brIng", "");
+		req.setAttribute("brWish", "border-b-4 border-b-black text-black");
 		return "user/user_main";
 	}
 
@@ -87,6 +102,7 @@ public class BookrecordController {
 	public String delWish(HttpServletRequest req, BookrecordDTO brDTO, UserDTO uDTO) {
 		brDAO.delWish(brDTO);
 		brDAO.getBookWish(req, uDTO);
+		
 		req.setAttribute("contentPage", "bookrecord_wish.jsp");
 		return "user/user_main";
 	}

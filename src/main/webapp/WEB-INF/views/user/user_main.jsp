@@ -105,25 +105,25 @@
 			<div class="menu flex w-full pt-10 mb-20 font-bold">
 				<div class="user-detail flex w-1/4 justify-center items-center">
 					<a href="usermain"> <span
-						class="block text-[2rem] h-16 text-[#26283D66] border-b-4 border-b-black">내
+						class="block text-[2rem] h-16 text-[#26283D66] ${userDetail }">내
 							정보</span>
 					</a>
 				</div>
 				<div class="br-end flex w-1/4 justify-center items-center">
 					<a href="bookRecord.fin"> <span
-						class="block text-[2rem] mr-12 h-16 border-b-4 border-b-[#F5F6FA] text-[#26283D66]">읽은
+						class="block text-[2rem] mr-12 h-16 border-b-4 border-b-[#F5F6FA] text-[#26283D66] ${brFin }">읽은
 							책</span>
 					</a>
 				</div>
 				<div class="br-ing flex w-1/4 justify-center items-center">
 					<a href="bookRecord.ing"> <span
-						class="block text-[2rem] mr-10 h-16 border-b-4 border-b-[#F5F6FA] text-[#26283D66]">읽고
+						class="block text-[2rem] mr-10 h-16 border-b-4 border-b-[#F5F6FA] text-[#26283D66] ${brIng }">읽고
 							있는 책</span>
 					</a>
 				</div>
 				<div class="br-wish flex w-1/4 justify-center items-center">
 					<a href="bookRecord.wish"> <span
-						class="block text-[2rem] mr-10 h-16 border-b-4 border-b-[#F5F6FA] text-[#26283D66]">읽고
+						class="block text-[2rem] mr-10 h-16 border-b-4 border-b-[#F5F6FA] text-[#26283D66] ${brWish }">읽고
 							싶은 책</span>
 					</a>
 				</div>
@@ -165,6 +165,11 @@
 				<h4 onclick="location.href='trade.choose.go'">판매하기</h4>
 				<h4 onclick="location.href='trade.sale.now	'">판매 내역</h4>
 				<h4 onclick="location.href='trade.Msg.get.to'">쪽지함</h4>
+			</div>
+			
+			<div class="menu-list-gh">
+
+				<h4 onclick="location.href='logout.go'">로그아웃</h4>
 			</div>
 		</div>
 	</div>

@@ -27,8 +27,8 @@ body * {
 			<div id="profile-img" class="w-full h-[12rem]"></div>
 			<div id="info-div" class="flex flex-col w-full h-96">
 			
-			<!-- PW div  -->
-				<div id="u_pw_div"
+			<!-- blank div  -->
+				<div id="blank-div"
 					class="flex flex-row justify-center items-center text-center">
 					<div
 						class="flex flex-row items-center h-28 mt-10 w-3/4">
@@ -63,8 +63,8 @@ body * {
 				</div>
 
 
-				<!-- PW check div  -->
-				<div id="u_pw_check_div"
+				<!-- gender check div  -->
+				<div id="u_gender_check_div"
 					class="flex flex-row justify-center items-center text-center">
 					<div
 						class="flex flex-row items-center h-28 mt-10 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
@@ -77,8 +77,8 @@ body * {
 					</div>
 				</div>
 
-				<!-- PW check div  -->
-				<div id="u_pw_check_div"
+				<!-- age check div  -->
+				<div id="u_age_check_div"
 					class="flex flex-row justify-center items-center text-center">
 					<div
 						class="flex flex-row items-center h-28 mt-10 w-3/4 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
@@ -144,7 +144,7 @@ body * {
 			class="flex flex-col justify-center items-center rounded-[60px] w-11/12 h-1/2 mt-20 bg-white">
 			<span class="text-[2.5rem] font-bold">탈퇴 하시겠습니까? 모든 기록이 삭제됩니다.</span>
 			<span class="text-[2.5rem] font-bold">탈퇴하시려면 비밀번호를 입력하세요.</span> <input
-				class="del-pw h-24 mt-10 w-2/3 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
+			 type="password" class="del-pw h-24 mt-10 w-2/3 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
 		</div>
 		<div class="flex w-full h-1/2 justify-end items-end pt-20">
 			<button
@@ -202,6 +202,7 @@ body * {
 
 		$('.wrong-pw-confirm').click(function() {
 			wrong_pw_modal.close();
+			del_user_modal.close();
 		});
 
 		$('.del-user-yes').click(function() {
