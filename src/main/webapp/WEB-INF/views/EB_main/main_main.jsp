@@ -76,7 +76,7 @@
 							<div class="small-profile-gh">
 								<c:choose>
 									<c:when test="${dailyUser.u_profile != null }">
-										<img src="/img/${dailyUser.u_profile }">
+										<img src="${dailyUser.u_profile }">
 									</c:when>
 									<c:otherwise>
 										<img src="/img/null_profile.jpg">
@@ -162,7 +162,7 @@
 							<div class="small-profile-gh">
 								<c:choose>
 									<c:when test="${weeklyUser.u_profile != null}">
-										<img src="/img/${weeklyUser.u_profile }">
+										<img src="${weeklyUser.u_profile }">
 									</c:when>
 									<c:otherwise>
 										<img src="/img/null_profile.jpg">
@@ -247,7 +247,7 @@
 							<div class="small-profile-gh">
 								<c:choose>
 									<c:when test="${monthlyUser.u_profile != null}">
-										<img src="/img/${monthlyUser.u_profile }">
+										<img src="${monthlyUser.u_profile }">
 									</c:when>
 									<c:otherwise>
 										<img src="/img/null_profile.jpg">
@@ -335,7 +335,7 @@
 				<div class="best-review-info2">
 					<div class="best-review-profile">
 						<div class="small-profile-gh">
-							<img src="/img/${dailyUser.u_profile }">
+							<img src="${dailyUser.u_profile }">
 						</div>
 						<div class="best-review-user">
 							<h5>${dailyBest.r_owner }</h5>
@@ -385,7 +385,7 @@
 				<div class="best-review-info2">
 					<div class="best-review-profile">
 						<div class="small-profile-gh">
-							<img src="/img/${weeklyUser.u_profile }">
+							<img src="${weeklyUser.u_profile }">
 						</div>
 						<div class="best-review-user">
 							<h5>${weeklyBest.r_owner }</h5>
@@ -438,7 +438,7 @@
 				<div class="best-review-info2">
 					<div class="best-review-profile">
 						<div class="small-profile-gh">
-							<img src="/img/${monthlyUser.u_profile }">
+							<img src="${monthlyUser.u_profile }">
 						</div>
 						<div class="best-review-user">
 							<h5>${monthlyBest.r_owner }</h5>

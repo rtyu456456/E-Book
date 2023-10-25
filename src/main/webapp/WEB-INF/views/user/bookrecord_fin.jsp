@@ -49,7 +49,7 @@
 							src="imgs/logo_icon.png">
 						</a>
 						<div
-							class="w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3">
+							class="w-full flex justify-between text-[2.1rem] font-bold pt-10 h-1/3">
 							<span> <c:choose>
 									<c:when test="${fn:length(br.b_title) > 12}">
    									${fn:substring(br.b_title, 0, 12)}...
@@ -104,7 +104,7 @@
 				<div
 					class="relative flex flex-col justify-center items-start pl-5 w-full h-full text-[rgba(38,40,61,1)]">
 					<div
-						class="w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3">
+						class="w-full flex justify-between text-[2.1rem] font-bold pt-10 h-1/3">
 						<span class="review-title w-full"> </span>
 						<div class="w-1/4 h-full flex justify-center"></div>
 					</div>
@@ -168,7 +168,7 @@
 				<div
 					class="relative flex flex-col justify-center items-start pl-5 w-3/4 h-full text-[rgba(38,40,61,1)]">
 					<div
-						class="w-full flex justify-between text-[2.5rem] font-bold pt-10 h-1/3">
+						class="w-full flex justify-between text-[2.1rem] font-bold pt-10 h-1/3">
 						<span class="review-title w-full"> </span>
 						<div class="w-1/4 h-full flex justify-center"></div>
 					</div>
@@ -345,8 +345,8 @@ $(function() {
 		let review_book_no = review_book_box.querySelector('.r-b-no');
         
         review_thumbnail.src = b_thumbnail;
-        if(b_title.length >= 12){
-        	review_title.textContent = b_title.substr(0, 12) + '...';
+        if(b_title.length >= 10){
+        	review_title.textContent = b_title.substr(0, 10) + '...';
         } else {
         review_title.textContent = b_title;
         }
@@ -388,8 +388,8 @@ $(function() {
 				review_thumbnail.src = data.b_thumbnail;
 				
 				// 12자 이상일 경우 칸에 맞게 자르기
-				if(data.b_title.length >= 12){
-			       	review_title.textContent = data.b_title.substr(0, 12) + '...';
+				if(data.b_title.length >= 10){
+			       	review_title.textContent = data.b_title.substr(0, 10) + '...';
 			       } else {
 			       review_title.textContent = data.b_title;
 			       }

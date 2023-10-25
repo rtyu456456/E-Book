@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,8 @@ body * {
 </head>
 <body>
 	<div class="flex absolute w-full justify-center items-center">
-		<img class="w-[18rem] h-[18rem]" alt="" src="${sessionScope.user.u_profile }">
+		<img class="w-[18rem] h-[18rem]" alt=""
+			src="${sessionScope.user.u_profile }">
 	</div>
 	<div id="form"
 		class="flex flex-col rounded-[60px] shadow-[1px_3px_5px_0_rgba(0,0,0,0.06)] shadow-inner
@@ -26,13 +28,11 @@ body * {
 
 			<div id="profile-img" class="w-full h-[12rem]"></div>
 			<div id="info-div" class="flex flex-col w-full h-96">
-			
-			<!-- blank div  -->
+
+				<!-- blank div  -->
 				<div id="blank-div"
 					class="flex flex-row justify-center items-center text-center">
-					<div
-						class="flex flex-row items-center h-28 mt-10 w-3/4">
-					</div>
+					<div class="flex flex-row items-center h-28 mt-10 w-3/4"></div>
 				</div>
 				<!-- ID div  -->
 				<div id="u-id-div"
@@ -72,7 +72,14 @@ body * {
 							<span class="text-black">성별 | </span>
 						</div>
 						<div class="w-3/4">
-							<span class="text-black">${sessionScope.user.u_gender }</span>
+							<c:choose>
+								<c:when test="${sessionScope.user.u_gender.equals('male') }">
+									<span class="text-black"> 남 </span>
+								</c:when>
+								<c:otherwise>
+									<span class="text-black"> 여 </span>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>
@@ -144,7 +151,8 @@ body * {
 			class="flex flex-col justify-center items-center rounded-[60px] w-11/12 h-1/2 mt-20 bg-white">
 			<span class="text-[2.5rem] font-bold">탈퇴 하시겠습니까? 모든 기록이 삭제됩니다.</span>
 			<span class="text-[2.5rem] font-bold">탈퇴하시려면 비밀번호를 입력하세요.</span> <input
-			 type="password" class="del-pw h-24 mt-10 w-2/3 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
+				type="password"
+				class="del-pw h-24 mt-10 w-2/3 rounded-3xl border border-slate-300 text-[2.7rem] font-bold pl-2 bg-[#F5F6FA] outline-blue-600 shadow-md shadow-slate-500">
 		</div>
 		<div class="flex w-full h-1/2 justify-end items-end pt-20">
 			<button

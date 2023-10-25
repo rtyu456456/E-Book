@@ -61,7 +61,7 @@
 					<div class="review-list-gh">
 						<div class="detail-profile-gh">
 							<div class="detail-review-profile">
-								<img src="/img/${r.u_name }">
+								<img src="${r.u_profile }">
 							</div>
 							<h6 class="detail-name-gh">${r.r_owner }</h6>
 							<div class="recommend-radio-gh">
